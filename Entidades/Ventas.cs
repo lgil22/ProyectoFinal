@@ -30,16 +30,6 @@ namespace SistemaVentas.Entidades
             Detalle = new List<VentaDetalles>();
             }
 
-         /*   public Ventas(int ventaId, int clienteId, string tipoPago, float monto, DateTime fecha)
-            {
-                this.VentaId = ventaId;
-                this.ClienteId = clienteId;
-                this.TipoPago = tipoPago;
-                this.Monto = Monto;
-                this.Fecha = fecha;
-            
-            }*/
-
-
         }
-    }
+
+   }

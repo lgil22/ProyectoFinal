@@ -15,6 +15,7 @@ namespace SistemaVentas.Entidades
         public DateTime Fecha { get; set; }
         public decimal Cantidad { get; set; }
         public decimal Monto { get; set; }
+
         [ForeignKey("CobrosId")]
 
         public virtual List<CobrosDetalles> Detalle { get; set; }

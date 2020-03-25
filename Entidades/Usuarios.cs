@@ -26,16 +26,5 @@ namespace SistemaVentas.Entidades
 
         }
 
- /*  public Usuarios(int usuarioId, string nombres, string nombreUsuario, string clave, string email, string tipo)
-        {
-            this.UsuarioId = usuarioId;
-            this.Nombres = nombres;
-            this.NombreUsuario = nombreUsuario;
-            this.Clave = clave;
-            this.Email = email;
-            this.Tipo = tipo;
-
-        } */
-
     }
 }

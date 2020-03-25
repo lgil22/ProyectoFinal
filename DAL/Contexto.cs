@@ -15,7 +15,7 @@ namespace SistemaVentas.DAL
         public DbSet<Categoria> Categoria { get; set; }
         public DbSet<Articulos> Articulos { get; set; }
         public DbSet<NotasCreditos> NotasCreditos { get; set; }
-        public DbSet<Cobros> cobros { get; set; }
+        public DbSet<Cobros> Cobros { get; set; }
 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

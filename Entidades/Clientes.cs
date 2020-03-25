@@ -31,17 +31,5 @@ namespace SistemaVentas.Entidades
             FechaNacimiento = DateTime.Now;
         }
 
-     /*ublic Clientes(int clienteId, string nombres, string direccion, string telefono, string celular, string cedula, string email, DateTime fechaNacimiento)
-        {
-            this.ClienteId = clienteId;
-            this.Nombres = nombres;
-            this.Direccion = direccion;
-            this.Telefono = telefono;
-            this.Celular = celular;
-            this.Cedula = cedula;
-            this.Email = email;
-            this.FechaNacimiento = fechaNacimiento;
-        }*/
-
     }
 }
