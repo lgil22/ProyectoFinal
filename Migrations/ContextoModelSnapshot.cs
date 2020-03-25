@@ -37,6 +37,9 @@ namespace SistemaVentas.Migrations
                     b.Property<decimal>("Precio")
                         .HasColumnType("TEXT");
 
+                    b.Property<int>("UsuarioId")
+                        .HasColumnType("INTEGER");
+
                     b.HasKey("ArticulosId");
 
                     b.ToTable("Articulos");

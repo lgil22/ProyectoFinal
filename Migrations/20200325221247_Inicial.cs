@@ -13,6 +13,7 @@ namespace SistemaVentas.Migrations
                 {
                     ArticulosId = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
+                    UsuarioId = table.Column<int>(nullable: false),
                     Descripcion = table.Column<string>(nullable: true),
                     CategoriaId = table.Column<int>(nullable: false),
                     Existencia = table.Column<string>(nullable: true),

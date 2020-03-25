@@ -9,6 +9,7 @@ namespace SistemaVentas.Entidades
     {
         [Key]
         public int ArticulosId { get; set; }
+        public int UsuarioId { get; set; }
         public string Descripcion { get; set; }
         public int CategoriaId { get; set; }
         public string Existencia { get; set; }
@@ -18,6 +19,7 @@ namespace SistemaVentas.Entidades
         public Articulos()
         {
             ArticulosId = 0;
+            UsuarioId = 0;
             Descripcion = string.Empty;
             CategoriaId = 0;
             Existencia = string.Empty;
