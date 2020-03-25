@@ -17,7 +17,7 @@ namespace SistemaVentas.Entidades
  
             [ForeignKey("VentaId")]
 
-            public virtual List<VentaDetalles> Detalle { get; set; }
+            public virtual List<VentaDetalles> Detalles { get; set; }
 
             public Ventas()
             {
@@ -27,7 +27,7 @@ namespace SistemaVentas.Entidades
                 Monto = 0;
                 Fecha = DateTime.Now;
 
-            Detalle = new List<VentaDetalles>();
+            Detalles = new List<VentaDetalles>();
             }
 
         }
