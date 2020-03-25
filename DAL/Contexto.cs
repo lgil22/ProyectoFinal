@@ -8,6 +8,10 @@ namespace SistemaVentas.DAL
 {
     public class Contexto : DbContext
     {
+        public DbSet <Clientes> Clientes { get; set; }
+        public DbSet<Ventas> Ventas { get; set; }
+        public DbSet<Usuarios> Usuarios { get; set; }
+
         public DbSet<Categoria> Categoria { get; set; }
         public DbSet<Articulos> Articulos { get; set; }
         public DbSet<NotasCreditos> NotasCreditos { get; set; }
