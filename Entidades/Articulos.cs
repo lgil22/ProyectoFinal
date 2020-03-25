@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SistemaVentas.Entidades
 {
-    public class Articulos
+    public class Articulos : Cobros
     {
         [Key]
         public int ArticulosId { get; set; }
