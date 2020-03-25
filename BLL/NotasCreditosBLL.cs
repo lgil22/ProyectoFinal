@@ -9,7 +9,7 @@ using System.Text;
 
 namespace SistemaVentas.BLL
 {
-    class NotasCreditosBLL
+    public class NotasCreditosBLL
     {
         public static bool Guardar(NotasCreditos credito)
         {

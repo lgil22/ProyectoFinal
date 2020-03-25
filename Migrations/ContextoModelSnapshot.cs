@@ -249,7 +249,7 @@ namespace SistemaVentas.Migrations
             modelBuilder.Entity("SistemaVentas.Entidades.VentaDetalles", b =>
                 {
                     b.HasOne("SistemaVentas.Entidades.Ventas", null)
-                        .WithMany("Detalle")
+                        .WithMany("Detalles")
                         .HasForeignKey("VentaId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();

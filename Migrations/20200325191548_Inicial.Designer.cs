@@ -9,7 +9,7 @@ using SistemaVentas.DAL;
 namespace SistemaVentas.Migrations
 {
     [DbContext(typeof(Contexto))]
-    [Migration("20200325025845_Inicial")]
+    [Migration("20200325191548_Inicial")]
     partial class Inicial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -251,7 +251,7 @@ namespace SistemaVentas.Migrations
             modelBuilder.Entity("SistemaVentas.Entidades.VentaDetalles", b =>
                 {
                     b.HasOne("SistemaVentas.Entidades.Ventas", null)
-                        .WithMany("Detalle")
+                        .WithMany("Detalles")
                         .HasForeignKey("VentaId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
