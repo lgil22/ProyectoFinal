@@ -1,0 +1,89 @@
+﻿<Window x:Class="SistemaVentas.UI.Registros.RegCategoria"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SistemaVentas.UI.Registros"
+        mc:Ignorable="d"
+        Title="RegCategoria" Height="200" Width="400">
+    <Grid>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="Black"/>
+                <GradientStop Color="White" Offset="0"/>
+                <GradientStop Color="#FF797979" Offset="0"/>
+                <GradientStop Color="#FFCFB6B6" Offset="0"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="130"/>
+            <ColumnDefinition Width="150"/>
+            <ColumnDefinition Width="130"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+
+        <StackPanel Grid.Row="4" Grid.Column="1" Margin="0,50,6,0" Grid.RowSpan="2">
+            <Button  x:Name="GuardarButton" Content="Guargar" FontSize="15" Width="100" Click="GuardarButton_Click" Height="45">
+
+            </Button>
+        </StackPanel>
+
+
+        <StackPanel Grid.Row="4" Grid.Column="0" Margin="0,50,5,0" Grid.RowSpan="2">
+            <Button x:Name="NuevobButton" Content="Nuevo" FontSize="15" Width="100" Click="NuevobButton_Click" Height="45">
+
+            </Button>
+        </StackPanel>
+
+        <StackPanel Grid.Row="4" Grid.Column="2" Margin="0,50,5,0" Grid.RowSpan="2">
+            <Button x:Name="EliminarButton" Content=" Eliminar" FontSize="15" Width="100" Click="EliminarButton_Click" Height="45">
+
+            </Button>
+        </StackPanel>
+
+        <StackPanel Grid.Row="3" Grid.Column="1" Margin="91,15,9,27">
+            <Button x:Name="BuscarButton" Content="Buscar" FontSize="15" Width="50" Click="BuscarButton_Click">
+            </Button>
+        </StackPanel>
+
+        <StackPanel Grid.Row="3" Grid.Column="0" Margin="0,10,5,27">
+            <Label Content="CategoriaId" FontSize="15" Height="30" Width="122"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="3" Grid.Column="1" Margin="0,14,90,27">
+            <TextBox  x:Name="CategoriaIdTextBox" Height="25" Background="#FFFDFBFB">
+                <TextBox.Text>
+                    <Binding  Path="CategoriaId" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+        </StackPanel>
+
+        <StackPanel Grid.Row="4" Grid.Column="0" Margin="0,2,5,5">
+            <Label Content="NombreCategoria" FontSize="15" Width="132"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="4" Grid.Column="1" Margin="0,1,5,67" Grid.RowSpan="2">
+            <TextBox  x:Name="NombreCategoria" Height="30" Background="#FFFDFBFB">
+                <TextBox.Text>
+                    <Binding  Path="LlamadaId" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+        </StackPanel>
+
+
+
+
+    </Grid>
+</Window>

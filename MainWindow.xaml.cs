@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SistemaVentas.UI.Registros;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,18 @@ namespace SistemaVentas
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            RegCategoria c = new RegCategoria();
+            c.Show();
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            RegArticulos a = new RegArticulos();
+            a.Show();
         }
     }
 }
