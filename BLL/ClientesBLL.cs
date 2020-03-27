@@ -74,7 +74,6 @@ namespace SistemaVentas.BLL
             }
             catch (Exception)
             {
-
                 throw;
             }
             finally

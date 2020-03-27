@@ -1,21 +1,27 @@
-﻿<Window x:Class="SistemaVentas.MainWindow"
+﻿<Window x:Name="MenuPrincipal" x:Class="SistemaVentas.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SistemaVentas"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Menu Principal" Height="450" Width="800">
     <Grid>
         <Menu>
             <MenuItem x:Name="MenuRegistros" Header="Registros">
                 <MenuItem Header="Articulos" Click="MenuArticulos_Click"/>
+                <Separator/>
                 <MenuItem Header="Categorias" Click="MenuCategorias_Click"/>
+                <Separator/>
                 <MenuItem Header="Cobros" Click="MenuCobros_Click"/>
+                <Separator/>
                 <MenuItem Header="Notas Creditos" Click="MenuNotasCreditos_Click"/>
-                <MenuItem Header="Clientes"/>
-                <MenuItem Header="Usuarios"/>
-                <MenuItem Header="Ventas"/>
+                <Separator/>
+                <MenuItem Header="Clientes" Click="MenuClientes_Click"/>
+                <Separator/>
+                <MenuItem Header="Usuarios" Click="MenuUsuarios_Click"/>
+                <Separator/>
+                <MenuItem Header="Ventas" Click="MenuVentas_Click"/>
             </MenuItem>
         </Menu>
 

@@ -52,6 +52,23 @@ namespace SistemaVentas
             regCred.Show();
         }
 
+        private void MenuClientes_Click(object sender, RoutedEventArgs e)
+        {
+            rClientes regC = new rClientes();
+            regC.Show();
+        }
+
+        private void MenuUsuarios_Click(object sender, RoutedEventArgs e)
+        {
+            rUsuarios regU = new rUsuarios();
+            regU.Show();
+        }
+
+        private void MenuVentas_Click(object sender, RoutedEventArgs e)
+        {
+            rVentas regV = new rVentas();
+            regV.Show();
+        }
 
 
     }

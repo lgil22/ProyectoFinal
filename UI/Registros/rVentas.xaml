@@ -1,0 +1,181 @@
+﻿<Window x:Name="RegistroVentas" x:Class="SistemaVentas.UI.Registros.rVentas"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SistemaVentas.UI.Registros"
+        mc:Ignorable="d"
+        Title="Registro Ventas" Height="685" Width="625" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150"/>
+            <ColumnDefinition Width="150"/>
+            <ColumnDefinition Width="150"/>
+            <ColumnDefinition Width="150"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" MinHeight="54" />
+            <RowDefinition Height="auto" MinHeight="56" />
+            <RowDefinition Height="auto" MinHeight="60" />
+            <RowDefinition Height="auto" MinHeight="100" />
+            <RowDefinition Height="0*" />
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="11" Grid.Column="1" Margin="0,50,6,-107">
+            <Button  x:Name="GuardarButton" Content="Guardar" FontSize="14" Width="100" Click="GuardarButton_Click" Height="45">
+
+            </Button>
+        </StackPanel>
+
+        <StackPanel Grid.Row="11" Grid.Column="0" Margin="0,50,5,-97">
+            <Button x:Name="NuevobButton" Content="Nuevo" FontSize="14" Width="100" Click="NuevobButton_Click" Height="45">
+
+            </Button>
+        </StackPanel>
+
+        <StackPanel Grid.Row="11" Grid.Column="2" Margin="0,50,5,-95">
+            <Button x:Name="EliminarButton" Content=" Eliminar" FontSize="14" Width="100" Click="EliminarButton_Click" Height="45">
+
+            </Button>
+        </StackPanel>
+
+        <StackPanel Grid.Row="3" Grid.Column="2" Margin="10,6,10,0">
+            <Button x:Name="BuscarButton" Content="Buscar" FontSize="14" Width="103" Height ="45" Click="BuscarButton_Click"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="3" Grid.Column="0">
+            <Label x:Name="VentaIdLabel" Content="Venta Id:" FontSize="14" Height="30" Width="122"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="3" Margin="114,8,98,26" Grid.ColumnSpan="2">
+            <TextBox x:Name="VentaIdTextBox" Height="25">
+                <TextBox.Text>
+                    <Binding Path="VentaId" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                        <Binding.ValidationRules>
+                            <ExceptionValidationRule/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+        </StackPanel>
+
+
+        <StackPanel Grid.Row="4" Grid.Column="0">
+            <Label x:Name="ClienteIdLabel" Content="Cliente Id:" FontSize="14" Height="30" Width="128"/>
+        </StackPanel>
+        <TextBox x:Name="ClienteIdTextBox" Height="25" Grid.ColumnSpan="3" Margin="114,6,98,28" Grid.Row="4">
+            <Binding Path="ClienteId" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                <Binding.ValidationRules>
+                    <ExceptionValidationRule/>
+                </Binding.ValidationRules>
+            </Binding>
+        </TextBox>
+
+
+        <StackPanel Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2">
+            <Label x:Name="FechaLabel" Content="Fecha:" FontSize="14" Height="30" Width="267"/>
+        </StackPanel>
+
+        <DatePicker x:Name="FechaNacTimePicker" Height="25" Margin="10,5,98,28" Grid.Row="5" Grid.ColumnSpan="2" Grid.Column="1" DisplayDate="2020-03-25" SelectedDateFormat="Short">
+            <DatePicker.Text>
+                <Binding Path="Fecha" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                    <Binding.ValidationRules>
+                        <ExceptionValidationRule/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </DatePicker.Text>
+        </DatePicker>
+
+
+        <StackPanel Grid.Row="6" Grid.Column="0">
+            <Label x:Name="TipoPagoLabel" Content="Tipo Pago:" FontSize="14" Height="30" Width="122"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="6" Margin="114,8,98,26" Grid.ColumnSpan="3">
+            <ComboBox x:Name="TipoPagoTextBox" Height="25">
+                <ComboBoxItem Content="Contado"/>
+                <ComboBoxItem Content="Credito"/>
+                <ComboBoxItem Content="A Plazo"/>
+                <ComboBoxItem>
+                    <Binding Path="TipoPago" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                        <Binding.ValidationRules>
+                            <ExceptionValidationRule/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </ComboBoxItem>
+            </ComboBox>
+        </StackPanel>
+
+        <StackPanel Grid.Row="7" Grid.Column="0">
+            <Label x:Name="MontoLabel" Content="Monto:" FontSize="14" Height="30" Width="128"/>
+        </StackPanel>
+        <TextBox x:Name="MontoTextBox" Height="25" Grid.ColumnSpan="3" Margin="114,6,98,28" Grid.Row="7">
+            <Binding Path="Monto" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                <Binding.ValidationRules>
+                    <ExceptionValidationRule/>
+                </Binding.ValidationRules>
+            </Binding>
+        </TextBox>
+
+        <GroupBox x:Name="AgregarVentasGroupBox" FontSize="14" Header="Agregar Ventas" Grid.Row="8" Grid.ColumnSpan="4" Margin="10,0,-6,0" Grid.RowSpan="3" Height="206" VerticalAlignment="Top">
+
+            <DataGrid x:Name="DetalleDataGridVentas" Height="132">
+                <DataGrid.ItemsSource>
+                    <Binding Path="Detalles" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                        <Binding.ValidationRules>
+                            <ExceptionValidationRule></ExceptionValidationRule>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </DataGrid.ItemsSource>
+            </DataGrid>
+        </GroupBox>
+
+        <Label x:Name="ArticuloLabel" Content="Articulo Id:" HorizontalAlignment="Left" 
+                   Grid.Row="8" VerticalAlignment="Center"  Margin="20,0,0,0" FontSize="12"/>
+        <TextBox x:Name="ArticuloIdTextBox" HorizontalAlignment="Left" Margin="92,0,0,0"
+                     Grid.Row="8" TextWrapping="Wrap" VerticalAlignment="Center" Width="58">
+            <Binding Path="ArticuloId" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                <Binding.ValidationRules>
+                    <ExceptionValidationRule/>
+                </Binding.ValidationRules>
+            </Binding>
+        </TextBox>
+
+
+        <Label x:Name="CantidadLabel" Content="Cantidad:" Grid.Column="1" HorizontalAlignment="Left" 
+               Margin="10,0,0,0" Grid.Row="8" VerticalAlignment="Center" Width="76"/>
+        <TextBox x:Name="CantidadTextBox" Grid.Column="1" HorizontalAlignment="Left" Margin="72,0,0,0" Grid.Row="8" 
+                 TextWrapping="Wrap" VerticalAlignment="Center" Width="68">
+            <Binding Path="Cantidad" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                <Binding.ValidationRules>
+                    <ExceptionValidationRule/>
+                </Binding.ValidationRules>
+            </Binding>
+        </TextBox>
+
+        <Label x:Name="PrecioLabel" Content="Precio: " Grid.Column="2" HorizontalAlignment="Left" 
+               Margin="10,0,0,0" Grid.Row="8" VerticalAlignment="Center"/>
+        <TextBox x:Name="PrecioTextBox" Grid.Column="2" HorizontalAlignment="Left" Margin="59,0,0,0" 
+                 Grid.Row="8" TextWrapping="Wrap" VerticalAlignment="Center" Width="81">
+            <Binding Path="Precio" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                <Binding.ValidationRules>
+                    <ExceptionValidationRule/>
+                </Binding.ValidationRules>
+            </Binding>
+        </TextBox>
+
+        <Button x:Name="AgregarDataGridButton" Content="Agregar" Grid.Column="3" HorizontalAlignment="Left" 
+                Margin="62,0,0,0" Grid.Row="8" VerticalAlignment="Center" Height="26" Width="93" Click="AgregarDataGridButton_Click"/>
+        <Button x:Name="RemoverDataGridButton" Content="Remover" HorizontalAlignment="Left" Height="26" 
+                Margin="16,60,0,0" Grid.Row="10" VerticalAlignment="Top" Width="76" Click="RemoverDataGridButton_Click"/>
+
+    </Grid>
+</Window>
