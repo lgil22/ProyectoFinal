@@ -116,6 +116,7 @@
                 </TextBox.Text>
             </TextBox>
         </StackPanel>
+        
         <StackPanel Grid.Row="8" Grid.Column="1" Margin="0,14,0,33">
             <TextBox  x:Name="PrecioIdTextBox" Height="25" Background="#FFFDFBFB">
                 <TextBox.Text>

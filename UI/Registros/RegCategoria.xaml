@@ -61,7 +61,7 @@
         </StackPanel>
 
         <StackPanel Grid.Row="3" Grid.Column="1" Margin="0,14,90,27">
-            <TextBox  x:Name="CategoriaIdTextBox" Height="25" Background="#FFFDFBFB">
+            <TextBox  x:Name="CategoriaIdTextBox" Height="25" Background="#FFFDFBFB" >
                 <TextBox.Text>
                     <Binding  Path="CategoriaId" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                     </Binding>

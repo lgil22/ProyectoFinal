@@ -22,9 +22,11 @@ namespace SistemaVentas.UI.Registros
 
         Categoria categoria = new Categoria();
         public RegCategoria()
-        {
+        {    
+            
             InitializeComponent();
             this.DataContext = categoria;
+            CategoriaIdTextBox.Text = "0";
         }
 
         private void reCargar()

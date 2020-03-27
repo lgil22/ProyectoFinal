@@ -24,6 +24,7 @@ namespace SistemaVentas.UI.Registros
         {
             InitializeComponent();
             this.DataContext = articulo;
+            ArticuloIdTextBox.Text = "0";
 
         }
         private void reCargar()
@@ -38,8 +39,8 @@ namespace SistemaVentas.UI.Registros
             DescripcionTextBox.Text = string.Empty;
             CategoriaIdComboBox.SelectedItem = "0";
             ExistenciaTextBox.Text = string.Empty;
-            CostoIdTextBox.Text = string.Empty;
-            PrecioIdTextBox.Text = string.Empty;
+            CostoIdTextBox.Text = "0";
+            PrecioIdTextBox.Text = "0";
 
         }
         private void NuevobButton_Click(object sender, RoutedEventArgs e)
@@ -50,9 +51,6 @@ namespace SistemaVentas.UI.Registros
         private void GuardarButton_Click(object sender, RoutedEventArgs e)
         {
             bool paso = false;
-
-            articulo.ArticulosId = Convert.ToInt32(ArticuloIdTextBox.Text);
-            articulo.CategoriaId = Convert.ToInt32(CategoriaIdComboBox.SelectedItem);
 
             if (articulo.ArticulosId == 0)
                 paso = ArticulosBLL.Guardar(articulo);

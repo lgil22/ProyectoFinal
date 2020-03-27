@@ -26,16 +26,28 @@ namespace SistemaVentas
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+
+        private void CategoriaButton_Click(object sender, RoutedEventArgs e)
         {
             RegCategoria c = new RegCategoria();
             c.Show();
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void NotaCreditoButton_Click(object sender, RoutedEventArgs e)
         {
+            RegNotasCreditos n = new RegNotasCreditos();
+            n.Show();
+        }
+
+        private void ArticuloButton_Click(object sender, RoutedEventArgs e)
+        {
+
+           
             RegArticulos a = new RegArticulos();
             a.Show();
+           
         }
+
+        
     }
 }

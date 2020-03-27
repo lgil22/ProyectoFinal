@@ -7,9 +7,9 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <Button Content="Registrar Categoria" HorizontalAlignment="Left" Margin="340,103,0,0" VerticalAlignment="Top" Height="83" Width="162" Click="Button_Click"/>
-        <Button Content="Registrar Articulo" HorizontalAlignment="Left" Margin="340,256,0,0" VerticalAlignment="Top" Click="Button_Click_1"/>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="533,308,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="CategoriaButton" Content="Registrar Categoria" HorizontalAlignment="Left" Margin="340,103,0,0" VerticalAlignment="Top" Height="83" Width="162" Click="CategoriaButton_Click"/>
+        <Button x:Name="ArticuloButton" Content="Registrar Articulo" HorizontalAlignment="Left" Margin="340,256,0,0" VerticalAlignment="Top"  Height="72" Click="ArticuloButton_Click"/>
+        <Button x:Name="NotaCreditoButton" Content="Registrar NotaCredito" HorizontalAlignment="Left" Margin="625,124,0,0" VerticalAlignment="Top" Height="82" Click="NotaCreditoButton_Click" />
 
     </Grid>
 </Window>
