@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SistemaVentas.UI.Registros"
         mc:Ignorable="d"
-        Title="RegCobros" Height="430" Width="450">
+        Title="RegCobros" Height="800" Width="650">
     <Grid>
         <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -24,8 +24,14 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="auto" />
             <RowDefinition Height="auto" />
+
             <RowDefinition Height="auto"  />
             <RowDefinition Height="auto"  />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto"  />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto"  />
+            <RowDefinition Height="auto" />
             <RowDefinition Height="auto" />
             <RowDefinition Height="auto" />
             <RowDefinition Height="auto" />
@@ -45,20 +51,55 @@
             <Label Content="ClientesId" FontSize="15"/>
         </StackPanel>
 
-        <StackPanel Grid.Row="4" Grid.Column="0" Margin="0,10,5,33">
-            <Label Content="ArticuloId" FontSize="15"/>
+
+        <StackPanel Grid.Row="5" Grid.Column="0" Margin="0,12,5,33">
+            <Label Content="Articulo Id" FontSize="15"/>
         </StackPanel>
 
-        <StackPanel Grid.Row="5" Grid.Column="0" Margin="0,12,5,33" Grid.RowSpan="2">
-            <Label Content="Fecha" FontSize="15"/>
+
+        <StackPanel Grid.Row="5" Grid.Column="1" Margin="0,14,0,33">
+            <TextBox  x:Name="ArticuloIdTextBox" Height="25" Background="#FFFDFBFB">
+                <TextBox.Text>
+                    <Binding  Path="ArticuloId" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
         </StackPanel>
 
-        <StackPanel Grid.Row="6" Grid.Column="0" Margin="0,8,10,33" Grid.RowSpan="2">
+        <StackPanel Grid.Row="6" Grid.Column="0" Margin="0,12,5,33">
             <Label Content="Cantidad" FontSize="15"/>
         </StackPanel>
+        
+        <StackPanel Grid.Row="7" Grid.Column="0" Margin="0,12,5,33">
+            <Label Content="Monto" FontSize="15"/>
+        </StackPanel>
+        
+         <StackPanel Grid.Row="7" Grid.Column="1" Margin="0,14,0,33">
+            <TextBox  x:Name="MontotextBox" Height="25" Background="#FFFDFBFB">
+                <TextBox.Text>
+                    <Binding  Path="Monto" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+        </StackPanel>
 
-        <StackPanel Grid.Row="7" Grid.Column="0" Margin="0,8,10,33">
-            <Label Content="Monto:" FontSize="15"/>
+        <StackPanel Grid.Row="6" Grid.Column="1" Margin="0,14,0,33">
+            <TextBox  x:Name="CantidadTextBox" Height="25" Background="#FFFDFBFB">
+                <TextBox.Text>
+                    <Binding  Path="Cantidad" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+        </StackPanel>
+
+        
+
+        <Button x:Name="AgregarDataGridButton" Content="Agregar" Grid.Column="3" HorizontalAlignment="Left"  Margin="62,18,0,0" Grid.Row="10" VerticalAlignment="Center" Height="26" Width="93" />
+        <Button x:Name="RemoverDataGridButton" Content="Remover" HorizontalAlignment="Left" Height="26"  Margin="16,120,0,0" Grid.Row="11" VerticalAlignment="Top" Width="76" />
+
+
+        <StackPanel Grid.Row="4" Grid.Column="0" Margin="0,12,5,33" Grid.RowSpan="2">
+            <Label Content="Fecha" FontSize="15"/>
         </StackPanel>
 
 
@@ -72,6 +113,21 @@
             </TextBox>
         </StackPanel>
 
+        <GroupBox x:Name="AgregarcobroGroupBox" FontSize="14" Header="Agregar Cobro" Grid.Row="10" Grid.ColumnSpan="4" Margin="10,0,-6,0" Grid.RowSpan="3" Height="206" VerticalAlignment="Top">
+
+            <DataGrid x:Name="DetalleDataGridCobro" Height="132">
+                <DataGrid.ItemsSource>
+                    <Binding Path="Detalles" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                        <Binding.ValidationRules>
+                            <ExceptionValidationRule></ExceptionValidationRule>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </DataGrid.ItemsSource>
+            </DataGrid>
+        </GroupBox>
+
+
+
 
         <StackPanel Grid.Row="3" Grid.Column="1" Margin="0,14,0,33">
             <ComboBox x:Name="ClienteIdComboBox" SelectedIndex="0"  Width="151" >
@@ -79,51 +135,26 @@
             </ComboBox>
         </StackPanel>
 
-        <StackPanel Grid.Row="4" Grid.Column="1" Margin="0,14,0,33">
-            <ComboBox x:Name="ArticuloIdComboBox" SelectedIndex="0"  Width="151" >
-                <ComboBoxItem/>
-            </ComboBox>
-        </StackPanel>
 
-        <StackPanel Grid.Row="5" Grid.Column="1" Margin="0,14,0,33">
+        <StackPanel Grid.Row="4" Grid.Column="1" Margin="0,14,0,33">
             <DatePicker x:Name="FechaDatePicke" Height="25" Background="#FFFDFBFB">
             </DatePicker>
         </StackPanel>
 
-        <StackPanel Grid.Row="6" Grid.Column="1" Margin="0,14,0,33">
-            <TextBox  x:Name="CantidadTextBox" Height="25" Background="#FFFDFBFB">
-                <TextBox.Text>
-                    <Binding  Path="Cantidad" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
-                    </Binding>
-                </TextBox.Text>
-            </TextBox>
-        </StackPanel>
 
-        <StackPanel Grid.Row="7" Grid.Column="1" Margin="0,14,0,33">
-            <TextBox  x:Name="MontoTextBox" Height="25" Background="#FFFDFBFB">
-                <TextBox.Text>
-                    <Binding  Path="Monto" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
-                    </Binding>
-                </TextBox.Text>
-            </TextBox>
-        </StackPanel>
-
-
-
-        <StackPanel Grid.Row="6" Grid.Column="2" Margin="0,0,5,70" Grid.RowSpan="2">
+        <StackPanel Grid.Row="14" Grid.Column="1" Margin="0,0,5,70" Grid.RowSpan="2">
             <Button  x:Name="GuardarButton" Content="Guargar" FontSize="15" Width="100" Height="45" Click="GuardarButton_Click">
 
             </Button>
         </StackPanel>
 
 
-        <StackPanel Grid.Row="5" Grid.Column="2" Margin="0,0,5,70" Grid.RowSpan="2">
+        <StackPanel Grid.Row="14" Grid.Column="0" Margin="0,0,5,70" Grid.RowSpan="2">
             <Button x:Name="NuevobButton" Content="Nuevo" FontSize="15" Width="100"  Height="45" Click="NuevobButton_Click">
-
             </Button>
         </StackPanel>
 
-        <StackPanel Grid.Row="7" Grid.Column="2" Margin="0,0,5,70">
+        <StackPanel Grid.Row="14" Grid.Column="2" Margin="0,0,5,70">
             <Button x:Name="EliminarButton" Content=" Eliminar" FontSize="15" Width="100"  Height="44" Click="EliminarButton_Click">
 
             </Button>

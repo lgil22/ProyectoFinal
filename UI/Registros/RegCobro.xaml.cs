@@ -35,19 +35,15 @@ namespace SistemaVentas.UI.Registros
 
         private bool existeEnLaBaseDeDatos()
         {
-            Cobros cobroAnterior = CobrosBLL.Buscar(cobro.CobroId);
+            Cobros cobroAnterior = CobrosBLL.Buscar((int)CobrosIdTextBox.Text.ToInt());
 
-            return cobroAnterior != null;
+            return (cobroAnterior != null);
         }
         private void Limpiar()
         {
 
-            CobrosIdTextBox.Text = "0";
-            ArticuloIdComboBox.SelectedItem = "0";
-            ClienteIdComboBox.SelectedItem = "0";
-            FechaDatePicke.SelectedDate = DateTime.Now;
-            CantidadTextBox.Text = "0";
-            MontoTextBox.Text = "0";
+            this.cobro = new Cobros();
+            DetalleDataGridCobro.ItemsSource = new List<CobrosDetalles>();
             reCargar();
         }
         private void NuevobButton_Click(object sender, RoutedEventArgs e)
@@ -55,16 +51,33 @@ namespace SistemaVentas.UI.Registros
             Limpiar();
         }
 
+        private bool Validar()
+        {
+            bool paso = true;
+
+            if (string.IsNullOrWhiteSpace(CobrosIdTextBox.Text))
+            {
+                MessageBox.Show("EL campo cobroId no puede estar vacio", "Aviso", MessageBoxButton.OKCancel, MessageBoxImage.Information);
+                CobrosIdTextBox.Focus();
+                paso = false;
+            }
+            if (this.cobro.Detalle.Count == 0)
+            {
+                MessageBox.Show("Debe agregar una cobro", "Aviso", MessageBoxButton.OKCancel, MessageBoxImage.Information);
+                ArticuloIdTextBox.Focus();
+                CantidadTextBox.Focus();
+                CobrosIdTextBox.Focus();
+                paso = false;
+            }
+            return paso;
+        }
         private void GuardarButton_Click(object sender, RoutedEventArgs e)
         {
             bool paso = false;
+            if (!Validar())
+                return;
 
-            cobro.CobroId = cobro.CobroId;
-            cobro.ArticuloId = Convert.ToInt32(ArticuloIdComboBox.SelectedItem);
-            cobro.ClienteId = Convert.ToInt32(ClienteIdComboBox.SelectedItem);
-
-
-            if (cobro.CobroId == 0)
+            if (string.IsNullOrWhiteSpace(CobrosIdTextBox.Text) || CobrosIdTextBox.Text == "0")
                 paso = CobrosBLL.Guardar(cobro);
             else
             {
@@ -72,7 +85,7 @@ namespace SistemaVentas.UI.Registros
                     paso = CobrosBLL.Modificar(cobro);
                 else
                 {
-                    MessageBox.Show("No se puede modificar una Orden que no existe");
+                    MessageBox.Show("No se puede modificar no existe");
                     return;
                 }
             }
@@ -89,7 +102,8 @@ namespace SistemaVentas.UI.Registros
 
         private void EliminarButton_Click(object sender, RoutedEventArgs e)
         {
-            int id = Convert.ToInt32(CobrosIdTextBox.Text);
+            int id;
+            int.TryParse(CobrosIdTextBox.Text, out id);
 
             Limpiar();
 
@@ -108,6 +122,7 @@ namespace SistemaVentas.UI.Registros
 
             if (cobro != null)
             {
+                MessageBox.Show("Cobro encontrado");
                 cobro = cobroAnterior;
                 reCargar();
 
@@ -117,8 +132,42 @@ namespace SistemaVentas.UI.Registros
                 MessageBox.Show("no se pudo hacer el cobro");
             }
         }
+
+        private void AgregarDataGridButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (DetalleDataGridCobro.ItemsSource != null)
+            {
+                this.cobro.Detalle = (List<CobrosDetalles>)DetalleDataGridCobro.ItemsSource;
+            }
+
+
+            this.cobro.Detalle.Add(new CobrosDetalles
+            {
+
+                Monto = MontotextBox.Text.ToInt(),
+
+
+            });
+            reCargar();
+
+            MontotextBox.Focus();
+            MontotextBox.Clear();
+        }
+
+
+        private void RemoverDataGridButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (DetalleDataGridCobro.Items.Count > 0 && DetalleDataGridCobro.SelectedItem != null)
+            {
+
+                cobro.Detalle.RemoveAt(DetalleDataGridCobro.SelectedIndex);
+                reCargar();
+            }
+        }
+
     }
 }
+ 
 
 
 
