@@ -7,9 +7,22 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <Button x:Name="CategoriaButton" Content="Registrar Categoria" HorizontalAlignment="Left" Margin="340,103,0,0" VerticalAlignment="Top" Height="83" Width="162" Click="CategoriaButton_Click"/>
-        <Button x:Name="ArticuloButton" Content="Registrar Articulo" HorizontalAlignment="Left" Margin="340,256,0,0" VerticalAlignment="Top"  Height="72" Click="ArticuloButton_Click"/>
-        <Button x:Name="NotaCreditoButton" Content="Registrar NotaCredito" HorizontalAlignment="Left" Margin="625,124,0,0" VerticalAlignment="Top" Height="82" Click="NotaCreditoButton_Click" />
+        <Menu>
+            <MenuItem x:Name="MenuRegistros" Header="Registros">
+                <MenuItem Header="Articulos" Click="MenuArticulos_Click"/>
+                <MenuItem Header="Categorias" Click="MenuCategorias_Click"/>
+                <MenuItem Header="Cobros" Click="MenuCobros_Click"/>
+                <MenuItem Header="Notas Creditos" Click="MenuNotasCreditos_Click"/>
+                <MenuItem Header="Clientes"/>
+                <MenuItem Header="Usuarios"/>
+                <MenuItem Header="Ventas"/>
+            </MenuItem>
+        </Menu>
+
+
+
+
+
 
     </Grid>
 </Window>

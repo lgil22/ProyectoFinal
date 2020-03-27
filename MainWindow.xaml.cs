@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using SistemaVentas.UI;
 
 namespace SistemaVentas
 {
@@ -26,28 +27,32 @@ namespace SistemaVentas
             InitializeComponent();
         }
 
-
-        private void CategoriaButton_Click(object sender, RoutedEventArgs e)
+        private void MenuArticulos_Click(object sender, RoutedEventArgs e)
         {
-            RegCategoria c = new RegCategoria();
-            c.Show();
+            RegArticulos regArt = new RegArticulos();
+            regArt.Show();
         }
 
-        private void NotaCreditoButton_Click(object sender, RoutedEventArgs e)
+        private void MenuCategorias_Click(object sender, RoutedEventArgs e)
         {
-            RegNotasCreditos n = new RegNotasCreditos();
-            n.Show();
+            RegCategoria regCat = new RegCategoria();
+            regCat.Show();
         }
 
-        private void ArticuloButton_Click(object sender, RoutedEventArgs e)
+        private void MenuCobros_Click(object sender, RoutedEventArgs e)
         {
-
-           
-            RegArticulos a = new RegArticulos();
-            a.Show();
-           
+            RegCobro regCob = new RegCobro();
+            regCob.Show();
         }
 
-        
+
+        private void MenuNotasCreditos_Click(object sender, RoutedEventArgs e)
+        {
+            RegNotasCreditos regCred = new RegNotasCreditos();
+            regCred.Show();
+        }
+
+
+
     }
 }

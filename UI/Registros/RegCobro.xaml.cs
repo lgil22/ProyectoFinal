@@ -15,30 +15,43 @@ using System.Windows.Shapes;
 namespace SistemaVentas.UI.Registros
 {
     /// <summary>
-    /// Interaction logic for RegNotasClientes.xaml
+    /// Interaction logic for RegCobro.xaml
     /// </summary>
-    public partial class RegNotasClientes : Window
+    public partial class RegCobro : Window
     {
         Cobros cobro = new Cobros();
-        public RegNotasClientes()
+
+        public RegCobro()
         {
             InitializeComponent();
             this.DataContext = cobro;
-
-           
         }
+
         private void reCargar()
         {
             this.DataContext = null;
             this.DataContext = cobro;
         }
 
-      
-          
-      
-        private void NuevobButton_Click(object sender, RoutedEventArgs e)
+        private bool existeEnLaBaseDeDatos()
+        {
+            Cobros cobroAnterior = CobrosBLL.Buscar(cobro.CobroId);
+
+            return cobroAnterior != null;
+        }
+        private void Limpiar()
         {
 
+            CobrosIdTextBox.Text = "0";
+            ArticuloIdComboBox.SelectedItem = "0";
+            ClienteIdComboBox.SelectedItem = "0";
+            FechaDatePicke.SelectedDate = DateTime.Now;
+            CantidadTextBox.Text = "0";
+            MontoTextBox.Text = "0";
+            reCargar();
+        }
+        private void NuevobButton_Click(object sender, RoutedEventArgs e)
+        {
             Limpiar();
         }
 
@@ -72,8 +85,6 @@ namespace SistemaVentas.UI.Registros
             {
                 MessageBox.Show("No se pudo guardar");
             }
-
-
         }
 
         private void EliminarButton_Click(object sender, RoutedEventArgs e)
@@ -88,49 +99,26 @@ namespace SistemaVentas.UI.Registros
             }
             else
                 MessageBox.Show("No se puede hacer cobro si no has falturado");
+
         }
 
-        private void obtenerCobro()
-        {
-            List<Articulos> productos = ArticulosBLL.GetList(p => true);
-
-            foreach (var item in productos)
-            {
-                ArticuloIdComboBox.Items.Add(item.ArticulosId);
-            }
-        }
         private void BuscarButton_Click(object sender, RoutedEventArgs e)
         {
             Cobros cobroAnterior = CobrosBLL.Buscar(cobro.CobroId);
 
             if (cobro != null)
             {
-               cobro = cobroAnterior;
+                cobro = cobroAnterior;
                 reCargar();
-    
+
             }
             else
             {
                 MessageBox.Show("no se pudo hacer el cobro");
             }
         }
-
-        private bool existeEnLaBaseDeDatos()
-        {
-            Cobros cobroAnterior = CobrosBLL.Buscar(cobro.CobroId);
-
-            return cobroAnterior != null;
-        }
-        private void Limpiar()
-        {
-
-            CobrosIdTextBox.Text = "0";
-            ArticuloIdComboBox.SelectedItem = "0";
-            ClienteIdComboBox.SelectedItem = "0";
-            FechaDatePicke.SelectedDate = DateTime.Now;
-            CantidadTextBox.Text = "0";
-            MontoTextBox.Text = "0";
-            reCargar();
-        }
     }
 }
+
+
+
