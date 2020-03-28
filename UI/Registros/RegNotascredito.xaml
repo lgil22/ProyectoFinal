@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SistemaVentas.UI.Registros"
+        xmlns:src="clr-namespace:SistemaVentas.Validaciones"
         mc:Ignorable="d"
         Title="RegNotasCreditos" Height="450" Width="450">
     <Grid>
@@ -68,6 +69,9 @@
             <TextBox  x:Name="NotaIdTextBox" Height="25" Background="#FFFDFBFB">
                 <TextBox.Text>
                     <Binding  Path="Notas" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                        <Binding.ValidationRules>
+                            <src:IdValidacion x:Name="IdValidacion" ValidatesOnTargetUpdated="True"/>
+                        </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
             </TextBox>
@@ -80,7 +84,7 @@
 
         <StackPanel Grid.Row="4" Grid.Column="1" Margin="0,14,0,33">
             <ComboBox x:Name="ClienteIdComboBox" SelectedIndex="0"  Width="151" >
-                <ComboBoxItem/>
+                <ComboBoxItem Content="0" />
             </ComboBox>
         </StackPanel>
 
@@ -88,7 +92,7 @@
         
         <StackPanel Grid.Row="5" Grid.Column="1" Margin="0,14,0,33">
             <ComboBox x:Name="UsuarioIdComboBox" SelectedIndex="0"  Width="151"  >
-                <ComboBoxItem/>
+                <ComboBoxItem Content="0"/>
             </ComboBox>
         </StackPanel>
 
@@ -96,6 +100,9 @@
             <TextBox  x:Name="conceptoTextBox" Height="25" Background="#FFFDFBFB">
                 <TextBox.Text>
                     <Binding  Path="concepto" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                        <Binding.ValidationRules>
+                            <src:DescripcionValidacion x:Name="DescripcionValidacion" ValidatesOnTargetUpdated="True"/>
+                        </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
             </TextBox>
@@ -113,26 +120,35 @@
 
 
         <StackPanel Grid.Row="6" Grid.Column="2" Margin="0,0,5,70" Grid.RowSpan="2">
-            <Button  x:Name="GuardarButton" Content="Guargar" FontSize="15" Width="100"  Height="45" Click="GuardarButton_Click_1">
-
+            <Button  x:Name="GuardarButton" HorizontalContentAlignment="Right" Content="Guargar" FontSize="15" Width="100"  Height="45" Click="GuardarButton_Click_1">
+                <Button.Background>
+                    <ImageBrush ImageSource="/Resources/Guardar.png" Stretch="Uniform" AlignmentX="Left" AlignmentY="Bottom" />
+                </Button.Background>
             </Button>
         </StackPanel>
 
 
         <StackPanel Grid.Row="5" Grid.Column="2" Margin="0,0,5,70" Grid.RowSpan="2">
-            <Button x:Name="NuevobButton" Content="Nuevo" FontSize="15" Width="100" Height="45" Click="NuevobButton_Click_1">
-
+            <Button x:Name="NuevobButton" HorizontalContentAlignment="Right" Content="Nuevo" FontSize="15" Width="100" Height="45" Click="NuevobButton_Click_1">
+                <Button.Background>
+                    <ImageBrush ImageSource="/Resources/Nuevo.png" Stretch="Uniform" AlignmentX="Left" AlignmentY="Bottom" />
+                </Button.Background>
             </Button>
         </StackPanel>
 
         <StackPanel Grid.Row="7" Grid.Column="2" Margin="0,0,5,70">
-            <Button x:Name="EliminarButton" Content=" Eliminar" FontSize="15" Width="100"  Height="44" Click="EliminarButton_Click_1">
-
+            <Button x:Name="EliminarButton" HorizontalContentAlignment="Right" Content=" Eliminar" FontSize="15" Width="100"  Height="44" Click="EliminarButton_Click_1">
+                <Button.Background>
+                    <ImageBrush ImageSource="/Resources/Eliminar.png" Stretch="Uniform" AlignmentX="Left" AlignmentY="Bottom" />
+                </Button.Background>
             </Button>
         </StackPanel>
 
-        <StackPanel Grid.Row="2" Grid.Column="1" Margin="91,15,9,27">
-            <Button x:Name="BuscarButton" Content="Buscar" FontSize="15" Width="55" Height="31" Click="BuscarButton_Click_1" >
+        <StackPanel Grid.Row="2" Grid.Column="1" Margin="70,15,9,27">
+            <Button x:Name="BuscarButton" Content="Buscar" HorizontalContentAlignment="Right" FontSize="15" Width="70" Height="31" Click="BuscarButton_Click_1" >
+                <Button.Background>
+                    <ImageBrush ImageSource="/Resources/Buscar.png" Stretch="Uniform" AlignmentX="Left" AlignmentY="Bottom" />
+                </Button.Background>
             </Button>
         </StackPanel>
         

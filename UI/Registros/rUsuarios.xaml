@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SistemaVentas.UI.Registros"
+         xmlns:src="clr-namespace:SistemaVentas.Validaciones"
         mc:Ignorable="d"
         Title="Registro Usuarios" Height="450" Width="500" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid>
@@ -68,7 +69,7 @@
                 <TextBox.Text>
                     <Binding Path="UsuarioId" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
-                            <ExceptionValidationRule/>
+                            <src:IdValidacion x:Name="IdValidacion" ValidatesOnTargetUpdated="True"/>
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>

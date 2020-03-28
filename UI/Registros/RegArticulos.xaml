@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SistemaVentas.UI.Registros"
+        xmlns:src="clr-namespace:SistemaVentas.Validaciones"
         mc:Ignorable="d"
         Title="RegArticulos" Height="550" Width="500" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid>
@@ -69,6 +70,9 @@
             <TextBox  x:Name="ArticuloIdTextBox" Height="25" Background="#FFFDFBFB">
                 <TextBox.Text>
                     <Binding  Path="ArticuliId" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                        <Binding.ValidationRules>
+                            <src:IdValidacion x:Name="IdValidacion" ValidatesOnTargetUpdated="True"/>
+                        </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
             </TextBox>
@@ -86,6 +90,9 @@
             <TextBox  x:Name="DescripcionTextBox" Height="25" Background="#FFFDFBFB">
                 <TextBox.Text>
                     <Binding  Path="Descripcion" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                        <Binding.ValidationRules>
+                            <src:DescripcionValidacion x:Name="DescripcionValidacion" ValidatesOnTargetUpdated="True"/>
+                        </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
             </TextBox>

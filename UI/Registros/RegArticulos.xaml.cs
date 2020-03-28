@@ -47,10 +47,34 @@ namespace SistemaVentas.UI.Registros
         {
             Limpiar();
         }
+        private bool Validar()
+        {
+            bool paso = true;
+
+            if (string.IsNullOrWhiteSpace(ArticuloIdTextBox.Text))
+            {
+                MessageBox.Show("ArticuloId estar vacio", "Aviso", MessageBoxButton.OKCancel, MessageBoxImage.Information);
+                ArticuloIdTextBox.Focus();
+                paso = false;
+            }
+
+            if (string.IsNullOrWhiteSpace(ExistenciaTextBox.Text))
+            {
+                MessageBox.Show("EL campo Existencia no puede estar vacio", "Aviso", MessageBoxButton.OKCancel, MessageBoxImage.Information);
+                ExistenciaTextBox.Focus();
+                paso = false;
+            }
+
+            return paso;
+        }
 
         private void GuardarButton_Click(object sender, RoutedEventArgs e)
         {
             bool paso = false;
+            if (!Validar())
+                return;
+
+            Limpiar();
 
             if (articulo.ArticulosId == 0)
                 paso = ArticulosBLL.Guardar(articulo);
@@ -80,7 +104,7 @@ namespace SistemaVentas.UI.Registros
 
         private void EliminarButton_Click(object sender, RoutedEventArgs e)
         {
-            int id = Convert.ToInt32(CategoriaIdComboBox.SelectedItem);
+            int id = Convert.ToInt32(ArticuloIdTextBox.Text);
 
             Limpiar();
              if(id > 0)

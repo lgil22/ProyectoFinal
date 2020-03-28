@@ -38,10 +38,35 @@ namespace SistemaVentas.UI.Registros
         {
             Limpiar();
         }
+        private bool Validar()
+        {
+            bool paso = true;
 
+            if (string.IsNullOrWhiteSpace(CategoriaIdTextBox.Text))
+            {
+                MessageBox.Show("EL campo categoriaID no puede estar vacio", "Aviso", MessageBoxButton.OKCancel, MessageBoxImage.Information);
+                CategoriaIdTextBox.Focus();
+                paso = false;
+            }
+            if (string.IsNullOrWhiteSpace(NombreCategoria.Text))
+            {
+                MessageBox.Show("EL campo NombreCategoria no puede estar vacio", "Aviso", MessageBoxButton.OKCancel, MessageBoxImage.Information);
+                NombreCategoria.Focus();
+                paso = false;
+            }
+
+
+            return paso;
+        }
         private void GuardarButton_Click(object sender, RoutedEventArgs e)
         {
+           
             bool paso = false;
+
+            if (!Validar())
+                return;
+            Limpiar();
+
 
             if (categoria.CategoriaId == 0)
             {
@@ -88,15 +113,23 @@ namespace SistemaVentas.UI.Registros
 
         private void EliminarButton_Click(object sender, RoutedEventArgs e)
         {
-            if (CategoriaBLL.Eliminar(categoria.CategoriaId))
+            int id;
+            int.TryParse(CategoriaIdTextBox.Text, out id);
+            Limpiar();
+
+            if (Validar())
             {
-                MessageBox.Show("Eliminado");
-                Limpiar();
+
+                MessageBox.Show("Vacio");
             }
-            else
+
+            if (CategoriaBLL.Eliminar(id))
+                MessageBox.Show("Eliminado", "Exito", MessageBoxButton.OK, MessageBoxImage.Information);
+            else 
             {
-                MessageBox.Show("No se pudo eliminar una persona que no existe");
-            }
+                MessageBox.Show(CategoriaIdTextBox.Text, "No se puede eliminar una categoria que no existe");
+
+             }
         }
         private void Limpiar()
         {

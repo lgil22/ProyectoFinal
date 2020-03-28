@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SistemaVentas.UI.Registros"
+         xmlns:src="clr-namespace:SistemaVentas.Validaciones"
         mc:Ignorable="d"
         Title="Registro Ventas" Height="685" Width="625" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid>
@@ -70,7 +71,7 @@
                 <TextBox.Text>
                     <Binding Path="VentaId" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
-                            <ExceptionValidationRule/>
+                            <src:IdValidacion x:Name="IdValidacion" ValidatesOnTargetUpdated="True"/>
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
@@ -166,7 +167,7 @@
                  TextWrapping="Wrap" VerticalAlignment="Center" Width="68">
             <Binding Path="Cantidad" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                 <Binding.ValidationRules>
-                    <ExceptionValidationRule/>
+                    <src:CantidadValidacion x:Name="cantidadValidacion" ValidatesOnTargetUpdated="True"/>
                 </Binding.ValidationRules>
             </Binding>
         </TextBox>
@@ -177,7 +178,7 @@
                  Grid.Row="8" TextWrapping="Wrap" VerticalAlignment="Center" Width="81">
             <Binding Path="Precio" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                 <Binding.ValidationRules>
-                    <ExceptionValidationRule/>
+                    <src:PrecioValidacion x:Name="PresioValidacion" ValidatesOnTargetUpdated="True"/>
                 </Binding.ValidationRules>
             </Binding>
         </TextBox>

@@ -33,7 +33,7 @@ namespace SistemaVentas.UI.Registros
             this.DataContext = null;
             this.DataContext = credito;
         }
-      
+
         private void Limpiar()
         {
             NotaIdTextBox.Text = "0";
@@ -45,7 +45,7 @@ namespace SistemaVentas.UI.Registros
 
 
         }
-        
+
 
         private bool existeEnLaBaseDeDatos()
         {
@@ -53,9 +53,9 @@ namespace SistemaVentas.UI.Registros
 
             return creditoAnterior != null;
         }
-        
 
-       
+
+
         private void BuscarButton_Click_1(object sender, RoutedEventArgs e)
         {
             NotasCreditos creditoAnterior = NotasCreditosBLL.Buscar(credito.NotaId);
@@ -75,6 +75,11 @@ namespace SistemaVentas.UI.Registros
         {
 
             bool paso = false;
+
+            if (!Validar())
+                return;
+
+            Limpiar(); 
 
             if (credito.NotaId == 0)
                 paso = NotasCreditosBLL.Guardar(credito);
@@ -98,23 +103,53 @@ namespace SistemaVentas.UI.Registros
                 }
             }
         }
+        private bool Validar()
+        {
+            bool paso = true;
 
+            if (string.IsNullOrWhiteSpace(NotaIdTextBox.Text))
+            {
+                MessageBox.Show("EL campoNotaId no puede estar vacio", "Aviso", MessageBoxButton.OKCancel, MessageBoxImage.Information);
+                NotaIdTextBox.Focus();
+                paso = false;
+            }
+
+            if (string.IsNullOrWhiteSpace(conceptoTextBox.Text))
+            {
+                MessageBox.Show("EL campo concepto  no puede estar vacio", "Aviso", MessageBoxButton.OKCancel, MessageBoxImage.Information);
+                conceptoTextBox.Focus();
+                paso = false;
+            }
+
+            return paso;
+        }
         private void EliminarButton_Click_1(object sender, RoutedEventArgs e)
         {
-            if (NotasCreditosBLL.Eliminar(credito.NotaId))
+
+            int id;
+            int.TryParse(NotaIdTextBox.Text, out id);
+
+            Limpiar();
+
+            if (Validar())
             {
-                MessageBox.Show("Eliminado");
-                Limpiar();
+
+                MessageBox.Show("Vacio");
             }
-            else
-            {
-                MessageBox.Show("No se pudo eliminar  no existe");
-            }
+
+            if (NotasCreditosBLL.Eliminar(id))
+                MessageBox.Show("Eliminado", "Exito", MessageBoxButton.OK, MessageBoxImage.Information);
+            else 
+            { 
+                MessageBox.Show(NotaIdTextBox.Text, "No se puede eliminar una notaId que no existe");
+             } 
         }
 
-        private void NuevobButton_Click_1(object sender, RoutedEventArgs e)
-        {
-            Limpiar();
-        }
+    
+
+    private void NuevobButton_Click_1(object sender, RoutedEventArgs e)
+    {
+        Limpiar();
     }
+  }
 }
