@@ -22,11 +22,17 @@
                 <MenuItem Header="Usuarios" Click="MenuUsuarios_Click"/>
                 <Separator/>
                 <MenuItem Header="Ventas" Click="MenuVentas_Click"/>
+
+
+
             </MenuItem>
+
         </Menu>
 
 
+       
 
+     
 
 
 

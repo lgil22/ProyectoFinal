@@ -17,8 +17,6 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="auto" />
             <RowDefinition Height="auto" />
-           
-            
             <RowDefinition Height="auto" />
             <RowDefinition Height="auto" />
             <RowDefinition Height="auto" />
@@ -30,22 +28,35 @@
         </Grid.RowDefinitions>
 
         <StackPanel Grid.Row="8" Grid.Column="1" Margin="0,50,5,0">
-            <Button  x:Name="GuardarButton" Content="Guardar" FontSize="14" Width="100" Click="GuardarButton_Click" Height="45">
+            <Button  x:Name="GuardarButton" Content="Guardar" FontSize="14" Width="130" Click="GuardarButton_Click" Height="36">
+                <Button.Background>
+                    <ImageBrush ImageSource="/Resources/Guardar.png" Stretch="Uniform" AlignmentX="Left" AlignmentY="Bottom" />
+                </Button.Background>
             </Button>
         </StackPanel>
 
         <StackPanel Grid.Row="8" Grid.Column="0" Margin="0,50,5,-97">
-            <Button x:Name="NuevobButton" Content="Nuevo" FontSize="14" Width="100" Click="NuevobButton_Click" Height="45">
+            <Button x:Name="NuevoButton" Content="Nuevo" FontSize="14" Width="130" Click="NuevobButton_Click" Height="36">
+                <Button.Background>
+                    <ImageBrush ImageSource="/Resources/Nuevo.png" Stretch="Uniform" AlignmentX="Left" AlignmentY="Bottom" />
+                </Button.Background>
             </Button>
         </StackPanel>
 
         <StackPanel Grid.Row="8" Grid.Column="2" Margin="0,50,5,0">
-            <Button x:Name="EliminarButton" Content=" Eliminar" FontSize="14" Width="100" Click="EliminarButton_Click" Height="45">
+            <Button x:Name="EliminarButton" Content=" Eliminar" FontSize="14" Width="130" Click="EliminarButton_Click" Height="36">
+                <Button.Background>
+                    <ImageBrush ImageSource="/Resources/Eliminar.png" Stretch="Uniform" AlignmentX="Left" AlignmentY="Bottom" />
+                </Button.Background>
             </Button>
         </StackPanel>
 
         <StackPanel Grid.Row="3" Grid.Column="2" Margin="10,6,10,0">
-            <Button x:Name="BuscarButton" Content="Buscar" FontSize="14" Width="103" Height ="45" Click="BuscarButton_Click"/>
+            <Button x:Name="BuscarButton" Content="Buscar" FontSize="14" Width="115" Height ="38" Click="BuscarButton_Click">
+                <Button.Background>
+                    <ImageBrush ImageSource="/Resources/Buscar.png" Stretch="Uniform" AlignmentX="Left" AlignmentY="Bottom" />
+                </Button.Background>
+            </Button>
         </StackPanel>
 
         <StackPanel Grid.Row="3" Grid.Column="0">
@@ -136,6 +147,6 @@
                 </TextBox.Text>
             </TextBox>
         </StackPanel>
-        
+
     </Grid>
 </Window>
