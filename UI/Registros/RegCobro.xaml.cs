@@ -64,8 +64,6 @@ namespace SistemaVentas.UI.Registros
             if (this.cobro.Detalle.Count == 0)
             {
                 MessageBox.Show("Debe agregar una cobro", "Aviso", MessageBoxButton.OKCancel, MessageBoxImage.Information);
-                ArticuloIdTextBox.Focus();
-                CantidadTextBox.Focus();
                 CobrosIdTextBox.Focus();
                 paso = false;
             }
@@ -109,7 +107,12 @@ namespace SistemaVentas.UI.Registros
 
             if (id > 0)
             {
-                CobrosBLL.Eliminar(id);
+                if (existeEnLaBaseDeDatos()){ 
+                    CobrosBLL.Eliminar(id); 
+                }
+                else
+                    MessageBox.Show("No se puede hacer cobro si no has falturado");
+
             }
             else
                 MessageBox.Show("No se puede hacer cobro si no has falturado");
