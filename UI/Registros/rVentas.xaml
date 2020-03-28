@@ -128,7 +128,7 @@
         <StackPanel Grid.Row="7" Grid.Column="0">
             <Label x:Name="MontoLabel" Content="Monto:" FontSize="14" Height="30" Width="128"/>
         </StackPanel>
-        <TextBox x:Name="MontoTextBox" Height="25" Grid.ColumnSpan="3" Margin="114,6,98,28" Grid.Row="7">
+        <TextBox x:Name="MontoTextBox" Height="25" Grid.ColumnSpan="3" Margin="114,6,98,28" Grid.Row="7" TextChanged="MontoTextBox_TextChanged">
             <Binding Path="Monto" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                 <Binding.ValidationRules>
                     <ExceptionValidationRule/>
@@ -164,7 +164,7 @@
         <Label x:Name="CantidadLabel" Content="Cantidad:" Grid.Column="1" HorizontalAlignment="Left" 
                Margin="10,0,0,0" Grid.Row="8" VerticalAlignment="Center" Width="76"/>
         <TextBox x:Name="CantidadTextBox" Grid.Column="1" HorizontalAlignment="Left" Margin="72,0,0,0" Grid.Row="8" 
-                 TextWrapping="Wrap" VerticalAlignment="Center" Width="68">
+                 TextWrapping="Wrap" VerticalAlignment="Center" Width="68" TextChanged="CantidadTextBox_TextChanged">
             <Binding Path="Cantidad" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                 <Binding.ValidationRules>
                     <src:CantidadValidacion x:Name="cantidadValidacion" ValidatesOnTargetUpdated="True"/>
@@ -175,7 +175,7 @@
         <Label x:Name="PrecioLabel" Content="Precio: " Grid.Column="2" HorizontalAlignment="Left" 
                Margin="10,0,0,0" Grid.Row="8" VerticalAlignment="Center"/>
         <TextBox x:Name="PrecioTextBox" Grid.Column="2" HorizontalAlignment="Left" Margin="59,0,0,0" 
-                 Grid.Row="8" TextWrapping="Wrap" VerticalAlignment="Center" Width="81">
+                 Grid.Row="8" TextWrapping="Wrap" VerticalAlignment="Center" Width="81" TextChanged="PrecioTextBox_TextChanged">
             <Binding Path="Precio" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                 <Binding.ValidationRules>
                     <src:PrecioValidacion x:Name="PresioValidacion" ValidatesOnTargetUpdated="True"/>

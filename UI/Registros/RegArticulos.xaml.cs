@@ -27,6 +27,15 @@ namespace SistemaVentas.UI.Registros
             ArticuloIdTextBox.Text = "0";
 
         }
+       /*public void LlenaComboBoxCategorias() // Funcion encargada de llenar el ComboBox de las categorias
+        {
+            CategoriaBLL<Categoria> categoria = new CategoriaBLL<Categoria>();
+            var categorias = new List<Categoria>();
+            categorias = categoria.GetList(p => true);
+            CategoriaIdComboBox.DataSource = categorias;
+            CategoriaIdComboBox.ValueMember = "CategoriaId";
+            CategoriaIdComboBox.DisplayMember = "Nombre";
+        }*/
         private void reCargar()
         {
             this.DataContext = null;
@@ -135,5 +144,51 @@ namespace SistemaVentas.UI.Registros
                 MessageBox.Show("Articulo no encontrada");
             }
         }
+
+        private void ExistenciaTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(ExistenciaTextBox.Text) && !string.IsNullOrWhiteSpace(CostoIdTextBox.Text))
+            {
+                int Num1;
+                decimal Num2;
+
+                Num1 = Convert.ToInt32(ExistenciaTextBox.Text);
+                Num2 = Convert.ToDecimal(CostoIdTextBox.Text);
+
+                PrecioIdTextBox.Text = Convert.ToString(Num1 * Num2);
+            }
+        }
+
+        private void CostoIdTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(ExistenciaTextBox.Text) && !string.IsNullOrWhiteSpace(CostoIdTextBox.Text))
+            {
+                int Num1;
+                decimal Num2;
+
+                Num1 = Convert.ToInt32(ExistenciaTextBox.Text);
+                Num2 = Convert.ToDecimal(CostoIdTextBox.Text);
+
+                PrecioIdTextBox.Text = Convert.ToString(Num1 * Num2);
+            }
+        }
+
+        private void PrecioIdTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(ExistenciaTextBox.Text) && !string.IsNullOrWhiteSpace(CostoIdTextBox.Text))
+            {
+                int Num1;
+                decimal Num2;
+
+                Num1 = Convert.ToInt32(ExistenciaTextBox.Text);
+                Num2 = Convert.ToDecimal(CostoIdTextBox.Text);
+
+                PrecioIdTextBox.Text = Convert.ToString(Num1 * Num2);
+            }
+        }
+
+        
+
     }
+
 }

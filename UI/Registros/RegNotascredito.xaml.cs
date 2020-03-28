@@ -151,5 +151,7 @@ namespace SistemaVentas.UI.Registros
     {
         Limpiar();
     }
-  }
+
+       
+    }
 }

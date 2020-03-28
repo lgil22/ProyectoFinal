@@ -109,7 +109,7 @@
         </StackPanel>
 
         <StackPanel Grid.Row="7" Grid.Column="1" Margin="0,14,0,33">
-            <TextBox  x:Name="MontoTextBox" Height="25" Background="#FFFDFBFB">
+            <TextBox  x:Name="MontoTextBox" Height="25" Background="#FFFDFBFB" >
                 <TextBox.Text>
                     <Binding  Path="Monto" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                     </Binding>

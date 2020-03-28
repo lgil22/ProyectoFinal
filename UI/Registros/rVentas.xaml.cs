@@ -175,6 +175,46 @@ namespace SistemaVentas.UI.Registros
                 MessageBox.Show(VentaIdTextBox.Text, "No se puede eliminar una venta que no existe");
         }
 
-     
+        private void CantidadTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(CantidadTextBox.Text) && !string.IsNullOrWhiteSpace(PrecioTextBox.Text))
+            {
+                int Num1;
+                decimal Num2;
+
+                Num1 = Convert.ToInt32(CantidadTextBox.Text);
+                Num2 = Convert.ToDecimal(PrecioTextBox.Text);
+
+                MontoTextBox.Text = Convert.ToString(Num1 * Num2);
+            }
+        }
+
+        private void PrecioTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(CantidadTextBox.Text) && !string.IsNullOrWhiteSpace(PrecioTextBox.Text))
+            {
+                int Num1;
+                decimal Num2;
+
+                Num1 = Convert.ToInt32(CantidadTextBox.Text);
+                Num2 = Convert.ToDecimal(PrecioTextBox.Text);
+
+                MontoTextBox.Text = Convert.ToString(Num1 * Num2);
+            }
+        }
+
+        private void MontoTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(CantidadTextBox.Text) && !string.IsNullOrWhiteSpace(PrecioTextBox.Text))
+            {
+                int Num1;
+                decimal Num2;
+
+                Num1 = Convert.ToInt32(CantidadTextBox.Text);
+                Num2 = Convert.ToDecimal(PrecioTextBox.Text);
+
+                MontoTextBox.Text = Convert.ToString(Num1 * Num2);
+            }
+        }
     }
 }

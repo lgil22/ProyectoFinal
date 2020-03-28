@@ -27,6 +27,9 @@ namespace SistemaVentas.UI.Registros
             this.DataContext = cobro;
         }
 
+        
+
+
         private void reCargar()
         {
             this.DataContext = null;
@@ -63,7 +66,7 @@ namespace SistemaVentas.UI.Registros
             }
             if (this.cobro.Detalle.Count == 0)
             {
-                MessageBox.Show("Debe agregar una cobro", "Aviso", MessageBoxButton.OKCancel, MessageBoxImage.Information);
+                MessageBox.Show("Debe realizar un cobro", "Aviso", MessageBoxButton.OKCancel, MessageBoxImage.Information);
                 CobrosIdTextBox.Focus();
                 paso = false;
             }
@@ -146,14 +149,22 @@ namespace SistemaVentas.UI.Registros
 
             this.cobro.Detalle.Add(new CobrosDetalles
             {
-
+                Id = IdTextBox.Text.ToInt(),
+                VentaId = ventaIdtextBox.Text.ToInt(),
+                CobroId = CobroidTextBox.Text.ToInt(),
                 Monto = MontotextBox.Text.ToInt(),
 
 
             });
             reCargar();
-
+            IdTextBox.Focus();
+            ventaIdtextBox.Focus();
+            CobroidTextBox.Focus();
             MontotextBox.Focus();
+
+            IdTextBox.Clear();
+            ventaIdtextBox.Clear();
+            CobroidTextBox.Clear();
             MontotextBox.Clear();
         }
 
@@ -168,6 +179,64 @@ namespace SistemaVentas.UI.Registros
             }
         }
 
+        private void PreciotextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(CantidadTextBox.Text) && !string.IsNullOrWhiteSpace(PreciotextBox.Text))
+            {
+                int Num1;
+                decimal Num2;
+
+                Num1 = Convert.ToInt32(CantidadTextBox.Text);
+                Num2 = Convert.ToDecimal(PreciotextBox.Text);
+
+                MontotextBox.Text = Convert.ToString(Num1 * Num2);
+            }
+        }
+
+        private void CantidadTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(CantidadTextBox.Text) && !string.IsNullOrWhiteSpace(PreciotextBox.Text))
+            {
+                int Num1;
+                decimal Num2;
+
+                Num1 = Convert.ToInt32(CantidadTextBox.Text);
+                Num2 = Convert.ToDecimal(PreciotextBox.Text);
+
+                MontotextBox.Text = Convert.ToString(Num1 * Num2);
+            }
+        }
+
+        private void MontotextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(CantidadTextBox.Text) && !string.IsNullOrWhiteSpace(PreciotextBox.Text))
+            {
+                int Num1;
+                decimal Num2;
+
+                Num1 = Convert.ToInt32(CantidadTextBox.Text);
+                Num2 = Convert.ToDecimal(PreciotextBox.Text);
+
+                MontotextBox.Text = Convert.ToString(Num1 * Num2);
+            }
+        }
+
+        private void ClienteIdComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if(DetalleDataGridCobro !=null)
+            {
+                if (ClienteIdComboBox.SelectedIndex == 0)
+                {
+                    cobro = new Cobros();
+                    reCargar();
+                }
+                else
+                {
+                    cobro = CobrosBLL.Buscar(Convert.ToInt32(ClienteIdComboBox.SelectedItem));
+                    reCargar();
+                }
+            }
+        }
     }
 }
  

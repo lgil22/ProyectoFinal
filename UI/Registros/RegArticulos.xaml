@@ -81,7 +81,7 @@
 
         <StackPanel Grid.Row="3" Grid.Column="1" Margin="0,14,0,33">
             <ComboBox x:Name="UsuarioIdComboBox" SelectedIndex="0"  Width="151" >
-                <ComboBoxItem/>
+                <ComboBoxItem Content="0"/>
             </ComboBox>
         </StackPanel>
 
@@ -99,15 +99,15 @@
         </StackPanel>
 
         <StackPanel Grid.Row="5" Grid.Column="1" Margin="0,14,0,33">
-            <ComboBox x:Name="CategoriaIdComboBox" SelectedIndex="0"  Width="151" >
-                <ComboBoxItem/>
+            <ComboBox x:Name="CategoriaIdComboBox" SelectedIndex="0"  Width="151"  >
+                <ComboBoxItem Content="0" />
             </ComboBox>
         </StackPanel>
 
 
 
         <StackPanel Grid.Row="6" Grid.Column="1" Margin="0,14,0,33">
-            <TextBox  x:Name="ExistenciaTextBox" Height="25" Background="#FFFDFBFB">
+            <TextBox  x:Name="ExistenciaTextBox" Height="25" Background="#FFFDFBFB" TextChanged="ExistenciaTextBox_TextChanged">
                 <TextBox.Text>
                     <Binding  Path="Existencia" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                     </Binding>
@@ -116,7 +116,7 @@
         </StackPanel>
 
         <StackPanel Grid.Row="7" Grid.Column="1" Margin="0,14,0,33">
-            <TextBox  x:Name="CostoIdTextBox" Height="25" Background="#FFFDFBFB">
+            <TextBox  x:Name="CostoIdTextBox" Height="25" Background="#FFFDFBFB" TextChanged="CostoIdTextBox_TextChanged">
                 <TextBox.Text>
                     <Binding  Path="Costo" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                     </Binding>
@@ -125,7 +125,7 @@
         </StackPanel>
 
         <StackPanel Grid.Row="8" Grid.Column="1" Margin="0,14,0,33">
-            <TextBox  x:Name="PrecioIdTextBox" Height="25" Background="#FFFDFBFB">
+            <TextBox  x:Name="PrecioIdTextBox" Height="25" Background="#FFFDFBFB" TextChanged="PrecioIdTextBox_TextChanged">
                 <TextBox.Text>
                     <Binding  Path="Precio" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                     </Binding>
