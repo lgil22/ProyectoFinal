@@ -9,32 +9,55 @@
     <Grid>
         <Menu>
             <MenuItem x:Name="MenuRegistros" Header="Registros">
-                <MenuItem Header="Articulos" Click="MenuArticulos_Click"/>
+                <MenuItem Header="Articulos" Click="MenuArticulos_Click">
+                    <MenuItem.Background>
+                        <ImageBrush ImageSource="/SistemaVentas;component/Resources/Articulos.png"  Stretch="Uniform" AlignmentX="Left" AlignmentY="Bottom" />
+                    </MenuItem.Background>
+                </MenuItem>
                 <Separator/>
-                <MenuItem Header="Categorias" Click="MenuCategorias_Click"/>
-                <Separator/>
-                <MenuItem Header="Cobros" Click="MenuCobros_Click"/>
-                <Separator/>
-                <MenuItem Header="Notas Creditos" Click="MenuNotasCreditos_Click"/>
-                <Separator/>
-                <MenuItem Header="Clientes" Click="MenuClientes_Click"/>
-                <Separator/>
-                <MenuItem Header="Usuarios" Click="MenuUsuarios_Click"/>
-                <Separator/>
-                <MenuItem Header="Ventas" Click="MenuVentas_Click"/>
 
+                <MenuItem Header="Categorias" Click="MenuCategorias_Click">
+                    <MenuItem.Background>
+                        <ImageBrush ImageSource="/SistemaVentas;component/Resources/Categorias.png"  Stretch="Uniform" AlignmentX="Left" AlignmentY="Bottom" />
+                    </MenuItem.Background>
+                </MenuItem>
+                <Separator/>
 
+                <MenuItem Header="Cobros" Click="MenuCobros_Click">
+                    <MenuItem.Background>
+                        <ImageBrush ImageSource="/SistemaVentas;component/Resources/Cobros.png"  Stretch="Uniform" AlignmentX="Left" AlignmentY="Bottom" />
+                    </MenuItem.Background>
+                </MenuItem>
+                <Separator/>
 
+                <MenuItem Header="Notas Creditos" Click="MenuNotasCreditos_Click">
+                    <MenuItem.Background>
+                        <ImageBrush ImageSource="/SistemaVentas;component/Resources/Notas.png"  Stretch="Uniform" AlignmentX="Left" AlignmentY="Bottom" />
+                    </MenuItem.Background>
+                </MenuItem>
+                <Separator/>
+
+                <MenuItem Header="Clientes" Click="MenuClientes_Click">
+                    <MenuItem.Background>
+                        <ImageBrush ImageSource="/SistemaVentas;component/Resources/Clientes.png"  Stretch="Uniform" AlignmentX="Left" AlignmentY="Bottom" />
+                    </MenuItem.Background>
+                </MenuItem>
+                <Separator/>
+
+                <MenuItem Header="Usuarios" Click="MenuUsuarios_Click">
+                    <MenuItem.Background>
+                        <ImageBrush ImageSource="/SistemaVentas;component/Resources/Usuarios.png"  Stretch="Uniform" AlignmentX="Left" AlignmentY="Bottom" />
+                    </MenuItem.Background>
+                </MenuItem>
+                <Separator/>
+
+                <MenuItem Header="Ventas" Click="MenuVentas_Click">
+                    <MenuItem.Background>
+                      <ImageBrush ImageSource="/SistemaVentas;component/Resources/Ventas.png"  Stretch="Uniform" AlignmentX="Left" AlignmentY="Bottom" />
+                    </MenuItem.Background>
+                </MenuItem>
             </MenuItem>
-
         </Menu>
-
-
-       
-
-     
-
-
-
+        
     </Grid>
 </Window>

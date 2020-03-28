@@ -63,9 +63,49 @@ namespace SistemaVentas.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        internal static byte[] Articulos {
+            get {
+                object obj = ResourceManager.GetObject("Articulos", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         internal static byte[] Buscar {
             get {
                 object obj = ResourceManager.GetObject("Buscar", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Categorias {
+            get {
+                object obj = ResourceManager.GetObject("Categorias", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Clientes {
+            get {
+                object obj = ResourceManager.GetObject("Clientes", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Cobros {
+            get {
+                object obj = ResourceManager.GetObject("Cobros", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -103,6 +143,16 @@ namespace SistemaVentas.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        internal static byte[] Notas {
+            get {
+                object obj = ResourceManager.GetObject("Notas", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         internal static byte[] Nuevo {
             get {
                 object obj = ResourceManager.GetObject("Nuevo", resourceCulture);
@@ -116,6 +166,26 @@ namespace SistemaVentas.Properties {
         internal static byte[] Remover {
             get {
                 object obj = ResourceManager.GetObject("Remover", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Usuarios {
+            get {
+                object obj = ResourceManager.GetObject("Usuarios", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Ventas {
+            get {
+                object obj = ResourceManager.GetObject("Ventas", resourceCulture);
                 return ((byte[])(obj));
             }
         }

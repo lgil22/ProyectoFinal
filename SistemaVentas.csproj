@@ -10,16 +10,36 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\Articulos.png" />
     <None Remove="Resources\Buscar.png" />
+    <None Remove="Resources\Categorias.png" />
+    <None Remove="Resources\Clientes.png" />
+    <None Remove="Resources\Cobros.png" />
     <None Remove="Resources\Eliminar.png" />
     <None Remove="Resources\Guardar.png" />
     <None Remove="Resources\Mas.png" />
+    <None Remove="Resources\Notas.png" />
     <None Remove="Resources\Nuevo.png" />
     <None Remove="Resources\Remover.png" />
+    <None Remove="Resources\Sal.png" />
+    <None Remove="Resources\Usuarios.png" />
+    <None Remove="Resources\Ventas.png" />
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="Resources\Articulos.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\Buscar.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Categorias.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Clientes.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cobros.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\Eliminar.png">
@@ -31,10 +51,19 @@
     <Content Include="Resources\Mas.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Resources\Notas.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\Nuevo.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\Remover.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Usuarios.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Ventas.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
