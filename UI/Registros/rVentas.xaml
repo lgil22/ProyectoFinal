@@ -6,8 +6,11 @@
         xmlns:local="clr-namespace:SistemaVentas.UI.Registros"
          xmlns:src="clr-namespace:SistemaVentas.Validaciones"
         mc:Ignorable="d"
-        Title="Registro Ventas" Height="685" Width="625" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="Registro Ventas" Height="602" Width="655" ResizeMode="CanResize" WindowStartupLocation="CenterScreen" Icon="/Resources/Ventas.png" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" WindowState="Maximized">
     <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/Resources/Sales.png" Stretch="Uniform"/>
+        </Grid.Background>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="150"/>
             <ColumnDefinition Width="150"/>
@@ -22,7 +25,6 @@
             <RowDefinition Height="auto" />
             <RowDefinition Height="auto" />
             <RowDefinition Height="auto" />
-            <RowDefinition Height="auto" />
             <RowDefinition Height="auto" MinHeight="54" />
             <RowDefinition Height="auto" MinHeight="56" />
             <RowDefinition Height="auto" MinHeight="60" />
@@ -30,7 +32,7 @@
             <RowDefinition Height="0*" />
         </Grid.RowDefinitions>
 
-        <StackPanel Grid.Row="11" Grid.Column="1" Margin="0,50,6,-107">
+        <StackPanel Grid.Row="9" Grid.Column="1" Margin="0,50,6,-107">
             <Button  x:Name="GuardarButton" Content="Guardar" FontSize="14" Width="125" Click="GuardarButton_Click" Height="36">
                 <Button.Background>
                     <ImageBrush ImageSource="/Resources/Guardar.png" Stretch="Uniform" AlignmentX="Left" AlignmentY="Bottom" />
@@ -38,7 +40,7 @@
             </Button>
         </StackPanel>
 
-        <StackPanel Grid.Row="11" Grid.Column="0" Margin="0,50,5,-97">
+        <StackPanel Grid.Row="9" Grid.Column="0" Margin="0,50,5,-97">
             <Button x:Name="NuevobButton" Content="Nuevo" FontSize="14" Width="115" Click="NuevobButton_Click" Height="36">
                 <Button.Background>
                     <ImageBrush ImageSource="/Resources/Nuevo.png" Stretch="Uniform" AlignmentX="Left" AlignmentY="Bottom" />
@@ -46,7 +48,7 @@
             </Button>
         </StackPanel>
 
-        <StackPanel Grid.Row="11" Grid.Column="2" Margin="0,50,5,-95">
+        <StackPanel Grid.Row="9" Grid.Column="2" Margin="0,50,5,-95">
             <Button x:Name="EliminarButton" Content=" Eliminar" FontSize="14" Width="115" Click="EliminarButton_Click" Height="36">
                 <Button.Background>
                     <ImageBrush ImageSource="/Resources/Eliminar.png" Stretch="Uniform" AlignmentX="Left" AlignmentY="Bottom" />
@@ -56,9 +58,9 @@
 
         <StackPanel Grid.Row="3" Grid.Column="2" Margin="10,6,10,0">
             <Button x:Name="BuscarButton" Content="Buscar" FontSize="14" Width="120" Height ="36" Click="BuscarButton_Click">
-            <Button.Background>
-                <ImageBrush ImageSource="/Resources/Buscar.png" Stretch="Uniform" AlignmentX="Left" AlignmentY="Bottom" />
-            </Button.Background>
+                <Button.Background>
+                    <ImageBrush ImageSource="/Resources/Buscar.png" Stretch="Uniform" AlignmentX="Left" AlignmentY="Bottom" />
+                </Button.Background>
             </Button>
         </StackPanel>
 
@@ -95,11 +97,12 @@
             <Label x:Name="FechaLabel" Content="Fecha:" FontSize="14" Height="30" Width="267"/>
         </StackPanel>
 
-        <DatePicker x:Name="FechaNacTimePicker" Height="25" Margin="10,5,98,28" Grid.Row="5" Grid.ColumnSpan="2" Grid.Column="1" DisplayDate="2020-03-25" SelectedDateFormat="Short">
+        <DatePicker x:Name="FechaNacTimePicker" Height="25" Margin="114,5,98,28" Grid.Row="5" Grid.ColumnSpan="3" DisplayDate="2020-03-25" SelectedDateFormat="Short">
             <DatePicker.Text>
                 <Binding Path="Fecha" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                     <Binding.ValidationRules>
                         <ExceptionValidationRule/>
+                        <!--src:ValidaciónString x:Name="ValidacionString" ValidatesOnTargetUpdated="True"/>-->
                     </Binding.ValidationRules>
                 </Binding>
             </DatePicker.Text>
@@ -111,7 +114,7 @@
         </StackPanel>
 
         <StackPanel Grid.Row="6" Margin="114,8,98,26" Grid.ColumnSpan="3">
-            <ComboBox x:Name="TipoPagoTextBox" Height="25">
+            <ComboBox x:Name="TipoPagoTextBox" Height="25" Width="236">
                 <ComboBoxItem Content="Contado"/>
                 <ComboBoxItem Content="Credito"/>
                 <ComboBoxItem Content="A Plazo"/>
@@ -125,10 +128,8 @@
             </ComboBox>
         </StackPanel>
 
-        <StackPanel Grid.Row="7" Grid.Column="0">
-            <Label x:Name="MontoLabel" Content="Monto:" FontSize="14" Height="30" Width="128"/>
-        </StackPanel>
-        <TextBox x:Name="MontoTextBox" Height="25" Grid.ColumnSpan="3" Margin="114,6,98,28" Grid.Row="7" TextChanged="MontoTextBox_TextChanged">
+        <Label x:Name="MontoLabel" Content="Monto:" Grid.ColumnSpan="2" Grid.Column="2" Margin="102,26,0,36" Grid.Row="7" HorizontalAlignment="Left" Width="53"/>
+        <TextBox x:Name="MontoTextBox" Margin="4,30,68,54" Grid.Row="7" TextChanged="MontoTextBox_TextChanged" Grid.Column="3">
             <Binding Path="Monto" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                 <Binding.ValidationRules>
                     <ExceptionValidationRule/>
@@ -136,9 +137,9 @@
             </Binding>
         </TextBox>
 
-        <GroupBox x:Name="AgregarVentasGroupBox" FontSize="14" Header="Agregar Ventas" Grid.Row="8" Grid.ColumnSpan="4" Margin="10,0,-6,0" Grid.RowSpan="3" Height="206" VerticalAlignment="Top">
+        <GroupBox x:Name="AgregarVentasGroupBox" FontSize="14" Header="Agregar Ventas" Grid.Row="7" Grid.ColumnSpan="4" Margin="10,10,-41,0" Height="206" VerticalAlignment="Top" Grid.RowSpan="2" FontWeight="Bold">
 
-            <DataGrid x:Name="DetalleDataGridVentas" Height="132">
+            <DataGrid x:Name="DetalleDataGridVentas" Height="132" Margin="0,0,-2,0">
                 <DataGrid.ItemsSource>
                     <Binding Path="Detalles" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
@@ -150,9 +151,9 @@
         </GroupBox>
 
         <Label x:Name="ArticuloLabel" Content="Articulo Id:" HorizontalAlignment="Left" 
-                   Grid.Row="8" VerticalAlignment="Center"  Margin="20,0,0,0" FontSize="12"/>
-        <TextBox x:Name="ArticuloIdTextBox" HorizontalAlignment="Left" Margin="92,0,0,0"
-                     Grid.Row="8" TextWrapping="Wrap" VerticalAlignment="Center" Width="58">
+                   Grid.Row="7" VerticalAlignment="Top"  Margin="16,26,0,0" FontSize="12"/>
+        <TextBox x:Name="ArticuloIdTextBox" HorizontalAlignment="Left" Margin="83,30,0,0"
+                     Grid.Row="7" TextWrapping="Wrap" VerticalAlignment="Top" Width="58">
             <Binding Path="ArticuloId" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                 <Binding.ValidationRules>
                     <ExceptionValidationRule/>
@@ -161,10 +162,10 @@
         </TextBox>
 
 
-        <Label x:Name="CantidadLabel" Content="Cantidad:" Grid.Column="1" HorizontalAlignment="Left" 
-               Margin="10,0,0,0" Grid.Row="8" VerticalAlignment="Center" Width="76"/>
-        <TextBox x:Name="CantidadTextBox" Grid.Column="1" HorizontalAlignment="Left" Margin="72,0,0,0" Grid.Row="8" 
-                 TextWrapping="Wrap" VerticalAlignment="Center" Width="68" TextChanged="CantidadTextBox_TextChanged">
+        <Label x:Name="CantidadLabel" Content="Cantidad:" HorizontalAlignment="Left" 
+               Margin="141,26,0,0" Grid.Row="7" VerticalAlignment="Top" Width="76" Grid.ColumnSpan="2"/>
+        <TextBox x:Name="CantidadTextBox" Grid.Column="1" HorizontalAlignment="Left" Grid.Row="7" 
+                 TextWrapping="Wrap" VerticalAlignment="Top" Width="68" TextChanged="CantidadTextBox_TextChanged" Margin="54,30,0,0">
             <Binding Path="Cantidad" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                 <Binding.ValidationRules>
                     <src:CantidadValidacion x:Name="cantidadValidacion" ValidatesOnTargetUpdated="True"/>
@@ -172,10 +173,10 @@
             </Binding>
         </TextBox>
 
-        <Label x:Name="PrecioLabel" Content="Precio: " Grid.Column="2" HorizontalAlignment="Left" 
-               Margin="10,0,0,0" Grid.Row="8" VerticalAlignment="Center"/>
-        <TextBox x:Name="PrecioTextBox" Grid.Column="2" HorizontalAlignment="Left" Margin="59,0,0,0" 
-                 Grid.Row="8" TextWrapping="Wrap" VerticalAlignment="Center" Width="81" TextChanged="PrecioTextBox_TextChanged">
+        <Label x:Name="PrecioLabel" Content="Precio: " Grid.Column="1" 
+               Margin="122,26,129,0" Grid.Row="7" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+        <TextBox x:Name="PrecioTextBox" Grid.Column="2" HorizontalAlignment="Left" Margin="21,30,0,0" 
+                 Grid.Row="7" TextWrapping="Wrap" VerticalAlignment="Top" Width="76" TextChanged="PrecioTextBox_TextChanged" Height="18">
             <Binding Path="Precio" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                 <Binding.ValidationRules>
                     <src:PrecioValidacion x:Name="PresioValidacion" ValidatesOnTargetUpdated="True"/>
@@ -183,19 +184,27 @@
             </Binding>
         </TextBox>
 
-            <Button x:Name="AgregarDataGridButton" Content="Agregar" Grid.Column="3" HorizontalAlignment="Left" 
-                Margin="62,0,0,0" Grid.Row="8" VerticalAlignment="Center" Height="25" Width="95" Click="AgregarDataGridButton_Click">
+        <Button x:Name="AgregarDataGridButton" Content="Agregar" Grid.Column="3" 
+                Margin="87,29,-38,0" Grid.Row="7" VerticalAlignment="Top" Height="24" Click="AgregarDataGridButton_Click" RenderTransformOrigin="0.5,0.5">
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="0.203"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Button.RenderTransform>
             <Button.Background>
                 <ImageBrush ImageSource="/Resources/Mas.png" Stretch="Uniform" AlignmentX="Left" AlignmentY="Bottom" />
             </Button.Background>
-            </Button>
-        
-         <Button x:Name="RemoverDataGridButton" Content="Remover" HorizontalAlignment="Left" Height="26" 
-                Margin="16,60,0,0" Grid.Row="10" VerticalAlignment="Top" Width="98" Click="RemoverDataGridButton_Click">
+        </Button>
+
+        <Button x:Name="RemoverDataGridButton" Content="Remover" HorizontalAlignment="Left" Height="26" 
+                Margin="16,88,0,0" Grid.Row="8" VerticalAlignment="Top" Width="112" Click="RemoverDataGridButton_Click">
             <Button.Background>
                 <ImageBrush ImageSource="/Resources/Remover.png" Stretch="Uniform" AlignmentX="Left" AlignmentY="Bottom" TileMode="None" />
             </Button.Background>
-            </Button>
+        </Button>
 
     </Grid>
 </Window>

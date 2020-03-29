@@ -5,10 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SistemaVentas.UI.Registros"
         mc:Ignorable="d"
-        Title="Registro Clientes" Height="500" Width="500" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
-   
+        Title="Registro Clientes" Height="500" Width="500" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Icon="/Resources/Clientes.png" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}">
+
     <Grid>
-       
+        <Grid.Background>
+            <ImageBrush ImageSource="/Resources/Customers.png" Stretch="Uniform"/>
+        </Grid.Background>
+
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="150"/>
             <ColumnDefinition Width="150"/>

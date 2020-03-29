@@ -6,8 +6,11 @@
         xmlns:local="clr-namespace:SistemaVentas.UI.Registros"
          xmlns:src="clr-namespace:SistemaVentas.Validaciones"
         mc:Ignorable="d"
-        Title="Registro Usuarios" Height="450" Width="500" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="Registro Usuarios" Height="450" Width="500" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" Icon="/Resources/Usuarios.png">
     <Grid>
+        <Grid.Background>
+            <ImageBrush Stretch="Uniform" TileMode="None" ImageSource="/Resources/Users.png"/>
+        </Grid.Background>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="150"/>
             <ColumnDefinition Width="150"/>

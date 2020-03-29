@@ -6,13 +6,10 @@
         xmlns:local="clr-namespace:SistemaVentas.UI.Registros"
         xmlns:src="clr-namespace:SistemaVentas.Validaciones"
         mc:Ignorable="d"
-        Title="RegArticulos" Height="550" Width="500" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="Registro Articulos" Height="550" Width="500" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Icon="/Resources/Articulos.png" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}">
     <Grid>
         <Grid.Background>
-            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                <GradientStop Color="#FFA29393"/>
-                <GradientStop Color="#FFBB9898" Offset="1"/>
-            </LinearGradientBrush>
+            <ImageBrush Stretch="Uniform" ImageSource="/Resources/Articles.png"/>
         </Grid.Background>
 
         <Grid.ColumnDefinitions>

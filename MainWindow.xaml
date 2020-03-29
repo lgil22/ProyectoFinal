@@ -5,9 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SistemaVentas"
         mc:Ignorable="d"
-        Title="Menu Principal" Height="450" Width="800">
+        Title="Menu Principal" Height="450" Width="800" WindowStartupLocation="CenterScreen" WindowState="Maximized" Icon="/Resources/Menu.png" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}">
     <Grid>
         <Menu>
+            <Menu.Background>
+                <ImageBrush Stretch="Uniform" ImageSource="/Resources/Principal.png"/>
+            </Menu.Background>
             <MenuItem x:Name="MenuRegistros" Header="Registros">
                 <MenuItem Header="Articulos" Click="MenuArticulos_Click">
                     <MenuItem.Background>

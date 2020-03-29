@@ -1,4 +1,4 @@
-﻿<Window x:Class="SistemaVentas.UI.Registros.RegCategoria"
+﻿<Window x:Name="RegistroCategorias" x:Class="SistemaVentas.UI.Registros.RegCategoria"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -6,15 +6,10 @@
         xmlns:local="clr-namespace:SistemaVentas.UI.Registros"
          xmlns:src="clr-namespace:SistemaVentas.Validaciones"
         mc:Ignorable="d"
-        Title="RegCategoria" Height="210" Width="420" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="Registro Categorias" Height="210" Width="420" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Icon="/Resources/Categorias.png" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}">
     <Grid>
         <Grid.Background>
-            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                <GradientStop Color="Black"/>
-                <GradientStop Color="White" Offset="0"/>
-                <GradientStop Color="#FF797979" Offset="0"/>
-                <GradientStop Color="#FFCFB6B6" Offset="0"/>
-            </LinearGradientBrush>
+            <ImageBrush ImageSource="/Resources/Categories.png" Stretch="Uniform"/>
         </Grid.Background>
 
         <Grid.ColumnDefinitions>
