@@ -64,7 +64,7 @@
         </StackPanel>
 
         <StackPanel Grid.Row="2" Grid.Column="1" Margin="0,14,90,33">
-            <TextBox  x:Name="ArticuloIdTextBox" Height="25" Background="#FFFDFBFB">
+            <TextBox  x:Name="ArticuloIdTextBox" Height="24" Background="#FFFDFBFB">
                 <TextBox.Text>
                     <Binding  Path="ArticuliId" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
@@ -107,6 +107,9 @@
             <TextBox  x:Name="ExistenciaTextBox" Height="25" Background="#FFFDFBFB" TextChanged="ExistenciaTextBox_TextChanged">
                 <TextBox.Text>
                     <Binding  Path="Existencia" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                         <Binding.ValidationRules>
+                            <src:ExistenciaValidacion x:Name="ExistenciaValidacion" ValidatesOnTargetUpdated="True"/>
+                        </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
             </TextBox>
@@ -116,12 +119,15 @@
             <TextBox  x:Name="CostoIdTextBox" Height="25" Background="#FFFDFBFB" TextChanged="CostoIdTextBox_TextChanged">
                 <TextBox.Text>
                     <Binding  Path="Costo" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                        <Binding.ValidationRules>
+                            <src:CostoValidacion x:Name="costoaValidacion" ValidatesOnTargetUpdated="True"/>
+                        </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
             </TextBox>
         </StackPanel>
 
-        <StackPanel Grid.Row="8" Grid.Column="1" Margin="0,14,0,33">
+        <StackPanel Grid.Row="8" Grid.Column="1" Margin="0,14,0,84">
             <TextBox  x:Name="PrecioIdTextBox" Height="25" Background="#FFFDFBFB" TextChanged="PrecioIdTextBox_TextChanged">
                 <TextBox.Text>
                     <Binding  Path="Precio" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">

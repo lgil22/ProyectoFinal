@@ -79,6 +79,9 @@
             <TextBox  x:Name="PreciotextBox" Height="22" Background="#FFFDFBFB" TextChanged="PreciotextBox_TextChanged">
                 <TextBox.Text>
                     <Binding  Path="Precio" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                        <Binding.ValidationRules>
+                            <src:PrecioValidacion x:Name="PrecioValidacion" ValidatesOnTargetUpdated="True"/>
+                        </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
             </TextBox>
@@ -204,10 +207,9 @@
 
 
 
-        <Label  Content=" Id:" 
-                   Grid.Row="10" VerticalAlignment="Center"  Margin="70,0,0,0" FontSize="12"/>
-        <TextBox x:Name="IdTextBox" HorizontalAlignment="Right" Margin="92,0,0,0"
-                     Grid.Row="10" TextWrapping="Wrap" VerticalAlignment="Center" Width="58">
+        <Label  Content=" Id:" Grid.Row="10" VerticalAlignment="Center"  Margin="70,0,0,0" FontSize="12"/>
+        
+        <TextBox x:Name="IdTextBox" HorizontalAlignment="Right" Margin="92,0,0,0" Grid.Row="10" TextWrapping="Wrap" VerticalAlignment="Center" Width="58">
             <Binding Path="Id" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                 <Binding.ValidationRules>
                     <ExceptionValidationRule/>
@@ -218,8 +220,8 @@
         <Label  Content="cobroId:" Grid.Column="2" HorizontalAlignment="Left" 
                Margin="10,0,0,0" Grid.Row="10" VerticalAlignment="Center" Width="57"/>
         <TextBox x:Name="CobroidTextBox" Grid.Column="2" HorizontalAlignment="Left" Margin="72,0,0,0" Grid.Row="10" 
-                 TextWrapping="Wrap" VerticalAlignment="Center" Width="68" TextChanged="CantidadTextBox_TextChanged">
-            <Binding Path="Cantidad" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                 TextWrapping="Wrap" VerticalAlignment="Center" Width="68" >
+            <Binding Path="cobro" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                 <Binding.ValidationRules>
                     <src:IdValidacion x:Name="CobroId" ValidatesOnTargetUpdated="True"/>
                 </Binding.ValidationRules>

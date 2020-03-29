@@ -98,7 +98,7 @@
                 <TextBox.Text>
                     <Binding  Path="concepto" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
-                            <src:DescripcionValidacion x:Name="DescripcionValidacion" ValidatesOnTargetUpdated="True"/>
+                            <src:DescripcionValidacion x:Name="ConceptoValidacion" ValidatesOnTargetUpdated="True"/>
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>

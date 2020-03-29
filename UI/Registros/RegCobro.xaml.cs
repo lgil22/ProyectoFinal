@@ -193,19 +193,7 @@ namespace SistemaVentas.UI.Registros
             }
         }
 
-        private void CantidadTextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            if (!string.IsNullOrWhiteSpace(CantidadTextBox.Text) && !string.IsNullOrWhiteSpace(PreciotextBox.Text))
-            {
-                int Num1;
-                decimal Num2;
-
-                Num1 = Convert.ToInt32(CantidadTextBox.Text);
-                Num2 = Convert.ToDecimal(PreciotextBox.Text);
-
-                MontotextBox.Text = Convert.ToString(Num1 * Num2);
-            }
-        }
+       
 
         private void MontotextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -237,6 +225,21 @@ namespace SistemaVentas.UI.Registros
                 }
             }
         }
+
+        private void CantidadTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            
+                if (!string.IsNullOrWhiteSpace(CantidadTextBox.Text) && !string.IsNullOrWhiteSpace(PreciotextBox.Text))
+                {
+                    int Num1;
+                    decimal Num2;
+
+                    Num1 = Convert.ToInt32(CantidadTextBox.Text);
+                    Num2 = Convert.ToDecimal(PreciotextBox.Text);
+
+                    MontotextBox.Text = Convert.ToString(Num1 * Num2);
+                }
+            }
     }
 }
  

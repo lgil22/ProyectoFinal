@@ -85,7 +85,7 @@
         <TextBox x:Name="NombresTextBox" Height="25" Grid.ColumnSpan="2" Grid.Column="1" Margin="0,6,98,28" Grid.Row="4">
             <Binding Path="Nombres" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                 <Binding.ValidationRules>
-                    <ExceptionValidationRule/>
+                    <src:ValidaciónString x:Name="NombreValidacion" ValidatesOnTargetUpdated="True"/>
                 </Binding.ValidationRules>
             </Binding>
         </TextBox>
@@ -96,7 +96,7 @@
         <TextBox x:Name="NombreUsuarioTextBox" Height="25" Grid.ColumnSpan="2" Margin="0,10,98,24" Grid.Row="5" Grid.Column="1">
             <Binding Path="NombreUsuario" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                 <Binding.ValidationRules>
-                    <ExceptionValidationRule/>
+                    <src:ValidaciónString x:Name="NombreUsuarioValidacion" ValidatesOnTargetUpdated="True"/>
                 </Binding.ValidationRules>
             </Binding>
         </TextBox>
@@ -145,7 +145,7 @@
                 <TextBox.Text>
                     <Binding Path="Email" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
-                            <ExceptionValidationRule/>
+                            <src:ValidaciónString x:Name="EmailValidacion" ValidatesOnTargetUpdated="True"/>
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>

@@ -82,6 +82,9 @@
             <TextBox  x:Name="NombreCategoria" Height="30" Background="#FFFDFBFB">
                 <TextBox.Text>
                     <Binding  Path="LlamadaId" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                        <Binding.ValidationRules>
+                            <src:ValidaciónString x:Name="NombreCategoriaValidacion" ValidatesOnTargetUpdated="True"/>
+                        </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
             </TextBox>
