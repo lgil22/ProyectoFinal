@@ -57,38 +57,53 @@ namespace SistemaVentas.UI.Registros
         private bool Validar()
         {
             bool paso = true;
-
             if (string.IsNullOrWhiteSpace(CobrosIdTextBox.Text))
             {
                 MessageBox.Show("EL campo cobroId no puede estar vacio", "Aviso", MessageBoxButton.OKCancel, MessageBoxImage.Information);
                 CobrosIdTextBox.Focus();
                 paso = false;
             }
-            if (this.cobro.Detalle.Count == 0)
+            if (string.IsNullOrWhiteSpace(CantidadTextBox.Text))
             {
-                MessageBox.Show("Debe realizar un cobro", "Aviso", MessageBoxButton.OKCancel, MessageBoxImage.Information);
-                CobrosIdTextBox.Focus();
+                MessageBox.Show("EL campo cobroId no puede estar vacio", "Aviso", MessageBoxButton.OKCancel, MessageBoxImage.Information);
+                CantidadTextBox.Focus();
                 paso = false;
             }
+            if (string.IsNullOrWhiteSpace (PreciotextBox.Text))
+            {
+                MessageBox.Show("Debe realizar un cobro", "Aviso", MessageBoxButton.OKCancel, MessageBoxImage.Information);
+                PreciotextBox.Focus();
+                paso = false;
+            }
+            if (this.cobro.Detalle.Count == 0)
+            {
+                MessageBox.Show("Debe agregar un CobroId", "Aviso", MessageBoxButton.OKCancel, MessageBoxImage.Information);
+                IdTextBox.Focus();
+                ventaIdtextBox.Focus();
+                CobroidTextBox.Focus();
+                paso = false;
+            }
+           
             return paso;
         }
+
         private void GuardarButton_Click(object sender, RoutedEventArgs e)
         {
             bool paso = false;
             if (!Validar())
                 return;
 
-            if (string.IsNullOrWhiteSpace(CobrosIdTextBox.Text) || CobrosIdTextBox.Text == "0")
+
+            if ( CobrosIdTextBox.Text == "0")
                 paso = CobrosBLL.Guardar(cobro);
             else
             {
-                if (existeEnLaBaseDeDatos())
-                    paso = CobrosBLL.Modificar(cobro);
-                else
+                if (!existeEnLaBaseDeDatos())
                 {
-                    MessageBox.Show("No se puede modificar no existe");
+                    MessageBox.Show("No se puede modificar un cobro que no existe", "Fallo", MessageBoxButton.OK, MessageBoxImage.Error);
                     return;
                 }
+                paso = CobrosBLL.Modificar(cobro);
             }
             if (paso)
             {
@@ -110,23 +125,17 @@ namespace SistemaVentas.UI.Registros
       
             try
             {
-                if (!string.IsNullOrWhiteSpace(CobroidTextBox.Text)) 
+                if (!string.IsNullOrWhiteSpace(CobrosIdTextBox.Text) )
                 {
-                    MessageBox.Show("Deben de estar llenos los campos", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show("Debe el campo cobroId", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
                 Limpiar();
 
-                if (id > 0)
-                {
-                    if (existeEnLaBaseDeDatos())
-                    {
-                        CobrosBLL.Eliminar(id);
-                    }
-                    else
-                        MessageBox.Show("No se puede hacer cobro si no haz facturado");
-                }
+                if (CobrosBLL.Eliminar(id))
+                    MessageBox.Show("Eliminado", "Exito", MessageBoxButton.OK, MessageBoxImage.Information);
                 else
-                    MessageBox.Show("No se puede hacer cobro si no haz facturado");
+                    MessageBox.Show(CobrosIdTextBox.Text, "No se puede eliminar una venta que no existe");
+
             }
             catch
             {

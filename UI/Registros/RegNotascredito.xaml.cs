@@ -41,14 +41,14 @@ namespace SistemaVentas.UI.Registros
             ClienteIdComboBox.SelectedItem = "0";
             UsuarioIdComboBox.SelectedItem = "0";
             conceptoTextBox.Text = string.Empty;
-            MontoTextBox.Text = "1";
+            MontoTextBox.Text = "0";
 
         }
 
 
         private bool existeEnLaBaseDeDatos()
         {
-            NotasCreditos creditoAnterior = NotasCreditosBLL.Buscar(credito.NotaId);
+            NotasCreditos creditoAnterior = NotasCreditosBLL.Buscar(Convert.ToInt32(credito.NotaId));
 
             return creditoAnterior != null;
         }
@@ -61,12 +61,13 @@ namespace SistemaVentas.UI.Registros
 
             if (creditoAnterior != null)
             {
+                MessageBox.Show("credito Encontrado");
                 credito = creditoAnterior;
                 reCargar();
             }
             else
             {
-                MessageBox.Show(" no encontrada");
+                MessageBox.Show(" credito no encontrada");
             }
         }
 
@@ -78,9 +79,9 @@ namespace SistemaVentas.UI.Registros
             if (!Validar())
                 return;
 
-            Limpiar(); 
+            Limpiar();
 
-            if (credito.NotaId == 0)
+            if (NotaIdTextBox.Text == "0")
                 paso = NotasCreditosBLL.Guardar(credito);
             else
             {
@@ -138,18 +139,13 @@ namespace SistemaVentas.UI.Registros
                 }
                 Limpiar();
 
-                if (Validar())
-                {
-
-                    MessageBox.Show("Vacio");
-                }
-
-                if (NotasCreditosBLL.Eliminar(id))
-                    MessageBox.Show("Eliminado", "Exito", MessageBoxButton.OK, MessageBoxImage.Information);
+                if (id > 0) 
+                { 
+                    NotasCreditosBLL.Eliminar(id); 
+                }    
                 else
-                {
-                    MessageBox.Show(NotaIdTextBox.Text, "No se puede eliminar una notaId que no existe");
-                }
+                  MessageBox.Show(NotaIdTextBox.Text, "No se puede eliminar una notaId que no existe");
+                
             }
             catch
             {

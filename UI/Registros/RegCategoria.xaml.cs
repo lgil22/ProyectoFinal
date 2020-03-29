@@ -102,6 +102,7 @@ namespace SistemaVentas.UI.Registros
 
             if (categoriaAnterior != null)
             {
+                MessageBox.Show("Categoria Encontrada");
                 categoria = categoriaAnterior;
                 reCargar();
             }
@@ -122,14 +123,9 @@ namespace SistemaVentas.UI.Registros
             {
                 if (!string.IsNullOrWhiteSpace(CategoriaIdTextBox.Text))
                 {
-                    MessageBox.Show("Deben de estar llenos los campos", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show("Deben de estar el campo Id campos", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
                 Limpiar();
-
-                if (Validar())
-                {
-                    MessageBox.Show("Vacio");
-                }
 
                 if (CategoriaBLL.Eliminar(id))
                     MessageBox.Show("Eliminado", "Exito", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -151,7 +147,7 @@ namespace SistemaVentas.UI.Registros
         }
         private bool existeEnLaBaseDeDatos()
         {
-            Categoria categoriaAnterior = CategoriaBLL.Buscar(categoria.CategoriaId);
+            Categoria categoriaAnterior = CategoriaBLL.Buscar(Convert.ToInt32(categoria.CategoriaId));
 
             return categoriaAnterior != null;
         }

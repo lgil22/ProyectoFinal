@@ -27,9 +27,9 @@ namespace SistemaVentas.UI.Registros
             ArticuloIdTextBox.Text = "0";
 
         }
-       /*public void LlenaComboBoxCategorias() // Funcion encargada de llenar el ComboBox de las categorias
-        {
-            CategoriaBLL<Categoria> categoria = new CategoriaBLL<Categoria>();
+       /* public void LlenaComboBoxCategorias() // Funcion encargada de llenar el ComboBox de las categorias
+       {
+            CategoriaBLL categoria = new CategoriaBLL();
             var categorias = new List<Categoria>();
             categorias = categoria.GetList(p => true);
             CategoriaIdComboBox.DataSource = categorias;
@@ -151,7 +151,7 @@ namespace SistemaVentas.UI.Registros
 
             if (articuloAnterior != null)
             {
-
+                MessageBox.Show("Articulo Encontrado");
                 articulo = articuloAnterior;
                 reCargar();
             }

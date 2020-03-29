@@ -13,16 +13,16 @@ namespace SistemaVentas.UI.Inicio
             InitializeComponent();
         }
 
-        private void MenuArticulos_Click(object sender, RoutedEventArgs e)
-        {
-            RegArticulos regArt = new RegArticulos();
-            regArt.Show();
-        }
 
         private void MenuCategorias_Click(object sender, RoutedEventArgs e)
         {
             RegCategoria regCat = new RegCategoria();
             regCat.Show();
+        }
+        private void MenuArticulos_Click(object sender, RoutedEventArgs e)
+        {
+            RegArticulos regArt = new RegArticulos();
+            regArt.Show();
         }
 
         private void MenuCobros_Click(object sender, RoutedEventArgs e)
