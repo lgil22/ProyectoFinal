@@ -3,26 +3,20 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 using System.Runtime.Serialization;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SistemaVentas.Entidades
 {
-    [DataContract]
+
    public class Usuarios
     {
         [Key]
-        [DataMember]
         public int UsuarioId { get; set; }
-        [DataMember]
         public string Nombres { get; set; }
-        [DataMember]
         public string NombreUsuario { get; set; }
-        [DataMember]
         public string Clave { get; set; }
-        [DataMember]
         public string Email { get; set; }
-        [DataMember]
         public string Tipo { get; set; }
-     
 
         public Usuarios()
         {

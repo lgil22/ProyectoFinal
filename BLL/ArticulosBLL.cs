@@ -120,6 +120,23 @@ namespace SistemaVentas.BLL
             return lista;
         }
 
+        public static Articulos BuscarRelacion(int id)
+        {
+            Articulos estudiante = null;
+            using (var conexion = new Contexto())
+            {
+                try
+                {
+                    estudiante = conexion.Articulos.Find(id);
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }
+            }
+            return estudiante;
+        }
 
     }
 }

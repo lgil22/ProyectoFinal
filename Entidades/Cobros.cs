@@ -17,7 +17,7 @@ namespace SistemaVentas.Entidades
         public decimal Monto { get; set; }
 
         [ForeignKey("CobrosId")]
-
+       
         public virtual List<CobrosDetalles> Detalle { get; set; }
 
         public Cobros()

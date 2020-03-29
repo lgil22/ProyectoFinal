@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace SistemaVentas.Entidades
@@ -10,11 +11,13 @@ namespace SistemaVentas.Entidades
         [Key]
         public int ArticulosId { get; set; }
         public int UsuarioId { get; set; }
+        [ForeignKey("UsuarioId")]
         public string Descripcion { get; set; }
         public int CategoriaId { get; set; }
         public string Existencia { get; set; }
         public decimal Costo { get; set; }
         public decimal Precio { get; set; }
+
 
         public Articulos()
         {
