@@ -113,14 +113,30 @@ namespace SistemaVentas.UI.Registros
 
         private void EliminarButton_Click(object sender, RoutedEventArgs e)
         {
-            int id = Convert.ToInt32(ArticuloIdTextBox.Text);
+            int id;
+            int.TryParse(ArticuloIdTextBox.Text, out id);
 
             Limpiar();
-             if(id > 0)
+
+            try
             {
-                ArticulosBLL.Eliminar(id);
+                if (!string.IsNullOrWhiteSpace(ArticuloIdTextBox.Text))
+                {
+                    MessageBox.Show("Deben de estar llenos los campos", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                Limpiar();
+
+                if (id > 0)
+                {
+                    ArticulosBLL.Eliminar(id);
+                }
+                MessageBox.Show("No se puede eliminar un articulo que no existe");
             }
-            MessageBox.Show("No se puede eliminar un articulo que no existe");
+            catch
+            {
+
+            }
+
         }
 
         private bool existeEnLaBaseDeDatos()

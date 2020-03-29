@@ -188,7 +188,7 @@
             </Button>
         </StackPanel>
 
-        <StackPanel Grid.Row="14" Grid.Column="2" Margin="0,0,5,70">
+        <StackPanel Grid.Row="14" Grid.Column="2" Margin="0,0,0,70" HorizontalAlignment="Left" Width="145">
             <Button x:Name="EliminarButton" Content="Eliminar" HorizontalContentAlignment="Right" FontSize="15" Width="98"  Height="36" Click="EliminarButton_Click">
                 <Button.Background>
                     <ImageBrush ImageSource="/Resources/Nuevo.png" Stretch="Uniform" AlignmentX="Left" AlignmentY="Bottom" />

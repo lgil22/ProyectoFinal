@@ -43,7 +43,6 @@ namespace SistemaVentas.UI.Registros
             conceptoTextBox.Text = string.Empty;
             MontoTextBox.Text = "1";
 
-
         }
 
 
@@ -131,27 +130,38 @@ namespace SistemaVentas.UI.Registros
 
             Limpiar();
 
-            if (Validar())
+            try
+            {
+                if (!string.IsNullOrWhiteSpace(NotaIdTextBox.Text))
+                {
+                    MessageBox.Show("Deben de estar llenos los campos", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                Limpiar();
+
+                if (Validar())
+                {
+
+                    MessageBox.Show("Vacio");
+                }
+
+                if (NotasCreditosBLL.Eliminar(id))
+                    MessageBox.Show("Eliminado", "Exito", MessageBoxButton.OK, MessageBoxImage.Information);
+                else
+                {
+                    MessageBox.Show(NotaIdTextBox.Text, "No se puede eliminar una notaId que no existe");
+                }
+            }
+            catch
             {
 
-                MessageBox.Show("Vacio");
             }
 
-            if (NotasCreditosBLL.Eliminar(id))
-                MessageBox.Show("Eliminado", "Exito", MessageBoxButton.OK, MessageBoxImage.Information);
-            else 
-            { 
-                MessageBox.Show(NotaIdTextBox.Text, "No se puede eliminar una notaId que no existe");
-             } 
         }
-
     
-
-    private void NuevobButton_Click_1(object sender, RoutedEventArgs e)
-    {
-        Limpiar();
-    }
-
+        private void NuevobButton_Click_1(object sender, RoutedEventArgs e)
+        {
+            Limpiar();
+        }
        
     }
 }

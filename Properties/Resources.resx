@@ -175,6 +175,9 @@
   <data name="Sales" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Sales.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="Seg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Seg.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="Users" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Users.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>

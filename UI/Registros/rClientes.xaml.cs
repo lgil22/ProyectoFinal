@@ -121,16 +121,30 @@ namespace SistemaVentas.UI.Registros
 
             Limpiar();
 
-            if (Validar())
+            try
             {
-                
-                MessageBox.Show("Vacio");
+                if (!string.IsNullOrWhiteSpace(ClienteIdTextBox.Text))
+                {
+                    MessageBox.Show("Deben de estar llenos los campos", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+
+                Limpiar();
+
+                if (Validar())
+                {
+                    MessageBox.Show("Vacio");
+                }
+
+                if (ClientesBLL.Eliminar(id))
+                    MessageBox.Show("Eliminado", "Exito", MessageBoxButton.OK, MessageBoxImage.Information);
+                else
+                    MessageBox.Show(ClienteIdTextBox.Text, "No se puede eliminar un cliente que no existe");
+            }
+            catch
+            {
+
             }
 
-            if (ClientesBLL.Eliminar(id))
-                MessageBox.Show("Eliminado", "Exito", MessageBoxButton.OK, MessageBoxImage.Information);
-            else
-                MessageBox.Show(ClienteIdTextBox.Text, "No se puede eliminar un cliente que no existe");
         }
 
         private void BuscarButton_Click(object sender, RoutedEventArgs e)

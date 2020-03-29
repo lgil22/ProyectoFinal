@@ -1,66 +1,30 @@
-﻿<Window x:Name="MenuPrincipal" x:Class="SistemaVentas.MainWindow"
+﻿<Window x:Name="Login" x:Class="SistemaVentas.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SistemaVentas"
         mc:Ignorable="d"
-        Title="Menu Principal" Height="450" Width="800" WindowStartupLocation="CenterScreen" WindowState="Maximized" Icon="/Resources/Menu.png" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}">
-    <Grid>
-        <Menu>
-            <Menu.Background>
-                <ImageBrush Stretch="Uniform" ImageSource="/Resources/Principal.png"/>
-            </Menu.Background>
-            <MenuItem x:Name="MenuRegistros" Header="Registros">
-                <MenuItem Header="Articulos" Click="MenuArticulos_Click">
-                    <MenuItem.Background>
-                        <ImageBrush ImageSource="/SistemaVentas;component/Resources/Articulos.png"  Stretch="Uniform" AlignmentX="Left" AlignmentY="Bottom" />
-                    </MenuItem.Background>
-                </MenuItem>
-                <Separator/>
-
-                <MenuItem Header="Categorias" Click="MenuCategorias_Click">
-                    <MenuItem.Background>
-                        <ImageBrush ImageSource="/SistemaVentas;component/Resources/Categorias.png"  Stretch="Uniform" AlignmentX="Left" AlignmentY="Bottom" />
-                    </MenuItem.Background>
-                </MenuItem>
-                <Separator/>
-
-                <MenuItem Header="Cobros" Click="MenuCobros_Click">
-                    <MenuItem.Background>
-                        <ImageBrush ImageSource="/SistemaVentas;component/Resources/Cobros.png"  Stretch="Uniform" AlignmentX="Left" AlignmentY="Bottom" />
-                    </MenuItem.Background>
-                </MenuItem>
-                <Separator/>
-
-                <MenuItem Header="Notas Creditos" Click="MenuNotasCreditos_Click">
-                    <MenuItem.Background>
-                        <ImageBrush ImageSource="/SistemaVentas;component/Resources/Notas.png"  Stretch="Uniform" AlignmentX="Left" AlignmentY="Bottom" />
-                    </MenuItem.Background>
-                </MenuItem>
-                <Separator/>
-
-                <MenuItem Header="Clientes" Click="MenuClientes_Click">
-                    <MenuItem.Background>
-                        <ImageBrush ImageSource="/SistemaVentas;component/Resources/Clientes.png"  Stretch="Uniform" AlignmentX="Left" AlignmentY="Bottom" />
-                    </MenuItem.Background>
-                </MenuItem>
-                <Separator/>
-
-                <MenuItem Header="Usuarios" Click="MenuUsuarios_Click">
-                    <MenuItem.Background>
-                        <ImageBrush ImageSource="/SistemaVentas;component/Resources/Usuarios.png"  Stretch="Uniform" AlignmentX="Left" AlignmentY="Bottom" />
-                    </MenuItem.Background>
-                </MenuItem>
-                <Separator/>
-
-                <MenuItem Header="Ventas" Click="MenuVentas_Click">
-                    <MenuItem.Background>
-                      <ImageBrush ImageSource="/SistemaVentas;component/Resources/Ventas.png"  Stretch="Uniform" AlignmentX="Left" AlignmentY="Bottom" />
-                    </MenuItem.Background>
-                </MenuItem>
-            </MenuItem>
-        </Menu>
-        
-    </Grid>
+        Title="Login" Height="450" Width="400" WindowStartupLocation="CenterScreen" WindowState="Normal" ResizeMode="NoResize" Icon="/Resources/Seg.png" Background="#FF40A4C9">
+    <Border Background="WhiteSmoke" CornerRadius="20" Margin="20">
+        <StackPanel Margin="20">
+            <StackPanel.Background>
+                <ImageBrush/>
+            </StackPanel.Background>
+            <Label x:Name="LoginLabel" Foreground="Black" FontSize="25" HorizontalAlignment="Center" >
+                <Bold>Login</Bold>
+            </Label>
+            <Separator Background="Black"></Separator>
+            <Label x:Name="UsuarioLabel" Foreground="Blue" >
+                <Bold>Usuario</Bold>
+            </Label>
+            <TextBox x:Name="UsuarioTextBox" Foreground="Black" FontSize="14"/>
+            <Label x:Name="ContraseñaLabel" Foreground="Blue">
+                <Bold>Contraseña</Bold>
+            </Label>
+            <PasswordBox x:Name="PasswordBox" Foreground="Black" FontSize="14"/>
+            <Button x:Name="EntrarButton" Margin="60 10" Background="#545d6a" Foreground="Black" Height="40" Click="EntrarButton_Click">Entrar
+            </Button>
+        </StackPanel>
+    </Border>
 </Window>

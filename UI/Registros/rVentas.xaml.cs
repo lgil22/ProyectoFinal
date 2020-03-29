@@ -167,12 +167,26 @@ namespace SistemaVentas.UI.Registros
             int id;
             int.TryParse(VentaIdTextBox.Text, out id);
 
-            Limpiar();
+            try
+            {
 
-            if (VentasBLL.Eliminar(id))
-                MessageBox.Show("Eliminado", "Exito", MessageBoxButton.OK, MessageBoxImage.Information);
-            else
-                MessageBox.Show(VentaIdTextBox.Text, "No se puede eliminar una venta que no existe");
+                if (!string.IsNullOrWhiteSpace(VentaIdTextBox.Text) && !string.IsNullOrWhiteSpace(ClienteIdTextBox.Text))
+                {
+                    MessageBox.Show("Deben de estar llenos los campos", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                Limpiar();
+
+                if (VentasBLL.Eliminar(id))
+                    MessageBox.Show("Eliminado", "Exito", MessageBoxButton.OK, MessageBoxImage.Information);
+                else
+                    MessageBox.Show(VentaIdTextBox.Text, "No se puede eliminar una venta que no existe");
+
+            }
+            catch
+            {
+
+            }
+
         }
 
         private void CantidadTextBox_TextChanged(object sender, TextChangedEventArgs e)

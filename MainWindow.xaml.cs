@@ -14,6 +14,12 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using SistemaVentas.UI;
+using SistemaVentas.BLL;
+using Microsoft.EntityFrameworkCore;
+using SistemaVentas.Entidades;
+//using SistemaVentas.UI.Inicio;
+using System.Data.SqlClient;
+using SistemaVentas.UI.Inicio;
 
 namespace SistemaVentas
 {
@@ -22,58 +28,35 @@ namespace SistemaVentas
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow(int iD)
-        {
-            InitializeComponent();
-        }
 
+        //RepositorioBase<Usuarios> RepositorioUsuario = new RepositorioBase<Usuarios>();
         public MainWindow()
         {
+            InitializeComponent();
+
         }
 
-        private void MenuArticulos_Click(object sender, RoutedEventArgs e)
+        private void EntrarButton_Click(object sender, RoutedEventArgs e)
         {
-            RegArticulos regArt = new RegArticulos();
-            regArt.Show();
+            string usuario = this.UsuarioTextBox.Text;
+            string password = this.PasswordBox.Password;
+
+
+            if (usuario == "" && password == "")
+            {
+
+                MessageBox.Show(UsuarioTextBox.Text, "Ingrese Datos Correctos");
+                MessageBox.Show("Favor Llene los campos");
+            }
+            else
+             if (usuario == "Admin" && password == "1234")
+            {
+                MenuPrincipal menuP = new MenuPrincipal();
+                menuP.Show();
+            }
         }
-
-        private void MenuCategorias_Click(object sender, RoutedEventArgs e)
-        {
-            RegCategoria regCat = new RegCategoria();
-            regCat.Show();
-        }
-
-        private void MenuCobros_Click(object sender, RoutedEventArgs e)
-        {
-            RegCobro regCob = new RegCobro();
-            regCob.Show();
-        }
-
-
-        private void MenuNotasCreditos_Click(object sender, RoutedEventArgs e)
-        {
-            RegNotasCreditos regCred = new RegNotasCreditos();
-            regCred.Show();
-        }
-
-        private void MenuClientes_Click(object sender, RoutedEventArgs e)
-        {
-            rClientes regC = new rClientes();
-            regC.Show();
-        }
-
-        private void MenuUsuarios_Click(object sender, RoutedEventArgs e)
-        {
-            rUsuarios regU = new rUsuarios();
-            regU.Show();
-        }
-
-        private void MenuVentas_Click(object sender, RoutedEventArgs e)
-        {
-            rVentas regV = new rVentas();
-            regV.Show();
-        }
-
-
+        
+   
     }
 }
+

@@ -115,21 +115,34 @@ namespace SistemaVentas.UI.Registros
         {
             int id;
             int.TryParse(CategoriaIdTextBox.Text, out id);
+
             Limpiar();
 
-            if (Validar())
+            try
+            {
+                if (!string.IsNullOrWhiteSpace(CategoriaIdTextBox.Text))
+                {
+                    MessageBox.Show("Deben de estar llenos los campos", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                Limpiar();
+
+                if (Validar())
+                {
+                    MessageBox.Show("Vacio");
+                }
+
+                if (CategoriaBLL.Eliminar(id))
+                    MessageBox.Show("Eliminado", "Exito", MessageBoxButton.OK, MessageBoxImage.Information);
+                else
+                {
+                    MessageBox.Show(CategoriaIdTextBox.Text, "No se puede eliminar una categoria que no existe");
+                }
+            }
+            catch
             {
 
-                MessageBox.Show("Vacio");
             }
 
-            if (CategoriaBLL.Eliminar(id))
-                MessageBox.Show("Eliminado", "Exito", MessageBoxButton.OK, MessageBoxImage.Information);
-            else 
-            {
-                MessageBox.Show(CategoriaIdTextBox.Text, "No se puede eliminar una categoria que no existe");
-
-             }
         }
         private void Limpiar()
         {

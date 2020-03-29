@@ -107,18 +107,31 @@ namespace SistemaVentas.UI.Registros
             int.TryParse(CobrosIdTextBox.Text, out id);
 
             Limpiar();
-
-            if (id > 0)
+      
+            try
             {
-                if (existeEnLaBaseDeDatos()){ 
-                    CobrosBLL.Eliminar(id); 
+                if (!string.IsNullOrWhiteSpace(CobroidTextBox.Text)) 
+                {
+                    MessageBox.Show("Deben de estar llenos los campos", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                Limpiar();
+
+                if (id > 0)
+                {
+                    if (existeEnLaBaseDeDatos())
+                    {
+                        CobrosBLL.Eliminar(id);
+                    }
+                    else
+                        MessageBox.Show("No se puede hacer cobro si no haz facturado");
                 }
                 else
-                    MessageBox.Show("No se puede hacer cobro si no has falturado");
+                    MessageBox.Show("No se puede hacer cobro si no haz facturado");
+            }
+            catch
+            {
 
             }
-            else
-                MessageBox.Show("No se puede hacer cobro si no has falturado");
 
         }
 
