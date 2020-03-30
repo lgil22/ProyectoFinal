@@ -172,7 +172,47 @@ namespace SistemaVentas.UI.Registros
 
         }
 
-     
+        private void Deuda_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(Deuda.Text) && (!string.IsNullOrWhiteSpace(Efectivo.Text)))
+            {
+                int Num1;
+                decimal Num2;
+
+                Num1 = Convert.ToInt32(Deuda.Text);
+                Num2 = Convert.ToDecimal(Efectivo.Text);
+
+                Devuelta.Text = Convert.ToString(Num2 - Num1);
+            }
+        }
+
+        private void Efectivo_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(Deuda.Text) && (!string.IsNullOrWhiteSpace(Efectivo.Text)))
+            {
+                int Num1;
+                decimal Num2;
+
+                Num1 = Convert.ToInt32(Deuda.Text);
+                Num2 = Convert.ToDecimal(Efectivo.Text);
+
+                Devuelta.Text = Convert.ToString(Num2 - Num1);
+            }
+        }
+
+        private void Devuelta_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(Deuda.Text) && (!string.IsNullOrWhiteSpace(Efectivo.Text)))
+            {
+                int Num1;
+                decimal Num2;
+
+                Num1 = Convert.ToInt32(Deuda.Text);
+                Num2 = Convert.ToDecimal(Efectivo.Text);
+
+                Devuelta.Text = Convert.ToString(Num2 - Num1);
+            }
+        }
     }
 
 }

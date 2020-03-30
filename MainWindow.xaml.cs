@@ -36,11 +36,11 @@ namespace SistemaVentas
 
         }
 
+
         private void EntrarButton_Click(object sender, RoutedEventArgs e)
         {
             string usuario = this.UsuarioTextBox.Text;
             string password = this.PasswordBox.Password;
-
 
             if (usuario == "" && password == "")
             {
@@ -49,7 +49,7 @@ namespace SistemaVentas
                 MessageBox.Show("Favor Llene los campos");
             }
             else
-             if (usuario == "Admin" && password == "1234")
+                      if (usuario == "Admin" && password == "1234")
             {
                 MenuPrincipal menuP = new MenuPrincipal();
                 menuP.Show();

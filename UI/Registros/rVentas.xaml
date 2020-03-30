@@ -102,7 +102,7 @@
                 <Binding Path="Fecha" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                     <Binding.ValidationRules>
                         <ExceptionValidationRule/>
-                        <!--src:ValidaciónString x:Name="ValidacionString" ValidatesOnTargetUpdated="True"/>-->
+                        <src:ValidaciónString x:Name="ValidacionString" ValidatesOnTargetUpdated="True"/>
                     </Binding.ValidationRules>
                 </Binding>
             </DatePicker.Text>

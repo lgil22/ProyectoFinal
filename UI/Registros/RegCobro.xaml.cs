@@ -78,7 +78,7 @@ namespace SistemaVentas.UI.Registros
                 IdTextBox.Focus();
                 CobroidTextBox.Focus();
                 ventaIdtextBox.Focus();
-                MontoTextBox.Focus();
+                MontooTextBox.Focus();
                 paso = false;
             }
 
@@ -92,7 +92,7 @@ namespace SistemaVentas.UI.Registros
                 return;
 
 
-            if (string.IsNullOrWhiteSpace(CobrosIdTextBox.Text) || (CobrosIdTextBox.Text == "0"))
+            if (cobro.CobroId == 0)
                 paso = CobrosBLL.Guardar(cobro);
             else
             {
@@ -170,11 +170,23 @@ namespace SistemaVentas.UI.Registros
                 Num1 = Convert.ToInt32(CantidadTextBox.Text);
                 Num2 = Convert.ToDecimal(PreciotextBox.Text);
 
-                MontotextBox.Text = Convert.ToString(Num1 * Num2);
+                MontooTextBox.Text = Convert.ToString(Num1 * Num2);
             }
         }
 
+        private void MontooTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(CantidadTextBox.Text) && !string.IsNullOrWhiteSpace(PreciotextBox.Text))
+            {
+                int Num1;
+                decimal Num2;
 
+                Num1 = Convert.ToInt32(CantidadTextBox.Text);
+                Num2 = Convert.ToDecimal(PreciotextBox.Text);
+
+                MontooTextBox.Text = Convert.ToString(Num1 * Num2);
+            }
+        }
 
         private void MontotextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -186,9 +198,11 @@ namespace SistemaVentas.UI.Registros
                 Num1 = Convert.ToInt32(CantidadTextBox.Text);
                 Num2 = Convert.ToDecimal(PreciotextBox.Text);
 
-                MontotextBox.Text = Convert.ToString(Num1 * Num2);
+                MontooTextBox.Text = Convert.ToString(Num1 * Num2);
             }
         }
+    
+    
 
         private void ClienteIdComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -218,7 +232,7 @@ namespace SistemaVentas.UI.Registros
                 Num1 = Convert.ToInt32(CantidadTextBox.Text);
                 Num2 = Convert.ToDecimal(PreciotextBox.Text);
 
-                MontotextBox.Text = Convert.ToString(Num1 * Num2);
+                MontooTextBox.Text = Convert.ToString(Num1 * Num2);
             }
         }
 
@@ -248,7 +262,7 @@ namespace SistemaVentas.UI.Registros
                 Id = IdTextBox.Text.ToInt(),
                 CobroId = CobroidTextBox.Text.ToInt(),
                 VentaId = ventaIdtextBox.Text.ToInt(),
-                Monto = MontoTextBox.Text.ToInt(),
+                Monto = MontooTextBox.Text.ToInt(),
 
             });
             reCargar();
@@ -258,24 +272,11 @@ namespace SistemaVentas.UI.Registros
             CobroidTextBox.Clear();
             ventaIdtextBox.Focus();
             ventaIdtextBox.Clear();
-            MontoTextBox.Focus();
-            MontoTextBox.Clear();
+            MontooTextBox.Focus();
+            MontooTextBox.Clear();
 
         }
 
-        private void MontoTextBox_TextChanged_1(object sender, TextChangedEventArgs e)
-        {
-            if (!string.IsNullOrWhiteSpace(CantidadTextBox.Text) && !string.IsNullOrWhiteSpace(PreciotextBox.Text))
-            {
-                int Num1;
-                decimal Num2;
-
-                Num1 = Convert.ToInt32(CantidadTextBox.Text);
-                Num2 = Convert.ToDecimal(PreciotextBox.Text);
-
-                MontotextBox.Text = Convert.ToString(Num1 * Num2);
-            }
-        }
     }
 }
 

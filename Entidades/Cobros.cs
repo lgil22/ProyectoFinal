@@ -13,7 +13,8 @@ namespace SistemaVentas.Entidades
         public int ClienteId { get; set; }
         public int ArticuloId { get; set; }
         public DateTime Fecha { get; set; }
-        public decimal Cantidad { get; set; }
+        public int Cantidad { get; set; }
+        public float Precio { get; set; }
         public float Monto { get; set; }
 
         [ForeignKey("CobrosId")]
@@ -27,7 +28,9 @@ namespace SistemaVentas.Entidades
             ArticuloId = 0;
             Fecha = DateTime.Now;
             Cantidad = 0;
+            Precio = 0;
             Monto = 0;
+
             Detalle = new List<CobrosDetalles>();
         }
     }

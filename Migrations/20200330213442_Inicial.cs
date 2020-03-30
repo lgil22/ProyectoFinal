@@ -16,7 +16,7 @@ namespace SistemaVentas.Migrations
                     UsuarioId = table.Column<int>(nullable: false),
                     Descripcion = table.Column<string>(nullable: true),
                     CategoriaId = table.Column<int>(nullable: false),
-                    Existencia = table.Column<string>(nullable: true),
+                    Existencia = table.Column<int>(nullable: false),
                     Costo = table.Column<decimal>(nullable: false),
                     Precio = table.Column<decimal>(nullable: false)
                 },
@@ -66,7 +66,8 @@ namespace SistemaVentas.Migrations
                     ClienteId = table.Column<int>(nullable: false),
                     ArticuloId = table.Column<int>(nullable: false),
                     Fecha = table.Column<DateTime>(nullable: false),
-                    Cantidad = table.Column<decimal>(nullable: false),
+                    Cantidad = table.Column<int>(nullable: false),
+                    Precio = table.Column<float>(nullable: false),
                     Monto = table.Column<float>(nullable: false)
                 },
                 constraints: table =>

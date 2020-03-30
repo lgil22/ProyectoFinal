@@ -29,7 +29,7 @@
             <RowDefinition Height="65"  />
             <RowDefinition Height="65" />
             <RowDefinition Height="65"  />
-            <RowDefinition Height="65" />
+            <RowDefinition Height="auto" />
             <RowDefinition Height="auto" />
             <RowDefinition Height="auto" />
             <RowDefinition Height="auto" />
@@ -71,9 +71,7 @@
             <Label Content="Precio" FontSize="15"/>
         </StackPanel>
 
-        <StackPanel Grid.Row="8" Grid.Column="0" Margin="0,12,5,30">
-            <Label Content="Monto" FontSize="15" Height="33"/>
-        </StackPanel>
+       
 
         <StackPanel Grid.Row="7" Grid.Column="1" Margin="0,14,0,30">
             <TextBox  x:Name="PreciotextBox" Height="22" Background="#FFFDFBFB" TextChanged="PreciotextBox_TextChanged">
@@ -87,14 +85,7 @@
             </TextBox>
         </StackPanel>
 
-        <StackPanel Grid.Row="8" Grid.Column="1" Margin="0,14,0,30">
-            <TextBox  x:Name="MontotextBox" Height="25" Background="#FFFDFBFB" TextChanged="MontotextBox_TextChanged">
-                <TextBox.Text>
-                    <Binding  Path="Monto" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
-                    </Binding>
-                </TextBox.Text>
-            </TextBox>
-        </StackPanel>
+      
 
 
         <StackPanel Grid.Row="6" Grid.Column="1" Margin="0,14,0,30">
@@ -235,8 +226,8 @@
 
         <Label  Content="Monto:" Grid.Column="2" HorizontalAlignment="Left" 
                Margin="110,18,0,0" Grid.Row="10" VerticalAlignment="Top" Width="57" Grid.ColumnSpan="2"/>
-        <TextBox x:Name="MontoTextBox" Grid.Column="3" HorizontalAlignment="Left" Margin="22,22,0,0" Grid.Row="10" 
-                 TextWrapping="Wrap" VerticalAlignment="Top" Width="68" TextChanged="MontoTextBox_TextChanged_1" >
+        <TextBox x:Name="MontooTextBox" Grid.Column="3" HorizontalAlignment="Left" Margin="22,22,0,0" Grid.Row="10" 
+                 TextWrapping="Wrap" VerticalAlignment="Top" Width="68" TextChanged="MontooTextBox_TextChanged" >
             <Binding Path="cobro" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                 <Binding.ValidationRules>
                     <src:IdValidacion x:Name="Monto" ValidatesOnTargetUpdated="True"/>

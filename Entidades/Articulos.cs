@@ -14,7 +14,7 @@ namespace SistemaVentas.Entidades
         [ForeignKey("UsuarioId")]
         public string Descripcion { get; set; }
         public int CategoriaId { get; set; }
-        public string Existencia { get; set; }
+        public int Existencia { get; set; }
         public decimal Costo { get; set; }
         public decimal Precio { get; set; }
 
@@ -25,7 +25,7 @@ namespace SistemaVentas.Entidades
             UsuarioId = 0;
             Descripcion = string.Empty;
             CategoriaId = 0;
-            Existencia = string.Empty;
+            Existencia = 0;
             Costo = 0;
             Precio = 0;
         }

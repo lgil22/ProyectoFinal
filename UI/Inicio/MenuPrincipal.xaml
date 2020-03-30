@@ -67,6 +67,8 @@
             
             <MenuItem x:Name="MenuFacturar" Header="Facturar">
                 <MenuItem x:Name="Factura" Header="Factura" Click="MenuFactura_Click"/>
+                <Separator/>
+                <MenuItem x:Name="Deudas" Header="Deudas" Click="MenuDeudas_Click"/>
             </MenuItem>
 
             <MenuItem x:Name="MenuConsultas" Header="Consultas">
@@ -75,6 +77,16 @@
                 <MenuItem x:Name="Clientes" Header="Ventas" Click="MenuCclientes_Click"/>
                 <Separator/>
                 <MenuItem x:Name="Usuarios" Header="Usuarios" Click="MenuCusuarios_Click"/>
+                <Separator/>
+                <MenuItem x:Name="Cobros" Header="Cobros" Click="MenucCobros_Click"/>
+                <Separator/>
+                <MenuItem x:Name="Articulos" Header="Articulos" Click="MenucArticulos_Click"/>
+                <Separator/>
+                <MenuItem x:Name="NotaCredito" Header="NotaCredito" Click="MenucNotaCredito_Click"/>
+                <Separator/>
+                <MenuItem x:Name="Categoria" Header="Categoria" Click="MenucCategoria_Click"/>
+                
+
             </MenuItem>
 
 

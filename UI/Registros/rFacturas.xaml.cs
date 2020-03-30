@@ -222,5 +222,48 @@ namespace SistemaVentas.UI.Registros
                 this.IsEnabled = true;
             }
         }
+
+        private void PrecioTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+            if (!string.IsNullOrWhiteSpace(PrecioTextBox.Text) && !string.IsNullOrWhiteSpace(CantidadTextBox.Text))
+            {
+                int Num1;
+                decimal Num2;
+
+                Num1 = Convert.ToInt32(PrecioTextBox.Text);
+                Num2 = Convert.ToDecimal(CantidadTextBox.Text);
+
+                TotalTextBox.Text = Convert.ToString(Num1 * Num2);
+            }
+        }
+
+        private void CantidadTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(PrecioTextBox.Text) && !string.IsNullOrWhiteSpace(CantidadTextBox.Text))
+            {
+                int Num1;
+                decimal Num2;
+
+                Num1 = Convert.ToInt32(PrecioTextBox.Text);
+                Num2 = Convert.ToDecimal(CantidadTextBox.Text);
+
+                TotalTextBox.Text = Convert.ToString(Num1 * Num2);
+            }
+        }
+
+        private void TotalTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(PrecioTextBox.Text) && !string.IsNullOrWhiteSpace(CantidadTextBox.Text))
+            {
+                int Num1;
+                decimal Num2;
+
+                Num1 = Convert.ToInt32(PrecioTextBox.Text);
+                Num2 = Convert.ToDecimal(CantidadTextBox.Text);
+
+                TotalTextBox.Text = Convert.ToString(Num1 * Num2);
+            }
+        }
     }
 }

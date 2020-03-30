@@ -63,6 +63,11 @@ namespace SistemaVentas.UI.Inicio
             regF.Show();
         }
 
+        private void MenuDeudas_Click(object sender, RoutedEventArgs e)
+        {
+            rDeudaClientes regD = new rDeudaClientes();
+            regD.Show();
+        }
         private void MenuCVentas_Click(object sender, RoutedEventArgs e)
         {
            cVentas cVent = new cVentas();
@@ -81,5 +86,25 @@ namespace SistemaVentas.UI.Inicio
             cU.Show();
         }
 
+            private void MenucCobros_Click(object sender, RoutedEventArgs e)
+        {
+            cCobro cC = new cCobro();
+            cC.Show();
+        }
+        private void MenucArticulos_Click(object sender, RoutedEventArgs e)
+        {
+            cArticulos Art = new cArticulos();
+            Art.Show();
+        }
+        private void MenucNotaCredito_Click(object sender, RoutedEventArgs e)
+        {
+            cNotaCredito nt = new cNotaCredito();
+            nt.Show();
+        }
+        private void MenucCategoria_Click(object sender, RoutedEventArgs e)
+        {
+            cCategoria C = new cCategoria();
+            C.Show();
+        }
     }
 }

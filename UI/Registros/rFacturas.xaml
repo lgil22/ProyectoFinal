@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SistemaVentas.UI.Registros"
+        xmlns:src="clr-namespace:SistemaVentas.Validaciones"
         mc:Ignorable="d"
         Title="Registro Facturas" Height="650" Width="800">
     <Grid x:Name="print">
@@ -62,7 +63,7 @@
                 <TextBox.Text>
                     <Binding Path="VentaId" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
-                            <!--src:IdValidacion x:Name="IdValidacion" ValidatesOnTargetUpdated="True"/>-->
+                            <src:IdValidacion x:Name="IdValidacion" ValidatesOnTargetUpdated="True"/>
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
@@ -76,7 +77,7 @@
         <TextBox x:Name="ArticuloIdTextBox" Height="25" Grid.ColumnSpan="3" Margin="114,6,98,28" Grid.Row="4">
             <Binding Path="ArticuloId" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                 <Binding.ValidationRules>
-                    <!--src:IdValidacion x:Name="idValidacion" ValidatesOnTargetUpdated="True"/>-->
+                    <src:IdValidacion x:Name="ArticuloIdValidacion" ValidatesOnTargetUpdated="True"/>
                 </Binding.ValidationRules>
             </Binding>
         </TextBox>
@@ -87,7 +88,7 @@
         <TextBox x:Name="NombreTextBox" Height="25" Grid.ColumnSpan="3" Margin="114,6,98,28" Grid.Row="5">
             <Binding Path="NombreCliente" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                 <Binding.ValidationRules>
-                    <!--src:IdValidacion x:Name="idValidacion" ValidatesOnTargetUpdated="True"/>-->
+                    <src:IdValidacion x:Name="idValidacion" ValidatesOnTargetUpdated="True"/>
                 </Binding.ValidationRules>
             </Binding>
         </TextBox>
@@ -101,7 +102,7 @@
                 <Binding Path="Fecha" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                     <Binding.ValidationRules>
                         <ExceptionValidationRule/>
-                        <!--src:ValidaciónString x:Name="ValidacionString" ValidatesOnTargetUpdated="True"/>-->
+                        <src:ValidaciónString x:Name="ValidacionString" ValidatesOnTargetUpdated="True"/>
                     </Binding.ValidationRules>
                 </Binding>
             </DatePicker.Text>
@@ -128,7 +129,7 @@
         </StackPanel>
 
         <Label x:Name="TotalLabel" Content="Total:" Grid.ColumnSpan="2" Grid.Column="2" Margin="102,26,0,36" Grid.Row="8" HorizontalAlignment="Left" Width="53"/>
-        <TextBox x:Name="TotalTextBox" Margin="4,30,68,54" Grid.Row="8" Grid.Column="3">
+        <TextBox x:Name="TotalTextBox" Margin="4,30,68,54" Grid.Row="8" Grid.Column="3" TextChanged="TotalTextBox_TextChanged">
             <Binding Path="Total" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                 <Binding.ValidationRules>
                     <ExceptionValidationRule/>
@@ -153,7 +154,7 @@
         <TextBox x:Name="DescripcionTextBox" HorizontalAlignment="Left" Margin="90,30,0,0" Grid.Row="8" TextWrapping="Wrap" VerticalAlignment="Top" Width="58">
             <Binding Path="ArticuloId" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                 <Binding.ValidationRules>
-                    <!---src:IdValidacion x:Name="IdarticuloValidacion" ValidatesOnTargetUpdated="True"/>-->
+                    <src:IdValidacion x:Name="IdarticuloValidacion" ValidatesOnTargetUpdated="True"/>
                 </Binding.ValidationRules>
             </Binding>
         </TextBox>
@@ -162,10 +163,10 @@
         <Label x:Name="Precio"  Content="Precio:" HorizontalAlignment="Left" 
                Margin="7,26,0,0" Grid.Row="8" VerticalAlignment="Top" Width="76" Grid.Column="1"/>
         <TextBox x:Name="PrecioTextBox"   Grid.Column="1" HorizontalAlignment="Left" Grid.Row="8" 
-                 TextWrapping="Wrap" VerticalAlignment="Top" Width="68"  Margin="49,30,0,0">
+                 TextWrapping="Wrap" VerticalAlignment="Top" Width="68"  Margin="49,30,0,0" TextChanged="PrecioTextBox_TextChanged">
             <Binding Path="Precio" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                 <Binding.ValidationRules>
-                    <!---src:CantidadValidacion x:Name="cantidadValidacion" ValidatesOnTargetUpdated="True"/>-->
+                    <src:CantidadValidacion x:Name="cantidadValidacion" ValidatesOnTargetUpdated="True"/>
                 </Binding.ValidationRules>
             </Binding>
         </TextBox>
@@ -173,10 +174,10 @@
         <Label x:Name="CantidadLabel" Content="Cantidad:" Grid.Column="1" 
                Margin="122,26,88,0" Grid.Row="8" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
         <TextBox x:Name="CantidadTextBox" Grid.Column="2" Margin="30,30,50,0" 
-                 Grid.Row="8" TextWrapping="Wrap" VerticalAlignment="Top" Height="18">
+                 Grid.Row="8" TextWrapping="Wrap" VerticalAlignment="Top" Height="18" TextChanged="CantidadTextBox_TextChanged">
             <Binding Path="Cantidad" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                 <Binding.ValidationRules>
-                    <!--src:PrecioValidacion x:Name="PresioValidacion" ValidatesOnTargetUpdated="True"/>-->
+                    <src:PrecioValidacion x:Name="PresioValidacion" ValidatesOnTargetUpdated="True"/>
                 </Binding.ValidationRules>
             </Binding>
         </TextBox>
