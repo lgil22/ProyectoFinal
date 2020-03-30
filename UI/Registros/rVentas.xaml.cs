@@ -92,7 +92,7 @@ namespace SistemaVentas.UI.Registros
                 //   Precio = Convert.ToInt32(PrecioTextBox),
 
             });
-        //    Refrescar();
+          Refrescar();
             ArticuloIdTextBox.Focus();
             ArticuloIdTextBox.Clear();
             CantidadTextBox.Focus();

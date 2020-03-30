@@ -143,7 +143,7 @@
                 <DataGrid.ItemsSource>
                     <Binding Path="Detalles" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
-                            <ExceptionValidationRule></ExceptionValidationRule>
+                            <src:ValidaciónString x:Name="ValidaciónString" ValidatesOnTargetUpdated="True"/>
                         </Binding.ValidationRules>
                     </Binding>
                 </DataGrid.ItemsSource>

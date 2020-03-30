@@ -111,13 +111,13 @@
 
 
 
-        <Button x:Name="AgregarDataGridButton" Content="Agregar" Grid.Column="3" HorizontalAlignment="Left"  Margin="62,21,0,0" Grid.Row="10" VerticalAlignment="Top" Height="26" Width="93" >
+        <Button x:Name="AgregarDataGridButton" Content="Agregar" Grid.Column="3" HorizontalAlignment="Left"  Margin="47,18,0,0" Grid.Row="10" VerticalAlignment="Top" Height="33" Width="108" Click="AgregarDataGridButton_Click" >
             <Button.Background>
                 <ImageBrush ImageSource="/Resources/Mas.png" Stretch="Uniform" AlignmentX="Left" AlignmentY="Bottom" />
             </Button.Background>
         </Button>
 
-        <Button x:Name="RemoverDataGridButton" Content="Remover" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Height="26"  Margin="16,120,0,0" Grid.Row="11" VerticalAlignment="Top" Width="76" >
+        <Button x:Name="RemoverDataGridButton" Content="Remover" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Height="27"  Margin="16,119,0,0" Grid.Row="11" VerticalAlignment="Top" Width="76" Click="RemoverDataGridButton_Click" >
             <Button.Background>
                 <ImageBrush ImageSource="/Resources/Remover.png" Stretch="Uniform" AlignmentX="Left" AlignmentY="Bottom" TileMode="None" />
             </Button.Background>
@@ -144,11 +144,11 @@
 
         <GroupBox x:Name="AgregarcobroGroupBox" FontSize="14" Header="Agregar Cobro" Grid.Row="10" Grid.ColumnSpan="4" Margin="10,0,-6,0" Grid.RowSpan="3" Height="206" VerticalAlignment="Center">
 
-            <DataGrid x:Name="DetalleDataGridCobro" Height="132">
+            <DataGrid x:Name="DetalleDataGridCobro" Height="116">
                 <DataGrid.ItemsSource>
                     <Binding Path="Detalles" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
-                            <ExceptionValidationRule></ExceptionValidationRule>
+                            <src:ValidaciónString x:Name="ValidaciónString" ValidatesOnTargetUpdated="True"/>
                         </Binding.ValidationRules>
                     </Binding>
                 </DataGrid.ItemsSource>
@@ -208,7 +208,7 @@
 
 
         <Label  Content=" Id:" Grid.Row="10" VerticalAlignment="Center"  Margin="70,0,0,0" FontSize="12"/>
-        
+
         <TextBox x:Name="IdTextBox" HorizontalAlignment="Right" Margin="92,0,0,0" Grid.Row="10" TextWrapping="Wrap" VerticalAlignment="Center" Width="58">
             <Binding Path="Id" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                 <Binding.ValidationRules>

@@ -158,50 +158,7 @@ namespace SistemaVentas.UI.Registros
             }
         }
 
-        private void AgregarDataGridButton_Click(object sender, RoutedEventArgs e)
-        {
-            if (!string.IsNullOrWhiteSpace(DetalleDataGridCobro.ItemsSource.ToString()))
-            {
-                MessageBox.Show("Deben de estar llenos los campos", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-            if (DetalleDataGridCobro.ItemsSource != null)
-            {
-                this.cobro.Detalle = (List<CobrosDetalles>)DetalleDataGridCobro.ItemsSource;
-            }
-
-
-            this.cobro.Detalle.Add(new CobrosDetalles
-            {
-                Id = IdTextBox.Text.ToInt(),
-                VentaId = ventaIdtextBox.Text.ToInt(),
-                CobroId = CobroidTextBox.Text.ToInt(),
-                Monto = Convert.ToDecimal(MontotextBox.Text),
-
-
-            });
-            reCargar();
-            IdTextBox.Focus();
-            ventaIdtextBox.Focus();
-            CobroidTextBox.Focus();
-            MontotextBox.Focus();
-
-            IdTextBox.Clear();
-            ventaIdtextBox.Clear();
-            CobroidTextBox.Clear();
-            MontotextBox.Clear();
-        }
-
-
-        private void RemoverDataGridButton_Click(object sender, RoutedEventArgs e)
-        {
-            if (DetalleDataGridCobro.Items.Count > 0 && DetalleDataGridCobro.SelectedItem != null)
-            {
-
-                cobro.Detalle.RemoveAt(DetalleDataGridCobro.SelectedIndex);
-                reCargar();
-            }
-        }
-
+   
         private void PreciotextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (!string.IsNullOrWhiteSpace(CantidadTextBox.Text) && !string.IsNullOrWhiteSpace(PreciotextBox.Text))
@@ -263,6 +220,43 @@ namespace SistemaVentas.UI.Registros
                     MontotextBox.Text = Convert.ToString(Num1 * Num2);
                 }
             }
+
+        private void RemoverDataGridButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (DetalleDataGridCobro.Items.Count > 0 && DetalleDataGridCobro.SelectedItem != null)
+            {
+
+                cobro.Detalle.RemoveAt(DetalleDataGridCobro.SelectedIndex);
+                reCargar();
+            }
+        }
+
+        private void AgregarDataGridButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (DetalleDataGridCobro.ItemsSource != null)
+            {
+                this.cobro.Detalle = (List<CobrosDetalles>)DetalleDataGridCobro.ItemsSource;
+            }
+
+            this.cobro.Detalle.Add(new CobrosDetalles
+            {
+                Id = IdTextBox.Text.ToInt(),
+                VentaId = ventaIdtextBox.Text.ToInt(),
+                CobroId = CobroidTextBox.Text.ToInt(),
+                Monto = MontotextBox.Text.ToInt(),
+
+
+            }) ;
+            reCargar();
+            IdTextBox.Focus();
+            IdTextBox.Clear();
+            ventaIdtextBox.Focus();
+            ventaIdtextBox.Clear();
+            CobroidTextBox.Focus();
+            CobroidTextBox.Clear();
+            MontotextBox.Focus();
+            MontotextBox.Clear();
+        }
     }
 }
  
