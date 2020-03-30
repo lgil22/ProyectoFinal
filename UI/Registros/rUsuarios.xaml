@@ -40,7 +40,7 @@
         </StackPanel>
 
         <StackPanel Grid.Row="8" Grid.Column="0" Margin="0,50,5,-97">
-            <Button x:Name="NuevoButton" Content="Nuevo" FontSize="14" Width="130" Click="NuevobButton_Click" Height="36">
+            <Button x:Name="NuevoButton" Content="Nuevo" FontSize="14" Width="130"  Height="36" Click="NuevoButton_Click">
                 <Button.Background>
                     <ImageBrush ImageSource="/Resources/Nuevo.png" Stretch="Uniform" AlignmentX="Left" AlignmentY="Bottom" />
                 </Button.Background>

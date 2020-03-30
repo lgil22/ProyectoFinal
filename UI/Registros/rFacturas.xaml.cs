@@ -139,9 +139,13 @@ namespace SistemaVentas.UI.Registros
 
             //Informar el resultado
             if (paso)
+            {
                 MessageBox.Show("Guardado!!", "Exito", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
             else
-                MessageBox.Show("No fue posible guardar!!", "Fallo", MessageBoxButton.OK, MessageBoxImage.Error);
+            { 
+            MessageBox.Show("No fue posible guardar!!", "Fallo", MessageBoxButton.OK, MessageBoxImage.Error);
+             }
         }
 
         private void EliminarButton_Click(object sender, RoutedEventArgs e)

@@ -81,7 +81,6 @@ namespace SistemaVentas.UI.Registros
                 this.ventas.Detalles = (List<VentaDetalles>)DetalleDataGridVentas.ItemsSource;
             }
 
-
                 //Agregar un nuevo detalle con los datos introducidos
 
                 this.ventas.Detalles.Add(new VentaDetalles
@@ -173,9 +172,14 @@ namespace SistemaVentas.UI.Registros
 
             //Informar el resultado
             if (paso)
-                MessageBox.Show("Guardado!!", "Exito", MessageBoxButton.OK, MessageBoxImage.Information);
+            { MessageBox.Show("Guardado!!", "Exito", MessageBoxButton.OK, MessageBoxImage.Information);
+                Limpiar();
+
+            }
             else
-                MessageBox.Show("No fue posible guardar!!", "Fallo", MessageBoxButton.OK, MessageBoxImage.Error);
+            { 
+                    MessageBox.Show("No fue posible guardar!!", "Fallo", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void EliminarButton_Click(object sender, RoutedEventArgs e)

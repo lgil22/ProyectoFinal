@@ -15,8 +15,10 @@
     <None Remove="Resources\Buscar.png" />
     <None Remove="Resources\Categorias.png" />
     <None Remove="Resources\Categories.png" />
+    <None Remove="Resources\Cerrar.png" />
     <None Remove="Resources\Clientes.png" />
     <None Remove="Resources\Cobros.png" />
+    <None Remove="Resources\Consultar.png" />
     <None Remove="Resources\Customers.png" />
     <None Remove="Resources\Eliminar.png" />
     <None Remove="Resources\Guardar.png" />
@@ -51,10 +53,16 @@
     <Content Include="Resources\Categories.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Resources\Cerrar.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\Clientes.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\Cobros.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Consultar.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\Eliminar.png">

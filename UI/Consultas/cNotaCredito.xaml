@@ -1,11 +1,11 @@
-﻿<Window x:Class="SistemaVentas.UI.Consultas.cNotaCredito"
+﻿<Window x:Name="ConsultaNotasCreditos" x:Class="SistemaVentas.UI.Consultas.cNotaCredito"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SistemaVentas.UI.Consultas"
         mc:Ignorable="d"
-        Title="cNotaCredito" Height="450" Width="800">
+        Title="Consulta Notas Creditos" Height="450" Width="840" Icon="/Resources/Notes.png">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto" MinWidth="834"/>
@@ -49,6 +49,11 @@
                      TextWrapping="Wrap" VerticalAlignment="Top" Width="225" Height="23"/>
 
         <Button x:Name="ConsultarButton" Content="Consultar" HorizontalAlignment="Left" 
-              Margin="702,32,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.404,-0.674" Width="114" Height="28" Grid.RowSpan="2" Click="ConsultarButton_Click"/>
+              Margin="702,32,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.404,-0.674" Width="114" Height="28" Grid.RowSpan="2" Click="ConsultarButton_Click">
+        <Button.Background>
+                <ImageBrush ImageSource="/Resources/Consultar.png" Stretch="Uniform" AlignmentX="Left" AlignmentY="Bottom" />
+        </Button.Background>
+        </Button>
+
     </Grid>
 </Window>

@@ -36,23 +36,31 @@ namespace SistemaVentas
 
         }
 
-
         private void EntrarButton_Click(object sender, RoutedEventArgs e)
         {
             string usuario = this.UsuarioTextBox.Text;
             string password = this.PasswordBox.Password;
 
             if (usuario == "" && password == "")
-            {
-
-                MessageBox.Show(UsuarioTextBox.Text, "Ingrese Datos Correctos");
+            { 
+                MessageBox.Show(usuario, "Ingrese Datos Correctos", MessageBoxButton.OKCancel, MessageBoxImage.Information);
                 MessageBox.Show("Favor Llene los campos");
             }
+
+            if (password == "")
+            {
+                MessageBox.Show("Debe agregar una Contraseña", "Aviso", MessageBoxButton.OK, MessageBoxImage.Error);
+                PasswordBox.Focus();
+            }
             else
-                      if (usuario == "Admin" && password == "1234")
+
+            if (usuario == "Admin" && password == "1234")
             {
                 MenuPrincipal menuP = new MenuPrincipal();
                 menuP.Show();
+                this.Close();
+                return;
+
             }
         }
         

@@ -101,7 +101,7 @@ namespace SistemaVentas.UI.Registros
             {
                 if (!ExisteEnLaBaseDeDatos())
                 {
-                    MessageBox.Show("No se puede modificar una llamada que no existe", "Fallo", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show("No se puede modificar un Usuario que no existe", "Fallo", MessageBoxButton.OK, MessageBoxImage.Error);
                     return;
                 }
                 paso = UsuariosBLL.Modificar(usuarios);
@@ -109,15 +109,15 @@ namespace SistemaVentas.UI.Registros
 
             //Informar el resultado
             if (paso)
+            {
                 MessageBox.Show("Guardado!!", "Exito", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
             else
+            {
                 MessageBox.Show("No fue posible guardar!!", "Fallo", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
-        private void NuevobButton_Click(object sender, RoutedEventArgs e)
-        {
-            Limpiar();
-        }
 
         private void EliminarButton_Click(object sender, RoutedEventArgs e)
         {
@@ -168,6 +168,11 @@ namespace SistemaVentas.UI.Registros
                 MessageBox.Show("Usuario no encontrado");
             }
 
+        }
+
+        private void NuevoButton_Click(object sender, RoutedEventArgs e)
+        {
+            Limpiar();
         }
     }
 }

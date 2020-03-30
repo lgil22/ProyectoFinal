@@ -113,6 +113,16 @@ namespace SistemaVentas.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        internal static byte[] Cerrar {
+            get {
+                object obj = ResourceManager.GetObject("Cerrar", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         internal static byte[] Clientes {
             get {
                 object obj = ResourceManager.GetObject("Clientes", resourceCulture);
@@ -126,6 +136,16 @@ namespace SistemaVentas.Properties {
         internal static byte[] Cobros {
             get {
                 object obj = ResourceManager.GetObject("Cobros", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Consultar {
+            get {
+                object obj = ResourceManager.GetObject("Consultar", resourceCulture);
                 return ((byte[])(obj));
             }
         }

@@ -57,7 +57,7 @@ namespace SistemaVentas.UI.Inicio
             regV.Show();
         }
 
-        private void MenuFactura_Click(object sender, RoutedEventArgs e)
+        private void MenuFacturar_Click(object sender, RoutedEventArgs e)
         {
             rFacturas regF = new rFacturas();
             regF.Show();
@@ -105,6 +105,13 @@ namespace SistemaVentas.UI.Inicio
         {
             cCategoria C = new cCategoria();
             C.Show();
+        }
+
+        private void CerrarSesionButton_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow login = new MainWindow();
+            this.Close();
+            login.Show();
         }
     }
 }

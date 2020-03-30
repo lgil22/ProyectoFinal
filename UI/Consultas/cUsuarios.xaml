@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SistemaVentas.UI.Consultas"
         mc:Ignorable="d"
-        Title="Consulta Usuarios" Height="450" Width="840" WindowStartupLocation="CenterScreen">
+        Title="Consulta Usuarios" Height="450" Width="840" WindowStartupLocation="CenterScreen" Icon="/Resources/Users.png">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto" MinWidth="834"/>
@@ -47,7 +47,11 @@
                      TextWrapping="Wrap" VerticalAlignment="Top" Width="225" Height="23"/>
 
         <Button x:Name="ConsultarButton" Content="Consultar" HorizontalAlignment="Left" 
-                    Margin="702,32,0,0" VerticalAlignment="Top" Width="114" Height="28" Grid.RowSpan="2" Click="ConsultarButton_Click" />
+                    Margin="702,32,0,0" VerticalAlignment="Top" Width="114" Height="28" Grid.RowSpan="2" Click="ConsultarButton_Click" >
+            <Button.Background>
+                <ImageBrush ImageSource="/Resources/Consultar.png" Stretch="Uniform" AlignmentX="Left" AlignmentY="Bottom" />
+            </Button.Background>
+        </Button>
 
 
     </Grid>
