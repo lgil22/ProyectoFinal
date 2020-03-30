@@ -68,5 +68,18 @@ namespace SistemaVentas.UI.Inicio
            cVentas cVent = new cVentas();
            cVent.Show();
         }
+
+        private void MenuCclientes_Click(object sender, RoutedEventArgs e)
+        {
+            cClientes cC = new cClientes();
+            cC.Show();
+        }
+
+        private void MenuCusuarios_Click(object sender, RoutedEventArgs e)
+        {
+            cUsuarios cU = new cUsuarios();
+            cU.Show();
+        }
+
     }
 }

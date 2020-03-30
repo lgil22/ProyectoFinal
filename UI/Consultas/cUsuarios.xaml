@@ -1,11 +1,11 @@
-﻿<Window x:Name="ConsultaVentas" x:Class="SistemaVentas.UI.Consultas.cVentas"
+﻿<Window x:Name="ConsultaUsuarios" x:Class="SistemaVentas.UI.Consultas.cUsuarios"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SistemaVentas.UI.Consultas"
         mc:Ignorable="d"
-        Title="Consulta Ventas" Height="450" Width="840">
+        Title="Consulta Usuarios" Height="450" Width="840" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto" MinWidth="834"/>
@@ -34,20 +34,20 @@
                    Margin="282,10,0,0" VerticalAlignment="Top" Height="26" Width="37"/>
         <ComboBox x:Name="FiltroComboBox" HorizontalAlignment="Left" Margin="282,30,0,0" VerticalAlignment="Top" Width="120" Height="22">
             <ComboBoxItem Content="Todo"/>
-            <ComboBoxItem Content="Venta Id"/>
-            <ComboBoxItem Content="Cliente Id"/>
-            <ComboBoxItem Content="Tipo Pago"/>
-            <ComboBoxItem Content="Fecha"/>
-            <ComboBoxItem Content="Monto"/>
+            <ComboBoxItem Content="Usuario Id"/>
+            <ComboBoxItem Content="Nombres"/>
+            <ComboBoxItem Content="Nombre Usuario"/>
+            <ComboBoxItem Content="Clave"/>
+            <ComboBoxItem Content="Email"/>
+            <ComboBoxItem Content="Tipo"/>
         </ComboBox>
-
 
         <Label x:Name="CriterioLabel" Content="Criterio" HorizontalAlignment="Left" Margin="438,10,0,0" VerticalAlignment="Top" Height="26" Width="49" />
         <TextBox x:Name="CriterioTextBox" HorizontalAlignment="Left" Margin="438,32,0,0" 
                      TextWrapping="Wrap" VerticalAlignment="Top" Width="225" Height="23"/>
 
         <Button x:Name="ConsultarButton" Content="Consultar" HorizontalAlignment="Left" 
-                    Margin="702,32,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.404,-0.674" Width="114" Height="28" Grid.RowSpan="2" Click="ConsultarButton_Click"/>
+                    Margin="702,32,0,0" VerticalAlignment="Top" Width="114" Height="28" Grid.RowSpan="2" Click="ConsultarButton_Click" />
 
 
     </Grid>

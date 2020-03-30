@@ -71,6 +71,10 @@
 
             <MenuItem x:Name="MenuConsultas" Header="Consultas">
                 <MenuItem x:Name="Ventas" Header="Ventas" Click="MenuCVentas_Click"/>
+                <Separator/>
+                <MenuItem x:Name="Clientes" Header="Ventas" Click="MenuCclientes_Click"/>
+                <Separator/>
+                <MenuItem x:Name="Usuarios" Header="Usuarios" Click="MenuCusuarios_Click"/>
             </MenuItem>
 
 
