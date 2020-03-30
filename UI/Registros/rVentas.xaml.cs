@@ -75,14 +75,16 @@ namespace SistemaVentas.UI.Registros
 
         private void AgregarDataGridButton_Click(object sender, RoutedEventArgs e)
         {
-            if (DetalleDataGridVentas.ItemsSource != null)
+         
+            if (DetalleDataGridVentas.ItemsSource != null ) 
             {
                 this.ventas.Detalles = (List<VentaDetalles>)DetalleDataGridVentas.ItemsSource;
             }
 
-            //Agregar un nuevo detalle con los datos introducidos
 
-            this.ventas.Detalles.Add(new VentaDetalles
+                //Agregar un nuevo detalle con los datos introducidos
+
+                this.ventas.Detalles.Add(new VentaDetalles
             {
                 ArticuloId = ArticuloIdTextBox.Text.ToInt(),
                 Cantidad = CantidadTextBox.Text.ToInt(),
@@ -90,7 +92,7 @@ namespace SistemaVentas.UI.Registros
                 //   Precio = Convert.ToInt32(PrecioTextBox),
 
             });
-            Refrescar();
+        //    Refrescar();
             ArticuloIdTextBox.Focus();
             ArticuloIdTextBox.Clear();
             CantidadTextBox.Focus();
@@ -119,12 +121,26 @@ namespace SistemaVentas.UI.Registros
 
         private void RemoverDataGridButton_Click(object sender, RoutedEventArgs e)
         {
-            if (DetalleDataGridVentas.Items.Count > 0 && DetalleDataGridVentas.SelectedItem != null)
+            try
             {
-                //remover la fila
-                ventas.Detalles.RemoveAt(DetalleDataGridVentas.SelectedIndex);
-                Refrescar();
+                if(!string.IsNullOrWhiteSpace(DetalleDataGridVentas.Items.Count.ToString()))
+                {
+                    MessageBox.Show("Deben de estar llenos los campos", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+
+                if (DetalleDataGridVentas.Items.Count > 0 && DetalleDataGridVentas.SelectedItem != null)
+                {
+                    //remover la fila
+                    ventas.Detalles.RemoveAt(DetalleDataGridVentas.SelectedIndex);
+                    Refrescar();
+                }
+
             }
+            catch
+            {
+
+            }
+
         }
 
         private void NuevobButton_Click(object sender, RoutedEventArgs e)

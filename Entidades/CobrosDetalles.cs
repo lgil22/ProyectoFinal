@@ -20,12 +20,5 @@ namespace SistemaVentas.Entidades
             VentaId = 0;
             Monto = 0;
         }
-        public CobrosDetalles(decimal monto)
-        {
-            Id = 0;
-            CobroId = 0;
-            VentaId = 0;
-            Monto = monto;
-        }
     }
 }

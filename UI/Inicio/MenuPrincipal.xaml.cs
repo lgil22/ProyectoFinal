@@ -56,5 +56,10 @@ namespace SistemaVentas.UI.Inicio
             regV.Show();
         }
 
+        private void MenuFactura_Click(object sender, RoutedEventArgs e)
+        {
+            rFacturas regF = new rFacturas();
+            regF.Show();
+        }
     }
 }

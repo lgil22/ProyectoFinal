@@ -11,6 +11,10 @@
             <Menu.Background>
                 <ImageBrush Stretch="Uniform" ImageSource="/Resources/Principal.png"/>
             </Menu.Background>
+
+            <MenuItem x:Name="MenuArchivo" Header="Archivo">
+            </MenuItem>
+           
             <MenuItem x:Name="MenuRegistros" Header="Registros">
                 <MenuItem Header="Articulos" Click="MenuArticulos_Click">
                     <MenuItem.Background>
@@ -60,7 +64,13 @@
                     </MenuItem.Background>
                 </MenuItem>
             </MenuItem>
-        </Menu>
+            
+            <MenuItem x:Name="MenuFacturar" Header="Facturar">
+                <MenuItem x:Name="Factura" Header="Factura" Click="MenuFactura_Click"/>
+            </MenuItem>
 
+
+        </Menu>
+        
     </Grid>
 </Window>

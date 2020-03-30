@@ -27,9 +27,6 @@ namespace SistemaVentas.UI.Registros
             this.DataContext = cobro;
         }
 
-        
-
-
         private void reCargar()
         {
             this.DataContext = null;
@@ -134,7 +131,7 @@ namespace SistemaVentas.UI.Registros
                 if (CobrosBLL.Eliminar(id))
                     MessageBox.Show("Eliminado", "Exito", MessageBoxButton.OK, MessageBoxImage.Information);
                 else
-                    MessageBox.Show(CobrosIdTextBox.Text, "No se puede eliminar una venta que no existe");
+                    MessageBox.Show(CobrosIdTextBox.Text, "No se puede eliminar una Cobro que no existe");
 
             }
             catch
@@ -163,6 +160,10 @@ namespace SistemaVentas.UI.Registros
 
         private void AgregarDataGridButton_Click(object sender, RoutedEventArgs e)
         {
+            if (!string.IsNullOrWhiteSpace(DetalleDataGridCobro.ItemsSource.ToString()))
+            {
+                MessageBox.Show("Deben de estar llenos los campos", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
             if (DetalleDataGridCobro.ItemsSource != null)
             {
                 this.cobro.Detalle = (List<CobrosDetalles>)DetalleDataGridCobro.ItemsSource;
@@ -174,7 +175,7 @@ namespace SistemaVentas.UI.Registros
                 Id = IdTextBox.Text.ToInt(),
                 VentaId = ventaIdtextBox.Text.ToInt(),
                 CobroId = CobroidTextBox.Text.ToInt(),
-                Monto = MontotextBox.Text.ToInt(),
+                Monto = Convert.ToDecimal(MontotextBox.Text),
 
 
             });
