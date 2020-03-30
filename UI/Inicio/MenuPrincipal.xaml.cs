@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using SistemaVentas.UI.Consultas;
 using SistemaVentas.UI.Registros;
 
 namespace SistemaVentas.UI.Inicio
@@ -60,6 +61,12 @@ namespace SistemaVentas.UI.Inicio
         {
             rFacturas regF = new rFacturas();
             regF.Show();
+        }
+
+        private void MenuCVentas_Click(object sender, RoutedEventArgs e)
+        {
+           cVentas cVent = new cVentas();
+           cVent.Show();
         }
     }
 }

@@ -105,10 +105,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="UI\Consultas\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameWorkCore.SqLite" Version="3.1.3" />
     <PackageReference Include="Microsoft.EntityFrameWorkCore.Tools" Version="3.1.3">
       <PrivateAssets>all</PrivateAssets>
