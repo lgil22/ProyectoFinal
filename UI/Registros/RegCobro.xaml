@@ -109,14 +109,20 @@
             </TextBox>
         </StackPanel>
 
-
-
-        <Button x:Name="AgregarDataGridButton" Content="Agregar" Grid.Column="3" HorizontalAlignment="Left"  Margin="47,18,0,0" Grid.Row="10" VerticalAlignment="Top" Height="33" Width="108" Click="AgregarDataGridButton_Click" >
+        <Button x:Name="AgregarDataGridButton" Grid.Column="3" Content="Agregar" 
+                Margin="97,15,-38,0" Grid.Row="10" VerticalAlignment="Top" Height="28" Click="AgregarDataGridButton_Click" RenderTransformOrigin="0.5,0.5">
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="0.203"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Button.RenderTransform>
             <Button.Background>
                 <ImageBrush ImageSource="/Resources/Mas.png" Stretch="Uniform" AlignmentX="Left" AlignmentY="Bottom" />
             </Button.Background>
         </Button>
-
         <Button x:Name="RemoverDataGridButton" Content="Remover" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Height="27"  Margin="16,119,0,0" Grid.Row="11" VerticalAlignment="Top" Width="76" Click="RemoverDataGridButton_Click" >
             <Button.Background>
                 <ImageBrush ImageSource="/Resources/Remover.png" Stretch="Uniform" AlignmentX="Left" AlignmentY="Bottom" TileMode="None" />
@@ -127,7 +133,6 @@
         <StackPanel Grid.Row="4" Grid.Column="0" Margin="0,12,5,31">
             <Label Content="Fecha" FontSize="15" Height="26"/>
         </StackPanel>
-
 
 
         <StackPanel Grid.Row="2" Grid.Column="1" Margin="0,14,90,33">
@@ -142,11 +147,11 @@
             </TextBox>
         </StackPanel>
 
-        <GroupBox x:Name="AgregarcobroGroupBox" FontSize="14" Header="Agregar Cobro" Grid.Row="10" Grid.ColumnSpan="4" Margin="10,0,-6,0" Grid.RowSpan="3" Height="206" VerticalAlignment="Center">
+        <GroupBox x:Name="AgregarcobroGroupBox" FontSize="14" Header="Agregar Cobro" Grid.Row="10" Grid.ColumnSpan="4" Margin="10,0,-45,0" Grid.RowSpan="3" Height="206" VerticalAlignment="Center">
 
-            <DataGrid x:Name="DetalleDataGridCobro" Height="116">
+            <DataGrid x:Name="DetalleDataGridCobro" Height="102" Margin="0,0,-2,0">
                 <DataGrid.ItemsSource>
-                    <Binding Path="Detalles" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                    <Binding Path="Detalle" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
                             <src:ValidaciónString x:Name="ValidaciónString" ValidatesOnTargetUpdated="True"/>
                         </Binding.ValidationRules>
@@ -207,9 +212,9 @@
 
 
 
-        <Label  Content=" Id:" Grid.Row="10" VerticalAlignment="Center"  Margin="70,0,0,0" FontSize="12"/>
+        <Label  Content=" Id:" Grid.Row="10" VerticalAlignment="Top"  Margin="12,18,58,0" FontSize="12"/>
 
-        <TextBox x:Name="IdTextBox" HorizontalAlignment="Right" Margin="92,0,0,0" Grid.Row="10" TextWrapping="Wrap" VerticalAlignment="Center" Width="58">
+        <TextBox x:Name="IdTextBox" HorizontalAlignment="Right" Margin="0,22,38,0" Grid.Row="10" TextWrapping="Wrap" VerticalAlignment="Top" Width="58">
             <Binding Path="Id" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                 <Binding.ValidationRules>
                     <ExceptionValidationRule/>
@@ -217,10 +222,10 @@
             </Binding>
         </TextBox>
 
-        <Label  Content="cobroId:" Grid.Column="2" HorizontalAlignment="Left" 
-               Margin="10,0,0,0" Grid.Row="10" VerticalAlignment="Center" Width="57"/>
-        <TextBox x:Name="CobroidTextBox" Grid.Column="2" HorizontalAlignment="Left" Margin="72,0,0,0" Grid.Row="10" 
-                 TextWrapping="Wrap" VerticalAlignment="Center" Width="68" >
+        <Label  Content="cobroId:" Grid.Column="1" HorizontalAlignment="Left" 
+               Margin="110,18,0,0" Grid.Row="10" VerticalAlignment="Top" Width="57" Grid.ColumnSpan="2"/>
+        <TextBox x:Name="CobroidTextBox" Grid.Column="2" HorizontalAlignment="Left" Margin="22,22,0,0" Grid.Row="10" 
+                 TextWrapping="Wrap" VerticalAlignment="Top" Width="68" >
             <Binding Path="cobro" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                 <Binding.ValidationRules>
                     <src:IdValidacion x:Name="CobroId" ValidatesOnTargetUpdated="True"/>
@@ -228,10 +233,21 @@
             </Binding>
         </TextBox>
 
-        <Label  Content="VentaId:" Grid.Column="1" HorizontalAlignment="Left" 
-               Margin="19,0,0,0" Grid.Row="10" VerticalAlignment="Center" Width="67"/>
-        <TextBox x:Name="ventaIdtextBox" Grid.Column="1" HorizontalAlignment="Left" Margin="72,0,0,0" Grid.Row="10" 
-                 TextWrapping="Wrap" VerticalAlignment="Center" Width="68" TextChanged="CantidadTextBox_TextChanged">
+        <Label  Content="Monto:" Grid.Column="2" HorizontalAlignment="Left" 
+               Margin="110,18,0,0" Grid.Row="10" VerticalAlignment="Top" Width="57" Grid.ColumnSpan="2"/>
+        <TextBox x:Name="MontoTextBox" Grid.Column="3" HorizontalAlignment="Left" Margin="22,22,0,0" Grid.Row="10" 
+                 TextWrapping="Wrap" VerticalAlignment="Top" Width="68" TextChanged="MontoTextBox_TextChanged_1" >
+            <Binding Path="cobro" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                <Binding.ValidationRules>
+                    <src:IdValidacion x:Name="Monto" ValidatesOnTargetUpdated="True"/>
+                </Binding.ValidationRules>
+            </Binding>
+        </TextBox>
+
+        <Label  Content="VentaId:" HorizontalAlignment="Left" 
+               Margin="117,18,0,0" Grid.Row="10" VerticalAlignment="Top" Width="67" Grid.ColumnSpan="2"/>
+        <TextBox x:Name="ventaIdtextBox" Grid.Column="1" HorizontalAlignment="Left" Margin="30,22,0,0" Grid.Row="10" 
+                 TextWrapping="Wrap" VerticalAlignment="Top" Width="68" TextChanged="CantidadTextBox_TextChanged">
             <Binding Path="Venta" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                 <Binding.ValidationRules>
                     <src:IdValidacion x:Name="ventaValidacion" ValidatesOnTargetUpdated="True"/>

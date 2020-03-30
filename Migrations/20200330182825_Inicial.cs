@@ -67,7 +67,7 @@ namespace SistemaVentas.Migrations
                     ArticuloId = table.Column<int>(nullable: false),
                     Fecha = table.Column<DateTime>(nullable: false),
                     Cantidad = table.Column<decimal>(nullable: false),
-                    Monto = table.Column<decimal>(nullable: false)
+                    Monto = table.Column<float>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -162,7 +162,7 @@ namespace SistemaVentas.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     CobroId = table.Column<int>(nullable: false),
                     VentaId = table.Column<int>(nullable: false),
-                    Monto = table.Column<decimal>(nullable: false),
+                    Monto = table.Column<float>(nullable: false),
                     CobrosId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>

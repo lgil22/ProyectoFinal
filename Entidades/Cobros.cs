@@ -14,7 +14,7 @@ namespace SistemaVentas.Entidades
         public int ArticuloId { get; set; }
         public DateTime Fecha { get; set; }
         public decimal Cantidad { get; set; }
-        public decimal Monto { get; set; }
+        public float Monto { get; set; }
 
         [ForeignKey("CobrosId")]
        

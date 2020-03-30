@@ -159,7 +159,7 @@ namespace SistemaVentas.UI.Registros
 
             //Determinar si es guardar o modificar
 
-            if (string.IsNullOrWhiteSpace(VentaIdTextBox.Text) || VentaIdTextBox.Text == "0")
+            if (string.IsNullOrWhiteSpace(VentaIdTextBox.Text) || (VentaIdTextBox.Text == "0"))
                 paso = VentasBLL.Guardar(ventas);
             else
             {
@@ -186,7 +186,7 @@ namespace SistemaVentas.UI.Registros
             try
             {
 
-                if (!string.IsNullOrWhiteSpace(VentaIdTextBox.Text) && !string.IsNullOrWhiteSpace(ClienteIdTextBox.Text))
+                if (!string.IsNullOrWhiteSpace(VentaIdTextBox.Text) && (!string.IsNullOrWhiteSpace(ClienteIdTextBox.Text)))
                 {
                     MessageBox.Show("Deben de estar llenos los campos", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
@@ -207,7 +207,7 @@ namespace SistemaVentas.UI.Registros
 
         private void CantidadTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (!string.IsNullOrWhiteSpace(CantidadTextBox.Text) && !string.IsNullOrWhiteSpace(PrecioTextBox.Text))
+            if (!string.IsNullOrWhiteSpace(CantidadTextBox.Text) && (!string.IsNullOrWhiteSpace(PrecioTextBox.Text)))
             {
                 int Num1;
                 decimal Num2;
@@ -235,7 +235,7 @@ namespace SistemaVentas.UI.Registros
 
         private void MontoTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (!string.IsNullOrWhiteSpace(CantidadTextBox.Text) && !string.IsNullOrWhiteSpace(PrecioTextBox.Text))
+            if (!string.IsNullOrWhiteSpace(CantidadTextBox.Text) && (!string.IsNullOrWhiteSpace(PrecioTextBox.Text)))
             {
                 int Num1;
                 decimal Num2;

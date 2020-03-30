@@ -141,7 +141,7 @@
 
             <DataGrid x:Name="DetalleDataGridVentas" Height="132" Margin="0,0,-2,0">
                 <DataGrid.ItemsSource>
-                    <Binding Path="Detalles" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                    <Binding Path="Detalle" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
                             <src:ValidaciónString x:Name="ValidaciónString" ValidatesOnTargetUpdated="True"/>
                         </Binding.ValidationRules>

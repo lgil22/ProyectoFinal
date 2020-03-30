@@ -66,7 +66,7 @@ namespace SistemaVentas.UI.Registros
                 CantidadTextBox.Focus();
                 paso = false;
             }
-            if (string.IsNullOrWhiteSpace (PreciotextBox.Text))
+            if (string.IsNullOrWhiteSpace(PreciotextBox.Text))
             {
                 MessageBox.Show("Debe realizar un cobro", "Aviso", MessageBoxButton.OKCancel, MessageBoxImage.Information);
                 PreciotextBox.Focus();
@@ -76,11 +76,12 @@ namespace SistemaVentas.UI.Registros
             {
                 MessageBox.Show("Debe agregar un CobroId", "Aviso", MessageBoxButton.OKCancel, MessageBoxImage.Information);
                 IdTextBox.Focus();
-                ventaIdtextBox.Focus();
                 CobroidTextBox.Focus();
+                ventaIdtextBox.Focus();
+                MontoTextBox.Focus();
                 paso = false;
             }
-           
+
             return paso;
         }
 
@@ -91,7 +92,7 @@ namespace SistemaVentas.UI.Registros
                 return;
 
 
-            if ( CobrosIdTextBox.Text == "0")
+            if (string.IsNullOrWhiteSpace(CobrosIdTextBox.Text) || (CobrosIdTextBox.Text == "0"))
                 paso = CobrosBLL.Guardar(cobro);
             else
             {
@@ -119,10 +120,10 @@ namespace SistemaVentas.UI.Registros
             int.TryParse(CobrosIdTextBox.Text, out id);
 
             Limpiar();
-      
+
             try
             {
-                if (!string.IsNullOrWhiteSpace(CobrosIdTextBox.Text) )
+                if (!string.IsNullOrWhiteSpace(CobrosIdTextBox.Text))
                 {
                     MessageBox.Show("Debe el campo cobroId", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
@@ -158,7 +159,7 @@ namespace SistemaVentas.UI.Registros
             }
         }
 
-   
+
         private void PreciotextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (!string.IsNullOrWhiteSpace(CantidadTextBox.Text) && !string.IsNullOrWhiteSpace(PreciotextBox.Text))
@@ -173,7 +174,7 @@ namespace SistemaVentas.UI.Registros
             }
         }
 
-       
+
 
         private void MontotextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -191,7 +192,7 @@ namespace SistemaVentas.UI.Registros
 
         private void ClienteIdComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if(DetalleDataGridCobro !=null)
+            if (DetalleDataGridCobro != null)
             {
                 if (ClienteIdComboBox.SelectedIndex == 0)
                 {
@@ -208,18 +209,18 @@ namespace SistemaVentas.UI.Registros
 
         private void CantidadTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            
-                if (!string.IsNullOrWhiteSpace(CantidadTextBox.Text) && !string.IsNullOrWhiteSpace(PreciotextBox.Text))
-                {
-                    int Num1;
-                    decimal Num2;
 
-                    Num1 = Convert.ToInt32(CantidadTextBox.Text);
-                    Num2 = Convert.ToDecimal(PreciotextBox.Text);
+            if (!string.IsNullOrWhiteSpace(CantidadTextBox.Text) && (!string.IsNullOrWhiteSpace(PreciotextBox.Text)))
+            {
+                int Num1;
+                decimal Num2;
 
-                    MontotextBox.Text = Convert.ToString(Num1 * Num2);
-                }
+                Num1 = Convert.ToInt32(CantidadTextBox.Text);
+                Num2 = Convert.ToDecimal(PreciotextBox.Text);
+
+                MontotextBox.Text = Convert.ToString(Num1 * Num2);
             }
+        }
 
         private void RemoverDataGridButton_Click(object sender, RoutedEventArgs e)
         {
@@ -233,33 +234,48 @@ namespace SistemaVentas.UI.Registros
 
         private void AgregarDataGridButton_Click(object sender, RoutedEventArgs e)
         {
+
             if (DetalleDataGridCobro.ItemsSource != null)
             {
                 this.cobro.Detalle = (List<CobrosDetalles>)DetalleDataGridCobro.ItemsSource;
             }
 
+
+            //Agregar un nuevo detalle con los datos introducidos
+
             this.cobro.Detalle.Add(new CobrosDetalles
             {
                 Id = IdTextBox.Text.ToInt(),
-                VentaId = ventaIdtextBox.Text.ToInt(),
                 CobroId = CobroidTextBox.Text.ToInt(),
-                Monto = MontotextBox.Text.ToInt(),
+                VentaId = ventaIdtextBox.Text.ToInt(),
+                Monto = MontoTextBox.Text.ToInt(),
 
-
-            }) ;
+            });
             reCargar();
             IdTextBox.Focus();
             IdTextBox.Clear();
-            ventaIdtextBox.Focus();
-            ventaIdtextBox.Clear();
             CobroidTextBox.Focus();
             CobroidTextBox.Clear();
-            MontotextBox.Focus();
-            MontotextBox.Clear();
+            ventaIdtextBox.Focus();
+            ventaIdtextBox.Clear();
+            MontoTextBox.Focus();
+            MontoTextBox.Clear();
+
+        }
+
+        private void MontoTextBox_TextChanged_1(object sender, TextChangedEventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(CantidadTextBox.Text) && !string.IsNullOrWhiteSpace(PreciotextBox.Text))
+            {
+                int Num1;
+                decimal Num2;
+
+                Num1 = Convert.ToInt32(CantidadTextBox.Text);
+                Num2 = Convert.ToDecimal(PreciotextBox.Text);
+
+                MontotextBox.Text = Convert.ToString(Num1 * Num2);
+            }
         }
     }
 }
- 
-
-
 

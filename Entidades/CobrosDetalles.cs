@@ -11,7 +11,7 @@ namespace SistemaVentas.Entidades
         public int Id { get; set; }
         public int CobroId { get; set; }
         public int VentaId { get; set; }
-        public decimal Monto { get; set; }
+        public float Monto { get; set; }
 
         public CobrosDetalles()
         {
