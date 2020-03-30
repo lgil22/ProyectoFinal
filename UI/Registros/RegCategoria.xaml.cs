@@ -136,7 +136,7 @@ namespace SistemaVentas.UI.Registros
             }
             catch
             {
-
+                  
             }
 
         }
