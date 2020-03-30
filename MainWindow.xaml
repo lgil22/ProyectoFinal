@@ -25,6 +25,7 @@
             <PasswordBox x:Name="PasswordBox" Foreground="Black" FontSize="14"/>
             <Button x:Name="EntrarButton" Margin="60 10" Background="#545d6a" Foreground="Black" Height="40" Click="EntrarButton_Click">Entrar
             </Button>
+            <Label x:Name="Fecha" Content="Label"/>
         </StackPanel>
     </Border>
 </Window>
