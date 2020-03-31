@@ -78,17 +78,25 @@
             <Label Content="NombreCategoria" FontSize="15" Width="132"/>
         </StackPanel>
 
-        <StackPanel Grid.Row="4" Grid.Column="1" Margin="0,1,5,67" Grid.RowSpan="2">
-            <TextBox  x:Name="NombreCategoria" Height="30" Background="#FFFDFBFB">
-                <TextBox.Text>
-                    <Binding  Path="LlamadaId" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+        <StackPanel Grid.Row="4" Margin="1,8,9,26" Grid.Column="1">
+            <ComboBox x:Name="NombreCategoriaCombro" Height="25" Width="138">
+                <ComboBoxItem Content="Damas"/>
+                <ComboBoxItem Content="Caballeros"/>
+                <ComboBoxItem Content="Niños"/>
+                <ComboBoxItem Content="Limpieza Para Hogar"/>
+                <ComboBoxItem>
+                    <Binding Path="NombreCategoria" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
-                            <src:ValidaciónString x:Name="NombreCategoriaValidacion" ValidatesOnTargetUpdated="True"/>
+                            <ExceptionValidationRule/>
                         </Binding.ValidationRules>
                     </Binding>
-                </TextBox.Text>
-            </TextBox>
+                </ComboBoxItem>
+            </ComboBox>
         </StackPanel>
+
+        
+
+        
 
     </Grid>
 </Window>
