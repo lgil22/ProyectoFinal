@@ -1,4 +1,4 @@
-﻿<Window x:Class="SistemaVentas.UI.Registros.rFacturas"
+﻿<Window x:Name="Facturacion" x:Class="SistemaVentas.UI.Registros.rFacturas"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -6,8 +6,8 @@
         xmlns:local="clr-namespace:SistemaVentas.UI.Registros"
         xmlns:src="clr-namespace:SistemaVentas.Validaciones"
         mc:Ignorable="d"
-        Title="Registro Facturas" Height="650" Width="800">
-    <Grid x:Name="print">
+        Title="Facturacion" Height="650" Width="650" Icon="/Resources/Facturacion.png" WindowStartupLocation="CenterScreen" WindowState="Maximized">
+    <Grid x:Name="print" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}">
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="150"/>
@@ -199,7 +199,12 @@
                 Margin="16,88,0,0" Grid.Row="9" VerticalAlignment="Top" Width="112" Click="RemoverDataGridButton_Click">
 
         </Button>
-        <Button x:Name="ImprimirButton" Content="Imprimir" Grid.Column="3" HorizontalAlignment="Center" Margin="0,33,0,0" Grid.Row="3" Height="26" VerticalAlignment="Top" Width="62" Click="ImprimirButton_Click"/>
+        <Button x:Name="ImprimirButton" Content="" Grid.Column="3" HorizontalAlignment="Left" Margin="44,20,0,0" Grid.Row="3"
+                Height="36" VerticalAlignment="Top" Width="31" Click="ImprimirButton_Click" >
+            <Button.Background>
+                <ImageBrush ImageSource="/Resources/printer.png" Stretch="Uniform"/>
+            </Button.Background>
+        </Button>
 
     </Grid>
 </Window>

@@ -12,7 +12,7 @@
                 <ImageBrush Stretch="Uniform" ImageSource="/Resources/Principal.png"/>
             </Menu.Background>
 
-                                              <!-- ********************** Menu Registros ************************** -->
+            <!-- ********************** Menu Registros ************************** -->
             <MenuItem x:Name="MenuArchivo" Header="Archivo">
             </MenuItem>
 
@@ -58,8 +58,6 @@
                     </MenuItem.Background>
                 </MenuItem>
                 <Separator/>
-                
-                                                 <!-- ********************** Menu Ventas ************************** -->
 
                 <MenuItem Header="Ventas" Click="MenuVentas_Click">
                     <MenuItem.Background>
@@ -67,76 +65,89 @@
                     </MenuItem.Background>
                 </MenuItem>
             </MenuItem>
-          
-           
+
+
+            <!-- ********************** Menu Ventas ************************** -->
+
             <MenuItem x:Name="MenuVentas" Header="Ventas">
-                <MenuItem x:Name="Facturar" Header="Facturar" Click="MenuFacturar_Click"/>
+                <MenuItem x:Name="Facturar" Header="Facturar" Click="MenuFacturar_Click">
+                    <MenuItem.Background>
+                        <ImageBrush ImageSource="/SistemaVentas;component/Resources/Facturacion.png"  Stretch="Uniform" AlignmentX="Left" AlignmentY="Bottom" />
+                    </MenuItem.Background>
+                </MenuItem>
                 <Separator/>
-                <MenuItem x:Name="Deudas" Header="Deudas" Click="MenuDeudas_Click"/>
+
+                <MenuItem Header="Articulos" Click="MenuDeudas_Click">
+                    <MenuItem.Background>
+                        <ImageBrush ImageSource="/SistemaVentas;component/Resources/Deudas.png"  Stretch="Uniform" AlignmentX="Left" AlignmentY="Bottom" />
+                    </MenuItem.Background>
+                </MenuItem>
+                <Separator/>
             </MenuItem>
 
-                                             <!-- ********************** Menu Consultas ************************** -->
 
-            <MenuItem x:Name="MenuConsultas" Header="Consultas">
-                <MenuItem x:Name="Ventas" Header="Ventas" Click="MenuCVentas_Click">
-                    <MenuItem.Background>
-                        <ImageBrush ImageSource="/SistemaVentas;component/Resources/Ventas.png"  Stretch="Uniform" AlignmentX="Left" AlignmentY="Bottom" />
-                    </MenuItem.Background>
-                </MenuItem>
-                <Separator/>
-                
-                <MenuItem x:Name="Clientes" Header="Clientes" Click="MenuCclientes_Click">
-                    <MenuItem.Background>
-                        <ImageBrush ImageSource="/SistemaVentas;component/Resources/Clientes.png"  Stretch="Uniform" AlignmentX="Left" AlignmentY="Bottom" />
-                    </MenuItem.Background>
-                </MenuItem>
-                <Separator/>
-                
-                <MenuItem x:Name="Usuarios" Header="Usuarios" Click="MenuCusuarios_Click">
-                <MenuItem.Background>
-                    <ImageBrush ImageSource="/SistemaVentas;component/Resources/Usuarios.png"  Stretch="Uniform" AlignmentX="Left" AlignmentY="Bottom" />
-                </MenuItem.Background>
-            </MenuItem>
-            <Separator/>
-                
-                <MenuItem x:Name="Cobros" Header="Cobros" Click="MenucCobros_Click">
-                    <MenuItem.Background>
-                        <ImageBrush ImageSource="/SistemaVentas;component/Resources/Cobros.png"  Stretch="Uniform" AlignmentX="Left" AlignmentY="Bottom" />
-                    </MenuItem.Background>
-                </MenuItem>
-                <Separator/>
+            <!-- ********************** Menu Consultas ************************** -->
 
-                <MenuItem x:Name="Articulos" Header="Articulos" Click="MenucArticulos_Click">
-                    <MenuItem.Background>
-                        <ImageBrush ImageSource="/SistemaVentas;component/Resources/Articulos.png"  Stretch="Uniform" AlignmentX="Left" AlignmentY="Bottom" />
-                    </MenuItem.Background>
-                </MenuItem>
-                <Separator/>
-                
-                <MenuItem x:Name="NotaCredito" Header="Notas Creditos" Click="MenucNotaCredito_Click">
-                    <MenuItem.Background>
-                        <ImageBrush ImageSource="/SistemaVentas;component/Resources/Notas.png"  Stretch="Uniform" AlignmentX="Left" AlignmentY="Bottom" />
-                    </MenuItem.Background>
-                </MenuItem>
-                <Separator/>
-                
-                <MenuItem x:Name="Categoria" Header="Categorias" Click="MenucCategoria_Click">
-                    <MenuItem.Background>
-                        <ImageBrush ImageSource="/SistemaVentas;component/Resources/Categorias.png"  Stretch="Uniform" AlignmentX="Left" AlignmentY="Bottom" />
-                    </MenuItem.Background>
-                </MenuItem>
+                <MenuItem x:Name="MenuConsultas" Header="Consultas">
+                    <MenuItem x:Name="Ventas" Header="Ventas" Click="MenuCVentas_Click">
+                        <MenuItem.Background>
+                            <ImageBrush ImageSource="/SistemaVentas;component/Resources/Ventas.png"  Stretch="Uniform" AlignmentX="Left" AlignmentY="Bottom" />
+                        </MenuItem.Background>
+                    </MenuItem>
+                    <Separator/>
 
-                                  <!-- ********************** Boton Cerrar Sesion ************************** -->
+                    <MenuItem x:Name="Clientes" Header="Clientes" Click="MenuCclientes_Click">
+                        <MenuItem.Background>
+                            <ImageBrush ImageSource="/SistemaVentas;component/Resources/Clientes.png"  Stretch="Uniform" AlignmentX="Left" AlignmentY="Bottom" />
+                        </MenuItem.Background>
+                    </MenuItem>
+                    <Separator/>
+
+                    <MenuItem x:Name="Usuarios" Header="Usuarios" Click="MenuCusuarios_Click">
+                        <MenuItem.Background>
+                            <ImageBrush ImageSource="/SistemaVentas;component/Resources/Usuarios.png"  Stretch="Uniform" AlignmentX="Left" AlignmentY="Bottom" />
+                        </MenuItem.Background>
+                    </MenuItem>
+                    <Separator/>
+
+                    <MenuItem x:Name="Cobros" Header="Cobros" Click="MenucCobros_Click">
+                        <MenuItem.Background>
+                            <ImageBrush ImageSource="/SistemaVentas;component/Resources/Cobros.png"  Stretch="Uniform" AlignmentX="Left" AlignmentY="Bottom" />
+                        </MenuItem.Background>
+                    </MenuItem>
+                    <Separator/>
+
+                    <MenuItem x:Name="Articulos" Header="Articulos" Click="MenucArticulos_Click">
+                        <MenuItem.Background>
+                            <ImageBrush ImageSource="/SistemaVentas;component/Resources/Articulos.png"  Stretch="Uniform" AlignmentX="Left" AlignmentY="Bottom" />
+                        </MenuItem.Background>
+                    </MenuItem>
+                    <Separator/>
+
+                    <MenuItem x:Name="NotaCredito" Header="Notas Creditos" Click="MenucNotaCredito_Click">
+                        <MenuItem.Background>
+                            <ImageBrush ImageSource="/SistemaVentas;component/Resources/Notas.png"  Stretch="Uniform" AlignmentX="Left" AlignmentY="Bottom" />
+                        </MenuItem.Background>
+                    </MenuItem>
+                    <Separator/>
+
+                    <MenuItem x:Name="Categoria" Header="Categorias" Click="MenucCategoria_Click">
+                        <MenuItem.Background>
+                            <ImageBrush ImageSource="/SistemaVentas;component/Resources/Categorias.png"  Stretch="Uniform" AlignmentX="Left" AlignmentY="Bottom" />
+                        </MenuItem.Background>
+                    </MenuItem>
+               
+                
+                <!-- ********************** Boton Cerrar Sesion ************************** -->
+
             </MenuItem>
             <Button x:Name="CerrarSesionButton" Content= "      Cerrar Sesión" Click="CerrarSesionButton_Click" Width="136" Height="30" FontWeight="Bold" FontSize="14">
                 <Button.Background>
                     <ImageBrush ImageSource="/Resources/Cerrar.png" Stretch="Uniform" AlignmentX="Left" AlignmentY="Bottom" />
                 </Button.Background>
             </Button>
-
-
-
         </Menu>
+
 
     </Grid>
 </Window>

@@ -20,7 +20,9 @@
     <None Remove="Resources\Cobros.png" />
     <None Remove="Resources\Consultar.png" />
     <None Remove="Resources\Customers.png" />
+    <None Remove="Resources\Deudas.png" />
     <None Remove="Resources\Eliminar.png" />
+    <None Remove="Resources\Facturacion.png" />
     <None Remove="Resources\Guardar.png" />
     <None Remove="Resources\Mas.png" />
     <None Remove="Resources\Menu.png" />
@@ -29,6 +31,7 @@
     <None Remove="Resources\Nuevo.png" />
     <None Remove="Resources\Payment.png" />
     <None Remove="Resources\Principal.png" />
+    <None Remove="Resources\printer.png" />
     <None Remove="Resources\Remover.png" />
     <None Remove="Resources\Sales.png" />
     <None Remove="Resources\Seg.png" />
@@ -65,7 +68,13 @@
     <Content Include="Resources\Consultar.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Resources\Deudas.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\Eliminar.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Facturacion.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\Guardar.png">
@@ -90,6 +99,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\Principal.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\printer.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\Remover.png">

@@ -163,9 +163,29 @@ namespace SistemaVentas.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        internal static byte[] Deudas {
+            get {
+                object obj = ResourceManager.GetObject("Deudas", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         internal static byte[] Eliminar {
             get {
                 object obj = ResourceManager.GetObject("Eliminar", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Facturacion {
+            get {
+                object obj = ResourceManager.GetObject("Facturacion", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -246,6 +266,16 @@ namespace SistemaVentas.Properties {
         internal static byte[] Principal {
             get {
                 object obj = ResourceManager.GetObject("Principal", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] printer {
+            get {
+                object obj = ResourceManager.GetObject("printer", resourceCulture);
                 return ((byte[])(obj));
             }
         }
