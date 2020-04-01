@@ -83,7 +83,16 @@
                     </MenuItem.Background>
                 </MenuItem>
                 <Separator/>
+
+                <MenuItem x:Name="Consultas" Header="Consultas">
+                    <MenuItem x:Name="Deuda" Header="Deudas" Click="MenuDeudasC_Click">
+                        <MenuItem.Background>
+                            <ImageBrush ImageSource="/SistemaVentas;component/Resources/Deudas.png"  Stretch="Uniform" AlignmentX="Left" AlignmentY="Bottom" />
+                        </MenuItem.Background>
+                    </MenuItem>
+                </MenuItem>
             </MenuItem>
+
 
 
             <!-- ********************** Menu Consultas ************************** -->

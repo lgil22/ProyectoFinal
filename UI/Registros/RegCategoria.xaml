@@ -84,13 +84,13 @@
                 <ComboBoxItem Content="Caballeros"/>
                 <ComboBoxItem Content="Niños"/>
                 <ComboBoxItem Content="Limpieza Para Hogar"/>
-                <ComboBoxItem>
+                <ComboBox.Text>
                     <Binding Path="NombreCategoria" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
-                            <ExceptionValidationRule/>
+                            <src:ValidaciónString x:Name="NombreValidacionCat" ValidatesOnTargetUpdated="True"/>
                         </Binding.ValidationRules>
                     </Binding>
-                </ComboBoxItem>
+                </ComboBox.Text>
             </ComboBox>
         </StackPanel>
 

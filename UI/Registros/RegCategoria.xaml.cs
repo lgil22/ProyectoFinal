@@ -33,8 +33,7 @@ namespace SistemaVentas.UI.Registros
         {
             CategoriaIdTextBox.Text = "0";
             NombreCategoriaCombro.Text = string.Empty;
-
-          //  reCargar();
+            // reCargar();
         }
         private void reCargar()
         {
@@ -93,11 +92,11 @@ namespace SistemaVentas.UI.Registros
                 if (paso)
                 {
                     Limpiar();
-                    MessageBox.Show("Guardado");
+                    MessageBox.Show("Guardado!!", "Exito", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
                 else
                 {
-                    MessageBox.Show("No se pudo guardar");
+                    MessageBox.Show("No fue posible guardar!!", "Fallo", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
 
             }

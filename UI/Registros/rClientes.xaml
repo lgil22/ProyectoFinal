@@ -172,8 +172,8 @@
             <DatePicker.Text>
                 <Binding Path="FechaNacimiento" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                     <Binding.ValidationRules>
-                        <src:ValidaciónString x:Name="ValidacionStringFechaN" ValidatesOnTargetUpdated="True"/>
                         <ExceptionValidationRule/>
+                        <src:ValidaciónString x:Name="ValidacionFechaN" ValidatesOnTargetUpdated="True"/>
                     </Binding.ValidationRules>
                 </Binding>
             </DatePicker.Text>
