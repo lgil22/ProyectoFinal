@@ -26,6 +26,7 @@ namespace SistemaVentas.UI.Registros
         {
             InitializeComponent();
             this.DataContext = clientes;
+           // ClienteIdTextBox.Text = "0";
         }
 
         private void Refrescar()
@@ -35,8 +36,16 @@ namespace SistemaVentas.UI.Registros
         }
         private void Limpiar()
         {
-            this.clientes = new Clientes();
-            Refrescar();
+           /* ClienteIdTextBox.Text = "0";
+            NombresTextBox.Text = string.Empty;
+            TelefonoTextBox.Text = string.Empty;
+            CelularTextBox.Text = string.Empty;
+            CedulaTextBox.Text = string.Empty;
+            FechaNacTimePicker.SelectedDate = DateTime.Now;
+            EmailTextBox.Text = string.Empty;*/
+
+           // this.clientes = new Clientes();
+             Refrescar();
         }
 
         private bool ExisteEnLaBaseDeDatos()
@@ -76,11 +85,19 @@ namespace SistemaVentas.UI.Registros
                 FechaNacTimePicker.Focus();
                 paso = false;
             }
+
+            if (string.IsNullOrWhiteSpace(EmailTextBox.Text))
+            {
+                MessageBox.Show("EL campo *Email* no puede estar vacio", "Aviso", MessageBoxButton.OKCancel, MessageBoxImage.Information);
+                EmailTextBox.Focus();
+                paso = false;
+            }
             return paso;
         }
 
         private void GuardarButton_Click(object sender, RoutedEventArgs e)
         {
+
             bool paso = false;
 
             if (!Validar())
@@ -107,6 +124,7 @@ namespace SistemaVentas.UI.Registros
                 MessageBox.Show("Guardado!!", "Exito", MessageBoxButton.OK, MessageBoxImage.Information);
             else
                 MessageBox.Show("No fue posible guardar!!", "Fallo", MessageBoxButton.OK, MessageBoxImage.Error);
+
         }
 
         private void NuevobButton_Click(object sender, RoutedEventArgs e)
@@ -123,17 +141,7 @@ namespace SistemaVentas.UI.Registros
 
             try
             {
-                if (!string.IsNullOrWhiteSpace(ClienteIdTextBox.Text))
-                {
-                    MessageBox.Show("Deben de estar llenos los campos", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
-
-                Limpiar();
-
-                if (Validar())
-                {
-                    MessageBox.Show("Vacio");
-                }
+               // Limpiar();
 
                 if (ClientesBLL.Eliminar(id))
                     MessageBox.Show("Eliminado", "Exito", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -149,20 +157,24 @@ namespace SistemaVentas.UI.Registros
 
         private void BuscarButton_Click(object sender, RoutedEventArgs e)
         {
-            Clientes clienteAnterior = ClientesBLL.Buscar(clientes.ClienteId);
 
-            if (clienteAnterior != null)
+            Clientes cliente = ClientesBLL.Buscar((ClienteIdTextBox.Text.ToInt()));
+
+            Limpiar();
+
+            if (clientes != null)
             {
-                MessageBox.Show("Cliente Encontrado");
-                clientes = clienteAnterior;
-                Refrescar();
+                clientes = cliente;
+                 Refrescar();
             }
             else
             {
                 Limpiar();
-                MessageBox.Show("Cliente no encontrado");
+                MessageBox.Show(" No Encontrado !!!", "Informacion", MessageBoxButton.OK, MessageBoxImage.Warning);
+
             }
 
         }
     }
 }
+

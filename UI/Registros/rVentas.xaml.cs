@@ -26,6 +26,7 @@ namespace SistemaVentas.UI.Registros
         {
             InitializeComponent();
             this.DataContext = ventas;
+            VentaIdTextBox.Text = "0";
         }
         private void Refrescar()
         {

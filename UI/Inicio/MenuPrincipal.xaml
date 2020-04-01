@@ -77,7 +77,7 @@
                 </MenuItem>
                 <Separator/>
 
-                <MenuItem Header="Articulos" Click="MenuDeudas_Click">
+                <MenuItem x:Name="Deudas" Header="Deudas" Click="MenuDeudas_Click">
                     <MenuItem.Background>
                         <ImageBrush ImageSource="/SistemaVentas;component/Resources/Deudas.png"  Stretch="Uniform" AlignmentX="Left" AlignmentY="Bottom" />
                     </MenuItem.Background>

@@ -42,8 +42,6 @@ namespace SistemaVentas.UI.Consultas
                             listado = ArticulosBLL.GetList(o => o.ArticulosId == id);
                             break;
 
-
-
                         case 2: // usuario Id
                             int usuario;
                             usuario = int.Parse(CriterioTextBox.Text);

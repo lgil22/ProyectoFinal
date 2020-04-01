@@ -120,22 +120,18 @@ namespace SistemaVentas.UI.Registros
 
             try
             {
-                if (!string.IsNullOrWhiteSpace(ArticuloIdTextBox.Text))
-                {
-                    MessageBox.Show("Deben de estar llenos los campos", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
                 Limpiar();
 
-                if (id > 0)
-                {
-                    ArticulosBLL.Eliminar(id);
-                }
-                MessageBox.Show("No se puede eliminar un articulo que no existe");
+                if (ArticulosBLL.Eliminar(id))
+                    MessageBox.Show("Eliminado", "Exito", MessageBoxButton.OK, MessageBoxImage.Information);
+                else
+                    MessageBox.Show(ArticuloIdTextBox.Text, "No se puede eliminar un cliente que no existe");
             }
             catch
             {
 
             }
+
 
         }
 
@@ -147,17 +143,18 @@ namespace SistemaVentas.UI.Registros
         }
         private void BuscarButton_Click(object sender, RoutedEventArgs e)
         {
-            Articulos articuloAnterior = ArticulosBLL.Buscar(articulo.ArticulosId);
+            Articulos articulos = ArticulosBLL.Buscar((ArticuloIdTextBox.Text.ToInt()));
 
-            if (articuloAnterior != null)
+
+            if (articulo != null)
             {
-                MessageBox.Show("Articulo Encontrado");
-                articulo = articuloAnterior;
+                articulo = articulos;
                 reCargar();
             }
             else
             {
-                MessageBox.Show("Articulo no encontrada");
+                MessageBox.Show(" No Encontrado !!!", "Informacion", MessageBoxButton.OK, MessageBoxImage.Warning);
+
             }
         }
 
