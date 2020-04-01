@@ -66,13 +66,12 @@ namespace SistemaVentas.UI.Consultas
                         listado = CobrosBLL.GetList(o => o.Precio == Prec);
                         break;
 
-                    case 6:
+                    case 6: //monto
                         float monto;
                         monto = float.Parse(CriterioTextBox.Text);
                         listado = CobrosBLL.GetList(o => o.Monto == monto);
                         break;
 
-                
 
                 }
 

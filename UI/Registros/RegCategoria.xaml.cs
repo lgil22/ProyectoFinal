@@ -26,6 +26,7 @@ namespace SistemaVentas.UI.Registros
             
             InitializeComponent();
             this.DataContext = categoria;
+            CategoriaIdTextBox.Text = "0";
         }
 
         private void Limpiar()
@@ -85,21 +86,21 @@ namespace SistemaVentas.UI.Registros
                 else
                 {
                     MessageBox.Show("No se puede modificar una categoria que no existe");
-                    return;
+
                 }
-            } 
 
-            if (paso)
-            {
-                Limpiar();
-                MessageBox.Show("Guardado");
+
+                if (paso)
+                {
+                    Limpiar();
+                    MessageBox.Show("Guardado");
+                }
+                else
+                {
+                    MessageBox.Show("No se pudo guardar");
+                }
+
             }
-            else
-            {
-                MessageBox.Show("No se pudo guardar");
-            }
-
-
         }
 
         private void BuscarButton_Click(object sender, RoutedEventArgs e)
@@ -108,7 +109,7 @@ namespace SistemaVentas.UI.Registros
 
             if (categoriaAnterior != null)
             {
-                MessageBox.Show("Categoria Encontrada");
+                
                 categoria = categoriaAnterior;
                 reCargar();
             }
@@ -120,31 +121,18 @@ namespace SistemaVentas.UI.Registros
 
         private void EliminarButton_Click(object sender, RoutedEventArgs e)
         {
-            int id;
-            int.TryParse(CategoriaIdTextBox.Text, out id);
 
-            Limpiar();
-
-            try
-            {
-                Limpiar();
-
-
-                if (ClientesBLL.Eliminar(id))
+            if (CategoriaBLL.Eliminar(categoria.CategoriaId))
                 {
-                    MessageBox.Show("Eliminado", "Exito", MessageBoxButton.OK, MessageBoxImage.Information);
                     Limpiar();
+                    MessageBox.Show("Eliminado", "Exito");
                 }
-                else
-                {
-                    MessageBox.Show(CategoriaIdTextBox.Text, "No se puede eliminar una categoria que no existe");
-                }
-
-            }
-            catch
+            else
             {
+                MessageBox.Show("No se puede eliminar una categoria que no existe");
 
             }
+           
 
         }
 

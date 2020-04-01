@@ -43,13 +43,9 @@ namespace SistemaVentas.UI.Consultas
 
                     case 3:// Nombre Categoria
 
-                        string nombre;
-                        nombre = string.Format(CriterioTextBox.Text);
-                        listado = CategoriaBLL.GetList(o => o.NombreCategoria == nombre);
+                        listado = CategoriaBLL.GetList(p => p.NombreCategoria.Contains(CriterioTextBox.Text));
                         break;
 
-                      /*  listado = CategoriaBLL.GetList(p => p.NombreCategoria.Contains(CriterioTextBox.Text));
-                        break;*/
 
                 }
 

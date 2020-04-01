@@ -25,6 +25,7 @@ namespace SistemaVentas.UI.Registros
         {
             InitializeComponent();
             this.DataContext = credito;
+            NotaIdTextBox.Text = "0";
         }
         private void reCargar()
         {
@@ -36,12 +37,15 @@ namespace SistemaVentas.UI.Registros
         {
             NotaIdTextBox.Text = "0";
             FechaDatePicke.DisplayDate = DateTime.Now;
-            ClienteIdComboBox.SelectedItem = "0";
-            UsuarioIdComboBox.SelectedItem = "0";
+            ClienteIdComboBox.SelectedItem = null;
+            UsuarioIdComboBox.SelectedItem = null;
             conceptoTextBox.Text = string.Empty;
             MontoTextBox.Text = "0";
 
-           // reCargar();
+
+           credito = new NotasCreditos();
+
+           reCargar();
 
         }
 
@@ -57,11 +61,10 @@ namespace SistemaVentas.UI.Registros
 
         private void BuscarButton_Click_1(object sender, RoutedEventArgs e)
         {
-            NotasCreditos creditos = NotasCreditosBLL.Buscar((NotaIdTextBox.Text.ToInt()));
+            NotasCreditos creditos = NotasCreditosBLL.Buscar(credito.NotaId);
 
-            //  Limpiar();
 
-            if (credito != null)
+            if (creditos != null)
             {
                 credito = creditos;
                 reCargar();
@@ -81,28 +84,41 @@ namespace SistemaVentas.UI.Registros
 
             if (!Validar())
                 return;
-
             Limpiar();
 
             //Determinar si es guardar o modificar
 
-            if (string.IsNullOrWhiteSpace(NotaIdTextBox.Text) || NotaIdTextBox.Text == "0")
+            if (credito.NotaId == 0)
+            {
+
                 paso = NotasCreditosBLL.Guardar(credito);
+            }
             else
             {
                 if (!existeEnLaBaseDeDatos())
                 {
-                    MessageBox.Show("No se puede modificar un Cliente que no existe", "Fallo", MessageBoxButton.OK, MessageBoxImage.Error);
+                    paso = NotasCreditosBLL.Modificar(credito);
+                    MessageBox.Show("Modifico!!", "Exito", MessageBoxButton.OK, MessageBoxImage.Information);
+
+                }
+                else
+                {
+                    MessageBox.Show("No Existe en la base de datos", "ERROR");
                     return;
                 }
-                paso = NotasCreditosBLL.Modificar(credito);
-            }
 
-            //Informar el resultado
-            if (paso)
-                MessageBox.Show("Guardado!!", "Exito", MessageBoxButton.OK, MessageBoxImage.Information);
-            else
-                MessageBox.Show("No fue posible guardar!!", "Fallo", MessageBoxButton.OK, MessageBoxImage.Error);
+
+                if (paso)
+                {
+                    Limpiar();
+                    MessageBox.Show("Guardado!!", "Exito");
+                }
+                else
+                {
+                    MessageBox.Show("No se pudo Guardar", "ERROR");
+                }
+            }
+    
         }
         private bool Validar()
         {
@@ -127,31 +143,15 @@ namespace SistemaVentas.UI.Registros
         private void EliminarButton_Click_1(object sender, RoutedEventArgs e)
         {
 
-            int id;
-            int.TryParse(NotaIdTextBox.Text, out id);
-
-            Limpiar();
-
-            try
-            {
-                Limpiar();
-
-
-                if (ClientesBLL.Eliminar(id))
+                if (NotasCreditosBLL.Eliminar(credito.NotaId))
                 {
-                    MessageBox.Show("Eliminado", "Exito", MessageBoxButton.OK, MessageBoxImage.Information);
                     Limpiar();
+                    MessageBox.Show("Eliminado", "Exito", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
                 else
                 {
-                    MessageBox.Show(NotaIdTextBox.Text, "No se puede eliminar un cliente que no existe");
+                    MessageBox.Show("No se puede eliminar no existe");
                 }
-
-            }
-            catch
-            {
-
-            }
         }
     
         private void NuevobButton_Click_1(object sender, RoutedEventArgs e)

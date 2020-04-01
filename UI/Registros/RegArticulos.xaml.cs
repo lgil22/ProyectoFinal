@@ -24,6 +24,7 @@ namespace SistemaVentas.UI.Registros
         {
             InitializeComponent();
             this.DataContext = articulo;
+            ArticuloIdTextBox.Text = "0";
 
         }
        /* public void LlenaComboBoxCategorias() // Funcion encargada de llenar el ComboBox de las categorias
@@ -31,9 +32,9 @@ namespace SistemaVentas.UI.Registros
             CategoriaBLL categoria = new CategoriaBLL();
             var categorias = new List<Categoria>();
             categorias = categoria.GetList(p => true);
-            CategoriaIdComboBox.DataSource = categorias;
-            CategoriaIdComboBox.ValueMember = "CategoriaId";
-            CategoriaIdComboBox.DisplayMember = "Nombre";
+            CategoriaIdComboBox.SelectedItem = categorias;
+            CategoriaIdComboBox.ItemsSource = "CategoriaId";
+            CategoriaIdComboBox.Tag = "Nombre";
         }*/
         private void reCargar()
         {
@@ -43,20 +44,23 @@ namespace SistemaVentas.UI.Registros
         private void Limpiar()
         {
             ArticuloIdTextBox.Text = "0";
-            UsuarioIdComboBox.SelectedItem = "0";
+            UsuarioIdComboBox.SelectedItem = null;;
             DescripcionTextBox.Text = string.Empty;
-            CategoriaIdComboBox.SelectedItem = "0";
+            CategoriaIdComboBox.SelectedItem = null;
             ExistenciaTextBox.Text = string.Empty;
-            CostoIdTextBox.Text = "0";
-            PrecioIdTextBox.Text = "0";
+            CostoIdTextBox.Text = string.Empty;
+            PrecioIdTextBox.Text = string.Empty;
 
-           // reCargar();
+            articulo = new Articulos();
+
+            reCargar();
 
         }
         private void NuevobButton_Click(object sender, RoutedEventArgs e)
         {
             Limpiar();
         }
+
         private bool Validar()
         {
             bool paso = true;
@@ -90,55 +94,55 @@ namespace SistemaVentas.UI.Registros
 
             //Determinar si es guardar o modificar
 
-            if (string.IsNullOrWhiteSpace(ArticuloIdTextBox.Text) || ArticuloIdTextBox.Text == "0")
+            // if (string.IsNullOrWhiteSpace(ArticuloIdTextBox.Text) || ArticuloIdTextBox.Text == "0")
+            if (articulo.ArticulosId == 0)
+            {
+
                 paso = ArticulosBLL.Guardar(articulo);
+            }
             else
             {
                 if (!existeEnLaBaseDeDatos())
                 {
+                    paso = ArticulosBLL.Modificar(articulo);
                     MessageBox.Show("No se puede modificar un Cliente que no existe", "Fallo", MessageBoxButton.OK, MessageBoxImage.Error);
+
+                }
+
+                else
+                {
+                    MessageBox.Show("No Existe en la base de datos", "ERROR");
                     return;
                 }
-                paso = ArticulosBLL.Modificar(articulo);
+
+                //Informar el resultado
+                if (paso)
+                    MessageBox.Show("Guardado!!", "Exito", MessageBoxButton.OK, MessageBoxImage.Information);
+                else
+                    MessageBox.Show("No fue posible guardar!!", "Fallo", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-
-            //Informar el resultado
-            if (paso)
-                MessageBox.Show("Guardado!!", "Exito", MessageBoxButton.OK, MessageBoxImage.Information);
-            else
-                MessageBox.Show("No fue posible guardar!!", "Fallo", MessageBoxButton.OK, MessageBoxImage.Error);
-
 
         }
 
         private void EliminarButton_Click(object sender, RoutedEventArgs e)
         {
-            int id;
-            int.TryParse(ArticuloIdTextBox.Text, out id);
+        //    int id;
+         //   int.TryParse(ArticuloIdTextBox.Text, out id);
 
-            Limpiar();
+            //Limpiar();
 
-            try
-            {
-                Limpiar();
-
-
-                if (ClientesBLL.Eliminar(id))
+          //  try
+           // {
+               // Limpiar();
+                if (ArticulosBLL.Eliminar(articulo.ArticulosId))
                 {
-                    MessageBox.Show("Eliminado", "Exito", MessageBoxButton.OK, MessageBoxImage.Information);
                     Limpiar();
+                    MessageBox.Show("Eliminado", "Exito", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
                 else
                 {
                     MessageBox.Show(ArticuloIdTextBox.Text, "No se puede eliminar un cliente que no existe");
                 }
-
-            }
-            catch
-            {
-
-            }
-
 
         }
 
@@ -150,18 +154,17 @@ namespace SistemaVentas.UI.Registros
         }
         private void BuscarButton_Click(object sender, RoutedEventArgs e)
         {
-            Articulos articulos = ArticulosBLL.Buscar((ArticuloIdTextBox.Text.ToInt()));
+            Articulos articulos = ArticulosBLL.Buscar(articulo.ArticulosId);
 
-             Limpiar();
-
+       
             if (articulo != null)
             {
                 articulo = articulos;
-                reCargar();
+               // reCargar();
             }
             else
             {
-                Limpiar();
+               
                 MessageBox.Show(" No Encontrado !!!", "Informacion", MessageBoxButton.OK, MessageBoxImage.Error);
 
             }

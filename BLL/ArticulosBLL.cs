@@ -19,7 +19,10 @@ namespace SistemaVentas.BLL
             try
             {
                 if (db.Articulos.Add(articulo) != null)
+                {
+
                     paso = db.SaveChanges() > 0;
+                }
             }
             catch (Exception)
             {
@@ -101,8 +104,8 @@ namespace SistemaVentas.BLL
 
         public static List<Articulos> GetList(Expression<Func<Articulos, bool>> articulo)
         {
-            List<Articulos> lista = new List<Articulos>();
             Contexto db = new Contexto();
+            List<Articulos> lista = new List<Articulos>();
 
             try
             {
@@ -120,23 +123,7 @@ namespace SistemaVentas.BLL
             return lista;
         }
 
-        public static Articulos BuscarRelacion(int id)
-        {
-            Articulos estudiante = null;
-            using (var conexion = new Contexto())
-            {
-                try
-                {
-                    estudiante = conexion.Articulos.Find(id);
-                }
-                catch (Exception)
-                {
-
-                    throw;
-                }
-            }
-            return estudiante;
-        }
+       
 
     }
 }

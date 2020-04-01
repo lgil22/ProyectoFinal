@@ -25,6 +25,7 @@ namespace SistemaVentas.UI.Registros
         {
             InitializeComponent();
             this.DataContext = cobro;
+            CobrosIdTextBox.Text = "0";
         }
 
         private void reCargar()
@@ -90,27 +91,35 @@ namespace SistemaVentas.UI.Registros
             bool paso = false;
             if (!Validar())
                 return;
-
+            Limpiar();
 
             if (cobro.CobroId == 0)
+            {
                 paso = CobrosBLL.Guardar(cobro);
+
+            }
             else
             {
                 if (!existeEnLaBaseDeDatos())
                 {
-                    MessageBox.Show("No se puede modificar un cobro que no existe", "Fallo", MessageBoxButton.OK, MessageBoxImage.Error);
+                    paso = CobrosBLL.Modificar(cobro);
+
+                }
+                else
+                {
+                    MessageBox.Show("No Existe en la base de datos", "ERROR");
                     return;
                 }
-                paso = CobrosBLL.Modificar(cobro);
-            }
-            if (paso)
-            {
-                Limpiar();
-                MessageBox.Show("Guardado");
-            }
-            else
-            {
-                MessageBox.Show("No se pudo guardar");
+
+                if (paso)
+                {
+                    Limpiar();
+                    MessageBox.Show("Guardado");
+                }
+                else
+                {
+                    MessageBox.Show("No se pudo guardar");
+                }
             }
         }
 
