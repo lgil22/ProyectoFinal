@@ -33,7 +33,13 @@ namespace SistemaVentas.UI.Registros
         }
         private void Limpiar()
         {
-            this.usuarios = new Usuarios();
+            UsuarioIdTextBox.Text = "0";
+            NombresTextBox.Text = string.Empty;
+            NombreUsuarioTextBox.Text = string.Empty;
+            ClaveTextBox.Text = string.Empty;
+            TipoTextBox.Text = string.Empty;
+            EmailTextBox.Text = string.Empty;
+
             Refrescar();
         }
 
@@ -128,22 +134,21 @@ namespace SistemaVentas.UI.Registros
 
             try
             {
-                if (!string.IsNullOrWhiteSpace(UsuarioIdTextBox.Text))
-                {
-                    MessageBox.Show("Deben de estar llenos los campos", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
                 Limpiar();
+                Refrescar();
 
-                if (Validar())
+
+                if (UsuariosBLL.Eliminar(id))
                 {
-
-                    MessageBox.Show("Vacio");
+                    MessageBox.Show("Eliminado", "Exito", MessageBoxButton.OK, MessageBoxImage.Information);
+                    Limpiar();
+                    Refrescar();
+                }
+                else
+                {
+                    MessageBox.Show(UsuarioIdTextBox.Text, "No se puede eliminar un cliente que no existe");
                 }
 
-                if (ClientesBLL.Eliminar(id))
-                    MessageBox.Show("Eliminado", "Exito", MessageBoxButton.OK, MessageBoxImage.Information);
-                else
-                    MessageBox.Show(UsuarioIdTextBox.Text, "No se puede eliminar un usuario que no existe");
             }
             catch
             {
@@ -165,7 +170,7 @@ namespace SistemaVentas.UI.Registros
             else
             {
                 Limpiar();
-                MessageBox.Show("Usuario no encontrado");
+                MessageBox.Show(" Usuario No Encontrado !!!", "Informacion", MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
         }

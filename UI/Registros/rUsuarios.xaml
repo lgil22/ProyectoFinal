@@ -108,9 +108,9 @@
         <StackPanel Grid.Row="6" Margin="114,8,98,26" Grid.ColumnSpan="3">
             <TextBox x:Name="ClaveTextBox" Height="25">
                 <TextBox.Text>
-                    <Binding Path="Celular" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                    <Binding Path="Clave" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
-                            <ExceptionValidationRule/>
+                            <src:ValidaciónString x:Name="Clave" ValidatesOnTargetUpdated="True"/>
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
@@ -128,7 +128,7 @@
                 <ComboBox.Text>
                     <Binding Path="Tipo" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
-                            <ExceptionValidationRule/>
+                            <src:ValidaciónString x:Name="TipoValidacion" ValidatesOnTargetUpdated="True"/>
                         </Binding.ValidationRules>
                     </Binding>
                 </ComboBox.Text>
@@ -151,6 +151,6 @@
                 </TextBox.Text>
             </TextBox>
         </StackPanel>
-
+       
     </Grid>
 </Window>

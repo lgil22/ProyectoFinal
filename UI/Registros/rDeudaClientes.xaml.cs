@@ -26,7 +26,11 @@ namespace SistemaVentas.UI.Registros
             InitializeComponent();
             this.DataContext = deudas;
         }
-
+        private void Refrescar()
+        {
+            this.DataContext = null;
+            this.DataContext = deudas;
+        }
         private static rDeudaClientes unico = null;
 
         public static rDeudaClientes Funcion()
@@ -41,12 +45,12 @@ namespace SistemaVentas.UI.Registros
 
         private void Limpiar()
         {
-            DeudasIdTextBox.Clear();
-            NombreClienteTextBox.Clear();
-            DeudasIdTextBox.Clear();
-
+            DeudasIdTextBox.Text = "0";
+            NombreClienteTextBox.Text = string.Empty;
             Efectivo.Clear();
             Devuelta.Clear();
+
+            Refrescar();
 
         }
 
@@ -83,7 +87,7 @@ namespace SistemaVentas.UI.Registros
 
             if (deudaAnterior != null)
             {
-                MessageBox.Show("Categoria Encontrada");
+                MessageBox.Show("Deuda Encontrada");
                 deudas = deudaAnterior;
                 //reCargar();
             }
@@ -122,7 +126,7 @@ namespace SistemaVentas.UI.Registros
 
         private bool existeEnLaBaseDeDatos()
         {
-            Categoria categoriaAnterior = CategoriaBLL.Buscar(Convert.ToInt32(deudas.DeudasId));
+            Categoria categoriaAnterior = CategoriaBLL.Buscar((int)DeudasIdTextBox.Text.ToInt());
 
             return categoriaAnterior != null;
         }
@@ -149,7 +153,7 @@ namespace SistemaVentas.UI.Registros
                     paso = DeudaClientesBLL.Modificar(deudas);
                 else
                 {
-                    MessageBox.Show("No se puede modificar una categoria que no existe");
+                    MessageBox.Show("No se puede modificar una deuda que no existe");
                     return;
                 }
             }
@@ -212,6 +216,11 @@ namespace SistemaVentas.UI.Registros
 
                 Devuelta.Text = Convert.ToString(Num2 - Num1);
             }
+        }
+
+        private void NuevobButton_Click(object sender, RoutedEventArgs e)
+        {
+            Limpiar();
         }
     }
 

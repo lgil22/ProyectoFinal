@@ -23,10 +23,8 @@ namespace SistemaVentas.UI.Registros
 
         public RegNotasCreditos()
         {
-
             InitializeComponent();
             this.DataContext = credito;
-            NotaIdTextBox.Text = "0";
         }
         private void reCargar()
         {
@@ -43,12 +41,14 @@ namespace SistemaVentas.UI.Registros
             conceptoTextBox.Text = string.Empty;
             MontoTextBox.Text = "0";
 
+            reCargar();
+
         }
 
 
         private bool existeEnLaBaseDeDatos()
         {
-            NotasCreditos creditoAnterior = NotasCreditosBLL.Buscar(Convert.ToInt32(credito.NotaId));
+            NotasCreditos creditoAnterior = NotasCreditosBLL.Buscar((int)NotaIdTextBox.Text.ToInt());
 
             return creditoAnterior != null;
         }
@@ -57,17 +57,20 @@ namespace SistemaVentas.UI.Registros
 
         private void BuscarButton_Click_1(object sender, RoutedEventArgs e)
         {
-            NotasCreditos creditoAnterior = NotasCreditosBLL.Buscar(credito.NotaId);
+            NotasCreditos creditos = NotasCreditosBLL.Buscar((NotaIdTextBox.Text.ToInt()));
 
-            if (creditoAnterior != null)
+            //  Limpiar();
+
+            if (credito != null)
             {
-                MessageBox.Show("credito Encontrado");
-                credito = creditoAnterior;
+                credito = creditos;
                 reCargar();
             }
             else
             {
-                MessageBox.Show(" credito no encontrada");
+                Limpiar();
+                MessageBox.Show(" No Encontrado !!!", "Informacion", MessageBoxButton.OK, MessageBoxImage.Error);
+
             }
         }
 
@@ -81,27 +84,25 @@ namespace SistemaVentas.UI.Registros
 
             Limpiar();
 
-            if (NotaIdTextBox.Text == "0")
+            //Determinar si es guardar o modificar
+
+            if (string.IsNullOrWhiteSpace(NotaIdTextBox.Text) || NotaIdTextBox.Text == "0")
                 paso = NotasCreditosBLL.Guardar(credito);
             else
             {
-                if (existeEnLaBaseDeDatos())
-                    paso = NotasCreditosBLL.Modificar(credito);
-                else
+                if (!existeEnLaBaseDeDatos())
                 {
-                    MessageBox.Show("No se puede modificar una notaId que no existe");
+                    MessageBox.Show("No se puede modificar un Cliente que no existe", "Fallo", MessageBoxButton.OK, MessageBoxImage.Error);
                     return;
                 }
-                if (paso)
-                {
-                    Limpiar();
-                    MessageBox.Show("Guardado");
-                }
-                else
-                {
-                    MessageBox.Show("No se pudo guardar");
-                }
+                paso = NotasCreditosBLL.Modificar(credito);
             }
+
+            //Informar el resultado
+            if (paso)
+                MessageBox.Show("Guardado!!", "Exito", MessageBoxButton.OK, MessageBoxImage.Information);
+            else
+                MessageBox.Show("No fue posible guardar!!", "Fallo", MessageBoxButton.OK, MessageBoxImage.Error);
         }
         private bool Validar()
         {
@@ -133,25 +134,24 @@ namespace SistemaVentas.UI.Registros
 
             try
             {
-                if (!string.IsNullOrWhiteSpace(NotaIdTextBox.Text))
-                {
-                    MessageBox.Show("Deben de estar llenos los campos", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
                 Limpiar();
 
-                if (id > 0) 
-                { 
-                    NotasCreditosBLL.Eliminar(id); 
-                }    
+
+                if (ClientesBLL.Eliminar(id))
+                {
+                    MessageBox.Show("Eliminado", "Exito", MessageBoxButton.OK, MessageBoxImage.Information);
+                    Limpiar();
+                }
                 else
-                  MessageBox.Show(NotaIdTextBox.Text, "No se puede eliminar una notaId que no existe");
-                
+                {
+                    MessageBox.Show(NotaIdTextBox.Text, "No se puede eliminar un cliente que no existe");
+                }
+
             }
             catch
             {
 
             }
-
         }
     
         private void NuevobButton_Click_1(object sender, RoutedEventArgs e)

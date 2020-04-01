@@ -26,9 +26,15 @@ namespace SistemaVentas.UI.Registros
             
             InitializeComponent();
             this.DataContext = categoria;
-            CategoriaIdTextBox.Text = "0";
         }
 
+        private void Limpiar()
+        {
+            CategoriaIdTextBox.Text = "0";
+            NombreCategoriaCombro.Text = string.Empty;
+
+            reCargar();
+        }
         private void reCargar()
         {
             this.DataContext = null;
@@ -140,14 +146,10 @@ namespace SistemaVentas.UI.Registros
             }
 
         }
-        private void Limpiar()
-        {
-            CategoriaIdTextBox.Text = "0";
-            NombreCategoriaCombro.Text = string.Empty;
-        }
+
         private bool existeEnLaBaseDeDatos()
         {
-            Categoria categoriaAnterior = CategoriaBLL.Buscar(Convert.ToInt32(categoria.CategoriaId));
+            Categoria categoriaAnterior = CategoriaBLL.Buscar((int)CategoriaIdTextBox.Text.ToInt());
 
             return categoriaAnterior != null;
         }

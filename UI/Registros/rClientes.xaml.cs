@@ -26,7 +26,6 @@ namespace SistemaVentas.UI.Registros
         {
             InitializeComponent();
             this.DataContext = clientes;
-           // ClienteIdTextBox.Text = "0";
         }
 
         private void Refrescar()
@@ -36,16 +35,15 @@ namespace SistemaVentas.UI.Registros
         }
         private void Limpiar()
         {
-           /* ClienteIdTextBox.Text = "0";
-            NombresTextBox.Text = string.Empty;
-            TelefonoTextBox.Text = string.Empty;
-            CelularTextBox.Text = string.Empty;
-            CedulaTextBox.Text = string.Empty;
-            FechaNacTimePicker.SelectedDate = DateTime.Now;
-            EmailTextBox.Text = string.Empty;*/
+              ClienteIdTextBox.Text = "0";
+              NombresTextBox.Text = string.Empty;
+              TelefonoTextBox.Text = string.Empty;
+              CelularTextBox.Text = string.Empty;
+              CedulaTextBox.Text = string.Empty;
+              FechaNacTimePicker.SelectedDate = DateTime.Now;
+              EmailTextBox.Text = string.Empty;
 
-           // this.clientes = new Clientes();
-             Refrescar();
+              Refrescar();
         }
 
         private bool ExisteEnLaBaseDeDatos()
@@ -141,12 +139,19 @@ namespace SistemaVentas.UI.Registros
 
             try
             {
-               // Limpiar();
+                Limpiar();
+               
 
                 if (ClientesBLL.Eliminar(id))
-                    MessageBox.Show("Eliminado", "Exito", MessageBoxButton.OK, MessageBoxImage.Information);
-                else
+                { 
+                MessageBox.Show("Eliminado", "Exito", MessageBoxButton.OK, MessageBoxImage.Information);
+                    Limpiar();
+                }
+                else 
+                { 
                     MessageBox.Show(ClienteIdTextBox.Text, "No se puede eliminar un cliente que no existe");
+                }
+                
             }
             catch
             {
@@ -160,17 +165,17 @@ namespace SistemaVentas.UI.Registros
 
             Clientes cliente = ClientesBLL.Buscar((ClienteIdTextBox.Text.ToInt()));
 
-            Limpiar();
+          //  Limpiar();
 
             if (clientes != null)
             {
-                clientes = cliente;
+                 clientes = cliente;
                  Refrescar();
             }
             else
             {
                 Limpiar();
-                MessageBox.Show(" No Encontrado !!!", "Informacion", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show(" No Encontrado !!!", "Informacion", MessageBoxButton.OK, MessageBoxImage.Error);
 
             }
 

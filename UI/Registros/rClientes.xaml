@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:SistemaVentas.UI.Registros"
         xmlns:src="clr-namespace:SistemaVentas.Validaciones"
         mc:Ignorable="d"
-        Title="Registro Clientes" Height="500" Width="500" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Icon="/Resources/Clientes.png" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}">
+        Title="Registro Clientes" Height="520" Width="500" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Icon="/Resources/Clientes.png" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}">
 
     <Grid>
         <Grid.Background>
@@ -108,7 +108,7 @@
                 <TextBox.Text>
                     <Binding Path="Direccion" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
-                            <src:ValidaciónString x:Name="ValidaciónString" ValidatesOnTargetUpdated="True"/>
+                            <src:ValidaciónString x:Name="ValidaciónDir" ValidatesOnTargetUpdated="True"/>
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
@@ -172,6 +172,7 @@
             <DatePicker.Text>
                 <Binding Path="FechaNacimiento" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                     <Binding.ValidationRules>
+                        <src:ValidaciónString x:Name="ValidacionStringFechaN" ValidatesOnTargetUpdated="True"/>
                         <ExceptionValidationRule/>
                     </Binding.ValidationRules>
                 </Binding>
