@@ -41,7 +41,7 @@ namespace SistemaVentas.UI.Registros
             conceptoTextBox.Text = string.Empty;
             MontoTextBox.Text = "0";
 
-            reCargar();
+           // reCargar();
 
         }
 

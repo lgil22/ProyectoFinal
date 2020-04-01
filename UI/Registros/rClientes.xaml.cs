@@ -43,7 +43,7 @@ namespace SistemaVentas.UI.Registros
               FechaNacTimePicker.SelectedDate = DateTime.Now;
               EmailTextBox.Text = string.Empty;
 
-              Refrescar();
+            //  Refrescar();
         }
 
         private bool ExisteEnLaBaseDeDatos()

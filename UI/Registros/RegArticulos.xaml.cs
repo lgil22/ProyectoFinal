@@ -50,7 +50,7 @@ namespace SistemaVentas.UI.Registros
             CostoIdTextBox.Text = "0";
             PrecioIdTextBox.Text = "0";
 
-            reCargar();
+           // reCargar();
 
         }
         private void NuevobButton_Click(object sender, RoutedEventArgs e)
@@ -80,6 +80,7 @@ namespace SistemaVentas.UI.Registros
 
         private void GuardarButton_Click(object sender, RoutedEventArgs e)
         {
+
             bool paso = false;
 
             if (!Validar())
@@ -121,10 +122,17 @@ namespace SistemaVentas.UI.Registros
             {
                 Limpiar();
 
-                if (ArticulosBLL.Eliminar(id))
+
+                if (ClientesBLL.Eliminar(id))
+                {
                     MessageBox.Show("Eliminado", "Exito", MessageBoxButton.OK, MessageBoxImage.Information);
+                    Limpiar();
+                }
                 else
-                    MessageBox.Show(ArticuloIdTextBox.Text, "No se puede eliminar un articulo que no existe");
+                {
+                    MessageBox.Show(ArticuloIdTextBox.Text, "No se puede eliminar un cliente que no existe");
+                }
+
             }
             catch
             {
@@ -144,6 +152,7 @@ namespace SistemaVentas.UI.Registros
         {
             Articulos articulos = ArticulosBLL.Buscar((ArticuloIdTextBox.Text.ToInt()));
 
+             Limpiar();
 
             if (articulo != null)
             {
@@ -152,9 +161,11 @@ namespace SistemaVentas.UI.Registros
             }
             else
             {
-                MessageBox.Show(" No Encontrado !!!", "Informacion", MessageBoxButton.OK, MessageBoxImage.Warning);
+                Limpiar();
+                MessageBox.Show(" No Encontrado !!!", "Informacion", MessageBoxButton.OK, MessageBoxImage.Error);
 
             }
+
         }
 
         private void ExistenciaTextBox_TextChanged(object sender, TextChangedEventArgs e)

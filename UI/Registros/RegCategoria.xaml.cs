@@ -33,7 +33,7 @@ namespace SistemaVentas.UI.Registros
             CategoriaIdTextBox.Text = "0";
             NombreCategoriaCombro.Text = string.Empty;
 
-            reCargar();
+          //  reCargar();
         }
         private void reCargar()
         {
@@ -127,22 +127,23 @@ namespace SistemaVentas.UI.Registros
 
             try
             {
-                if (!string.IsNullOrWhiteSpace(CategoriaIdTextBox.Text))
-                {
-                    MessageBox.Show("Deben de estar el campo Id campos", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
                 Limpiar();
 
-                if (CategoriaBLL.Eliminar(id))
+
+                if (ClientesBLL.Eliminar(id))
+                {
                     MessageBox.Show("Eliminado", "Exito", MessageBoxButton.OK, MessageBoxImage.Information);
+                    Limpiar();
+                }
                 else
                 {
                     MessageBox.Show(CategoriaIdTextBox.Text, "No se puede eliminar una categoria que no existe");
                 }
+
             }
             catch
             {
-                  
+
             }
 
         }
