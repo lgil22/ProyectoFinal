@@ -160,7 +160,7 @@ namespace SistemaVentas.UI.Registros
             if (articulo != null)
             {
                 articulo = articulos;
-               // reCargar();
+                reCargar();
             }
             else
             {
