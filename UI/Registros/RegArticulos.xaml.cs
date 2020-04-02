@@ -24,7 +24,7 @@ namespace SistemaVentas.UI.Registros
         {
             InitializeComponent();
             this.DataContext = articulo;
-            ArticuloIdTextBox.Text = "0";
+            //ArticuloIdTextBox.Text = "0";
 
         }
        /* public void LlenaComboBoxCategorias() // Funcion encargada de llenar el ComboBox de las categorias
@@ -47,13 +47,13 @@ namespace SistemaVentas.UI.Registros
             UsuarioIdComboBox.Text = "0";
             DescripcionTextBox.Text = string.Empty;
             CategoriaIdComboBox.Text = "0";
-            ExistenciaTextBox.Text = string.Empty;
-            CostoIdTextBox.Text = string.Empty;
-            PrecioIdTextBox.Text = string.Empty;
+            ExistenciaTextBox.Text = "0";
+            CostoIdTextBox.Text = "0";
+            PrecioIdTextBox.Text = "0";
 
-            articulo = new Articulos();
+            //  articulo = new Articulos();
 
-            reCargar();
+            // reCargar();
 
         }
         private void NuevobButton_Click(object sender, RoutedEventArgs e)
@@ -97,6 +97,7 @@ namespace SistemaVentas.UI.Registros
 
             Limpiar();
 
+          //  articulos = reCargar();
            
             if (articulo.ArticulosId == 0)
             {
@@ -133,25 +134,21 @@ namespace SistemaVentas.UI.Registros
             int id;
             int.TryParse(ArticuloIdTextBox.Text, out id);
 
+            Limpiar();
             try
             {
-
                 if (ArticulosBLL.Eliminar(id))
                 {
-                    Limpiar();
                     MessageBox.Show("Eliminado", "Exito", MessageBoxButton.OK, MessageBoxImage.Information);
-
                 }
                 else
-                {
-                    MessageBox.Show(ArticuloIdTextBox.Text, "No se puede eliminar un cliente que no existe");
-                }
-
+                   MessageBox.Show(ArticuloIdTextBox.Text, "No se puede eliminar un cliente que no existe");
             }
             catch
             {
 
             }
+
 
         }
 
@@ -163,19 +160,20 @@ namespace SistemaVentas.UI.Registros
         }
         private void BuscarButton_Click(object sender, RoutedEventArgs e)
         {
-            Articulos articulos = ArticulosBLL.Buscar(articulo.ArticulosId);
+            int id;
+            Articulos arti= new Articulos();
+            int.TryParse(ArticuloIdTextBox.Text, out id);
 
-            
-            if (articulo != null)
+            Limpiar();
+            arti = ArticulosBLL.Buscar(id);
+            if (arti !=null)
             {
-                articulo = articulos;
+                MessageBox.Show("Articulo Encontrado");
                 reCargar();
             }
             else
             {
-               
-                MessageBox.Show(" No Encontrado !!!", "Informacion", MessageBoxButton.OK, MessageBoxImage.Error);
-
+                MessageBox.Show("Articulo no Encontrado");
             }
 
         }

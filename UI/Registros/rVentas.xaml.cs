@@ -22,11 +22,12 @@ namespace SistemaVentas.UI.Registros
     public partial class rVentas : Window
     {
         Ventas ventas = new Ventas(); /// Instancia para Bindings 
+        public List<VentaDetalles> Detalles { get; set; }
         public rVentas()
         {
             InitializeComponent();
             this.DataContext = ventas;
-            VentaIdTextBox.Text = "0";
+            this.Detalles = new List<VentaDetalles>();
         }
         private void Refrescar()
         {
@@ -37,7 +38,15 @@ namespace SistemaVentas.UI.Registros
         {
             this.ventas = new Ventas();
             DetalleDataGridVentas.ItemsSource = new List<VentaDetalles>();
+            this.Detalles = new List<VentaDetalles>();
+            CargarGrid();
             Refrescar();
+        }
+
+        private void CargarGrid()
+        {
+            DetalleDataGridVentas.ItemsSource = null;
+            DetalleDataGridVentas.ItemsSource = this.Detalles;
         }
 
         private bool ExisteEnLaBaseDeDatos()
@@ -92,7 +101,8 @@ namespace SistemaVentas.UI.Registros
                 //   Precio = Convert.ToInt32(PrecioTextBox),
 
             });
-          Refrescar();
+            CargarGrid();
+            //Refrescar();
             ArticuloIdTextBox.Focus();
             ArticuloIdTextBox.Clear();
             CantidadTextBox.Focus();
@@ -132,7 +142,9 @@ namespace SistemaVentas.UI.Registros
                 {
                     //remover la fila
                     ventas.Detalles.RemoveAt(DetalleDataGridVentas.SelectedIndex);
-                    Refrescar();
+                    //Refrescar();
+                    CargarGrid();
+
                 }
 
             }

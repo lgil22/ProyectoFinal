@@ -25,7 +25,7 @@ namespace SistemaVentas.UI.Registros
         {
             InitializeComponent();
             this.DataContext = credito;
-            NotaIdTextBox.Text = "0";
+           // NotaIdTextBox.Text = "0";
         }
         private void reCargar()
         {
@@ -36,16 +36,16 @@ namespace SistemaVentas.UI.Registros
         private void Limpiar()
         {
             NotaIdTextBox.Text = "0";
-            FechaDatePicke.DisplayDate = DateTime.Now;
-            ClienteIdComboBox.SelectedItem = null;
-            UsuarioIdComboBox.SelectedItem = null;
+            FechaDatePicker.DisplayDate = DateTime.Now;
+            ClienteIdTextBox.Text = "0";
+            UsuarioIdTextBox.Text = "0";
             conceptoTextBox.Text = string.Empty;
             MontoTextBox.Text = "0";
 
 
-           credito = new NotasCreditos();
+           //credito = new NotasCreditos();
 
-           reCargar();
+          // reCargar();
 
         }
 
@@ -58,68 +58,6 @@ namespace SistemaVentas.UI.Registros
         }
 
 
-
-        private void BuscarButton_Click_1(object sender, RoutedEventArgs e)
-        {
-            NotasCreditos creditos = NotasCreditosBLL.Buscar(credito.NotaId);
-
-
-            if (creditos != null)
-            {
-                credito = creditos;
-                reCargar();
-            }
-            else
-            {
-                Limpiar();
-                MessageBox.Show(" No Encontrado !!!", "Informacion", MessageBoxButton.OK, MessageBoxImage.Error);
-
-            }
-        }
-
-        private void GuardarButton_Click_1(object sender, RoutedEventArgs e)
-        {
-
-            bool paso = false;
-
-            if (!Validar())
-                return;
-            Limpiar();
-
-            //Determinar si es guardar o modificar
-
-            if (credito.NotaId == 0)
-            {
-
-                paso = NotasCreditosBLL.Guardar(credito);
-            }
-            else
-            {
-                if (!existeEnLaBaseDeDatos())
-                {
-                    paso = NotasCreditosBLL.Modificar(credito);
-                    MessageBox.Show("Modifico!!", "Exito", MessageBoxButton.OK, MessageBoxImage.Information);
-
-                }
-                else
-                {
-                    MessageBox.Show("No Existe en la base de datos", "ERROR");
-                    return;
-                }
-
-
-                if (paso)
-                {
-                    Limpiar();
-                    MessageBox.Show("Guardado!!", "Exito");
-                }
-                else
-                {
-                    MessageBox.Show("No se pudo Guardar", "ERROR");
-                }
-            }
-    
-        }
         private bool Validar()
         {
             bool paso = true;
@@ -140,24 +78,72 @@ namespace SistemaVentas.UI.Registros
 
             return paso;
         }
-        private void EliminarButton_Click_1(object sender, RoutedEventArgs e)
-        {
-
-                if (NotasCreditosBLL.Eliminar(credito.NotaId))
-                {
-                    Limpiar();
-                    MessageBox.Show("Eliminado", "Exito", MessageBoxButton.OK, MessageBoxImage.Information);
-                }
-                else
-                {
-                    MessageBox.Show("No se puede eliminar no existe");
-                }
-        }
     
         private void NuevobButton_Click_1(object sender, RoutedEventArgs e)
         {
             Limpiar();
         }
-       
+
+        private void BuscarButton_Click(object sender, RoutedEventArgs e)
+        {
+            NotasCreditos creditos = NotasCreditosBLL.Buscar(credito.NotaId);
+
+            if (creditos != null)
+            {
+                credito = creditos;
+                reCargar();
+            }
+            else
+            {
+                MessageBox.Show(" No Encontrado !!!", "Informacion", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void EliminarButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (NotasCreditosBLL.Eliminar(credito.NotaId))
+            {
+                Limpiar();
+                MessageBox.Show("Eliminado", "Exito", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            else
+            {
+                MessageBox.Show("No se puede eliminar no existe");
+            }
+        }
+
+        private void GuardarButton_Click(object sender, RoutedEventArgs e)
+        {
+            bool paso = false;
+
+            if (!Validar())
+                return;
+
+            Limpiar();
+
+            //Determinar si es guardar o modificar
+
+            if (string.IsNullOrWhiteSpace(NotaIdTextBox.Text) || NotaIdTextBox.Text == "0")
+                paso = NotasCreditosBLL.Guardar(credito);
+            else
+            {
+                if (!existeEnLaBaseDeDatos())
+                {
+                    MessageBox.Show("No se puede modificar un Cliente que no existe", "Fallo", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
+                paso = NotasCreditosBLL.Modificar(credito);
+            }
+
+            //Informar el resultado
+            if (paso)
+            {
+                Limpiar();
+                MessageBox.Show("Guardado!!", "Exito", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            else
+                MessageBox.Show("No fue posible guardar!!", "Fallo", MessageBoxButton.OK, MessageBoxImage.Error);
+
+        }
     }
 }
