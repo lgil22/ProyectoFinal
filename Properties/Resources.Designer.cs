@@ -223,6 +223,16 @@ namespace SistemaVentas.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        internal static byte[] money {
+            get {
+                object obj = ResourceManager.GetObject("money", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         internal static byte[] Notas {
             get {
                 object obj = ResourceManager.GetObject("Notas", resourceCulture);

@@ -50,27 +50,23 @@ namespace SistemaVentas.UI.Registros
             Efectivo.Clear();
             Devuelta.Clear();
 
-            Refrescar();
+          //  Refrescar();
 
         }
 
         private void EliminarButton_Click(object sender, RoutedEventArgs e)
         {
 
-            DeudaClientes deudaAnterior = DeudaClientesBLL.Buscar(deudas.DeudasId);
-
-            if (deudaAnterior != null)
+            if (DeudaClientesBLL.Eliminar(deudas.DeudasId))
             {
-                MessageBox.Show("La deuda ha sido saldada.");
                 Limpiar();
-                deudas = deudaAnterior;
-                // reCargar();
+                MessageBox.Show("Eliminado", "Exito");
             }
             else
             {
-                MessageBox.Show("No se pudo Saldar la deuda.");
-            }
+                MessageBox.Show("No se puede eliminar una deuda que no existe");
 
+            }
 
         }
 
@@ -82,23 +78,19 @@ namespace SistemaVentas.UI.Registros
             if (string.IsNullOrWhiteSpace(DeudasIdTextBox.Text))
             {
                 MessageBox.Show(DeudasIdTextBox.Text, "Coloque id de, deuda");
-                Limpiar();
             }
 
             if (deudaAnterior != null)
-            {
-                MessageBox.Show("Deuda Encontrada");
+            {    
                 deudas = deudaAnterior;
-                //reCargar();
+                Refrescar();
             }
-
 
             else
             {
                 MessageBox.Show("No existe ninguna Deuda con ese Id.");
-                Limpiar();
+              
             }
-
 
         }
 
@@ -153,11 +145,23 @@ namespace SistemaVentas.UI.Registros
                     paso = DeudaClientesBLL.Modificar(deudas);
                 else
                 {
-                    MessageBox.Show("No se puede modificar una deuda que no existe");
+                    MessageBox.Show("No se puede modificar una deuda que no existe", "Fallo", MessageBoxButton.OK, MessageBoxImage.Error);
                     return;
                 }
+                paso = DeudaClientesBLL.Modificar(deudas);
             }
-        }
+
+                if (paso)
+                {
+                    MessageBox.Show("Guardado!!", "Exito", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                else
+                {
+                    MessageBox.Show("No fue posible guardar!!", "Fallo", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+
+         }
+        
 
 
         private void CalcularDevuelta()

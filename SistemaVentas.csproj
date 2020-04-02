@@ -21,11 +21,13 @@
     <None Remove="Resources\Consultar.png" />
     <None Remove="Resources\Customers.png" />
     <None Remove="Resources\Deudas.png" />
+    <None Remove="Resources\deudasFo.png" />
     <None Remove="Resources\Eliminar.png" />
     <None Remove="Resources\Facturacion.png" />
     <None Remove="Resources\Guardar.png" />
     <None Remove="Resources\Mas.png" />
     <None Remove="Resources\Menu.png" />
+    <None Remove="Resources\money.png" />
     <None Remove="Resources\Notas.png" />
     <None Remove="Resources\Notes.png" />
     <None Remove="Resources\Nuevo.png" />
@@ -85,6 +87,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\Menu.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\money.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\Notas.png">

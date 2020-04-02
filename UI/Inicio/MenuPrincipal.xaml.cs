@@ -74,6 +74,14 @@ namespace SistemaVentas.UI.Inicio
            cVent.Show();
         }
 
+
+        private void MenuDeudasC_Click(object sender, RoutedEventArgs e)
+        {
+            cDeudasClientes cDeud = new cDeudasClientes();
+            cDeud.Show();
+        }
+
+
         private void MenuCclientes_Click(object sender, RoutedEventArgs e)
         {
             cClientes cC = new cClientes();

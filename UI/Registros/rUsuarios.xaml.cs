@@ -40,7 +40,7 @@ namespace SistemaVentas.UI.Registros
             TipoTextBox.Text = string.Empty;
             EmailTextBox.Text = string.Empty;
 
-            Refrescar();
+          //  Refrescar();
         }
 
         private bool ExisteEnLaBaseDeDatos()
@@ -126,23 +126,18 @@ namespace SistemaVentas.UI.Registros
 
 
         private void EliminarButton_Click(object sender, RoutedEventArgs e)
+
         {
             int id;
             int.TryParse(UsuarioIdTextBox.Text, out id);
 
-            Limpiar();
-
             try
             {
-                Limpiar();
-                Refrescar();
-
-
+          
                 if (UsuariosBLL.Eliminar(id))
                 {
-                    MessageBox.Show("Eliminado", "Exito", MessageBoxButton.OK, MessageBoxImage.Information);
                     Limpiar();
-                    Refrescar();
+                    MessageBox.Show("Eliminado", "Exito", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
                 else
                 {
@@ -163,13 +158,12 @@ namespace SistemaVentas.UI.Registros
 
             if (usuarioAnterior != null)
             {
-                MessageBox.Show("Usuario Encontrado");
+               // MessageBox.Show("Usuario Encontrado");
                 usuarios = usuarioAnterior;
                 Refrescar();
             }
             else
             {
-                Limpiar();
                 MessageBox.Show(" Usuario No Encontrado !!!", "Informacion", MessageBoxButton.OK, MessageBoxImage.Error);
             }
 

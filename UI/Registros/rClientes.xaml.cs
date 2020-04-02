@@ -125,27 +125,20 @@ namespace SistemaVentas.UI.Registros
 
         }
 
-        private void NuevobButton_Click(object sender, RoutedEventArgs e)
-        {
-            Limpiar();
-        }
 
         private void EliminarButton_Click(object sender, RoutedEventArgs e)
         {
             int id;
             int.TryParse(ClienteIdTextBox.Text, out id);
 
-            Limpiar();
-
             try
             {
-                Limpiar();
-               
 
                 if (ClientesBLL.Eliminar(id))
-                { 
-                MessageBox.Show("Eliminado", "Exito", MessageBoxButton.OK, MessageBoxImage.Information);
+                {
                     Limpiar();
+                    MessageBox.Show("Eliminado", "Exito", MessageBoxButton.OK, MessageBoxImage.Information);
+                   
                 }
                 else 
                 { 
@@ -174,11 +167,15 @@ namespace SistemaVentas.UI.Registros
             }
             else
             {
-                Limpiar();
                 MessageBox.Show(" No Encontrado !!!", "Informacion", MessageBoxButton.OK, MessageBoxImage.Error);
-
             }
 
+        }
+  
+
+        private void NuevoButton_Click(object sender, RoutedEventArgs e)
+        {
+            Limpiar();
         }
     }
 }
