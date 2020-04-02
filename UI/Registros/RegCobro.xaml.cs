@@ -31,7 +31,7 @@ namespace SistemaVentas.UI.Registros
         private void reCargar()
         {
             this.DataContext = null;
-            this.DataContext = cobro;
+            this.DataContext = cobro.Detalle;
         }
 
         private bool existeEnLaBaseDeDatos()
