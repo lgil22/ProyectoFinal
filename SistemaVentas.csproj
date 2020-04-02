@@ -164,6 +164,7 @@
 
   <ItemGroup>
     <Folder Include="f\" />
+    <Folder Include="p\" />
   </ItemGroup>
 
 </Project>
