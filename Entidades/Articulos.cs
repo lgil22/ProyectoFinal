@@ -11,7 +11,6 @@ namespace SistemaVentas.Entidades
         [Key]
         public int ArticulosId { get; set; }
         public int UsuarioId { get; set; }
-        [ForeignKey("UsuarioId")]
         public string Descripcion { get; set; }
         public int CategoriaId { get; set; }
         public int Existencia { get; set; }

@@ -9,7 +9,7 @@ using SistemaVentas.DAL;
 namespace SistemaVentas.Migrations
 {
     [DbContext(typeof(Contexto))]
-    [Migration("20200401085057_Inicial")]
+    [Migration("20200402021429_Inicial")]
     partial class Inicial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

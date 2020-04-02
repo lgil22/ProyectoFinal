@@ -44,9 +44,9 @@ namespace SistemaVentas.UI.Registros
         private void Limpiar()
         {
             ArticuloIdTextBox.Text = "0";
-            UsuarioIdComboBox.SelectedItem = null;;
+            UsuarioIdComboBox.Text = "0";
             DescripcionTextBox.Text = string.Empty;
-            CategoriaIdComboBox.SelectedItem = null;
+            CategoriaIdComboBox.Text = "0";
             ExistenciaTextBox.Text = string.Empty;
             CostoIdTextBox.Text = string.Empty;
             PrecioIdTextBox.Text = string.Empty;
@@ -71,7 +71,12 @@ namespace SistemaVentas.UI.Registros
                 ArticuloIdTextBox.Focus();
                 paso = false;
             }
-
+            if (string.IsNullOrWhiteSpace(DescripcionTextBox.Text))
+            {
+                MessageBox.Show("EL campo Descripcion no puede estar vacio", "Aviso", MessageBoxButton.OKCancel, MessageBoxImage.Information);
+                ExistenciaTextBox.Focus();
+                paso = false;
+            }
             if (string.IsNullOrWhiteSpace(ExistenciaTextBox.Text))
             {
                 MessageBox.Show("EL campo Existencia no puede estar vacio", "Aviso", MessageBoxButton.OKCancel, MessageBoxImage.Information);
@@ -92,9 +97,7 @@ namespace SistemaVentas.UI.Registros
 
             Limpiar();
 
-            //Determinar si es guardar o modificar
-
-            // if (string.IsNullOrWhiteSpace(ArticuloIdTextBox.Text) || ArticuloIdTextBox.Text == "0")
+           
             if (articulo.ArticulosId == 0)
             {
 
@@ -105,7 +108,7 @@ namespace SistemaVentas.UI.Registros
                 if (!existeEnLaBaseDeDatos())
                 {
                     paso = ArticulosBLL.Modificar(articulo);
-                    MessageBox.Show("No se puede modificar un Cliente que no existe", "Fallo", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show("No se puede modificar no existe", "Fallo", MessageBoxButton.OK, MessageBoxImage.Error);
 
                 }
 
@@ -114,35 +117,41 @@ namespace SistemaVentas.UI.Registros
                     MessageBox.Show("No Existe en la base de datos", "ERROR");
                     return;
                 }
-
+            }
                 //Informar el resultado
                 if (paso)
                     MessageBox.Show("Guardado!!", "Exito", MessageBoxButton.OK, MessageBoxImage.Information);
                 else
                     MessageBox.Show("No fue posible guardar!!", "Fallo", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
+            
 
         }
 
         private void EliminarButton_Click(object sender, RoutedEventArgs e)
         {
-        //    int id;
-         //   int.TryParse(ArticuloIdTextBox.Text, out id);
 
-            //Limpiar();
+            int id;
+            int.TryParse(ArticuloIdTextBox.Text, out id);
 
-          //  try
-           // {
-               // Limpiar();
-                if (ArticulosBLL.Eliminar(articulo.ArticulosId))
+            try
+            {
+
+                if (ArticulosBLL.Eliminar(id))
                 {
                     Limpiar();
                     MessageBox.Show("Eliminado", "Exito", MessageBoxButton.OK, MessageBoxImage.Information);
+
                 }
                 else
                 {
                     MessageBox.Show(ArticuloIdTextBox.Text, "No se puede eliminar un cliente que no existe");
                 }
+
+            }
+            catch
+            {
+
+            }
 
         }
 
@@ -156,7 +165,7 @@ namespace SistemaVentas.UI.Registros
         {
             Articulos articulos = ArticulosBLL.Buscar(articulo.ArticulosId);
 
-       
+            
             if (articulo != null)
             {
                 articulo = articulos;

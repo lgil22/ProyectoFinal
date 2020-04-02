@@ -75,21 +75,19 @@
             </TextBox>
         </StackPanel>
 
-
         <StackPanel Grid.Row="3" Grid.Column="1" Margin="0,14,0,33">
-            <ComboBox x:Name="UsuarioIdComboBox" SelectedIndex="0"  Width="151" >
-                <ComboBoxItem />
-                <ComboBox.Text>
-                    <Binding Path="Tipo" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+            <TextBox  x:Name="UsuarioIdComboBox" Height="25" Background="#FFFDFBFB">
+                <TextBox.Text>
+                    <Binding  Path="Usuario" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
                             <src:IdValidacion x:Name="UsuarioValidacion" ValidatesOnTargetUpdated="True"/>
                         </Binding.ValidationRules>
                     </Binding>
-                </ComboBox.Text>
-            </ComboBox>
+                </TextBox.Text>
+            </TextBox>
         </StackPanel>
 
-
+  
         <StackPanel Grid.Row="4" Grid.Column="1" Margin="0,14,0,33">
             <TextBox  x:Name="DescripcionTextBox" Height="25" Background="#FFFDFBFB">
                 <TextBox.Text>
@@ -102,18 +100,20 @@
             </TextBox>
         </StackPanel>
 
+
         <StackPanel Grid.Row="5" Grid.Column="1" Margin="0,14,0,33">
-            <ComboBox x:Name="CategoriaIdComboBox" SelectedIndex="0"  Width="151"  >
-                <ComboBoxItem />
-                <ComboBox.Text>
-                    <Binding Path="CategoriaId" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+            <TextBox  x:Name="CategoriaIdComboBox" Height="25" Background="#FFFDFBFB">
+                <TextBox.Text>
+                    <Binding  Path="CategoriaId" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
-                            <src:IdValidacion x:Name="CategoriaIdValidacion" ValidatesOnTargetUpdated="True"/>
+                            <src:DescripcionValidacion x:Name="CategoriaIdValidacion" ValidatesOnTargetUpdated="True"/>
                         </Binding.ValidationRules>
                     </Binding>
-                </ComboBox.Text>
-            </ComboBox>
+                </TextBox.Text>
+            </TextBox>
         </StackPanel>
+        
+       
 
 
 

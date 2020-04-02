@@ -33,7 +33,7 @@ namespace SistemaVentas.UI.Registros
         {
             CategoriaIdTextBox.Text = "0";
             NombreCategoriaCombro.Text = string.Empty;
-            // reCargar();
+            reCargar();
         }
         private void reCargar()
         {
