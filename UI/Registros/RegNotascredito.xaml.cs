@@ -101,15 +101,26 @@ namespace SistemaVentas.UI.Registros
 
         private void EliminarButton_Click(object sender, RoutedEventArgs e)
         {
-            if (NotasCreditosBLL.Eliminar(credito.NotaId))
+            int id;
+            int.TryParse(NotaIdTextBox.Text, out id);
+            Limpiar();
+
+            try
             {
-                Limpiar();
-                MessageBox.Show("Eliminado", "Exito", MessageBoxButton.OK, MessageBoxImage.Information);
+                if (NotasCreditosBLL.Eliminar(credito.NotaId))
+                {
+                    MessageBox.Show("Eliminado", "Exito", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                else
+                {
+                    MessageBox.Show(NotaIdTextBox.Text, "No se puede eliminar no existe");
+                }
             }
-            else
+            catch
             {
-                MessageBox.Show("No se puede eliminar no existe");
+
             }
+
         }
 
         private void GuardarButton_Click(object sender, RoutedEventArgs e)
@@ -123,16 +134,25 @@ namespace SistemaVentas.UI.Registros
 
             //Determinar si es guardar o modificar
 
-            if (string.IsNullOrWhiteSpace(NotaIdTextBox.Text) || NotaIdTextBox.Text == "0")
+            if (credito.NotaId == 0)
+            {
+
                 paso = NotasCreditosBLL.Guardar(credito);
+            }
             else
             {
                 if (!existeEnLaBaseDeDatos())
                 {
-                    MessageBox.Show("No se puede modificar un Cliente que no existe", "Fallo", MessageBoxButton.OK, MessageBoxImage.Error);
+                    paso = NotasCreditosBLL.Modificar(credito);
+                    MessageBox.Show("modifico ", "Existo", MessageBoxButton.OK, MessageBoxImage.Error);
+
+                }
+                else
+                {
+                    Limpiar();
+                    MessageBox.Show("No Existe en la base de datos", "ERROR");
                     return;
                 }
-                paso = NotasCreditosBLL.Modificar(credito);
             }
 
             //Informar el resultado

@@ -46,7 +46,7 @@ namespace SistemaVentas.UI.Registros
         private bool ExisteEnLaBaseDeDatos()
         {
             Usuarios clientes = UsuariosBLL.Buscar((int)UsuarioIdTextBox.Text.ToInt());
-            return (clientes != null);
+            return clientes != null;
         }
 
         private bool Validar()
@@ -101,16 +101,24 @@ namespace SistemaVentas.UI.Registros
 
             //Determinar si es guardar o modificar
 
-            if (string.IsNullOrWhiteSpace(UsuarioIdTextBox.Text) || UsuarioIdTextBox.Text == "0")
+            if (usuarios.UsuarioId == 0)
+            {
                 paso = UsuariosBLL.Guardar(usuarios);
+            }
+               
             else
             {
                 if (!ExisteEnLaBaseDeDatos())
                 {
-                    MessageBox.Show("No se puede modificar un Usuario que no existe", "Fallo", MessageBoxButton.OK, MessageBoxImage.Error);
+                   paso = UsuariosBLL.Modificar(usuarios);
+                    MessageBox.Show("modifico", "Existo", MessageBoxButton.OK, MessageBoxImage.Error);    
+                }
+                else
+                {
+                    Limpiar();
+                    MessageBox.Show("No Existe en la base de datos", "ERROR");
                     return;
                 }
-                paso = UsuariosBLL.Modificar(usuarios);
             }
 
             //Informar el resultado
@@ -158,7 +166,7 @@ namespace SistemaVentas.UI.Registros
 
             if (usuarioAnterior != null)
             {
-               // MessageBox.Show("Usuario Encontrado");
+                MessageBox.Show("Usuario Encontrado");
                 usuarios = usuarioAnterior;
                 Refrescar();
             }

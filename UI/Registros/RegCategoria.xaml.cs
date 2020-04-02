@@ -80,16 +80,21 @@ namespace SistemaVentas.UI.Registros
             }
             else
             {
-                if (existeEnLaBaseDeDatos())
+                if (!existeEnLaBaseDeDatos())
+                {
                     paso = CategoriaBLL.Modificar(categoria);
+                    MessageBox.Show(" modifico ", "Existo", MessageBoxButton.OK, MessageBoxImage.Error);
+                   
+                }
                 else
                 {
-                    MessageBox.Show("No se puede modificar una categoria que no existe");
-
+                    Limpiar();
+                    MessageBox.Show("No Existe en la base de datos", "ERROR");
+                    return;
                 }
+            }
 
-
-                if (paso)
+            if (paso)
                 {
                     Limpiar();
                     MessageBox.Show("Guardado!!", "Exito", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -99,7 +104,7 @@ namespace SistemaVentas.UI.Registros
                     MessageBox.Show("No fue posible guardar!!", "Fallo", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
 
-            }
+            
         }
 
         private void BuscarButton_Click(object sender, RoutedEventArgs e)
@@ -120,20 +125,28 @@ namespace SistemaVentas.UI.Registros
 
         private void EliminarButton_Click(object sender, RoutedEventArgs e)
         {
+            int id;
+            int.TryParse(CategoriaIdTextBox.Text, out id);
 
-            if (CategoriaBLL.Eliminar(categoria.CategoriaId))
-                {
-                    Limpiar();
-                    MessageBox.Show("Eliminado", "Exito");
-                }
-            else
+            Limpiar();
+            try
             {
-                MessageBox.Show("No se puede eliminar una categoria que no existe");
+                if (CategoriaBLL.Eliminar(categoria.CategoriaId))
+                {
+                    MessageBox.Show("Eliminado", "Exito", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                else
+                    MessageBox.Show(CategoriaIdTextBox.Text, "No se puede eliminar un cliente que no existe");
+            }
+            catch
+            {
 
             }
-           
+
 
         }
+
+        
 
         private bool existeEnLaBaseDeDatos()
         {

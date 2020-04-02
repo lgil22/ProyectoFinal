@@ -97,7 +97,7 @@ namespace SistemaVentas.UI.Registros
 
             Limpiar();
 
-          //  articulos = reCargar();
+         
            
             if (articulo.ArticulosId == 0)
             {
@@ -109,12 +109,13 @@ namespace SistemaVentas.UI.Registros
                 if (!existeEnLaBaseDeDatos())
                 {
                     paso = ArticulosBLL.Modificar(articulo);
-                    MessageBox.Show("No se puede modificar no existe", "Fallo", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show(" modifico ", "Existo", MessageBoxButton.OK, MessageBoxImage.Error);
 
                 }
 
                 else
                 {
+                    Limpiar();
                     MessageBox.Show("No Existe en la base de datos", "ERROR");
                     return;
                 }
@@ -124,8 +125,7 @@ namespace SistemaVentas.UI.Registros
                     MessageBox.Show("Guardado!!", "Exito", MessageBoxButton.OK, MessageBoxImage.Information);
                 else
                     MessageBox.Show("No fue posible guardar!!", "Fallo", MessageBoxButton.OK, MessageBoxImage.Error);
-            
-
+  
         }
 
         private void EliminarButton_Click(object sender, RoutedEventArgs e)
@@ -160,15 +160,14 @@ namespace SistemaVentas.UI.Registros
         }
         private void BuscarButton_Click(object sender, RoutedEventArgs e)
         {
-            int id;
-            Articulos arti= new Articulos();
-            int.TryParse(ArticuloIdTextBox.Text, out id);
-
-            Limpiar();
-            arti = ArticulosBLL.Buscar(id);
-            if (arti !=null)
+          
+            Articulos articuloAnterio = ArticulosBLL.Buscar(articulo.ArticulosId);
+     
+           
+            if (articuloAnterio != null)
             {
                 MessageBox.Show("Articulo Encontrado");
+                articulo = articuloAnterio;
                 reCargar();
             }
             else
