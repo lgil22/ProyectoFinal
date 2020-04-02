@@ -162,4 +162,8 @@
     </EmbeddedResource>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="f\" />
+  </ItemGroup>
+
 </Project>
