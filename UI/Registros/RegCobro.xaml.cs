@@ -218,14 +218,14 @@ namespace SistemaVentas.UI.Registros
         {
             if (DetalleDataGridCobro != null)
             {
-                if (ClienteIdComboBox.SelectedIndex == 0)
+                if (ClienteIdComboBox.Text == "0")
                 {
                     cobro = new Cobros();
                     reCargar();
                 }
                 else
                 {
-                    cobro = CobrosBLL.Buscar(Convert.ToInt32(ClienteIdComboBox.SelectedItem));
+                    cobro = CobrosBLL.Buscar(Convert.ToInt32(ClienteIdComboBox.Text));
                     reCargar();
                 }
             }

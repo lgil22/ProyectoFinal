@@ -56,12 +56,16 @@
 
 
         <StackPanel Grid.Row="5" Grid.Column="1" Margin="0,14,0,30">
-            <ComboBox x:Name="ArticuloIdTextBox" SelectedIndex="0"  Width="151" Height="26" >
-                <ComboBoxItem Content="0" />
-            </ComboBox>
+            <TextBox  x:Name="ArticuloIdTextBox" Height="22" Background="#FFFDFBFB" TextChanged="PreciotextBox_TextChanged">
+                <TextBox.Text>
+                    <Binding  Path="Articuloid" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                        <Binding.ValidationRules>
+                            <src:IdValidacion x:Name="ArticuloValidacion" ValidatesOnTargetUpdated="True"/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
         </StackPanel>
-
-
 
         <StackPanel Grid.Row="6" Grid.Column="0" Margin="0,12,5,30">
             <Label Content="Cantidad" FontSize="15"/>
@@ -151,16 +155,20 @@
             </DataGrid>
         </GroupBox>
 
-
-
-
-        <StackPanel Grid.Row="3" Grid.Column="1" Margin="0,14,0,29">
-            <ComboBox x:Name="ClienteIdComboBox" SelectedIndex="0"  Width="151" SelectionChanged="ClienteIdComboBox_SelectionChanged" Height="28" >
-                <ComboBoxItem Content="0" />
-            </ComboBox>
+        <StackPanel Grid.Row="3" Grid.Column="1" Margin="0,14,0,30">
+            <TextBox  x:Name="ClienteIdComboBox" Height="22" Background="#FFFDFBFB" TextChanged="PreciotextBox_TextChanged">
+                <TextBox.Text>
+                    <Binding  Path="ClienteId" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                        <Binding.ValidationRules>
+                            <src:IdValidacion x:Name="ClienteValidacion" ValidatesOnTargetUpdated="True"/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
         </StackPanel>
 
 
+ 
         <StackPanel Grid.Row="4" Grid.Column="1" Margin="0,14,0,30">
             <DatePicker x:Name="FechaDatePicke" Height="25" Background="#FFFDFBFB">
             </DatePicker>
