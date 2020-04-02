@@ -6,9 +6,12 @@
         xmlns:local="clr-namespace:SistemaVentas.UI.Registros"
           xmlns:src="clr-namespace:SistemaVentas.Validaciones"
         mc:Ignorable="d"
-        Title="Deudas Clientes" Height="360" Width="580" ResizeMode="NoResize" Icon="/Resources/Deudas.png">
+        Title="Deudas Clientes" Height="360" Width="580" ResizeMode="NoResize" Icon="/Resources/Deudas.png" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}">
     <Grid>
-        
+        <Grid.Background>
+            <ImageBrush Stretch="Uniform" ImageSource="/Resources/money.png"/>
+        </Grid.Background>
+
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="130"/>
@@ -32,7 +35,7 @@
 
 
         <StackPanel Grid.Row="5" Grid.Column="1" Margin="0,50,6,0" Grid.RowSpan="2">
-            <Button  x:Name="GuardarButton" Content="Guargar" FontSize="15" Width="125" Click="GuardarButton_Click" Height="36">
+            <Button  x:Name="GuardarButton" Content="Guardar" FontSize="15" Width="125" Click="GuardarButton_Click" Height="36">
                 <Button.Background>
                     <ImageBrush ImageSource="/Resources/Guardar.png" Stretch="Uniform" AlignmentX="Left" AlignmentY="Bottom" />
                 </Button.Background>
@@ -102,7 +105,9 @@
             <TextBox  x:Name="Deuda" Height="30" Background="#FFFDFBFB" TextChanged="Deuda_TextChanged">
                 <TextBox.Text>
                     <Binding  Path="Deuda" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
-                        
+                        <Binding.ValidationRules>
+                            <src:IdValidacion x:Name="DeudasValidacion" ValidatesOnTargetUpdated="True"/>
+                        </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
             </TextBox>
@@ -123,7 +128,7 @@
 
         <StackPanel Grid.Row="11" Grid.Column="3" Margin="0,1,5,67" Grid.RowSpan="2">
             <TextBox  x:Name="Devuelta" Height="30"  Background="#FFFDFBFB" TextChanged="Devuelta_TextChanged">
-         
+
             </TextBox>
         </StackPanel>
 

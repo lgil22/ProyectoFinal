@@ -78,7 +78,14 @@
 
         <StackPanel Grid.Row="3" Grid.Column="1" Margin="0,14,0,33">
             <ComboBox x:Name="UsuarioIdComboBox" SelectedIndex="0"  Width="151" >
-                <ComboBoxItem Content="0"/>
+                <ComboBoxItem />
+                <ComboBox.Text>
+                    <Binding Path="Tipo" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                        <Binding.ValidationRules>
+                            <src:IdValidacion x:Name="UsuarioValidacion" ValidatesOnTargetUpdated="True"/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </ComboBox.Text>
             </ComboBox>
         </StackPanel>
 
@@ -97,7 +104,14 @@
 
         <StackPanel Grid.Row="5" Grid.Column="1" Margin="0,14,0,33">
             <ComboBox x:Name="CategoriaIdComboBox" SelectedIndex="0"  Width="151"  >
-                <ComboBoxItem Content="0" />
+                <ComboBoxItem />
+                <ComboBox.Text>
+                    <Binding Path="CategoriaId" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                        <Binding.ValidationRules>
+                            <src:IdValidacion x:Name="CategoriaIdValidacion" ValidatesOnTargetUpdated="True"/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </ComboBox.Text>
             </ComboBox>
         </StackPanel>
 
@@ -137,7 +151,7 @@
         </StackPanel>
 
         <StackPanel Grid.Row="7" Grid.Column="2" Margin="0,0,5,70" Grid.RowSpan="2">
-            <Button  x:Name="GuardarButton" Content="Guargar" FontSize="15" Width="125"  Height="36" Click="GuardarButton_Click">
+            <Button  x:Name="GuardarButton" Content="Guardar" FontSize="15" Width="125"  Height="36" Click="GuardarButton_Click">
                 <Button.Background>
                     <ImageBrush ImageSource="/Resources/Guardar.png" Stretch="Uniform" AlignmentX="Left" AlignmentY="Bottom" />
                 </Button.Background>

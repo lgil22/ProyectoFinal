@@ -171,8 +171,9 @@ namespace SistemaVentas.UI.Registros
             }
 
         }
+  
 
-        private void NuevobButton_Click(object sender, RoutedEventArgs e)
+        private void NuevoButton_Click(object sender, RoutedEventArgs e)
         {
             Limpiar();
         }
