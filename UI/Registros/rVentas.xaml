@@ -7,7 +7,7 @@
          xmlns:src="clr-namespace:SistemaVentas.Validaciones"
         mc:Ignorable="d"
         Title="Registro Ventas" Height="602" Width="655" ResizeMode="CanResize" WindowStartupLocation="CenterScreen" Icon="/Resources/Ventas.png" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" WindowState="Maximized">
-    <Grid>
+    <Grid x:Name="print">
         <Grid.Background>
             <ImageBrush ImageSource="/Resources/Sales.png" Stretch="Uniform"/>
         </Grid.Background>
@@ -210,6 +210,12 @@
                 Margin="16,88,0,0" Grid.Row="8" VerticalAlignment="Top" Width="112" Click="RemoverDataGridButton_Click">
             <Button.Background>
                 <ImageBrush ImageSource="/Resources/Remover.png" Stretch="Uniform" AlignmentX="Left" AlignmentY="Bottom" TileMode="None" />
+            </Button.Background>
+        </Button>
+        <Button x:Name="ImprimirButton" Content="" Grid.Column="3" HorizontalAlignment="Left" Height="34" Margin="75,30,0,0" Grid.Row="3" 
+                VerticalAlignment="Top" Width="52" Click="ImprimirButton_Click" Grid.RowSpan="2">
+            <Button.Background>
+                <ImageBrush ImageSource="/Resources/printer.png" Stretch="Uniform"/>
             </Button.Background>
         </Button>
     </Grid>
