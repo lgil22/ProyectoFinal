@@ -73,7 +73,7 @@ namespace SistemaVentas.UI.Registros
                 return;
             Limpiar();
 
-
+    
             if (categoria.CategoriaId == 0)
             {
                 paso = CategoriaBLL.Guardar(categoria);
@@ -82,15 +82,14 @@ namespace SistemaVentas.UI.Registros
             {
                 if (!existeEnLaBaseDeDatos())
                 {
-                    paso = CategoriaBLL.Modificar(categoria);
-                    MessageBox.Show(" modifico ", "Existo", MessageBoxButton.OK, MessageBoxImage.Error);
-                   
+                    MessageBox.Show("No se puede modificar una categoria que no existe");
+                    return;
+
                 }
                 else
                 {
-                    Limpiar();
-                    MessageBox.Show("No Existe en la base de datos", "ERROR");
-                    return;
+                    paso = CategoriaBLL.Modificar(categoria);
+                    MessageBox.Show(" modifico ", "Existo", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
 
@@ -128,11 +127,12 @@ namespace SistemaVentas.UI.Registros
             int id;
             int.TryParse(CategoriaIdTextBox.Text, out id);
 
-            Limpiar();
+            
             try
             {
                 if (CategoriaBLL.Eliminar(categoria.CategoriaId))
                 {
+                    Limpiar();
                     MessageBox.Show("Eliminado", "Exito", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
                 else

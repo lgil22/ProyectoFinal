@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29709.97
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SistemaVentas", "SistemaVentas.csproj", "{BC551C88-2579-47EF-950F-4FC5DB3161BD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SistemaVentas", "SistemaVentas.csproj", "{BC551C88-2579-47EF-950F-4FC5DB3161BD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SistemaVentasTests", "..\SistemaVentasTests\SistemaVentasTests.csproj", "{45B969EB-FCEB-4B83-8311-EC3701153B5B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{BC551C88-2579-47EF-950F-4FC5DB3161BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BC551C88-2579-47EF-950F-4FC5DB3161BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BC551C88-2579-47EF-950F-4FC5DB3161BD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{45B969EB-FCEB-4B83-8311-EC3701153B5B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45B969EB-FCEB-4B83-8311-EC3701153B5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45B969EB-FCEB-4B83-8311-EC3701153B5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45B969EB-FCEB-4B83-8311-EC3701153B5B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
