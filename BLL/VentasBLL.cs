@@ -24,8 +24,6 @@ namespace SistemaVentas.BLL
                 RepositorioBase<Articulos> prod = new RepositorioBase<Articulos>();
                 RepositorioBase<Clientes> client = new RepositorioBase<Clientes>();
 
-
-
                 if (db.Ventas.Add(venta) != null)
                 {
 
@@ -64,8 +62,7 @@ namespace SistemaVentas.BLL
             {
                 Ventas venta = db.Ventas.Find(id);
                 var cliente = client.Buscar(venta.ClienteId);
-              //  cliente.Balance = cliente.Balance - venta.Total;
-               // client.Modificar(cliente);
+
 
                 foreach (var item in venta.Detalles)
                 {

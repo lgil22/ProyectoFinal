@@ -41,7 +41,7 @@ namespace SistemaVentas.UI.Registros
             FechaNacTimePicker.SelectedDate = DateTime.Now;
             TipoPagoComBox.SelectedItem = string.Empty;
             this.ventas = new Ventas();
-           /// DetalleDataGridVentas.ItemsSource = new List<VentaDetalles>();
+            DetalleDataGridVentas.ItemsSource = new List<VentaDetalles>();
             this.Detalles = new List<VentaDetalles>();
             CargarGrid();
             Refrescar();
