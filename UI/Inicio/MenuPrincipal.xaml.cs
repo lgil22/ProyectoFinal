@@ -57,12 +57,6 @@ namespace SistemaVentas.UI.Inicio
             regV.Show();
         }
 
-        private void MenuFacturar_Click(object sender, RoutedEventArgs e)
-        {
-            rFacturas regF = new rFacturas();
-            regF.Show();
-        }
-
         private void MenuDeudas_Click(object sender, RoutedEventArgs e)
         {
             rDeudaClientes regD = new rDeudaClientes();

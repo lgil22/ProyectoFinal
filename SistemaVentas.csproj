@@ -40,6 +40,7 @@
     <None Remove="Resources\Users.png" />
     <None Remove="Resources\Usuarios.png" />
     <None Remove="Resources\Ventas.png" />
+    <None Remove="SitemaVentas.db" />
   </ItemGroup>
 
   <ItemGroup>
@@ -127,6 +128,9 @@
     <Content Include="Resources\Ventas.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="SitemaVentas.db">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>
@@ -156,11 +160,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="f\" />
-    <Folder Include="p\" />
   </ItemGroup>
 
 </Project>

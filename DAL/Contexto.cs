@@ -11,10 +11,7 @@ namespace SistemaVentas.DAL
         public DbSet <Clientes> Clientes { get; set; }
         public DbSet<Ventas> Ventas { get; set; }
         public DbSet<Usuarios> Usuarios { get; set; }
-        public DbSet<Facturas> Facturas { get; set; }
         public DbSet<DeudaClientes> Deudas { get; set; }
-
-
 
         public DbSet<Categoria> Categoria { get; set; }
         public DbSet<Articulos> Articulos { get; set; }

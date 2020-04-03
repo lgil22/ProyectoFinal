@@ -90,22 +90,6 @@ namespace SistemaVentas.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Facturas",
-                columns: table => new
-                {
-                    FacturaId = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    NombreCliente = table.Column<string>(nullable: true),
-                    FechaVenta = table.Column<DateTime>(nullable: false),
-                    TipoVenta = table.Column<string>(nullable: true),
-                    CantidadArticulo = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Facturas", x => x.FacturaId);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "NotasCreditos",
                 columns: table => new
                 {
@@ -178,30 +162,6 @@ namespace SistemaVentas.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "FacturaDetalles",
-                columns: table => new
-                {
-                    FacturaId = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    ArticuloId = table.Column<int>(nullable: false),
-                    Precio = table.Column<decimal>(nullable: false),
-                    CantidadArticulo = table.Column<int>(nullable: false),
-                    Descripcion = table.Column<string>(nullable: true),
-                    Total = table.Column<decimal>(nullable: false),
-                    FacturasFacturaId = table.Column<int>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_FacturaDetalles", x => x.FacturaId);
-                    table.ForeignKey(
-                        name: "FK_FacturaDetalles_Facturas_FacturasFacturaId",
-                        column: x => x.FacturasFacturaId,
-                        principalTable: "Facturas",
-                        principalColumn: "FacturaId",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "VentaDetalles",
                 columns: table => new
                 {
@@ -229,11 +189,6 @@ namespace SistemaVentas.Migrations
                 column: "CobrosId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_FacturaDetalles_FacturasFacturaId",
-                table: "FacturaDetalles",
-                column: "FacturasFacturaId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_VentaDetalles_VentaId",
                 table: "VentaDetalles",
                 column: "VentaId");
@@ -257,9 +212,6 @@ namespace SistemaVentas.Migrations
                 name: "Deudas");
 
             migrationBuilder.DropTable(
-                name: "FacturaDetalles");
-
-            migrationBuilder.DropTable(
                 name: "NotasCreditos");
 
             migrationBuilder.DropTable(
@@ -270,9 +222,6 @@ namespace SistemaVentas.Migrations
 
             migrationBuilder.DropTable(
                 name: "Cobros");
-
-            migrationBuilder.DropTable(
-                name: "Facturas");
 
             migrationBuilder.DropTable(
                 name: "Ventas");

@@ -69,14 +69,7 @@
 
             <!-- ********************** Menu Ventas ************************** -->
 
-            <MenuItem x:Name="MenuVentas" Header="Ventas">
-                <MenuItem x:Name="Facturar" Header="Facturar" Click="MenuFacturar_Click">
-                    <MenuItem.Background>
-                        <ImageBrush ImageSource="/SistemaVentas;component/Resources/Facturacion.png"  Stretch="Uniform" AlignmentX="Left" AlignmentY="Bottom" />
-                    </MenuItem.Background>
-                </MenuItem>
-                <Separator/>
-
+            <MenuItem x:Name="MenuDeudas" Header="Deudas">
                 <MenuItem x:Name="Deudas" Header="Deudas" Click="MenuDeudas_Click">
                     <MenuItem.Background>
                         <ImageBrush ImageSource="/SistemaVentas;component/Resources/Deudas.png"  Stretch="Uniform" AlignmentX="Left" AlignmentY="Bottom" />

@@ -162,60 +162,6 @@ namespace SistemaVentas.Migrations
                     b.ToTable("Deudas");
                 });
 
-            modelBuilder.Entity("SistemaVentas.Entidades.FacturaDetalles", b =>
-                {
-                    b.Property<int>("FacturaId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("ArticuloId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("CantidadArticulo")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("Descripcion")
-                        .HasColumnType("TEXT");
-
-                    b.Property<int?>("FacturasFacturaId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<decimal>("Precio")
-                        .HasColumnType("TEXT");
-
-                    b.Property<decimal>("Total")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("FacturaId");
-
-                    b.HasIndex("FacturasFacturaId");
-
-                    b.ToTable("FacturaDetalles");
-                });
-
-            modelBuilder.Entity("SistemaVentas.Entidades.Facturas", b =>
-                {
-                    b.Property<int>("FacturaId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("CantidadArticulo")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<DateTime>("FechaVenta")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("NombreCliente")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("TipoVenta")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("FacturaId");
-
-                    b.ToTable("Facturas");
-                });
-
             modelBuilder.Entity("SistemaVentas.Entidades.NotasCreditos", b =>
                 {
                     b.Property<int>("NotaId")
@@ -321,13 +267,6 @@ namespace SistemaVentas.Migrations
                     b.HasOne("SistemaVentas.Entidades.Cobros", null)
                         .WithMany("Detalle")
                         .HasForeignKey("CobrosId");
-                });
-
-            modelBuilder.Entity("SistemaVentas.Entidades.FacturaDetalles", b =>
-                {
-                    b.HasOne("SistemaVentas.Entidades.Facturas", null)
-                        .WithMany("Detalles")
-                        .HasForeignKey("FacturasFacturaId");
                 });
 
             modelBuilder.Entity("SistemaVentas.Entidades.VentaDetalles", b =>

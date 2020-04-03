@@ -176,7 +176,7 @@
 
 
         <StackPanel Grid.Row="14" Grid.Column="1" Margin="0,0,5,70" Grid.RowSpan="2">
-            <Button  x:Name="GuardarButton" Content="Guargar" HorizontalContentAlignment="Right" FontSize="15" Width="100" Height="36" Click="GuardarButton_Click">
+            <Button  x:Name="GuardarButton" Content="Guardar" HorizontalContentAlignment="Right" FontSize="15" Width="100" Height="36" Click="GuardarButton_Click">
                 <Button.Background>
                     <ImageBrush ImageSource="/Resources/Guardar.png" Stretch="Uniform" AlignmentX="Left" AlignmentY="Bottom" />
                 </Button.Background>

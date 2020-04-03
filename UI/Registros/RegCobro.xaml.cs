@@ -17,7 +17,7 @@ namespace SistemaVentas.UI.Registros
     /// <summary>
     /// Interaction logic for RegCobro.xaml
     /// </summary>
-    public partial class RegCobro : Window
+    public partial class RegCobro: Window
     {
         Cobros cobro = new Cobros();
 
