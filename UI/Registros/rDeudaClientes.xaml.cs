@@ -54,29 +54,6 @@ namespace SistemaVentas.UI.Registros
 
         }
 
-        private void EliminarButton_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-
-                if (DeudaClientesBLL.Eliminar(deudas.DeudasId))
-                {
-                    Limpiar();
-                    MessageBox.Show("Eliminado", "Exito");
-                }
-                else
-                {
-                    MessageBox.Show("No se puede eliminar una deuda que no existe");
-
-                }
-                
-            }
-            catch
-            {
-
-            }
-
-        }
 
         private void BuscarButton_Click(object sender, RoutedEventArgs e)
         {
@@ -233,6 +210,30 @@ namespace SistemaVentas.UI.Registros
         private void NuevobButton_Click(object sender, RoutedEventArgs e)
         {
             Limpiar();
+        }
+
+        private void EliminarButton_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+
+                if (DeudaClientesBLL.Eliminar(deudas.DeudasId))
+                {
+                    Limpiar();
+                    MessageBox.Show("Eliminado", "Exito");
+                }
+                else
+                {
+                    MessageBox.Show("No se puede eliminar una deuda que no existe");
+
+                }
+
+            }
+            catch
+            {
+
+            }
+
         }
     }
 

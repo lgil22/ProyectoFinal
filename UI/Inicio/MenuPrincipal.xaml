@@ -14,7 +14,10 @@
 
             <!-- ********************** Menu Registros ************************** -->
             <MenuItem x:Name="MenuArchivo" Header="Archivo">
+                <!--MenuItem  Header="Salir" Click="Salir_Click">
+                </>-->
             </MenuItem>
+
 
             <MenuItem x:Name="MenuRegistros" Header="Registros">
                 <MenuItem Header="Articulos" Click="MenuArticulos_Click">
@@ -148,7 +151,9 @@
                     <ImageBrush ImageSource="/Resources/Cerrar.png" Stretch="Uniform" AlignmentX="Left" AlignmentY="Bottom" />
                 </Button.Background>
             </Button>
+            
         </Menu>
+       
 
 
     </Grid>

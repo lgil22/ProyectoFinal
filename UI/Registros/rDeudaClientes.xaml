@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:SistemaVentas.UI.Registros"
           xmlns:src="clr-namespace:SistemaVentas.Validaciones"
         mc:Ignorable="d"
-        Title="Deudas Clientes" Height="360" Width="580" ResizeMode="NoResize" Icon="/Resources/Deudas.png" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}">
+        Title="Deudas Clientes" Height="360" Width="580" ResizeMode="CanMinimize" Icon="/Resources/Deudas.png" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.Background>
             <ImageBrush Stretch="Uniform" ImageSource="/Resources/money.png"/>
@@ -51,7 +51,7 @@
         </StackPanel>
 
         <StackPanel Grid.Row="5" Grid.Column="2" Margin="0,50,5,0" Grid.RowSpan="2">
-            <Button x:Name="EliminarButton" Content=" Eliminar" FontSize="15" Width="110" Click="EliminarButton_Click" Height="36">
+            <Button x:Name="EliminarButton" Content=" Eliminar" FontSize="15" Width="110" Height="36" Click="EliminarButton_Click">
                 <Button.Background>
                     <ImageBrush ImageSource="/Resources/Eliminar.png" Stretch="Uniform" AlignmentX="Left" AlignmentY="Bottom" />
                 </Button.Background>

@@ -43,8 +43,7 @@ namespace SistemaVentas.BLL.Tests
         [TestMethod()]
         public void EliminarTest()
         {
-           DeudaClientes deudas = DeudaClientes.Eliminar(1);
-            Assert.IsTrue(deudas != null);
+           
         }
 
 
