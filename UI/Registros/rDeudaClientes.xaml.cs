@@ -56,15 +56,23 @@ namespace SistemaVentas.UI.Registros
 
         private void EliminarButton_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
 
-            if (DeudaClientesBLL.Eliminar(deudas.DeudasId))
-            {
-                Limpiar();
-                MessageBox.Show("Eliminado", "Exito");
+                if (DeudaClientesBLL.Eliminar(deudas.DeudasId))
+                {
+                    Limpiar();
+                    MessageBox.Show("Eliminado", "Exito");
+                }
+                else
+                {
+                    MessageBox.Show("No se puede eliminar una deuda que no existe");
+
+                }
+                
             }
-            else
+            catch
             {
-                MessageBox.Show("No se puede eliminar una deuda que no existe");
 
             }
 

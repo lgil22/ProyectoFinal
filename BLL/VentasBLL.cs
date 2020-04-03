@@ -13,8 +13,6 @@ namespace SistemaVentas.BLL
     public class VentasBLL
     {
 
-
-
         public static bool Guardar(Ventas venta)
         {
             bool paso = false;
@@ -35,8 +33,6 @@ namespace SistemaVentas.BLL
 
                     }
 
-               
-
                     paso = db.SaveChanges() > 0;
                 }
 
@@ -54,9 +50,8 @@ namespace SistemaVentas.BLL
             bool paso = false;
             Contexto db = new Contexto();
             RepositorioBase<Ventas> vent = new RepositorioBase<Ventas>();
-            RepositorioBase<Articulos> prod = new RepositorioBase<Articulos>();
+            RepositorioBase<Articulos> art = new RepositorioBase<Articulos>();
             RepositorioBase<Clientes> client = new RepositorioBase<Clientes>();
-
 
             try
             {
@@ -66,12 +61,11 @@ namespace SistemaVentas.BLL
 
                 foreach (var item in venta.Detalles)
                 {
-                    var producto = prod.Buscar(item.ArticuloId);
-                    producto.Existencia = producto.Existencia + item.Cantidad;
-                    prod.Modificar(producto);
+                    var articulos = art.Buscar(item.ArticuloId);
+                    articulos.Existencia = articulos.Existencia + item.Cantidad;
+                    art.Modificar(articulos);
 
                 }
-
 
                 db.Ventas.Remove(venta);
                 if (db.SaveChanges() > 0)
@@ -107,8 +101,6 @@ namespace SistemaVentas.BLL
 
             var Venta = vent.Buscar(ventas.VentaId);
             var ventaanterior = vent.Buscar(VentasAnteriores.VentaId);
-
-
 
         }
 
