@@ -26,7 +26,7 @@ namespace SistemaVentas.UI.Registros
         public rVentas()
         {
             InitializeComponent();
-            this.DataContext = ventas;
+           this.DataContext = ventas;
             this.Detalles = new List<VentaDetalles>();
         }
         private void Refrescar()
@@ -36,11 +36,16 @@ namespace SistemaVentas.UI.Registros
         }
         private void Limpiar()
         {
+            VentaIdTextBox.Text = "0";
+            ClienteIdCombox.SelectedItem = "0";
+            FechaNacTimePicker.SelectedDate = DateTime.Now;
+            TipoPagoComBox.SelectedItem = string.Empty;
             this.ventas = new Ventas();
-            DetalleDataGridVentas.ItemsSource = new List<VentaDetalles>();
+           /// DetalleDataGridVentas.ItemsSource = new List<VentaDetalles>();
             this.Detalles = new List<VentaDetalles>();
             CargarGrid();
             Refrescar();
+            LlenaComBox();
         }
 
         private void CargarGrid()
@@ -49,9 +54,18 @@ namespace SistemaVentas.UI.Registros
             DetalleDataGridVentas.ItemsSource = this.Detalles;
         }
 
+        private void LlenaComBox()
+        {
+            RepositorioBase<Clientes> db = new RepositorioBase<Clientes>();
+            var listado = new List<Clientes>();
+            listado = db.GetList(p => true);
+            ClienteIdCombox.DataContext = listado;
+            ClienteIdCombox.SelectedValue = "ClienteId";
+           ClienteIdCombox.DisplayMemberPath = "Nombres";
+        }
         private bool ExisteEnLaBaseDeDatos()
         {
-            Clientes clientes = ClientesBLL.Buscar((int)ClienteIdTextBox.Text.ToInt());
+            Clientes clientes = ClientesBLL.Buscar((int)ClienteIdCombox.Text.ToInt());
             return (clientes != null);
         }
 
@@ -59,10 +73,10 @@ namespace SistemaVentas.UI.Registros
         {
             bool paso = true;
 
-            if (string.IsNullOrWhiteSpace(TipoPagoTextBox.Text))
+            if (string.IsNullOrWhiteSpace(TipoPagoComBox.Text))
             {
                 MessageBox.Show("EL campo Tipo Pago no puede estar vacio", "Aviso", MessageBoxButton.OKCancel, MessageBoxImage.Information);
-                TipoPagoTextBox.Focus();
+                TipoPagoComBox.Focus();
                 paso = false;
             }
 
@@ -75,7 +89,7 @@ namespace SistemaVentas.UI.Registros
             if (this.ventas.Detalles.Count == 0)
             {
                 MessageBox.Show("Debe agregar una venta", "Aviso", MessageBoxButton.OKCancel, MessageBoxImage.Information);
-                ArticuloIdTextBox.Focus();
+                ArticuloIdComBox.Focus();
                 CantidadTextBox.Focus();
                 PrecioTextBox.Focus();
                 paso = false;
@@ -95,20 +109,19 @@ namespace SistemaVentas.UI.Registros
 
                 this.ventas.Detalles.Add(new VentaDetalles
             {
-                ArticuloId = ArticuloIdTextBox.Text.ToInt(),
+                ArticuloId = ArticuloIdComBox.Text.ToInt(),
                 Cantidad = CantidadTextBox.Text.ToInt(),
                 Precio = PrecioTextBox.Text.ToInt(),
                 //   Precio = Convert.ToInt32(PrecioTextBox),
 
             });
-            CargarGrid();
-            //Refrescar();
-            ArticuloIdTextBox.Focus();
-            ArticuloIdTextBox.Clear();
-            CantidadTextBox.Focus();
-            CantidadTextBox.Clear();
-            PrecioTextBox.Focus();
-            PrecioTextBox.Clear();
+         CargarGrid();
+          //  Refrescar();
+        //    ArticuloIdComBox.Focus();
+           // CantidadTextBox.Focus();
+           // CantidadTextBox.Clear();
+            ///PrecioTextBox.Focus();
+          //  PrecioTextBox.Clear();
         }
 
         private void BuscarButton_Click(object sender, RoutedEventArgs e)
@@ -142,8 +155,8 @@ namespace SistemaVentas.UI.Registros
                 {
                     //remover la fila
                     ventas.Detalles.RemoveAt(DetalleDataGridVentas.SelectedIndex);
-                    //Refrescar();
-                    CargarGrid();
+                   Refrescar();
+                  CargarGrid();
 
                 }
 
@@ -203,7 +216,7 @@ namespace SistemaVentas.UI.Registros
             try
             {
 
-                if (!string.IsNullOrWhiteSpace(VentaIdTextBox.Text) && (!string.IsNullOrWhiteSpace(ClienteIdTextBox.Text)))
+                if (!string.IsNullOrWhiteSpace(VentaIdTextBox.Text) && (!string.IsNullOrWhiteSpace(ClienteIdCombox.Text)))
                 {
                     MessageBox.Show("Deben de estar llenos los campos", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
@@ -263,5 +276,7 @@ namespace SistemaVentas.UI.Registros
                 MontoTextBox.Text = Convert.ToString(Num1 * Num2);
             }
         }
+
+      
     }
 }

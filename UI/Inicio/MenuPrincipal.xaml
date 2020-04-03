@@ -9,7 +9,7 @@
     <Grid>
         <Menu>
             <Menu.Background>
-                <ImageBrush Stretch="Uniform" ImageSource="/Resources/Principal.png"/>
+                <ImageBrush Stretch="Uniform" ImageSource="/Resources/Principal.png" TileMode="None" AlignmentY="Center" AlignmentX="Center"/>
             </Menu.Background>
 
             <!-- ********************** Menu Registros ************************** -->

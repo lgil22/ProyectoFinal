@@ -41,7 +41,7 @@
         </StackPanel>
 
         <StackPanel Grid.Row="9" Grid.Column="0" Margin="0,50,5,-97">
-            <Button x:Name="NuevobButton" Content="Nuevo" FontSize="14" Width="115" Click="NuevobButton_Click" Height="36">
+            <Button x:Name="NuevoButton" Content="Nuevo" FontSize="14" Width="115" Click="NuevobButton_Click" Height="36">
                 <Button.Background>
                     <ImageBrush ImageSource="/Resources/Nuevo.png" Stretch="Uniform" AlignmentX="Left" AlignmentY="Bottom" />
                 </Button.Background>
@@ -84,13 +84,16 @@
         <StackPanel Grid.Row="4" Grid.Column="0">
             <Label x:Name="ClienteIdLabel" Content="Cliente Id:" FontSize="14" Height="30" Width="128"/>
         </StackPanel>
-        <TextBox x:Name="ClienteIdTextBox" Height="25" Grid.ColumnSpan="3" Margin="114,6,98,28" Grid.Row="4">
-            <Binding Path="ClienteId" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
-                <Binding.ValidationRules>
-                    <src:IdValidacion x:Name="idValidacion" ValidatesOnTargetUpdated="True"/>
-                </Binding.ValidationRules>
-            </Binding>
-        </TextBox>
+        <ComboBox x:Name="ClienteIdCombox" Height="25" Grid.ColumnSpan="3" Margin="114,6,98,28" Grid.Row="4">
+            <ComboBoxItem>
+                <Binding Path="ClienteId" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                    <Binding.ValidationRules>
+                        <src:IdValidacion x:Name="ClienteIdValidacion" ValidatesOnTargetUpdated="True"/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </ComboBoxItem>
+        </ComboBox>
+
 
 
         <StackPanel Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2">
@@ -114,14 +117,14 @@
         </StackPanel>
 
         <StackPanel Grid.Row="6" Margin="114,8,98,26" Grid.ColumnSpan="3">
-            <ComboBox x:Name="TipoPagoTextBox" Height="25" Width="236">
+            <ComboBox x:Name="TipoPagoComBox" Height="25" Width="236">
                 <ComboBoxItem Content="Contado"/>
                 <ComboBoxItem Content="Credito"/>
                 <ComboBoxItem Content="A Plazo"/>
                 <ComboBoxItem>
                     <Binding Path="TipoPago" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
-                            <ExceptionValidationRule/>
+                            <src:ValidaciónString x:Name="TipoPagoValidacion" ValidatesOnTargetUpdated="True"/>
                         </Binding.ValidationRules>
                     </Binding>
                 </ComboBoxItem>
@@ -139,25 +142,31 @@
 
         <GroupBox x:Name="AgregarVentasGroupBox" FontSize="14" Header="Agregar Ventas" Grid.Row="7" Grid.ColumnSpan="4" Margin="10,10,-41,0" Height="206" VerticalAlignment="Top" Grid.RowSpan="2" FontWeight="Bold">
 
-            <DataGrid x:Name="DetalleDataGridVentas" Height="132" Margin="0,0,-2,0">
+            <DataGrid   x:Name="DetalleDataGridVentas" Height="132" Margin="0,0,-2,0">
                 <DataGrid.ItemsSource>
-                    <Binding Path="Detalle" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                    <Binding Path="Detalles"  UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
                             <src:ValidaciónString x:Name="ValidaciónString" ValidatesOnTargetUpdated="True"/>
                         </Binding.ValidationRules>
                     </Binding>
                 </DataGrid.ItemsSource>
             </DataGrid>
+
+
+
         </GroupBox>
 
         <Label x:Name="ArticuloLabel" Content="Articulo Id:" HorizontalAlignment="Left"  Grid.Row="7" VerticalAlignment="Top"  Margin="16,26,0,0" FontSize="12"/>
-        <TextBox x:Name="ArticuloIdTextBox" HorizontalAlignment="Left" Margin="83,30,0,0" Grid.Row="7" TextWrapping="Wrap" VerticalAlignment="Top" Width="58">
-            <Binding Path="ArticuloId" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
-                <Binding.ValidationRules>
-                    <src:IdValidacion x:Name="IdarticuloValidacion" ValidatesOnTargetUpdated="True"/>
-                </Binding.ValidationRules>
-            </Binding>
-        </TextBox>
+        <ComboBox x:Name="ArticuloIdComBox" HorizontalAlignment="Left" Margin="83,30,0,0" Grid.Row="7"  VerticalAlignment="Top" Width="58">
+            <ComboBoxItem>
+                <Binding Path="ArticuloId" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                    <Binding.ValidationRules>
+                        <src:IdValidacion x:Name="IdArticuloValidacion" ValidatesOnTargetUpdated="True"/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </ComboBoxItem>
+
+        </ComboBox>
 
 
         <Label x:Name="CantidadLabel" Content="Cantidad:" HorizontalAlignment="Left" 
@@ -203,6 +212,5 @@
                 <ImageBrush ImageSource="/Resources/Remover.png" Stretch="Uniform" AlignmentX="Left" AlignmentY="Bottom" TileMode="None" />
             </Button.Background>
         </Button>
-
     </Grid>
 </Window>

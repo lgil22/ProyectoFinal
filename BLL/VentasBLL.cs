@@ -12,53 +12,42 @@ namespace SistemaVentas.BLL
 {
     public class VentasBLL
     {
-        public static bool Guardar(Ventas ventas)
+
+
+
+        public static bool Guardar(Ventas venta)
         {
             bool paso = false;
             Contexto db = new Contexto();
-
             try
             {
-                if (db.Ventas.Add(ventas) != null)
-                    paso = db.SaveChanges() > 0;
-            }
-            catch (Exception)
-            {
+                RepositorioBase<Articulos> prod = new RepositorioBase<Articulos>();
+                RepositorioBase<Clientes> client = new RepositorioBase<Clientes>();
 
-                throw;
-            }
-            finally
-            {
-                db.Dispose();
-            }
-            return paso;
-        }
 
-        public static bool Modificar(Ventas ventas)
-        {
-            bool paso = false;
-            Contexto db = new Contexto();
 
-            try
-            {
-                db.Database.ExecuteSqlRaw($"Delete FROM VentaDetalles where VentaId = {ventas.VentaId}");
-                foreach (var item in ventas.Detalles)
+                if (db.Ventas.Add(venta) != null)
                 {
-                    db.Entry(item).State = EntityState.Added;
+
+                    foreach (var item in venta.Detalles)
+                    {
+                        var producto = prod.Buscar(item.ArticuloId);
+                        producto.Existencia = producto.Existencia - item.Cantidad;
+                        prod.Modificar(producto);
+
+                    }
+
+               
+
+                    paso = db.SaveChanges() > 0;
                 }
-                db.Entry(ventas).State = EntityState.Modified;
-                paso = (db.SaveChanges() > 0);
 
             }
             catch (Exception)
             {
-
                 throw;
             }
-            finally
-            {
-                db.Dispose();
-            }
+
             return paso;
         }
 
@@ -66,16 +55,36 @@ namespace SistemaVentas.BLL
         {
             bool paso = false;
             Contexto db = new Contexto();
+            RepositorioBase<Ventas> vent = new RepositorioBase<Ventas>();
+            RepositorioBase<Articulos> prod = new RepositorioBase<Articulos>();
+            RepositorioBase<Clientes> client = new RepositorioBase<Clientes>();
+
 
             try
             {
-                var eliminar = db.Ventas.Find(id);
-                db.Entry(eliminar).State = EntityState.Deleted;
-                paso = db.SaveChanges() > 0;
+                Ventas venta = db.Ventas.Find(id);
+                var cliente = client.Buscar(venta.ClienteId);
+              //  cliente.Balance = cliente.Balance - venta.Total;
+               // client.Modificar(cliente);
+
+                foreach (var item in venta.Detalles)
+                {
+                    var producto = prod.Buscar(item.ArticuloId);
+                    producto.Existencia = producto.Existencia + item.Cantidad;
+                    prod.Modificar(producto);
+
+                }
+
+
+                db.Ventas.Remove(venta);
+                if (db.SaveChanges() > 0)
+                {
+                    paso = true;
+
+                }
             }
             catch (Exception)
             {
-
                 throw;
             }
             finally
@@ -85,15 +94,92 @@ namespace SistemaVentas.BLL
             return paso;
         }
 
-        public static Ventas Buscar(int id)
+        public static void Modificarvent(Ventas ventas, Ventas VentasAnteriores)
+        {
+            Contexto contexto = new Contexto();
+
+            RepositorioBase<Clientes> client = new RepositorioBase<Clientes>();
+            RepositorioBase<Ventas> vent = new RepositorioBase<Ventas>();
+
+            var Cliente = client.Buscar(ventas.ClienteId);
+            var ClientesAnteriores = client.Buscar(VentasAnteriores.ClienteId);
+
+
+            client.Modificar(Cliente);
+            client.Modificar(ClientesAnteriores);
+
+            var Venta = vent.Buscar(ventas.VentaId);
+            var ventaanterior = vent.Buscar(VentasAnteriores.VentaId);
+
+
+
+        }
+
+        public static bool Modificar(Ventas ventas)
+        {
+            bool paso = false;
+            Contexto db = new Contexto();
+            RepositorioBase<Clientes> client = new RepositorioBase<Clientes>();
+            RepositorioBase<Ventas> vent = new RepositorioBase<Ventas>();
+            RepositorioBase<Articulos> prod = new RepositorioBase<Articulos>();
+            try
+            {
+                var venta = vent.Buscar(ventas.VentaId);
+
+                if (ventas.ClienteId != venta.ClienteId)
+                {
+                    Modificarvent(ventas, venta);
+                }
+
+                if (ventas != null)
+                {
+                    db.Database.ExecuteSqlRaw($"Delete FROM VentaDetalles where VentaId = {ventas.VentaId}");
+                    foreach (var item in venta.Detalles)
+                    {
+                        db.Articulos.Find(item.ArticuloId).Existencia += item.Cantidad;
+
+                        if (!ventas.Detalles.ToList().Exists(v => v.Id == item.Id))
+                        {
+
+                            db.Entry(item).State = EntityState.Deleted;
+                        }
+                    }
+
+                    foreach (var item in ventas.Detalles)
+                    {
+                        db.Articulos.Find(item.ArticuloId).Existencia -= item.Cantidad;
+                        var estado = item.Id > 0 ? EntityState.Modified : EntityState.Added;
+                        db.Entry(item).State = estado;
+                    }
+
+                    db.Entry(ventas).State = EntityState.Modified;
+                    paso = (db.SaveChanges() > 0);
+                }
+
+               
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            return paso;
+        }
+
+
+        public static Ventas Buscar(int ID)
         {
             Ventas ventas = new Ventas();
+
             Contexto db = new Contexto();
 
             try
             {
-                ventas = db.Ventas.Where(x => x.VentaId == id).
-                     Include(y => y.Detalles).SingleOrDefault();
+                ventas = db.Ventas.Find(ID);
+                if (ventas != null)
+                {
+                    ventas.Detalles.Count();
+                }
+
             }
             catch (Exception)
             {
@@ -104,10 +190,11 @@ namespace SistemaVentas.BLL
             {
                 db.Dispose();
             }
+
             return ventas;
         }
 
-        public static List<Ventas> GetList(Expression<Func<Ventas, bool>> ventas)
+       public static List<Ventas> GetList(Expression<Func<Ventas, bool>> ventas)
         {
             List<Ventas> lista = new List<Ventas>();
             Contexto db = new Contexto();
@@ -127,5 +214,6 @@ namespace SistemaVentas.BLL
 
             return lista;
         }
+
     }
 }
