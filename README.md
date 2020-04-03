@@ -65,17 +65,21 @@ Se agregó de ultimo este nuevo registro el cual pudiera almacenar las deudas de
 **Optamos por introducir varias consultas entre las cuales están las siguientes:** 
 
 ![ConsultaUsuarios](https://user-images.githubusercontent.com/54584123/78412620-00850e00-75e2-11ea-9933-7fa012f54432.png)
+
 Esta consulta como se nota en la imagen es la de usuarios la cual almacena cuando un nuevo usuario requiere de registro como nuevo en el sistema.
 
 ![ConsultaCliente](https://user-images.githubusercontent.com/54584123/78412631-0c70d000-75e2-11ea-9df1-17a49ba321f2.png)
+
 Igualmente sucede con los nuevos clientes que quieren pertenecer y estar registrados en el sistema. 
 
 ![ConsultaDeuda](https://user-images.githubusercontent.com/54584123/78412652-23172700-75e2-11ea-876c-1d03244b6f6a.png)
 
 ![ConsultaVenta](https://user-images.githubusercontent.com/54584123/78412657-2c07f880-75e2-11ea-8f6d-a8abfe59bc2e.png)
+
 En esta consulta es de venta la cual presenta el detalle si deseamos verlo, si no deseamos verlo con solo pulsan el capo de detalles en el CheckBox se ocultará dicha columna.
 
 ![ConsultaVenta2](https://user-images.githubusercontent.com/54584123/78412676-3a561480-75e2-11ea-9747-31b4aad8e7b2.png)
+
 Aquí le presentamos ocultado la columna del detalle.
 
 **Los demás registros faltantes presentan las similares características ya mencionadas.**
