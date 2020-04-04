@@ -10,6 +10,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="p\**" />
+    <EmbeddedResource Remove="p\**" />
+    <None Remove="p\**" />
+    <Page Remove="p\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="Resources\Articles.png" />
     <None Remove="Resources\Articulos.png" />
     <None Remove="Resources\Buscar.png" />
@@ -160,10 +167,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="p\" />
   </ItemGroup>
 
 </Project>
