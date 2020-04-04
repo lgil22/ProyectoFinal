@@ -6,7 +6,7 @@ Este programa se le llamo Ventas,en el cual serán artículos con varias categor
 
 A continuación, le mostraremos algunas instrucciones que le permitirán el buen uso del programa. 
 
-Al inicio de él se abrirá una ventana (Login), es decir, la primera que veras el iniciar el programa. En ella deberás elegir el usuario a iniciar y colocar la contraseña. En este caso el usuario que introducirás será Admin y la contraseña 1234. El login fue programado de manera local hasta el momento como es una versión beta del programa. La cual será actualizada a un plazo lo más a tardar unos 22 días en su fase final.
+Al inicio de él se abrirá una ventana (Login), es decir, la primera que veras el iniciar el programa. En ella deberás elegir el usuario a iniciar y colocar la contraseña. En este caso el usuario que introducirás será **Admin** y la contraseña **1234**. El login fue programado de manera local hasta el momento como es una versión beta del programa. La cual será actualizada a un plazo lo más a tardar unos 22 días en su fase final.
 
 ### Login
 
