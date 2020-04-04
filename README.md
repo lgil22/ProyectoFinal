@@ -49,7 +49,8 @@ Este registro permitirá crear los cobros de los clientes de las ventas que ya s
 
 ### Ventas
 ![VentaRegistro](https://user-images.githubusercontent.com/54584123/78412467-70df5f80-75e1-11ea-8873-19d4d7559b67.jpg)
-Este registro permitirá crear las ventas de los clientes que hayan realizado.
+Este registro permitirá crear las ventas de los clientes que hayan realizado, además se le agregó un botón el cual podrá 
+imprimir la hoja del formulario por algún comprobante que requiera el cliente.
 
 ### Menú Deudas
 ![MenuDeudas](https://user-images.githubusercontent.com/54584123/78412488-8a80a700-75e1-11ea-8d50-7bdfc4b1b1be.png)
