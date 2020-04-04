@@ -19,17 +19,17 @@ namespace SistemaVentas.BLL
             Contexto db = new Contexto();
             try
             {
-                RepositorioBase<Articulos> prod = new RepositorioBase<Articulos>();
+                RepositorioBase<Articulos> art = new RepositorioBase<Articulos>();
                 RepositorioBase<Clientes> client = new RepositorioBase<Clientes>();
 
                 if (db.Ventas.Add(venta) != null)
                 {
 
-                    foreach (var item in venta.Detalles)
-                    {
-                        var producto = prod.Buscar(item.ArticuloId);
-                        producto.Existencia = producto.Existencia - item.Cantidad;
-                        prod.Modificar(producto);
+                    foreach (var item in venta.Detalles) ///Ciclo Foreach nos ayudara a correr la lista, es decir los campos que ya tenemos en el Grid y
+                    {                                    /// depediendo los articulos que esten en existencia los descuente de la cantidad
+                        var articulos = art.Buscar(item.ArticuloId);
+                        articulos.Existencia = articulos.Existencia - item.Cantidad;
+                        art.Modificar(articulos);
 
                     }
 

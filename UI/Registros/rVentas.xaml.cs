@@ -54,7 +54,7 @@ namespace SistemaVentas.UI.Registros
             DetalleDataGridVentas.ItemsSource = this.Detalles;
         }
 
-        private void LlenaComBox()
+        private void LlenaComBox()  ///Metodo que nos ayudara a cargar el cliente que ya se tiene registrado...
         {
             RepositorioBase<Clientes> db = new RepositorioBase<Clientes>();
             var listado = new List<Clientes>();
@@ -116,12 +116,12 @@ namespace SistemaVentas.UI.Registros
 
             });
          CargarGrid();
-          //  Refrescar();
-        //    ArticuloIdComBox.Focus();
-           // CantidadTextBox.Focus();
-           // CantidadTextBox.Clear();
-            ///PrecioTextBox.Focus();
-          //  PrecioTextBox.Clear();
+            Refrescar();
+             ArticuloIdComBox.Focus();
+             CantidadTextBox.Focus();
+            CantidadTextBox.Clear();
+            PrecioTextBox.Focus();
+            PrecioTextBox.Clear();
         }
 
         private void BuscarButton_Click(object sender, RoutedEventArgs e)
