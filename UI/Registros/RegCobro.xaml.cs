@@ -16,24 +16,29 @@ namespace SistemaVentas.UI.Registros
 {
     /// <summary>
     /// Interaction logic for RegCobro.xaml
-    /// </summary>
+    /// </sumary>
     public partial class RegCobro: Window
     {
         Cobros cobro = new Cobros();
-
+        public List<CobrosDetalles> Detalles { get; set; }
         public RegCobro()
         {
             InitializeComponent();
             this.DataContext = cobro;
+            this.Detalles = new List<CobrosDetalles>();
             //CobrosIdTextBox.Text = "0";
         }
 
         private void reCargar()
         {
             this.DataContext = null;
-            this.DataContext = cobro.Detalle;
+            this.DataContext = cobro;
         }
-
+        private void CargarGrid()
+        {
+            DetalleDataGridCobro.ItemsSource = null;
+            DetalleDataGridCobro.ItemsSource = this.Detalles;
+        }
         private bool existeEnLaBaseDeDatos()
         {
             Cobros cobroAnterior = CobrosBLL.Buscar((int)CobrosIdTextBox.Text.ToInt());
@@ -43,9 +48,17 @@ namespace SistemaVentas.UI.Registros
         private void Limpiar()
         {
 
-            this.cobro = new Cobros();
+            CobrosIdTextBox.Text="0";
+            ClienteIdComboBox.Text = "0";
+            FechaDatePicke.SelectedDate = DateTime.Now;
+            CantidadTextBox.Text = "0";
+            PreciotextBox.Text = "0";
+            MontooTextBox.Text = "0";
             DetalleDataGridCobro.ItemsSource = new List<CobrosDetalles>();
+            this.Detalles = new List<CobrosDetalles>();
+            CargarGrid();
             reCargar();
+
         }
         private void NuevobButton_Click(object sender, RoutedEventArgs e)
         {
@@ -248,11 +261,26 @@ namespace SistemaVentas.UI.Registros
 
         private void RemoverDataGridButton_Click(object sender, RoutedEventArgs e)
         {
-            if (DetalleDataGridCobro.Items.Count > 0 && DetalleDataGridCobro.SelectedItem != null)
+            try
+            {
+                if (!string.IsNullOrWhiteSpace(DetalleDataGridCobro.Items.Count.ToString()))
+                {
+                    MessageBox.Show("Deben de estar llenos los campos", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+
+                if (DetalleDataGridCobro.Items.Count > 0 && DetalleDataGridCobro.SelectedItem != null)
+                {
+                    //remover la fila
+                    cobro.Detalle.RemoveAt(DetalleDataGridCobro.SelectedIndex);
+                    reCargar();
+                    CargarGrid();
+
+                }
+
+            }
+            catch
             {
 
-                cobro.Detalle.RemoveAt(DetalleDataGridCobro.SelectedIndex);
-                reCargar();
             }
         }
 
@@ -275,6 +303,7 @@ namespace SistemaVentas.UI.Registros
                 Monto = MontooTextBox.Text.ToInt(),
 
             });
+            CargarGrid();
             reCargar();
             IdTextBox.Focus();
             IdTextBox.Clear();
