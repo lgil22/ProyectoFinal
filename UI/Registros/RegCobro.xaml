@@ -135,7 +135,7 @@
                 <TextBox.Text>
                     <Binding  Path="Cobros" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
-                            <src:IdValidacion x:Name="IdValidacion" ValidatesOnTargetUpdated="True"/>
+                            <src:IdValidacion x:Name="cobroValidacion" ValidatesOnTargetUpdated="True"/>
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>

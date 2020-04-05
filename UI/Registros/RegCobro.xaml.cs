@@ -26,7 +26,7 @@ namespace SistemaVentas.UI.Registros
             InitializeComponent();
             this.DataContext = cobro;
             this.Detalles = new List<CobrosDetalles>();
-            //CobrosIdTextBox.Text = "0";
+           
         }
 
         private void reCargar()
@@ -38,12 +38,6 @@ namespace SistemaVentas.UI.Registros
         {
             DetalleDataGridCobro.ItemsSource = null;
             DetalleDataGridCobro.ItemsSource = this.Detalles;
-        }
-        private bool existeEnLaBaseDeDatos()
-        {
-            Cobros cobroAnterior = CobrosBLL.Buscar((int)CobrosIdTextBox.Text.ToInt());
-
-            return (cobroAnterior != null);
         }
         private void Limpiar()
         {
@@ -59,6 +53,12 @@ namespace SistemaVentas.UI.Registros
             CargarGrid();
             reCargar();
 
+        }
+        private bool existeEnLaBaseDeDatos()
+        {
+            Cobros cobroAnterior = CobrosBLL.Buscar((int)CobrosIdTextBox.Text.ToInt());
+
+            return (cobroAnterior != null);
         }
         private void NuevobButton_Click(object sender, RoutedEventArgs e)
         {
@@ -106,7 +106,7 @@ namespace SistemaVentas.UI.Registros
                 return;
             Limpiar();
 
-            if (cobro.CobroId == 0)
+            if (string.IsNullOrWhiteSpace(CobrosIdTextBox.Text)  || CobrosIdTextBox.Text == "0")  
             {
                 paso = CobrosBLL.Guardar(cobro);
 
@@ -115,21 +115,17 @@ namespace SistemaVentas.UI.Registros
             {
                 if (!existeEnLaBaseDeDatos())
                 {
-                    paso = CobrosBLL.Modificar(cobro);
                     MessageBox.Show(" modifico ", "Existo", MessageBoxButton.OK, MessageBoxImage.Error);
-
-                }
-                else
-                {
-                    Limpiar();
-                    MessageBox.Show("No Existe en la base de datos", "ERROR");
                     return;
                 }
+                    paso = CobrosBLL.Modificar(cobro);
+                
             }
             if (paso)
                 {
 
                 MessageBox.Show("Guardado!!", "Exito", MessageBoxButton.OK, MessageBoxImage.Information);
+                Limpiar();
             }
             else
                 {
