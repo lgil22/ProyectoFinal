@@ -115,10 +115,11 @@ namespace SistemaVentas.UI.Registros
             {
                 if (!existeEnLaBaseDeDatos())
                 {
-                    MessageBox.Show(" modifico ", "Existo", MessageBoxButton.OK, MessageBoxImage.Error);
-                    return;
-                }
                     paso = CobrosBLL.Modificar(cobro);
+                     MessageBox.Show("No se puede modificar una venta que no existe", "Fallo", MessageBoxButton.OK, MessageBoxImage.Error);
+                    
+                    
+                }
                 
             }
             if (paso)
@@ -139,12 +140,12 @@ namespace SistemaVentas.UI.Registros
             int id;
             int.TryParse(CobrosIdTextBox.Text, out id);
 
-            Limpiar();
 
             try
             {
                 if (CobrosBLL.Eliminar(cobro.CobroId))
                 {
+                    Limpiar();
                     MessageBox.Show("Eliminado", "Exito", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
                 else
@@ -152,7 +153,8 @@ namespace SistemaVentas.UI.Registros
                     MessageBox.Show(CobrosIdTextBox.Text, "No se puede eliminar no existe");
 
                 }
- 
+               
+              
             }
             catch
             {

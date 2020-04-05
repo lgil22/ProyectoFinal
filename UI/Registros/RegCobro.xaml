@@ -89,6 +89,14 @@
             </TextBox>
         </StackPanel>
 
+        <TextBox x:Name="CobroidTextBox" Grid.Column="2" HorizontalAlignment="Left" Margin="22,22,0,0" Grid.Row="10" 
+                 TextWrapping="Wrap" VerticalAlignment="Top" Width="68" >
+            <Binding Path="cobro" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                <Binding.ValidationRules>
+                    <src:IdValidacion x:Name="CobroId" ValidatesOnTargetUpdated="True"/>
+                </Binding.ValidationRules>
+            </Binding>
+        </TextBox>
       
 
 
@@ -223,14 +231,6 @@
 
         <Label  Content="cobroId:" Grid.Column="1" HorizontalAlignment="Left" 
                Margin="110,18,0,0" Grid.Row="10" VerticalAlignment="Top" Width="57" Grid.ColumnSpan="2"/>
-        <TextBox x:Name="CobroidTextBox" Grid.Column="2" HorizontalAlignment="Left" Margin="22,22,0,0" Grid.Row="10" 
-                 TextWrapping="Wrap" VerticalAlignment="Top" Width="68" >
-            <Binding Path="cobro" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
-                <Binding.ValidationRules>
-                    <src:IdValidacion x:Name="CobroId" ValidatesOnTargetUpdated="True"/>
-                </Binding.ValidationRules>
-            </Binding>
-        </TextBox>
 
         <Label  Content="Monto:" Grid.Column="2" HorizontalAlignment="Left" 
                Margin="110,18,0,0" Grid.Row="10" VerticalAlignment="Top" Width="57" Grid.ColumnSpan="2"/>
