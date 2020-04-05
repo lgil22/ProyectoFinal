@@ -90,7 +90,7 @@ namespace SistemaVentas.UI.Inicio
 
             private void MenucCobros_Click(object sender, RoutedEventArgs e)
         {
-            cCobro cC = new cCobro();
+            cCobros cC = new cCobros();
             cC.Show();
         }
         private void MenucArticulos_Click(object sender, RoutedEventArgs e)
