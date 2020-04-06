@@ -14,6 +14,12 @@ namespace SistemaVentas.BLL
     public class RepositorioBase<T> : IDisposable, IRepository<T> where T : class
 
     {
+        internal Contexto db;
+        public RepositorioBase()
+        {
+            db = new Contexto();
+        }
+
         public virtual bool Guardar(T entity)
         {
             Contexto contexto = new Contexto();
@@ -119,28 +125,11 @@ namespace SistemaVentas.BLL
             }
             return Lista;
         }
-
-        public virtual bool Duplicado(Expression<Func<T, bool>> descripcion)
+        public void Dispose()
         {
-            Contexto contexto = new Contexto();
-            bool paso = false;
-
-            try
-            {
-                paso = contexto.Set<T>().Any(descripcion);
-
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-            finally
-            {
-                contexto.Dispose();
-            }
-
-            return paso;
+            db.Dispose();
         }
+
 
         private static Usuarios usuario = new Usuarios();
 
@@ -156,9 +145,6 @@ namespace SistemaVentas.BLL
             return usuario;
         }
 
-        public void Dispose()
-        {
-            throw new NotImplementedException();
-        }
+       
     }
 }

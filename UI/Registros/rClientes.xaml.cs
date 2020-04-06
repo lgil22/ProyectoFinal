@@ -40,7 +40,7 @@ namespace SistemaVentas.UI.Registros
               TelefonoTextBox.Text = string.Empty;
               CelularTextBox.Text = string.Empty;
               CedulaTextBox.Text = string.Empty;
-              FechaNacTimePicker.SelectedDate = DateTime.Now;
+              FechaNacTimePicker.DisplayDate = DateTime.Now;
               EmailTextBox.Text = string.Empty;
 
             //  Refrescar();

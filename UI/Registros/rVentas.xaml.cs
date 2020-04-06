@@ -37,15 +37,41 @@ namespace SistemaVentas.UI.Registros
         private void Limpiar()
         {
             VentaIdTextBox.Text = "0";
-            ClienteIdCombox.SelectedItem = "0";
-            FechaNacTimePicker.SelectedDate = DateTime.Now;
-            TipoPagoComBox.SelectedItem = string.Empty;
+            ClienteIdCombox.Text = null;
+            FechaNacTimePicker.DisplayDate = DateTime.Now;
+            TipoPagoComBox.Text = string.Empty;
             this.ventas = new Ventas();
             DetalleDataGridVentas.ItemsSource = new List<VentaDetalles>();
             this.Detalles = new List<VentaDetalles>();
             CargarGrid();
             Refrescar();
             LlenaComBox();
+            LlenaComBoxArticulos();
+        }
+
+        private Ventas LlenaClase()
+        {
+            Ventas ventas = new Ventas();
+            ventas.VentaId = int.Parse(VentaIdTextBox.Text);
+            ventas.ClienteId = (int)ClienteIdCombox.SelectedValue;
+            ventas.TipoPago = (string)TipoPagoComBox.SelectedValue;
+            ventas.Fecha = (DateTime)FechaNacTimePicker.SelectedDate;
+          
+
+            ventas.Detalles = this.Detalles;
+            return ventas;
+        }
+
+        private void LlenaCampo(Ventas ventas)
+        {
+            VentaIdTextBox.Text = Convert.ToString(ventas.VentaId);
+            ClienteIdCombox.SelectedValue = (ventas.ClienteId);
+            TipoPagoComBox.Text = Convert.ToString(ventas.TipoPago);
+            FechaNacTimePicker.DisplayDate = ventas.Fecha;
+
+            this.Detalles = ventas.Detalles;
+            CargarGrid();
+
         }
 
         private void CargarGrid()
@@ -62,6 +88,29 @@ namespace SistemaVentas.UI.Registros
             ClienteIdCombox.DataContext = listado;
             ClienteIdCombox.SelectedValue = "ClienteId";
            ClienteIdCombox.DisplayMemberPath = "Nombres";
+        }
+
+        private string GetCliente(int id)
+        {
+            string nombre;
+            RepositorioBase<Clientes> repositorio = new RepositorioBase<Clientes>();
+            Clientes clientes = new Clientes();
+            clientes = repositorio.Buscar(id);
+            if (clientes == null)
+                nombre = "";
+            else
+                nombre = clientes.Nombres;
+            return nombre;
+        }
+
+        private void LlenaComBoxArticulos()  ///Metodo que nos ayudara a cargar el cliente que ya se tiene registrado...
+        {
+            RepositorioBase<Articulos> db = new RepositorioBase<Articulos>();
+            var listado = new List<Articulos>();
+            listado = db.GetList(p => true);
+            ClienteIdCombox.DataContext = listado;
+            ClienteIdCombox.SelectedValue = "ArticulosId";
+            ClienteIdCombox.DisplayMemberPath = "Descripcion";
         }
         private bool ExisteEnLaBaseDeDatos()
         {
@@ -109,19 +158,22 @@ namespace SistemaVentas.UI.Registros
 
                 this.ventas.Detalles.Add(new VentaDetalles
             {
-                ArticuloId = ArticuloIdComBox.Text.ToInt(),
+                ArticuloId = Convert.ToInt32(ArticuloIdComBox.SelectedValue),
                 Cantidad = CantidadTextBox.Text.ToInt(),
                 Precio = PrecioTextBox.Text.ToInt(),
-                //   Precio = Convert.ToInt32(PrecioTextBox),
+                
 
-            });
+                    //PrecioTextBox.Text.ToInt(),
+                    //   Precio = Convert.ToInt32(PrecioTextBox),
+
+                });
          CargarGrid();
-            Refrescar();
-             ArticuloIdComBox.Focus();
-             CantidadTextBox.Focus();
-            CantidadTextBox.Clear();
-            PrecioTextBox.Focus();
-            PrecioTextBox.Clear();
+           /// Refrescar();
+             ArticuloIdComBox.Text = string.Empty;
+             CantidadTextBox.Text = string.Empty;
+            // CantidadTextBox.Clear();
+            //  PrecioTextBox.Focus();
+            PrecioTextBox.Text = string.Empty;
         }
 
         private void BuscarButton_Click(object sender, RoutedEventArgs e)
@@ -154,8 +206,8 @@ namespace SistemaVentas.UI.Registros
                 if (DetalleDataGridVentas.Items.Count > 0 && DetalleDataGridVentas.SelectedItem != null)
                 {
                     //remover la fila
-                    ventas.Detalles.RemoveAt(DetalleDataGridVentas.SelectedIndex);
-                   Refrescar();
+                    Detalles.RemoveAt(DetalleDataGridVentas.SelectedIndex);
+                  // Refrescar();
                   CargarGrid();
 
                 }
