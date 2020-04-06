@@ -111,6 +111,7 @@ namespace SistemaVentas.UI.Consultas
                     case 0: //Todo
                         listado = VentasBLL.GetList(o => true);
                         break;
+
                     case 1:
                         int id;
                         id = int.Parse(CriterioTextBox.Text);
@@ -124,12 +125,14 @@ namespace SistemaVentas.UI.Consultas
                         break;
 
                     case 3://Tipo Pago
-                        listado = VentasBLL.GetList(p => p.TipoPago.Contains(CriterioTextBox.Text));
+                        string tipoPago;
+                        tipoPago = Convert.ToString(CriterioTextBox.Text);
+                        listado = VentasBLL.GetList(o => o.TipoPago == tipoPago);
                         break;
 
 
                     case 4:
-                       decimal monto;
+                        decimal monto;
                         monto = decimal.Parse(CriterioTextBox.Text);
                         listado = VentasBLL.GetList(o => o.Monto == monto);
                         break;
@@ -137,7 +140,10 @@ namespace SistemaVentas.UI.Consultas
 
                 }
 
-                listado = listado.Where(c => c.Fecha.Date >= DesdeDatePicker.SelectedDate && c.Fecha.Date <= HastaDatePicker.SelectedDate).ToList();
+            }
+            else if (FiltroComboBox.SelectedIndex == 4)
+            {
+                listado = VentasBLL.GetList(c => c.Fecha.Date >= DesdeDatePicker.SelectedDate && c.Fecha.Date <= HastaDatePicker.SelectedDate);
             }
             else
             {

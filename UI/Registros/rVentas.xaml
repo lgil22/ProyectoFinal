@@ -133,7 +133,7 @@
 
         
         <Label x:Name="MontoLabel" Content="Monto:" Grid.ColumnSpan="2" Grid.Column="2" Margin="102,26,0,36" Grid.Row="7" HorizontalAlignment="Left" Width="53"/>
-        <TextBox x:Name="MontoTextBox" Margin="4,30,68,54" Grid.Row="7" TextChanged="MontoTextBox_TextChanged" Grid.Column="3">
+        <TextBox x:Name="MontoTextBox" Margin="4,30,68,54" Grid.Row="7" IsReadOnly="True" TextChanged="MontoTextBox_TextChanged" Grid.Column="3">
             <Binding Path="Monto" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                 <Binding.ValidationRules>
                     <src:CostoValidacion x:Name="costoValidacion" ValidatesOnTargetUpdated="True"/>
@@ -146,6 +146,7 @@
 
             <DataGrid  x:Name="DetalleDataGridVentas" AutoGenerateColumns="False" Height="132" Margin="0,0,-2,0">
                 <DataGrid.Columns>
+                    <DataGridTextColumn Header=" ArticuloId" Binding="{Binding ArticuloId}"/>
                     <DataGridTextColumn Header=" Cantidad" Binding="{Binding Cantidad}"/>
                     <DataGridTextColumn Header=" Precio" Binding="{Binding Precio}"/>
                     <DataGridTextColumn Header=" Monto" Binding="{Binding Monto}"/>
@@ -181,7 +182,7 @@
         <Label x:Name="PrecioLabel" Content="Precio: " Grid.Column="1" 
                Margin="122,26,129,0" Grid.Row="7" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
         <TextBox x:Name="PrecioTextBox" Grid.Column="2" HorizontalAlignment="Left" Margin="21,30,0,0" 
-                 Grid.Row="7" TextWrapping="Wrap" VerticalAlignment="Top" Width="76" TextChanged="PrecioTextBox_TextChanged" Height="18">
+                 Grid.Row="7" TextWrapping="Wrap" VerticalAlignment="Top"   Width="76" TextChanged="PrecioTextBox_TextChanged" Height="18">
             <Binding Path="Precio" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                 <Binding.ValidationRules>
                     <src:PrecioValidacion x:Name="PresioValidacion" ValidatesOnTargetUpdated="True"/>

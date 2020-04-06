@@ -42,7 +42,7 @@ namespace SistemaVentas.UI.Registros
            Articulos vd = new Articulos();
             VentaIdTextBox.Text = "0";
             ClienteIdCombox.Text = null;
-            FechaNacTimePicker.DisplayDate = DateTime.Now;
+            FechaNacTimePicker.Text = null;
             TipoPagoComBox.Text = string.Empty;
             this.ventas = new Ventas();
             DetalleDataGridVentas.ItemsSource = new List<VentaDetalles>();
@@ -76,7 +76,7 @@ namespace SistemaVentas.UI.Registros
             VentaIdTextBox.Text = Convert.ToString(ventas.VentaId);
             ClienteIdCombox.SelectedValue = (ventas.ClienteId);
             TipoPagoComBox.SelectedValue = Convert.ToString(ventas.TipoPago);
-            FechaNacTimePicker.DisplayDate = ventas.Fecha;
+            FechaNacTimePicker.SelectedDate = ventas.Fecha;
             ArticuloIdComBox.SelectedValue = (vedt.ArticulosId);
 
             this.Detalles = ventas.Detalles;
@@ -136,9 +136,10 @@ namespace SistemaVentas.UI.Registros
             if (this.ventas.Detalles.Count == 0)
             {
                 MessageBox.Show("Debe agregar una venta", "Aviso", MessageBoxButton.OKCancel, MessageBoxImage.Information);
-                ArticuloIdComBox.Focus();
+                 ArticuloIdComBox.Focus();
                 CantidadTextBox.Focus();
                 PrecioTextBox.Focus();
+                MontoTextBox.Focus();
                 paso = false;
             }
             return paso;
@@ -149,17 +150,18 @@ namespace SistemaVentas.UI.Registros
          
             if (DetalleDataGridVentas.ItemsSource != null ) 
             {
-                this.ventas.Detalles = (List<VentaDetalles>)DetalleDataGridVentas.ItemsSource;
+                this.Detalles = (List<VentaDetalles>)DetalleDataGridVentas.ItemsSource;
             }
 
             //Agregar un nuevo detalle con los datos introducidos
 
-            this.ventas.Detalles.Add(new VentaDetalles
+            this.Detalles.Add(new VentaDetalles
             {
-                //  Id = 0,
+                Id = 0,
                 ArticuloId = Convert.ToInt32(ArticuloIdComBox.Text),
                 Cantidad = Convert.ToInt32(CantidadTextBox.Text),
-                Precio = Convert.ToInt32(PrecioTextBox.Text),
+                Precio = Convert.ToDecimal(PrecioTextBox.Text),
+                
 
 
 
@@ -235,6 +237,7 @@ namespace SistemaVentas.UI.Registros
             if (!Validar())
                 return;
 
+            ventas = LlenaClase();
             Limpiar();
 
             //Determinar si es guardar o modificar
