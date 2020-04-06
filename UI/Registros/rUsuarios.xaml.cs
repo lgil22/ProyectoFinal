@@ -111,7 +111,7 @@ namespace SistemaVentas.UI.Registros
                 if (!ExisteEnLaBaseDeDatos())
                 {
                    paso = UsuariosBLL.Modificar(usuarios);
-                    MessageBox.Show("modifico", "Existo", MessageBoxButton.OK, MessageBoxImage.Error);    
+                    MessageBox.Show("modifico", "Existo ", MessageBoxButton.OK, MessageBoxImage.Error);    
                 }
                 else
                 {
