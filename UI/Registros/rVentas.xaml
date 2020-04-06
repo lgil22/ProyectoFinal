@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:SistemaVentas.UI.Registros"
          xmlns:src="clr-namespace:SistemaVentas.Validaciones"
         mc:Ignorable="d"
-        Title="Registro Ventas" Height="602" Width="655" ResizeMode="CanResize" WindowStartupLocation="CenterScreen" Icon="/Resources/Ventas.png" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" WindowState="Maximized">
+        Title="Registro Ventas" Height="660" Width="655" ResizeMode="CanResize" WindowStartupLocation="CenterScreen" Icon="/Resources/Ventas.png" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" WindowState="Maximized">
     <Grid x:Name="print">
         <Grid.Background>
             <ImageBrush ImageSource="/Resources/Sales.png" Stretch="Uniform"/>
@@ -32,7 +32,7 @@
             <RowDefinition Height="0*" />
         </Grid.RowDefinitions>
 
-        <StackPanel Grid.Row="9" Grid.Column="1" Margin="0,50,6,-107">
+        <StackPanel Grid.Row="10" Grid.Column="1" Margin="0,50,6,-107">
             <Button  x:Name="GuardarButton" Content="Guardar" FontSize="14" Width="125" Click="GuardarButton_Click" Height="36">
                 <Button.Background>
                     <ImageBrush ImageSource="/Resources/Guardar.png" Stretch="Uniform" AlignmentX="Left" AlignmentY="Bottom" />
@@ -40,7 +40,7 @@
             </Button>
         </StackPanel>
 
-        <StackPanel Grid.Row="9" Grid.Column="0" Margin="0,50,5,-97">
+        <StackPanel Grid.Row="10" Grid.Column="0" Margin="0,50,5,-97">
             <Button x:Name="NuevoButton" Content="Nuevo" FontSize="14" Width="115" Click="NuevobButton_Click" Height="36">
                 <Button.Background>
                     <ImageBrush ImageSource="/Resources/Nuevo.png" Stretch="Uniform" AlignmentX="Left" AlignmentY="Bottom" />
@@ -48,7 +48,7 @@
             </Button>
         </StackPanel>
 
-        <StackPanel Grid.Row="9" Grid.Column="2" Margin="0,50,5,-95">
+        <StackPanel Grid.Row="10" Grid.Column="2" Margin="0,50,5,-95">
             <Button x:Name="EliminarButton" Content=" Eliminar" FontSize="14" Width="115" Click="EliminarButton_Click" Height="36">
                 <Button.Background>
                     <ImageBrush ImageSource="/Resources/Eliminar.png" Stretch="Uniform" AlignmentX="Left" AlignmentY="Bottom" />
@@ -121,43 +121,50 @@
                 <ComboBoxItem Content="Contado"/>
                 <ComboBoxItem Content="Credito"/>
                 <ComboBoxItem Content="A Plazo"/>
-                <ComboBox.Text>
+                <ComboBoxItem>
                     <Binding Path="Tipo" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
                             <src:ValidaciónString x:Name="TipoPagoValidacion" ValidatesOnTargetUpdated="True"/>
                         </Binding.ValidationRules>
                     </Binding>
-                </ComboBox.Text>
+                </ComboBoxItem>
             </ComboBox>
         </StackPanel>
 
-        
-        <Label x:Name="MontoLabel" Content="Monto:" Grid.ColumnSpan="2" Grid.Column="2" Margin="102,26,0,36" Grid.Row="7" HorizontalAlignment="Left" Width="53"/>
-        <TextBox x:Name="MontoTextBox" Margin="4,30,68,54" Grid.Row="7" IsReadOnly="True" TextChanged="MontoTextBox_TextChanged" Grid.Column="3">
-            <Binding Path="Monto" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
-                <Binding.ValidationRules>
-                    <src:CostoValidacion x:Name="costoValidacion" ValidatesOnTargetUpdated="True"/>
-                </Binding.ValidationRules>
-            </Binding>
-            
-        </TextBox>
 
-        <GroupBox x:Name="AgregarVentasGroupBox" FontSize="14" Header="Agregar Ventas" Grid.Row="7" Grid.ColumnSpan="4" Margin="10,10,-41,0" Height="206" VerticalAlignment="Top" Grid.RowSpan="2" FontWeight="Bold">
+        <StackPanel Grid.Row="7" Grid.Column="0">
+            <Label x:Name="MontoLabel" Content="Monto:" FontSize="14" Height="30" Width="122"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="7" Margin="114,8,98,26" Grid.ColumnSpan="3">
+            <TextBox x:Name="MontoTextBox" IsReadOnly="True" Height="25">
+                <TextBox.Text>
+                    <Binding Path="Monto" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                        <Binding.ValidationRules>
+                            <src:CostoValidacion x:Name="MontoValidacion" ValidatesOnTargetUpdated="True"/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+        </StackPanel>
+
+
+
+        <GroupBox x:Name="AgregarVentasGroupBox" FontSize="14" Header="Agregar Ventas" Grid.Row="8" Grid.ColumnSpan="4" Margin="10,10,-41,0" Height="206" VerticalAlignment="Top" Grid.RowSpan="2" FontWeight="Bold">
 
             <DataGrid  x:Name="DetalleDataGridVentas" AutoGenerateColumns="False" Height="132" Margin="0,0,-2,0">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header=" ArticuloId" Binding="{Binding ArticuloId}"/>
-                    <DataGridTextColumn Header=" Cantidad" Binding="{Binding Cantidad}"/>
-                    <DataGridTextColumn Header=" Precio" Binding="{Binding Precio}"/>
-                    <DataGridTextColumn Header=" Monto" Binding="{Binding Monto}"/>
+                    <DataGridTextColumn Header="ArticuloId" Binding="{Binding ArticuloId}"/>
+                    <DataGridTextColumn Header="Cantidad" Binding="{Binding Cantidad}"/>
+                    <DataGridTextColumn Header="Precio" Binding="{Binding Precio}"/>
+                    <DataGridTextColumn Header="Id" Binding="{Binding Id}"/>
                 </DataGrid.Columns>
-               
             </DataGrid>
         </GroupBox>
-        
 
-        <Label x:Name="ArticuloLabel" Content="Articulo Id:" HorizontalAlignment="Left"  Grid.Row="7" VerticalAlignment="Top"  Margin="16,26,0,0" FontSize="12"/>
-        <ComboBox x:Name="ArticuloIdComBox" HorizontalAlignment="Left" Margin="83,30,0,0" Grid.Row="7"  VerticalAlignment="Top" Width="58">
+
+        <Label x:Name="ArticuloLabel" Content="Articulo Id:" HorizontalAlignment="Left"  Grid.Row="8" VerticalAlignment="Top"  Margin="16,26,0,0" FontSize="12"/>
+        <ComboBox x:Name="ArticuloIdComBox" HorizontalAlignment="Left" Margin="83,30,0,0" Grid.Row="8"  VerticalAlignment="Top" Width="58">
             <ComboBox.Text>
                 <Binding Path="ArticuloId" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                     <Binding.ValidationRules>
@@ -169,8 +176,8 @@
 
 
         <Label x:Name="CantidadLabel" Content="Cantidad:" HorizontalAlignment="Left" 
-               Margin="141,26,0,0" Grid.Row="7" VerticalAlignment="Top" Width="76" Grid.ColumnSpan="2"/>
-        <TextBox x:Name="CantidadTextBox" Grid.Column="1" HorizontalAlignment="Left" Grid.Row="7" 
+               Margin="141,26,0,0" Grid.Row="8" VerticalAlignment="Top" Width="76" Grid.ColumnSpan="2"/>
+        <TextBox x:Name="CantidadTextBox" Grid.Column="1" HorizontalAlignment="Left" Grid.Row="8" 
                  TextWrapping="Wrap" VerticalAlignment="Top" Width="68" TextChanged="CantidadTextBox_TextChanged" Margin="54,30,0,0">
             <Binding Path="Cantidad" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                 <Binding.ValidationRules>
@@ -180,9 +187,9 @@
         </TextBox>
 
         <Label x:Name="PrecioLabel" Content="Precio: " Grid.Column="1" 
-               Margin="122,26,129,0" Grid.Row="7" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+               Margin="122,26,129,0" Grid.Row="8" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
         <TextBox x:Name="PrecioTextBox" Grid.Column="2" HorizontalAlignment="Left" Margin="21,30,0,0" 
-                 Grid.Row="7" TextWrapping="Wrap" VerticalAlignment="Top"   Width="76" TextChanged="PrecioTextBox_TextChanged" Height="18">
+                 Grid.Row="8" TextWrapping="Wrap" VerticalAlignment="Top"   Width="76" TextChanged="PrecioTextBox_TextChanged" Height="18">
             <Binding Path="Precio" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                 <Binding.ValidationRules>
                     <src:PrecioValidacion x:Name="PresioValidacion" ValidatesOnTargetUpdated="True"/>
@@ -190,8 +197,25 @@
             </Binding>
         </TextBox>
 
+        <Label x:Name="IdLabel" Content="Id: " Grid.Column="2" 
+               Margin="122,26,129,0" Grid.Row="8" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+        <TextBox x:Name="IdTextBox" Grid.Column="2" HorizontalAlignment="Left" Margin="146,30,0,0" 
+                 Grid.Row="8" TextWrapping="Wrap" VerticalAlignment="Top"   Width="76" Height="18" Grid.ColumnSpan="2">
+            <Binding Path="Id" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                <Binding.ValidationRules>
+                    <src:IdValidacion x:Name="IDValidacion" ValidatesOnTargetUpdated="True"/>
+                </Binding.ValidationRules>
+            </Binding>
+        </TextBox>
+
+
+
+
+
+
+
         <Button x:Name="AgregarDataGridButton" Content="Agregar" Grid.Column="3" 
-                Margin="87,29,-38,0" Grid.Row="7" VerticalAlignment="Top" Height="24" Click="AgregarDataGridButton_Click" RenderTransformOrigin="0.5,0.5">
+                Margin="87,29,-34,0" Grid.Row="8" VerticalAlignment="Top" Height="24" Click="AgregarDataGridButton_Click" RenderTransformOrigin="0.5,0.5">
             <Button.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -206,7 +230,7 @@
         </Button>
 
         <Button x:Name="RemoverDataGridButton" Content="Remover" HorizontalAlignment="Left" Height="26" 
-                Margin="16,88,0,0" Grid.Row="8" VerticalAlignment="Top" Width="112" Click="RemoverDataGridButton_Click">
+                Margin="16,120,0,0" Grid.Row="9" VerticalAlignment="Top" Width="112" Click="RemoverDataGridButton_Click">
             <Button.Background>
                 <ImageBrush ImageSource="/Resources/Remover.png" Stretch="Uniform" AlignmentX="Left" AlignmentY="Bottom" TileMode="None" />
             </Button.Background>

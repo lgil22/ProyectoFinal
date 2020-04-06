@@ -226,8 +226,8 @@ namespace SistemaVentas.Migrations
                     b.Property<int>("Cantidad")
                         .HasColumnType("INTEGER");
 
-                    b.Property<float>("Precio")
-                        .HasColumnType("REAL");
+                    b.Property<decimal>("Precio")
+                        .HasColumnType("TEXT");
 
                     b.Property<int>("VentaId")
                         .HasColumnType("INTEGER");
@@ -251,8 +251,8 @@ namespace SistemaVentas.Migrations
                     b.Property<DateTime>("Fecha")
                         .HasColumnType("TEXT");
 
-                    b.Property<float>("Monto")
-                        .HasColumnType("REAL");
+                    b.Property<decimal>("Monto")
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("TipoPago")
                         .HasColumnType("TEXT");

@@ -28,8 +28,11 @@ namespace SistemaVentas.UI.Registros
             InitializeComponent();
           LlenaComBox();
             LlenaComBoxArticulos();
+            FechaNacTimePicker.SelectedDate = DateTime.Now;
             this.DataContext = ventas;
             this.Detalles = new List<VentaDetalles>();
+            CargarGrid();
+
         }
         private void Refrescar()
         {
@@ -42,8 +45,8 @@ namespace SistemaVentas.UI.Registros
            Articulos vd = new Articulos();
             VentaIdTextBox.Text = "0";
             ClienteIdCombox.Text = null;
-            FechaNacTimePicker.Text = null;
-            TipoPagoComBox.Text = string.Empty;
+            FechaNacTimePicker.SelectedDate = DateTime.Now;
+            TipoPagoComBox.Text = null;
             this.ventas = new Ventas();
             DetalleDataGridVentas.ItemsSource = new List<VentaDetalles>();
             this.Detalles = new List<VentaDetalles>();
@@ -61,10 +64,10 @@ namespace SistemaVentas.UI.Registros
             Articulos vedt = new Articulos();
             Ventas ventas = new Ventas();
             ventas.VentaId = int.Parse(VentaIdTextBox.Text);
-            ventas.ClienteId = (int)ClienteIdCombox.SelectedValue;
-            ventas.TipoPago = (string)TipoPagoComBox.SelectedValue;
-            ventas.Fecha = (DateTime)FechaNacTimePicker.SelectedDate;
-            vedt.ArticulosId = (int)ArticuloIdComBox.SelectedValue;
+            ventas.ClienteId = Convert.ToInt32(ClienteIdCombox.Text);
+            ventas.TipoPago = (string)TipoPagoComBox.Text;
+            ventas.Fecha = (DateTime)FechaNacTimePicker.DisplayDate;
+            vedt.ArticulosId = Convert.ToInt32(ArticuloIdComBox.SelectedItem);
 
             ventas.Detalles = this.Detalles;
             return ventas;
@@ -75,8 +78,8 @@ namespace SistemaVentas.UI.Registros
             Articulos vedt = new  Articulos();
             VentaIdTextBox.Text = Convert.ToString(ventas.VentaId);
             ClienteIdCombox.SelectedValue = (ventas.ClienteId);
-            TipoPagoComBox.SelectedValue = Convert.ToString(ventas.TipoPago);
-            FechaNacTimePicker.SelectedDate = ventas.Fecha;
+            TipoPagoComBox.SelectedValue= (ventas.TipoPago);
+            FechaNacTimePicker.SelectedDate = (ventas.Fecha);
             ArticuloIdComBox.SelectedValue = (vedt.ArticulosId);
 
             this.Detalles = ventas.Detalles;
@@ -133,13 +136,13 @@ namespace SistemaVentas.UI.Registros
                MontoTextBox.Focus();
                 paso = false;
             }
-            if (this.ventas.Detalles.Count == 0)
+            if (this.Detalles.Count == 0)
             {
                 MessageBox.Show("Debe agregar una venta", "Aviso", MessageBoxButton.OKCancel, MessageBoxImage.Information);
-                 ArticuloIdComBox.Focus();
-                CantidadTextBox.Focus();
-                PrecioTextBox.Focus();
-                MontoTextBox.Focus();
+                // ArticuloIdComBox.Focus();
+              //   CantidadTextBox.Focus();
+                // PrecioTextBox.Focus();
+                // MontoTextBox.Focus();
                 paso = false;
             }
             return paso;
@@ -157,11 +160,12 @@ namespace SistemaVentas.UI.Registros
 
             this.Detalles.Add(new VentaDetalles
             {
-                Id = 0,
+               
                 ArticuloId = Convert.ToInt32(ArticuloIdComBox.Text),
                 Cantidad = Convert.ToInt32(CantidadTextBox.Text),
                 Precio = Convert.ToDecimal(PrecioTextBox.Text),
-                
+                Id = 0,
+
 
 
 
@@ -171,13 +175,14 @@ namespace SistemaVentas.UI.Registros
 
             }) ;
          CargarGrid();
-           /// Refrescar();
-            ArticuloIdComBox.Text = string.Empty;
-           CantidadTextBox.Text = string.Empty;
+           Refrescar();
+           ArticuloIdComBox.Text = string.Empty;
+          CantidadTextBox.Text = string.Empty;
             // CantidadTextBox.Clear();
             //  PrecioTextBox.Focus();
            // MontoTextBox.Focus();
             PrecioTextBox.Text = string.Empty;
+            IdTextBox.Text = string.Empty;
           /// MontoTextBox.Text = string.Empty;
         }
 
