@@ -56,15 +56,15 @@
 
 
         <StackPanel Grid.Row="5" Grid.Column="1" Margin="0,14,0,30">
-            <TextBox  x:Name="ArticuloIdTextBox" Height="22" Background="#FFFDFBFB" TextChanged="PreciotextBox_TextChanged">
-                <TextBox.Text>
-                    <Binding  Path="Articuloid" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+            <ComboBox  x:Name="ArticuloIdCombobox" Height="22" Background="#FFFDFBFB" >
+                <ComboBox.Text>
+                    <Binding  Path="ArticuloId" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
-                            <src:IdValidacion x:Name="ArticuloValidacion" ValidatesOnTargetUpdated="True"/>
+                            <src:IdValidacion x:Name="ArticuloIdValidacion" ValidatesOnTargetUpdated="True"/>
                         </Binding.ValidationRules>
                     </Binding>
-                </TextBox.Text>
-            </TextBox>
+                </ComboBox.Text>
+            </ComboBox>
         </StackPanel>
 
         <StackPanel Grid.Row="6" Grid.Column="0" Margin="0,12,5,30">
@@ -164,15 +164,15 @@
         </GroupBox>
 
         <StackPanel Grid.Row="3" Grid.Column="1" Margin="0,14,0,30">
-            <TextBox  x:Name="ClienteIdComboBox" Height="22" Background="#FFFDFBFB" TextChanged="PreciotextBox_TextChanged">
-                <TextBox.Text>
+            <ComboBox  x:Name="ClienteIdComboBox" Height="22" Background="#FFFDFBFB" >
+                <ComboBox.Text>
                     <Binding  Path="ClienteId" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
                             <src:IdValidacion x:Name="ClienteValidacion" ValidatesOnTargetUpdated="True"/>
                         </Binding.ValidationRules>
                     </Binding>
-                </TextBox.Text>
-            </TextBox>
+                </ComboBox.Text>
+            </ComboBox>
         </StackPanel>
 
 

@@ -88,29 +88,29 @@
         </StackPanel>
 
         <StackPanel Grid.Row="4" Grid.Column="1" Margin="0,14,0,33">
-            <TextBox x:Name="ClienteIdTextBox"  >
-                <TextBox.Text>
+            <ComboBox x:Name="ClienteIdComBox"  >
+                <ComboBox.Text>
                     <Binding  Path="ClienteId" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
                             <src:IdValidacion x:Name="IdClienteValidacion" ValidatesOnTargetUpdated="True"/>
                         </Binding.ValidationRules>
                     </Binding>
-                </TextBox.Text>
-            </TextBox>
+                </ComboBox.Text>
+            </ComboBox>
         </StackPanel>
 
       
         
         <StackPanel Grid.Row="5" Grid.Column="1" Margin="0,14,0,33">
-            <TextBox x:Name="UsuarioIdTextBox" >
-                <TextBox.Text>
+            <ComboBox x:Name="UsuarioIdComboBox" >
+                <ComboBox.Text>
                     <Binding  Path="UsuarioId" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
                             <src:IdValidacion x:Name="IdUsuarioValidacion" ValidatesOnTargetUpdated="True"/>
                         </Binding.ValidationRules>
                     </Binding>
-                </TextBox.Text>
-            </TextBox>
+                </ComboBox.Text>
+            </ComboBox>
         </StackPanel>
 
         <StackPanel Grid.Row="6" Grid.Column="1" Margin="0,14,0,33">

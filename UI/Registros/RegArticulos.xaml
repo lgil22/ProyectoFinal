@@ -76,15 +76,15 @@
         </StackPanel>
 
         <StackPanel Grid.Row="3" Grid.Column="1" Margin="0,14,0,33">
-            <TextBox  x:Name="UsuarioIdComboBox" Height="25" Background="#FFFDFBFB">
-                <TextBox.Text>
-                    <Binding  Path="Usuario" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+            <ComboBox  x:Name="UsuarioIdComboBox" Height="25" Background="#FFFDFBFB">
+                <ComboBox.Text>
+                    <Binding  Path="UsuarioId" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
                             <src:IdValidacion x:Name="UsuarioValidacion" ValidatesOnTargetUpdated="True"/>
                         </Binding.ValidationRules>
                     </Binding>
-                </TextBox.Text>
-            </TextBox>
+                </ComboBox.Text>
+            </ComboBox>
         </StackPanel>
 
   
@@ -102,15 +102,15 @@
 
 
         <StackPanel Grid.Row="5" Grid.Column="1" Margin="0,14,0,33">
-            <TextBox  x:Name="CategoriaIdComboBox" Height="25" Background="#FFFDFBFB">
-                <TextBox.Text>
+            <ComboBox  x:Name="CategoriaIdComboBox" Height="25" Background="#FFFDFBFB">
+                <ComboBox.Text>
                     <Binding  Path="CategoriaId" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
                             <src:DescripcionValidacion x:Name="CategoriaIdValidacion" ValidatesOnTargetUpdated="True"/>
                         </Binding.ValidationRules>
                     </Binding>
-                </TextBox.Text>
-            </TextBox>
+                </ComboBox.Text>
+            </ComboBox>
         </StackPanel>
         
        

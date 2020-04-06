@@ -24,18 +24,12 @@ namespace SistemaVentas.UI.Registros
         {
             InitializeComponent();
             this.DataContext = articulo;
+            LlenaComBoxUsuario();
+            LlenaComBoxCategoria();
             //ArticuloIdTextBox.Text = "0";
 
         }
-       /* public void LlenaComboBoxCategorias() // Funcion encargada de llenar el ComboBox de las categorias
-       {
-            CategoriaBLL categoria = new CategoriaBLL();
-            var categorias = new List<Categoria>();
-            categorias = categoria.GetList(p => true);
-            CategoriaIdComboBox.SelectedItem = categorias;
-            CategoriaIdComboBox.ItemsSource = "CategoriaId";
-            CategoriaIdComboBox.Tag = "Nombre";
-        }*/
+      
         private void reCargar()
         {
             this.DataContext = null;
@@ -55,6 +49,27 @@ namespace SistemaVentas.UI.Registros
 
             // reCargar();
 
+        }
+       
+
+        private void LlenaComBoxUsuario()  ///Metodo que nos ayudara a cargar el id Usuario que ya se tiene registrado...
+        {
+            RepositorioBase<Usuarios> db = new RepositorioBase<Usuarios>();
+            var listado3 = new List<Usuarios>();
+            listado3 = db.GetList(p => true);
+            UsuarioIdComboBox.ItemsSource = listado3;
+            UsuarioIdComboBox.SelectedValue = "UsuarioId";
+            UsuarioIdComboBox.DisplayMemberPath = "UsuarioId";
+        }
+
+        private void LlenaComBoxCategoria()  ///Metodo que nos ayudara a cargar el id Categoria que ya se tiene registrado...
+        {
+            RepositorioBase<Categoria> db = new RepositorioBase<Categoria>();
+            var listado3 = new List<Categoria>();
+            listado3 = db.GetList(p => true);
+            CategoriaIdComboBox.ItemsSource = listado3;
+            CategoriaIdComboBox.SelectedValue = "CategoriaId";
+            CategoriaIdComboBox.DisplayMemberPath = "CategoriaId";
         }
         private void NuevobButton_Click(object sender, RoutedEventArgs e)
         {

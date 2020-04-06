@@ -26,9 +26,28 @@ namespace SistemaVentas.UI.Registros
             InitializeComponent();
             this.DataContext = cobro;
             this.Detalles = new List<CobrosDetalles>();
-           
+            LlenaComBoxClientes();
+            LlenaComBoxArticulos();
+                      
         }
-
+        private void LlenaComBoxClientes()  ///Metodo que nos ayudara a cargar el id Cliente que ya se tiene registrado...
+        {
+            RepositorioBase<Clientes> db = new RepositorioBase<Clientes>();
+            var lista6 = new List<Clientes>();
+            lista6 = db.GetList(p => true);
+            ClienteIdComboBox.ItemsSource = lista6;
+            ClienteIdComboBox.SelectedValue = "ClienteId";
+            ClienteIdComboBox.DisplayMemberPath = "ClienteId";
+        }
+        private void LlenaComBoxArticulos()  ///Metodo que nos ayudara a cargar el id Articulo que ya se tiene registrado...
+        {
+            RepositorioBase<Articulos> db = new RepositorioBase<Articulos>();
+            var list7 = new List<Articulos>();
+            list7 = db.GetList(p => true);
+            ArticuloIdCombobox.ItemsSource = list7;
+            ArticuloIdCombobox.SelectedValue = "ArticulosId";
+            ArticuloIdCombobox.DisplayMemberPath = "ArticulosId";
+        }
         private void reCargar()
         {
             this.DataContext = null;
@@ -41,6 +60,7 @@ namespace SistemaVentas.UI.Registros
         }
         private void Limpiar()
         {
+            Articulos articulos = new Articulos();
 
             CobrosIdTextBox.Text="0";
             ClienteIdComboBox.Text = "0";
@@ -48,10 +68,11 @@ namespace SistemaVentas.UI.Registros
             CantidadTextBox.Text = "0";
             PreciotextBox.Text = "0";
             MontooTextBox.Text = "0";
+            ArticuloIdCombobox.Text = null;
             DetalleDataGridCobro.ItemsSource = new List<CobrosDetalles>();
             this.Detalles = new List<CobrosDetalles>();
             CargarGrid();
-            reCargar();
+            reCargar();    
 
         }
         private bool existeEnLaBaseDeDatos()
@@ -115,18 +136,16 @@ namespace SistemaVentas.UI.Registros
             {
                 if (!existeEnLaBaseDeDatos())
                 {
+                     MessageBox.Show("No se puede modificar una venta que no existe", "Fallo", MessageBoxButton.OK, MessageBoxImage.Error);  
+                  }
                     paso = CobrosBLL.Modificar(cobro);
-                     MessageBox.Show("No se puede modificar una venta que no existe", "Fallo", MessageBoxButton.OK, MessageBoxImage.Error);
-                    
-                    
-                }
                 
             }
             if (paso)
                 {
 
-                MessageBox.Show("Guardado!!", "Exito", MessageBoxButton.OK, MessageBoxImage.Information);
                 Limpiar();
+                MessageBox.Show("Guardado!!", "Exito", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             else
                 {
@@ -270,7 +289,7 @@ namespace SistemaVentas.UI.Registros
                 {
                     //remover la fila
                     cobro.Detalle.RemoveAt(DetalleDataGridCobro.SelectedIndex);
-                    reCargar();
+                   // reCargar();
                     CargarGrid();
 
                 }
@@ -295,7 +314,7 @@ namespace SistemaVentas.UI.Registros
 
             this.cobro.Detalle.Add(new CobrosDetalles
             {
-                Id = IdTextBox.Text.ToInt(),
+                Id = 0,
                 CobroId = CobroidTextBox.Text.ToInt(),
                 VentaId = ventaIdtextBox.Text.ToInt(),
                 Monto = MontooTextBox.Text.ToInt(),
@@ -303,8 +322,7 @@ namespace SistemaVentas.UI.Registros
             });
             CargarGrid();
             reCargar();
-            IdTextBox.Focus();
-            IdTextBox.Clear();
+           
             CobroidTextBox.Focus();
             CobroidTextBox.Clear();
             ventaIdtextBox.Focus();

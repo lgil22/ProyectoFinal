@@ -25,6 +25,8 @@ namespace SistemaVentas.UI.Registros
         {
             InitializeComponent();
             this.DataContext = credito;
+            LlenaComBoxCliente();
+            LlenaComBoxUsuario();
            // NotaIdTextBox.Text = "0";
         }
         private void reCargar()
@@ -37,8 +39,8 @@ namespace SistemaVentas.UI.Registros
         {
             NotaIdTextBox.Text = "0";
             FechaDatePicker.DisplayDate = DateTime.Now;
-            ClienteIdTextBox.Text = "0";
-            UsuarioIdTextBox.Text = "0";
+            ClienteIdComBox.Text = "0";
+            UsuarioIdComboBox.Text = "0";
             conceptoTextBox.Text = string.Empty;
             MontoTextBox.Text = "0";
 
@@ -49,7 +51,28 @@ namespace SistemaVentas.UI.Registros
 
         }
 
+        private void LlenaComBoxCliente()  ///Metodo que nos ayudara a cargar el id Cliente que ya se tiene registrado...
+        {
+            RepositorioBase<Clientes> db = new RepositorioBase<Clientes>();
+            var listado4 = new List<Clientes>();
+            listado4 = db.GetList(p => true);
+            ClienteIdComBox.ItemsSource = listado4;
+            ClienteIdComBox.SelectedValue = "ClienteId";
+            ClienteIdComBox.DisplayMemberPath = "ClienteId";
+        }
 
+
+        private void LlenaComBoxUsuario()  ///Metodo que nos ayudara a cargar el id Usuario que ya se tiene registrado...
+        {
+            RepositorioBase<Usuarios> db = new RepositorioBase<Usuarios>();
+            var listado5= new List<Usuarios>();
+            listado5 = db.GetList(p => true);
+            UsuarioIdComboBox.ItemsSource = listado5;
+            UsuarioIdComboBox.SelectedValue = "UsuarioId";
+            UsuarioIdComboBox.DisplayMemberPath = "UsuarioId";
+        }
+
+      
         private bool existeEnLaBaseDeDatos()
         {
             NotasCreditos creditoAnterior = NotasCreditosBLL.Buscar((int)NotaIdTextBox.Text.ToInt());
