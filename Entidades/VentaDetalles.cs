@@ -13,7 +13,7 @@ namespace SistemaVentas.Entidades
         public int VentaId { get; set; }
         public int ArticuloId { get; set; }
         public int Cantidad { get; set; }
-        public float Precio { get; set; }
+        public decimal Precio { get; set; }
 
         public VentaDetalles()
         {

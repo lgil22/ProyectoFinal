@@ -15,6 +15,10 @@ namespace SistemaVentas.BLL
 
     {
         internal Contexto db;
+        public RepositorioBase(Contexto contexto)
+        {
+            db = contexto;
+        }
         public RepositorioBase()
         {
             db = new Contexto();
@@ -22,13 +26,15 @@ namespace SistemaVentas.BLL
 
         public virtual bool Guardar(T entity)
         {
-            Contexto contexto = new Contexto();
             bool paso = false;
 
             try
             {
-                if (contexto.Set<T>().Add(entity) != null)
-                    paso = contexto.SaveChanges() > 0;
+                if (db.Set<T>().Add(entity) != null)
+                {
+                    db.SaveChanges();
+                    paso = true;
+                }
             }
             catch (Exception)
             {
@@ -36,20 +42,23 @@ namespace SistemaVentas.BLL
             }
             finally
             {
-                contexto.Dispose();
+                db.Dispose();
             }
             return paso;
         }
 
         public virtual bool Modificar(T entity)
         {
-            Contexto contexto = new Contexto();
+        
             bool paso = false;
 
             try
             {
-                contexto.Entry(entity).State = EntityState.Modified;
-                paso = (contexto.SaveChanges() > 0);
+                db.Entry(entity).State = EntityState.Modified;
+                if (db.SaveChanges() > 0)
+                {
+                    paso = true;
+                }
             }
             catch (Exception)
             {
@@ -57,42 +66,43 @@ namespace SistemaVentas.BLL
             }
             finally
             {
-                contexto.Dispose();
+                db.Dispose();
             }
             return paso;
         }
 
         public virtual bool Eliminar(int id)
         {
-            Contexto contexto = new Contexto();
+           // Contexto contexto = new Contexto();
             bool paso = false;
 
             try
             {
-                T entity = contexto.Set<T>().Find(id);
-                contexto.Set<T>().Remove(entity);
+                T entity = db.Set<T>().Find(id);
+                db.Set<T>().Remove(entity);
 
-                paso = contexto.SaveChanges() > 0;
+              if (db.SaveChanges() > 0)
+                {
+                    paso = true;
+                }
+                db.Dispose();
             }
             catch (Exception)
             {
                 throw;
             }
-            finally
-            {
-                contexto.Dispose();
-            }
+           
             return paso;
         }
 
         public virtual T Buscar(int id)
         {
-            Contexto contexto = new Contexto();
+            
             T entity;
 
             try
             {
-                entity = contexto.Set<T>().Find(id);
+                entity = db.Set<T>().Find(id);
             }
             catch (Exception)
             {
@@ -100,7 +110,7 @@ namespace SistemaVentas.BLL
             }
             finally
             {
-                contexto.Dispose();
+                db.Dispose();
             }
             return entity;
         }
@@ -108,12 +118,11 @@ namespace SistemaVentas.BLL
 
         public List<T> GetList(Expression<Func<T, bool>> expression)
         {
-            Contexto contexto = new Contexto();
             List<T> Lista = new List<T>();
 
             try
             {
-                Lista = contexto.Set<T>().Where(expression).ToList();
+                Lista = db.Set<T>().Where(expression).ToList();
             }
             catch (Exception)
             {
@@ -121,11 +130,11 @@ namespace SistemaVentas.BLL
             }
             finally
             {
-                contexto.Dispose();
+                db.Dispose();
             }
             return Lista;
         }
-        public void Dispose()
+        public virtual void Dispose()
         {
             db.Dispose();
         }

@@ -129,8 +129,8 @@ namespace SistemaVentas.UI.Consultas
 
 
                     case 4:
-                        float monto;
-                        monto = float.Parse(CriterioTextBox.Text);
+                       decimal monto;
+                        monto = decimal.Parse(CriterioTextBox.Text);
                         listado = VentasBLL.GetList(o => o.Monto == monto);
                         break;
 

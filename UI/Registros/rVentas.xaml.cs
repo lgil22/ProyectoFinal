@@ -26,7 +26,9 @@ namespace SistemaVentas.UI.Registros
         public rVentas()
         {
             InitializeComponent();
-           this.DataContext = ventas;
+          LlenaComBox();
+            LlenaComBoxArticulos();
+            this.DataContext = ventas;
             this.Detalles = new List<VentaDetalles>();
         }
         private void Refrescar()
@@ -36,6 +38,8 @@ namespace SistemaVentas.UI.Registros
         }
         private void Limpiar()
         {
+            //VentaDetalles vdet = new VentaDetalles();
+           Articulos vd = new Articulos();
             VentaIdTextBox.Text = "0";
             ClienteIdCombox.Text = null;
             FechaNacTimePicker.DisplayDate = DateTime.Now;
@@ -43,20 +47,24 @@ namespace SistemaVentas.UI.Registros
             this.ventas = new Ventas();
             DetalleDataGridVentas.ItemsSource = new List<VentaDetalles>();
             this.Detalles = new List<VentaDetalles>();
+            ArticuloIdComBox.Text = null;
             CargarGrid();
             Refrescar();
             LlenaComBox();
             LlenaComBoxArticulos();
+            
+            
         }
 
         private Ventas LlenaClase()
         {
+            Articulos vedt = new Articulos();
             Ventas ventas = new Ventas();
             ventas.VentaId = int.Parse(VentaIdTextBox.Text);
             ventas.ClienteId = (int)ClienteIdCombox.SelectedValue;
             ventas.TipoPago = (string)TipoPagoComBox.SelectedValue;
             ventas.Fecha = (DateTime)FechaNacTimePicker.SelectedDate;
-          
+            vedt.ArticulosId = (int)ArticuloIdComBox.SelectedValue;
 
             ventas.Detalles = this.Detalles;
             return ventas;
@@ -64,10 +72,12 @@ namespace SistemaVentas.UI.Registros
 
         private void LlenaCampo(Ventas ventas)
         {
+            Articulos vedt = new  Articulos();
             VentaIdTextBox.Text = Convert.ToString(ventas.VentaId);
             ClienteIdCombox.SelectedValue = (ventas.ClienteId);
-            TipoPagoComBox.Text = Convert.ToString(ventas.TipoPago);
+            TipoPagoComBox.SelectedValue = Convert.ToString(ventas.TipoPago);
             FechaNacTimePicker.DisplayDate = ventas.Fecha;
+            ArticuloIdComBox.SelectedValue = (vedt.ArticulosId);
 
             this.Detalles = ventas.Detalles;
             CargarGrid();
@@ -85,32 +95,20 @@ namespace SistemaVentas.UI.Registros
             RepositorioBase<Clientes> db = new RepositorioBase<Clientes>();
             var listado = new List<Clientes>();
             listado = db.GetList(p => true);
-            ClienteIdCombox.DataContext = listado;
+            ClienteIdCombox.ItemsSource = listado;
             ClienteIdCombox.SelectedValue = "ClienteId";
-           ClienteIdCombox.DisplayMemberPath = "Nombres";
+           ClienteIdCombox.DisplayMemberPath = "ClienteId";
         }
 
-        private string GetCliente(int id)
-        {
-            string nombre;
-            RepositorioBase<Clientes> repositorio = new RepositorioBase<Clientes>();
-            Clientes clientes = new Clientes();
-            clientes = repositorio.Buscar(id);
-            if (clientes == null)
-                nombre = "";
-            else
-                nombre = clientes.Nombres;
-            return nombre;
-        }
-
-        private void LlenaComBoxArticulos()  ///Metodo que nos ayudara a cargar el cliente que ya se tiene registrado...
+    
+        private void LlenaComBoxArticulos()  ///Metodo que nos ayudara a cargar el id articulo que ya se tiene registrado...
         {
             RepositorioBase<Articulos> db = new RepositorioBase<Articulos>();
-            var listado = new List<Articulos>();
-            listado = db.GetList(p => true);
-            ClienteIdCombox.DataContext = listado;
-            ClienteIdCombox.SelectedValue = "ArticulosId";
-            ClienteIdCombox.DisplayMemberPath = "Descripcion";
+            var listado2 = new List<Articulos>();
+            listado2 = db.GetList(p => true);
+            ArticuloIdComBox.ItemsSource = listado2;
+            ArticuloIdComBox.SelectedValue = "ArticulosId";
+            ArticuloIdComBox.DisplayMemberPath = "ArticulosId";
         }
         private bool ExisteEnLaBaseDeDatos()
         {
@@ -154,26 +152,31 @@ namespace SistemaVentas.UI.Registros
                 this.ventas.Detalles = (List<VentaDetalles>)DetalleDataGridVentas.ItemsSource;
             }
 
-                //Agregar un nuevo detalle con los datos introducidos
+            //Agregar un nuevo detalle con los datos introducidos
 
-                this.ventas.Detalles.Add(new VentaDetalles
+            this.ventas.Detalles.Add(new VentaDetalles
             {
-                ArticuloId = Convert.ToInt32(ArticuloIdComBox.SelectedValue),
-                Cantidad = CantidadTextBox.Text.ToInt(),
-                Precio = PrecioTextBox.Text.ToInt(),
-                
+                //  Id = 0,
+                ArticuloId = Convert.ToInt32(ArticuloIdComBox.Text),
+                Cantidad = Convert.ToInt32(CantidadTextBox.Text),
+                Precio = Convert.ToInt32(PrecioTextBox.Text),
 
-                    //PrecioTextBox.Text.ToInt(),
-                    //   Precio = Convert.ToInt32(PrecioTextBox),
 
-                });
+
+
+                //PrecioTextBox.Text.ToInt(),
+                //   Precio = Convert.ToInt32(PrecioTextBox),
+
+            }) ;
          CargarGrid();
            /// Refrescar();
-             ArticuloIdComBox.Text = string.Empty;
-             CantidadTextBox.Text = string.Empty;
+            ArticuloIdComBox.Text = string.Empty;
+           CantidadTextBox.Text = string.Empty;
             // CantidadTextBox.Clear();
             //  PrecioTextBox.Focus();
+           // MontoTextBox.Focus();
             PrecioTextBox.Text = string.Empty;
+          /// MontoTextBox.Text = string.Empty;
         }
 
         private void BuscarButton_Click(object sender, RoutedEventArgs e)

@@ -12,7 +12,7 @@ namespace SistemaVentas.Entidades
             public int VentaId { get; set; }
             public int ClienteId { get; set; }
             public string TipoPago { get; set; }
-            public float Monto { get; set; }
+            public decimal Monto { get; set; }
             public DateTime Fecha { get; set; }
  
             [ForeignKey("VentaId")]

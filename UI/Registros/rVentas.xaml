@@ -136,26 +136,24 @@
         <TextBox x:Name="MontoTextBox" Margin="4,30,68,54" Grid.Row="7" TextChanged="MontoTextBox_TextChanged" Grid.Column="3">
             <Binding Path="Monto" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                 <Binding.ValidationRules>
-                    <ExceptionValidationRule/>
+                    <src:CostoValidacion x:Name="costoValidacion" ValidatesOnTargetUpdated="True"/>
                 </Binding.ValidationRules>
             </Binding>
+            
         </TextBox>
 
         <GroupBox x:Name="AgregarVentasGroupBox" FontSize="14" Header="Agregar Ventas" Grid.Row="7" Grid.ColumnSpan="4" Margin="10,10,-41,0" Height="206" VerticalAlignment="Top" Grid.RowSpan="2" FontWeight="Bold">
 
-            <DataGrid   x:Name="DetalleDataGridVentas" Height="132" Margin="0,0,-2,0">
-                <DataGrid.ItemsSource>
-                    <Binding Path="Detalles"  UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
-                        <Binding.ValidationRules>
-                            <src:ValidaciónString x:Name="ValidaciónString" ValidatesOnTargetUpdated="True"/>
-                        </Binding.ValidationRules>
-                    </Binding>
-                </DataGrid.ItemsSource>
+            <DataGrid  x:Name="DetalleDataGridVentas" AutoGenerateColumns="False" Height="132" Margin="0,0,-2,0">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header=" Cantidad" Binding="{Binding Cantidad}"/>
+                    <DataGridTextColumn Header=" Precio" Binding="{Binding Precio}"/>
+                    <DataGridTextColumn Header=" Monto" Binding="{Binding Monto}"/>
+                </DataGrid.Columns>
+               
             </DataGrid>
-
-
-
         </GroupBox>
+        
 
         <Label x:Name="ArticuloLabel" Content="Articulo Id:" HorizontalAlignment="Left"  Grid.Row="7" VerticalAlignment="Top"  Margin="16,26,0,0" FontSize="12"/>
         <ComboBox x:Name="ArticuloIdComBox" HorizontalAlignment="Left" Margin="83,30,0,0" Grid.Row="7"  VerticalAlignment="Top" Width="58">

@@ -30,9 +30,9 @@ namespace SistemaVentas.BLL
                         var articulos = art.Buscar(item.ArticuloId);
                         articulos.Existencia = articulos.Existencia - item.Cantidad;
                         art.Modificar(articulos);
-
+                       
                     }
-
+                    var cliente = client.Buscar(venta.ClienteId);
                     paso = db.SaveChanges() > 0;
                 }
 
@@ -91,7 +91,8 @@ namespace SistemaVentas.BLL
 
             RepositorioBase<Clientes> client = new RepositorioBase<Clientes>();
             RepositorioBase<Ventas> vent = new RepositorioBase<Ventas>();
-
+          
+        
             var Cliente = client.Buscar(ventas.ClienteId);
             var ClientesAnteriores = client.Buscar(VentasAnteriores.ClienteId);
 
@@ -101,6 +102,7 @@ namespace SistemaVentas.BLL
 
             var Venta = vent.Buscar(ventas.VentaId);
             var ventaanterior = vent.Buscar(VentasAnteriores.VentaId);
+        
 
         }
 
@@ -158,12 +160,14 @@ namespace SistemaVentas.BLL
         public static Ventas Buscar(int ID)
         {
             Ventas ventas = new Ventas();
+          //Articulos articulos = new Articulos();
 
             Contexto db = new Contexto();
 
             try
             {
                 ventas = db.Ventas.Find(ID);
+           //   articulos = db.Articulos.Find(ID);
                 if (ventas != null)
                 {
                     ventas.Detalles.Count();
