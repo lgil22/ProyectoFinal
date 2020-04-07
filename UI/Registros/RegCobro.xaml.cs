@@ -37,7 +37,7 @@ namespace SistemaVentas.UI.Registros
             lista6 = db.GetList(p => true);
             ClienteIdComboBox.ItemsSource = lista6;
             ClienteIdComboBox.SelectedValue = "ClienteId";
-            ClienteIdComboBox.DisplayMemberPath = "ClienteId";
+            ClienteIdComboBox.DisplayMemberPath = "Nombres";
         }
         private void LlenaComBoxArticulos()  ///Metodo que nos ayudara a cargar el id Articulo que ya se tiene registrado...
         {
@@ -332,6 +332,7 @@ namespace SistemaVentas.UI.Registros
 
         }
 
+       
     }
 }
 

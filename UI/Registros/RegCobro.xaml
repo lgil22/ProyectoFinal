@@ -164,7 +164,7 @@
         </GroupBox>
 
         <StackPanel Grid.Row="3" Grid.Column="1" Margin="0,14,0,30">
-            <ComboBox  x:Name="ClienteIdComboBox" Height="22" Background="#FFFDFBFB" >
+            <ComboBox  x:Name="ClienteIdComboBox" Height="22" Background="#FFFDFBFB"  >
                 <ComboBox.Text>
                     <Binding  Path="ClienteId" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>

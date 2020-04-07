@@ -138,7 +138,7 @@ namespace SistemaVentas.UI.Registros
 
                 if (paso)
                 {
-                    MessageBox.Show("Guardado!!", "Exito", MessageBoxButton.OK, MessageBoxImage.Information);
+                   
                 }
                 else
                 {

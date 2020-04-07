@@ -118,6 +118,18 @@ namespace SistemaVentas.Migrations
                     b.HasKey("CobroId");
 
                     b.ToTable("Cobros");
+
+                    b.HasData(
+                        new
+                        {
+                            CobroId = 1,
+                            ArticuloId = 0,
+                            Cantidad = 0,
+                            ClienteId = 0,
+                            Fecha = new DateTime(2020, 4, 7, 13, 38, 39, 539, DateTimeKind.Local).AddTicks(9984),
+                            Monto = 0f,
+                            Precio = 2000f
+                        });
                 });
 
             modelBuilder.Entity("SistemaVentas.Entidades.CobrosDetalles", b =>
@@ -260,6 +272,16 @@ namespace SistemaVentas.Migrations
                     b.HasKey("VentaId");
 
                     b.ToTable("Ventas");
+
+                    b.HasData(
+                        new
+                        {
+                            VentaId = 1,
+                            ClienteId = 0,
+                            Fecha = new DateTime(2020, 4, 7, 13, 38, 39, 534, DateTimeKind.Local).AddTicks(2526),
+                            Monto = 0m,
+                            TipoPago = "Credito"
+                        });
                 });
 
             modelBuilder.Entity("SistemaVentas.Entidades.CobrosDetalles", b =>

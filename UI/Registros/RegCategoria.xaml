@@ -79,19 +79,15 @@
         </StackPanel>
 
         <StackPanel Grid.Row="4" Margin="1,8,9,26" Grid.Column="1">
-            <ComboBox x:Name="NombreCategoriaCombro" Height="25" Width="138">
-                <ComboBoxItem Content="Damas"/>
-                <ComboBoxItem Content="Caballeros"/>
-                <ComboBoxItem Content="Niños"/>
-                <ComboBoxItem Content="Limpieza Para Hogar"/>
-                <ComboBox.Text>
+            <TextBox x:Name="NombreCategoriaTextBox" Height="25" Width="138">
+                <TextBox.Text>
                     <Binding Path="NombreCategoria" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
                             <src:ValidaciónString x:Name="NombreValidacionCat" ValidatesOnTargetUpdated="True"/>
                         </Binding.ValidationRules>
                     </Binding>
-                </ComboBox.Text>
-            </ComboBox>
+                </TextBox.Text>
+            </TextBox>
         </StackPanel>
 
         

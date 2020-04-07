@@ -32,7 +32,7 @@ namespace SistemaVentas.UI.Registros
         private void Limpiar()
         {
             CategoriaIdTextBox.Text = "0";
-            NombreCategoriaCombro.Text = string.Empty;
+            NombreCategoriaTextBox.Text = string.Empty;
             //reCargar();
         }
         private void reCargar()
@@ -54,10 +54,10 @@ namespace SistemaVentas.UI.Registros
                 CategoriaIdTextBox.Focus();
                 paso = false;
             }
-            if (string.IsNullOrWhiteSpace(NombreCategoriaCombro.Text))
+            if (string.IsNullOrWhiteSpace(NombreCategoriaTextBox.Text))
             {
                 MessageBox.Show("EL campo NombreCategoria no puede estar vacio", "Aviso", MessageBoxButton.OKCancel, MessageBoxImage.Information);
-                NombreCategoriaCombro.Focus();
+                NombreCategoriaTextBox.Focus();
                 paso = false;
             }
 
@@ -149,7 +149,6 @@ namespace SistemaVentas.UI.Registros
 
         }
 
-        
 
         private bool existeEnLaBaseDeDatos()
         {

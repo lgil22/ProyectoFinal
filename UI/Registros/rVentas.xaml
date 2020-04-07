@@ -84,7 +84,7 @@
         <StackPanel Grid.Row="4" Grid.Column="0">
             <Label x:Name="ClienteIdLabel" Content="Cliente Id:" FontSize="14" Height="30" Width="128"/>
         </StackPanel>
-        <ComboBox x:Name="ClienteIdCombox" Height="25" Grid.ColumnSpan="3" Margin="114,6,98,28" Grid.Row="4">
+        <ComboBox x:Name="ClienteIdCombox" Height="25" Grid.ColumnSpan="3" Margin="114,6,98,28" Grid.Row="4" >
             <ComboBox.Text>
                 <Binding Path="ClienteId" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                     <Binding.ValidationRules>

@@ -100,7 +100,7 @@ namespace SistemaVentas.UI.Registros
             listado = db.GetList(p => true);
             ClienteIdCombox.ItemsSource = listado;
             ClienteIdCombox.SelectedValue = "ClienteId";
-           ClienteIdCombox.DisplayMemberPath = "ClienteId";
+           ClienteIdCombox.DisplayMemberPath = "Nombres";
         }
 
     
@@ -363,5 +363,7 @@ namespace SistemaVentas.UI.Registros
                 this.IsEnabled = true;
             }
         }
+
+     
     }
 }

@@ -59,7 +59,7 @@ namespace SistemaVentas.UI.Registros
             var listado3 = new List<Usuarios>();
             listado3 = db.GetList(p => true);
             UsuarioIdComboBox.ItemsSource = listado3;
-            UsuarioIdComboBox.SelectedValue = "Nombres";
+            UsuarioIdComboBox.SelectedValue = "UsuarioId";
             UsuarioIdComboBox.DisplayMemberPath = "Nombres";
         }
 
@@ -69,7 +69,7 @@ namespace SistemaVentas.UI.Registros
             var listado3 = new List<Categoria>();
             listado3 = db.GetList(p => true);
             CategoriaIdComboBox.ItemsSource = listado3;
-            CategoriaIdComboBox.SelectedValue = "NombreCategoria";
+            CategoriaIdComboBox.SelectedValue = "CategoriaId";
             CategoriaIdComboBox.DisplayMemberPath = "NombreCategoria";
         }
         private void NuevobButton_Click(object sender, RoutedEventArgs e)
@@ -128,17 +128,14 @@ namespace SistemaVentas.UI.Registros
                     MessageBox.Show(" modifico ", "Existo", MessageBoxButton.OK, MessageBoxImage.Information);
 
                 }
-
-                else
-                {
-                    Limpiar();
-                    MessageBox.Show("No Existe en la base de datos", "ERROR");
-                    return;
-                }
+ 
             }
                 //Informar el resultado
                 if (paso)
-                    MessageBox.Show("Guardado!!", "Exito", MessageBoxButton.OK, MessageBoxImage.Information);
+            {
+
+            }
+                    
                 else
                     MessageBox.Show("No fue posible guardar!!", "Fallo", MessageBoxButton.OK, MessageBoxImage.Error);
   
@@ -172,17 +169,17 @@ namespace SistemaVentas.UI.Registros
         {
             Articulos articuloAnterio = ArticulosBLL.Buscar((int)ArticuloIdTextBox.Text.ToInt());
 
-            return articuloAnterio != null;
+            return (articuloAnterio != null);
         }
         private void BuscarButton_Click(object sender, RoutedEventArgs e)
         {
           
-            Articulos articuloAnterio = ArticulosBLL.Buscar(articulo.ArticulosId);
+            Articulos articuloAnterio = ArticulosBLL.Buscar(ArticuloIdTextBox.Text.ToInt());
      
            
             if (articuloAnterio != null)
             {
-                MessageBox.Show("Articulo Encontrado");
+                
                 articulo = articuloAnterio;
                 reCargar();
             }

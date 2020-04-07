@@ -183,6 +183,16 @@ namespace SistemaVentas.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.InsertData(
+                table: "Cobros",
+                columns: new[] { "CobroId", "ArticuloId", "Cantidad", "ClienteId", "Fecha", "Monto", "Precio" },
+                values: new object[] { 1, 0, 0, 0, new DateTime(2020, 4, 7, 13, 38, 39, 539, DateTimeKind.Local).AddTicks(9984), 0f, 2000f });
+
+            migrationBuilder.InsertData(
+                table: "Ventas",
+                columns: new[] { "VentaId", "ClienteId", "Fecha", "Monto", "TipoPago" },
+                values: new object[] { 1, 0, new DateTime(2020, 4, 7, 13, 38, 39, 534, DateTimeKind.Local).AddTicks(2526), 0m, "Credito" });
+
             migrationBuilder.CreateIndex(
                 name: "IX_CobrosDetalles_CobrosId",
                 table: "CobrosDetalles",

@@ -76,7 +76,7 @@
         </StackPanel>
 
         <StackPanel Grid.Row="3" Grid.Column="1" Margin="0,14,0,33">
-            <ComboBox  x:Name="UsuarioIdComboBox" Height="25" Background="#FFFDFBFB" SelectionChanged="UsuarioIdComboBox_SelectionChanged">
+            <ComboBox  x:Name="UsuarioIdComboBox" Height="25" Background="#FFFDFBFB" >
                 <ComboBox.Text>
                     <Binding  Path="UsuarioId" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
