@@ -105,7 +105,7 @@
                 <Binding Path="Fecha" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                     <Binding.ValidationRules>
                         <ExceptionValidationRule/>
-                        <src:ValidaciónString x:Name="ValidacionString" ValidatesOnTargetUpdated="True"/>
+                        <src:ValidaciónString x:Name="FechaValidacionString" ValidatesOnTargetUpdated="True"/>
                     </Binding.ValidationRules>
                 </Binding>
             </DatePicker.Text>
@@ -121,13 +121,13 @@
                 <ComboBoxItem Content="Contado"/>
                 <ComboBoxItem Content="Credito"/>
                 <ComboBoxItem Content="A Plazo"/>
-                <ComboBoxItem>
-                    <Binding Path="Tipo" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                <ComboBox.Text>
+                    <Binding Path="TipoPago" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
                             <src:ValidaciónString x:Name="TipoPagoValidacion" ValidatesOnTargetUpdated="True"/>
                         </Binding.ValidationRules>
                     </Binding>
-                </ComboBoxItem>
+                </ComboBox.Text>
             </ComboBox>
         </StackPanel>
 

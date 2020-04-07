@@ -9,7 +9,7 @@ using SistemaVentas.DAL;
 namespace SistemaVentas.Migrations
 {
     [DbContext(typeof(Contexto))]
-    [Migration("20200406223751_Inicial")]
+    [Migration("20200407000022_Inicial")]
     partial class Inicial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -134,8 +134,8 @@ namespace SistemaVentas.Migrations
                     b.Property<int?>("CobrosId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<float>("Monto")
-                        .HasColumnType("REAL");
+                    b.Property<decimal>("Monto")
+                        .HasColumnType("TEXT");
 
                     b.Property<int>("VentaId")
                         .HasColumnType("INTEGER");

@@ -132,8 +132,8 @@ namespace SistemaVentas.Migrations
                     b.Property<int?>("CobrosId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<float>("Monto")
-                        .HasColumnType("REAL");
+                    b.Property<decimal>("Monto")
+                        .HasColumnType("TEXT");
 
                     b.Property<int>("VentaId")
                         .HasColumnType("INTEGER");

@@ -26,9 +26,9 @@ namespace SistemaVentas.UI.Registros
         public rVentas()
         {
             InitializeComponent();
-          LlenaComBox();
+            LlenaComBox();
             LlenaComBoxArticulos();
-            FechaNacTimePicker.SelectedDate = DateTime.Now;
+            FechaNacTimePicker.DisplayDate = DateTime.Now;
             this.DataContext = ventas;
             this.Detalles = new List<VentaDetalles>();
             CargarGrid();
@@ -41,11 +41,11 @@ namespace SistemaVentas.UI.Registros
         }
         private void Limpiar()
         {
-            //VentaDetalles vdet = new VentaDetalles();
-           Articulos vd = new Articulos();
+            
+          // Articulos vd = new Articulos();
             VentaIdTextBox.Text = "0";
             ClienteIdCombox.Text = null;
-            FechaNacTimePicker.SelectedDate = DateTime.Now;
+            FechaNacTimePicker.DisplayDate = DateTime.Now;
             TipoPagoComBox.Text = null;
             this.ventas = new Ventas();
             DetalleDataGridVentas.ItemsSource = new List<VentaDetalles>();
@@ -59,7 +59,7 @@ namespace SistemaVentas.UI.Registros
             
         }
 
-        private Ventas LlenaClase()
+      /*  private Ventas LlenaClase()
         {
             Articulos vedt = new Articulos();
             Ventas ventas = new Ventas();
@@ -71,9 +71,9 @@ namespace SistemaVentas.UI.Registros
 
             ventas.Detalles = this.Detalles;
             return ventas;
-        }
+        }*/
 
-        private void LlenaCampo(Ventas ventas)
+    /*    private void LlenaCampo(Ventas ventas)
         {
             Articulos vedt = new  Articulos();
             VentaIdTextBox.Text = Convert.ToString(ventas.VentaId);
@@ -85,7 +85,7 @@ namespace SistemaVentas.UI.Registros
             this.Detalles = ventas.Detalles;
             CargarGrid();
 
-        }
+        }*/
 
         private void CargarGrid()
         {
@@ -242,7 +242,7 @@ namespace SistemaVentas.UI.Registros
             if (!Validar())
                 return;
 
-            ventas = LlenaClase();
+          //  ventas = LlenaClase();
             Limpiar();
 
             //Determinar si es guardar o modificar
