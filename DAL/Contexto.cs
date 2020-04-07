@@ -23,5 +23,13 @@ namespace SistemaVentas.DAL
         {
             optionsBuilder.UseSqlite(@"Data Source = SitemaVentas.db");
         }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+
+            modelBuilder.Entity<Ventas>().HasData(new Ventas { VentaId= 1, TipoPago = "Credito" });
+            modelBuilder.Entity<Cobros>().HasData(new Cobros { CobroId = 1, Precio = 2000 }); ;
+
+        }
     }
 }

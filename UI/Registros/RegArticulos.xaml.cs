@@ -25,8 +25,8 @@ namespace SistemaVentas.UI.Registros
             InitializeComponent();
             this.DataContext = articulo;
             ArticuloIdTextBox.Text = "0";
-            LlenaComBoxUsuario();
-            LlenaComBoxCategoria();
+           LlenaComBoxUsuario();
+           LlenaComBoxCategoria();
             //ArticuloIdTextBox.Text = "0";
 
         }
@@ -59,8 +59,8 @@ namespace SistemaVentas.UI.Registros
             var listado3 = new List<Usuarios>();
             listado3 = db.GetList(p => true);
             UsuarioIdComboBox.ItemsSource = listado3;
-            UsuarioIdComboBox.SelectedValue = "UsuarioId";
-            UsuarioIdComboBox.DisplayMemberPath = "UsuarioId";
+            UsuarioIdComboBox.SelectedValue = "Nombres";
+            UsuarioIdComboBox.DisplayMemberPath = "Nombres";
         }
 
         private void LlenaComBoxCategoria()  ///Metodo que nos ayudara a cargar el id Categoria que ya se tiene registrado...
@@ -69,8 +69,8 @@ namespace SistemaVentas.UI.Registros
             var listado3 = new List<Categoria>();
             listado3 = db.GetList(p => true);
             CategoriaIdComboBox.ItemsSource = listado3;
-            CategoriaIdComboBox.SelectedValue = "CategoriaId";
-            CategoriaIdComboBox.DisplayMemberPath = "CategoriaId";
+            CategoriaIdComboBox.SelectedValue = "NombreCategoria";
+            CategoriaIdComboBox.DisplayMemberPath = "NombreCategoria";
         }
         private void NuevobButton_Click(object sender, RoutedEventArgs e)
         {
@@ -235,8 +235,7 @@ namespace SistemaVentas.UI.Registros
             }
         }
 
-        
-
+      
     }
 
 }

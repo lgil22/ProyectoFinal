@@ -13,5 +13,13 @@ namespace SistemaVentas
     /// </summary>
     public partial class App : Application
     {
+    
+    void Application_DispatcherUnhandledEception(object sender, System.Windows.Threading.DispatcherUnhandledExceptionEventArgs e)
+    {
+        MessageBox.Show("Error", $"😒Error en la aplicacio😭:\n {e.Exception.Message}");
+        e.Handled = true;
     }
+
+  } 
+
 }
