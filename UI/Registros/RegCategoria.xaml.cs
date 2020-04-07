@@ -82,14 +82,17 @@ namespace SistemaVentas.UI.Registros
             {
                 if (!existeEnLaBaseDeDatos())
                 {
-                    MessageBox.Show("No se puede modificar una categoria que no existe");
-                    return;
+                    paso = CategoriaBLL.Modificar(categoria);
+                    MessageBox.Show(" modifico ", "Existo", MessageBoxButton.OK, MessageBoxImage.Information);
+                  
 
                 }
                 else
                 {
-                    paso = CategoriaBLL.Modificar(categoria);
-                    MessageBox.Show(" modifico ", "Existo", MessageBoxButton.OK, MessageBoxImage.Error);
+                    Limpiar();
+                    MessageBox.Show("No se puede modificar una categoria que no existe");
+                    return;
+
                 }
             }
 

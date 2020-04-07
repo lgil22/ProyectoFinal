@@ -24,6 +24,7 @@ namespace SistemaVentas.UI.Registros
         {
             InitializeComponent();
             this.DataContext = articulo;
+            ArticuloIdTextBox.Text = "0";
             LlenaComBoxUsuario();
             LlenaComBoxCategoria();
             //ArticuloIdTextBox.Text = "0";
@@ -124,7 +125,7 @@ namespace SistemaVentas.UI.Registros
                 if (!existeEnLaBaseDeDatos())
                 {
                     paso = ArticulosBLL.Modificar(articulo);
-                    MessageBox.Show(" modifico ", "Existo", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show(" modifico ", "Existo", MessageBoxButton.OK, MessageBoxImage.Information);
 
                 }
 

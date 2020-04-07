@@ -139,10 +139,10 @@ namespace SistemaVentas.UI.Registros
             if (this.Detalles.Count == 0)
             {
                 MessageBox.Show("Debe agregar una venta", "Aviso", MessageBoxButton.OKCancel, MessageBoxImage.Information);
-                // ArticuloIdComBox.Focus();
-              //   CantidadTextBox.Focus();
-                // PrecioTextBox.Focus();
-                // MontoTextBox.Focus();
+                 ArticuloIdComBox.Focus();
+                CantidadTextBox.Focus();
+                PrecioTextBox.Focus();
+                MontoTextBox.Focus();
                 paso = false;
             }
             return paso;
@@ -164,7 +164,7 @@ namespace SistemaVentas.UI.Registros
                 ArticuloId = Convert.ToInt32(ArticuloIdComBox.Text),
                 Cantidad = Convert.ToInt32(CantidadTextBox.Text),
                 Precio = Convert.ToDecimal(PrecioTextBox.Text),
-                Id = 0,
+                Id = Convert.ToInt32(ArticuloIdComBox.Text),
 
 
 
@@ -217,7 +217,7 @@ namespace SistemaVentas.UI.Registros
                 {
                     //remover la fila
                     Detalles.RemoveAt(DetalleDataGridVentas.SelectedIndex);
-                  // Refrescar();
+                   Refrescar();
                   CargarGrid();
 
                 }
@@ -253,10 +253,17 @@ namespace SistemaVentas.UI.Registros
             {
                 if (!ExisteEnLaBaseDeDatos())
                 {
+                    paso = VentasBLL.Modificar(ventas);
+                    MessageBox.Show(" modifico ", "Existo", MessageBoxButton.OK, MessageBoxImage.Information);
+                    
+                }
+                else
+                {
+                    Limpiar();
                     MessageBox.Show("No se puede modificar una venta que no existe", "Fallo", MessageBoxButton.OK, MessageBoxImage.Error);
                     return;
                 }
-                paso = VentasBLL.Modificar(ventas);
+               
             }
 
             //Informar el resultado
