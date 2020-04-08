@@ -48,7 +48,6 @@
             <ComboBoxItem Content="Todo"/>
             <ComboBoxItem Content="Cobro Id"/>
             <ComboBoxItem Content="Cliente Id"/>
-            <ComboBoxItem Content="Articulo Id"/>
             <ComboBoxItem Content="Fecha"/>
             <ComboBoxItem Content="Cantidad Id"/>
             <ComboBoxItem Content="Precio Id"/>

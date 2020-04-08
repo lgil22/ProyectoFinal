@@ -10,8 +10,7 @@ namespace SistemaVentas.Entidades
     {
         [Key]
         public int CobroId { get; set; }
-        public int ClienteId { get; set; }
-        public int ArticuloId { get; set; }
+        public int ClienteId { get; set; }  
         public DateTime Fecha { get; set; }
         public int Cantidad { get; set; }
         public float Precio { get; set; }
@@ -25,7 +24,6 @@ namespace SistemaVentas.Entidades
         {
             CobroId = 0;
             ClienteId = 0;
-            ArticuloId = 0;
             Fecha = DateTime.Now;
             Cantidad = 0;
             Precio = 0;

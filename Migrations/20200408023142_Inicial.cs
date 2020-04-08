@@ -64,7 +64,6 @@ namespace SistemaVentas.Migrations
                     CobroId = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     ClienteId = table.Column<int>(nullable: false),
-                    ArticuloId = table.Column<int>(nullable: false),
                     Fecha = table.Column<DateTime>(nullable: false),
                     Cantidad = table.Column<int>(nullable: false),
                     Precio = table.Column<float>(nullable: false),
@@ -185,13 +184,13 @@ namespace SistemaVentas.Migrations
 
             migrationBuilder.InsertData(
                 table: "Cobros",
-                columns: new[] { "CobroId", "ArticuloId", "Cantidad", "ClienteId", "Fecha", "Monto", "Precio" },
-                values: new object[] { 1, 0, 0, 0, new DateTime(2020, 4, 7, 13, 38, 39, 539, DateTimeKind.Local).AddTicks(9984), 0f, 2000f });
+                columns: new[] { "CobroId", "Cantidad", "ClienteId", "Fecha", "Monto", "Precio" },
+                values: new object[] { 1, 0, 0, new DateTime(2020, 4, 7, 22, 31, 41, 956, DateTimeKind.Local).AddTicks(1610), 0f, 2000f });
 
             migrationBuilder.InsertData(
                 table: "Ventas",
                 columns: new[] { "VentaId", "ClienteId", "Fecha", "Monto", "TipoPago" },
-                values: new object[] { 1, 0, new DateTime(2020, 4, 7, 13, 38, 39, 534, DateTimeKind.Local).AddTicks(2526), 0m, "Credito" });
+                values: new object[] { 1, 0, new DateTime(2020, 4, 7, 22, 31, 41, 953, DateTimeKind.Local).AddTicks(2855), 0m, "Credito" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_CobrosDetalles_CobrosId",

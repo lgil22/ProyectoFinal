@@ -125,25 +125,19 @@ namespace SistemaVentas.UI.Consultas
                         listado = CobrosBLL.GetList(o => o.ClienteId == clienteId);
                         break;
 
-                    case 3: // Articulo Id
-                        int articuloId;
-                        articuloId = int.Parse(CriterioTextBox.Text);
-                        listado = CobrosBLL.GetList(o => o.ArticuloId == articuloId);
-                        break;
-
-                    case 4: //Cantidad
+                    case 3: //Cantidad
                         int cant;
                         cant = int.Parse(CriterioTextBox.Text);
                         listado = CobrosBLL.GetList(o => o.Cantidad == cant);
                         break;
 
-                    case 5: //Precio
+                    case 4: //Precio
                         int Prec;
                         Prec = int.Parse(CriterioTextBox.Text);
                         listado = CobrosBLL.GetList(o => o.Precio == Prec);
                         break;
 
-                    case 6: //monto
+                    case 5: //monto
                         float monto;
                         monto = float.Parse(CriterioTextBox.Text);
                         listado = CobrosBLL.GetList(o => o.Monto == monto);

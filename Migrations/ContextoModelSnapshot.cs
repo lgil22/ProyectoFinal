@@ -97,9 +97,6 @@ namespace SistemaVentas.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("ArticuloId")
-                        .HasColumnType("INTEGER");
-
                     b.Property<int>("Cantidad")
                         .HasColumnType("INTEGER");
 
@@ -123,10 +120,9 @@ namespace SistemaVentas.Migrations
                         new
                         {
                             CobroId = 1,
-                            ArticuloId = 0,
                             Cantidad = 0,
                             ClienteId = 0,
-                            Fecha = new DateTime(2020, 4, 7, 13, 38, 39, 539, DateTimeKind.Local).AddTicks(9984),
+                            Fecha = new DateTime(2020, 4, 7, 22, 31, 41, 956, DateTimeKind.Local).AddTicks(1610),
                             Monto = 0f,
                             Precio = 2000f
                         });
@@ -278,7 +274,7 @@ namespace SistemaVentas.Migrations
                         {
                             VentaId = 1,
                             ClienteId = 0,
-                            Fecha = new DateTime(2020, 4, 7, 13, 38, 39, 534, DateTimeKind.Local).AddTicks(2526),
+                            Fecha = new DateTime(2020, 4, 7, 22, 31, 41, 953, DateTimeKind.Local).AddTicks(2855),
                             Monto = 0m,
                             TipoPago = "Credito"
                         });

@@ -47,7 +47,6 @@
     <None Remove="Resources\Users.png" />
     <None Remove="Resources\Usuarios.png" />
     <None Remove="Resources\Ventas.png" />
-    <None Remove="SitemaVentas.db" />
   </ItemGroup>
 
   <ItemGroup>
@@ -134,9 +133,6 @@
     </Content>
     <Content Include="Resources\Ventas.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="SitemaVentas.db">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
 

@@ -27,8 +27,7 @@ namespace SistemaVentas.UI.Registros
             this.DataContext = cobro;
             this.Detalles = new List<CobrosDetalles>();
             LlenaComBoxClientes();
-            LlenaComBoxArticulos();
-                      
+              
         }
         private void LlenaComBoxClientes()  ///Metodo que nos ayudara a cargar el id Cliente que ya se tiene registrado...
         {
@@ -39,15 +38,7 @@ namespace SistemaVentas.UI.Registros
             ClienteIdComboBox.SelectedValue = "ClienteId";
             ClienteIdComboBox.DisplayMemberPath = "Nombres";
         }
-        private void LlenaComBoxArticulos()  ///Metodo que nos ayudara a cargar el id Articulo que ya se tiene registrado...
-        {
-            RepositorioBase<Articulos> db = new RepositorioBase<Articulos>();
-            var list7 = new List<Articulos>();
-            list7 = db.GetList(p => true);
-            ArticuloIdCombobox.ItemsSource = list7;
-            ArticuloIdCombobox.SelectedValue = "ArticulosId";
-            ArticuloIdCombobox.DisplayMemberPath = "ArticulosId";
-        }
+        
         private void reCargar()
         {
             this.DataContext = null;
@@ -68,7 +59,6 @@ namespace SistemaVentas.UI.Registros
             CantidadTextBox.Text = "0";
             PreciotextBox.Text = "0";
             MontooTextBox.Text = "0";
-            ArticuloIdCombobox.Text = null;
             DetalleDataGridCobro.ItemsSource = new List<CobrosDetalles>();
             this.Detalles = new List<CobrosDetalles>();
             CargarGrid();
