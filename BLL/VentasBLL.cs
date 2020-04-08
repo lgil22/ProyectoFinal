@@ -129,7 +129,7 @@ namespace SistemaVentas.BLL
                     {
                         db.Articulos.Find(item.ArticuloId).Existencia += item.Cantidad;
 
-                        if (!ventas.Detalles.ToList().Exists(v => v.Id == item.Id))
+                        if (!ventas.Detalles.ToList().Exists(v => v.VentaId == item.VentaId))
                         {
 
                             db.Entry(item).State = EntityState.Deleted;
@@ -139,7 +139,7 @@ namespace SistemaVentas.BLL
                     foreach (var item in ventas.Detalles)
                     {
                         db.Articulos.Find(item.ArticuloId).Existencia -= item.Cantidad;
-                        var estado = item.Id > 0 ? EntityState.Modified : EntityState.Added;
+                        var estado = item.VentaId > 0 ? EntityState.Modified : EntityState.Added;
                         db.Entry(item).State = estado;
                     }
 

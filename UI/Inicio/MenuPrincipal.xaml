@@ -151,7 +151,8 @@
                     <ImageBrush ImageSource="/Resources/Cerrar.png" Stretch="Uniform" AlignmentX="Left" AlignmentY="Bottom" />
                 </Button.Background>
             </Button>
-            
+            <TextBox x:Name="UsuarioActivoTextBox" IsReadOnly="True" TextWrapping="Wrap" Width="155"/>
+
         </Menu>
        
 

@@ -164,9 +164,7 @@ namespace SistemaVentas.UI.Registros
                 ArticuloId = Convert.ToInt32(ArticuloIdComBox.Text),
                 Cantidad = Convert.ToInt32(CantidadTextBox.Text),
                 Precio = Convert.ToDecimal(PrecioTextBox.Text),
-                Id = Convert.ToInt32(ArticuloIdComBox.Text),
-
-
+              
 
 
 
@@ -182,7 +180,7 @@ namespace SistemaVentas.UI.Registros
             //  PrecioTextBox.Focus();
            // MontoTextBox.Focus();
             PrecioTextBox.Text = string.Empty;
-            IdTextBox.Text = string.Empty;
+           
           /// MontoTextBox.Text = string.Empty;
         }
 
@@ -333,19 +331,6 @@ namespace SistemaVentas.UI.Registros
             }
         }
 
-        private void MontoTextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            if (!string.IsNullOrWhiteSpace(CantidadTextBox.Text) && (!string.IsNullOrWhiteSpace(PrecioTextBox.Text)))
-            {
-                int Num1;
-                decimal Num2;
-
-                Num1 = Convert.ToInt32(CantidadTextBox.Text);
-                Num2 = Convert.ToDecimal(PrecioTextBox.Text);
-
-                MontoTextBox.Text = Convert.ToString(Num1 * Num2);
-            }
-        }
 
         private void ImprimirButton_Click(object sender, RoutedEventArgs e)
         {
@@ -364,6 +349,18 @@ namespace SistemaVentas.UI.Registros
             }
         }
 
-     
+        private void MontoTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(CantidadTextBox.Text) && (!string.IsNullOrWhiteSpace(PrecioTextBox.Text)))
+            {
+                int Num1;
+                decimal Num2;
+
+                Num1 = Convert.ToInt32(CantidadTextBox.Text);
+                Num2 = Convert.ToDecimal(PrecioTextBox.Text);
+
+                MontoTextBox.Text = Convert.ToString(Num1 * Num2);
+            }
+        }
     }
 }

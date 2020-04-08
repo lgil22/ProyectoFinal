@@ -1,4 +1,6 @@
 ﻿using System.Windows;
+using SistemaVentas.BLL;
+using SistemaVentas.Entidades;
 using SistemaVentas.UI.Consultas;
 using SistemaVentas.UI.Registros;
 
@@ -9,9 +11,12 @@ namespace SistemaVentas.UI.Inicio
     /// </summary>
     public partial class MenuPrincipal : Window
     {
+        
         public MenuPrincipal()
         {
             InitializeComponent();
+
+            UsuarioActivoTextBox.Text = ("Usuario Activo: Admin" .ToString());
         }
 
 

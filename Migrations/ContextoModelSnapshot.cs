@@ -122,7 +122,7 @@ namespace SistemaVentas.Migrations
                             CobroId = 1,
                             Cantidad = 0,
                             ClienteId = 0,
-                            Fecha = new DateTime(2020, 4, 7, 22, 31, 41, 956, DateTimeKind.Local).AddTicks(1610),
+                            Fecha = new DateTime(2020, 4, 8, 12, 51, 5, 61, DateTimeKind.Local).AddTicks(3543),
                             Monto = 0f,
                             Precio = 2000f
                         });
@@ -224,8 +224,7 @@ namespace SistemaVentas.Migrations
 
             modelBuilder.Entity("SistemaVentas.Entidades.VentaDetalles", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
+                    b.Property<int>("VentaId")
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("ArticuloId")
@@ -237,12 +236,7 @@ namespace SistemaVentas.Migrations
                     b.Property<decimal>("Precio")
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("VentaId")
-                        .HasColumnType("INTEGER");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("VentaId");
+                    b.HasKey("VentaId");
 
                     b.ToTable("VentaDetalles");
                 });
@@ -274,7 +268,7 @@ namespace SistemaVentas.Migrations
                         {
                             VentaId = 1,
                             ClienteId = 0,
-                            Fecha = new DateTime(2020, 4, 7, 22, 31, 41, 953, DateTimeKind.Local).AddTicks(2855),
+                            Fecha = new DateTime(2020, 4, 8, 12, 51, 5, 52, DateTimeKind.Local).AddTicks(9966),
                             Monto = 0m,
                             TipoPago = "Credito"
                         });

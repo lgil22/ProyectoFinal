@@ -164,8 +164,6 @@ namespace SistemaVentas.Migrations
                 name: "VentaDetalles",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
                     VentaId = table.Column<int>(nullable: false),
                     ArticuloId = table.Column<int>(nullable: false),
                     Cantidad = table.Column<int>(nullable: false),
@@ -173,7 +171,7 @@ namespace SistemaVentas.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_VentaDetalles", x => x.Id);
+                    table.PrimaryKey("PK_VentaDetalles", x => x.VentaId);
                     table.ForeignKey(
                         name: "FK_VentaDetalles_Ventas_VentaId",
                         column: x => x.VentaId,
@@ -185,22 +183,17 @@ namespace SistemaVentas.Migrations
             migrationBuilder.InsertData(
                 table: "Cobros",
                 columns: new[] { "CobroId", "Cantidad", "ClienteId", "Fecha", "Monto", "Precio" },
-                values: new object[] { 1, 0, 0, new DateTime(2020, 4, 7, 22, 31, 41, 956, DateTimeKind.Local).AddTicks(1610), 0f, 2000f });
+                values: new object[] { 1, 0, 0, new DateTime(2020, 4, 8, 12, 51, 5, 61, DateTimeKind.Local).AddTicks(3543), 0f, 2000f });
 
             migrationBuilder.InsertData(
                 table: "Ventas",
                 columns: new[] { "VentaId", "ClienteId", "Fecha", "Monto", "TipoPago" },
-                values: new object[] { 1, 0, new DateTime(2020, 4, 7, 22, 31, 41, 953, DateTimeKind.Local).AddTicks(2855), 0m, "Credito" });
+                values: new object[] { 1, 0, new DateTime(2020, 4, 8, 12, 51, 5, 52, DateTimeKind.Local).AddTicks(9966), 0m, "Credito" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_CobrosDetalles_CobrosId",
                 table: "CobrosDetalles",
                 column: "CobrosId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_VentaDetalles_VentaId",
-                table: "VentaDetalles",
-                column: "VentaId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

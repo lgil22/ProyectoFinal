@@ -9,7 +9,6 @@ namespace SistemaVentas.Entidades
     public class VentaDetalles
     {
         [Key]
-        public int Id { get; set; }
         public int VentaId { get; set; }
         public int ArticuloId { get; set; }
         public int Cantidad { get; set; }
@@ -17,7 +16,6 @@ namespace SistemaVentas.Entidades
 
         public VentaDetalles()
         {
-            Id = 0;
             VentaId = 0;
             ArticuloId = 0;
             Cantidad = 0;
