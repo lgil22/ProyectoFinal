@@ -16,7 +16,7 @@ namespace SistemaVentas.UI.Inicio
         {
             InitializeComponent();
 
-            UsuarioActivoTextBox.Text = ("Usuario Activo: Admin" .ToString());
+           // UsuarioActivoTextBox.Text = ("Usuario Activo: Admin" .ToString());
         }
 
 
@@ -120,5 +120,6 @@ namespace SistemaVentas.UI.Inicio
             this.Close();
             login.Show();
         }
+
     }
 }

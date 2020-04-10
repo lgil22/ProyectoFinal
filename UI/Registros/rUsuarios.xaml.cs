@@ -45,8 +45,8 @@ namespace SistemaVentas.UI.Registros
 
         private bool ExisteEnLaBaseDeDatos()
         {
-            Usuarios clientes = UsuariosBLL.Buscar((int)UsuarioIdTextBox.Text.ToInt());
-            return clientes != null;
+            Usuarios usuarios = UsuariosBLL.Buscar((int)UsuarioIdTextBox.Text.ToInt());
+            return usuarios != null;
         }
 
         private bool Validar()

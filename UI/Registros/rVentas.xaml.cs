@@ -111,16 +111,19 @@ namespace SistemaVentas.UI.Registros
             listado2 = db.GetList(p => true);
             ArticuloIdComBox.ItemsSource = listado2;
             ArticuloIdComBox.SelectedValue = "ArticulosId";
-            ArticuloIdComBox.DisplayMemberPath = "ArticulosId";
+            ArticuloIdComBox.DisplayMemberPath = "Descripcion";
         }
         private bool ExisteEnLaBaseDeDatos()
         {
-            Clientes clientes = ClientesBLL.Buscar((int)ClienteIdCombox.Text.ToInt());
-            return (clientes != null);
+            RepositorioBase<Ventas> db = new RepositorioBase<Ventas>();
+            Ventas ventas = VentasBLL.Buscar((int)VentaIdTextBox.Text.ToInt());
+            return (ventas != null);
         }
 
         private bool Validar()
         {
+            RepositorioBase<Ventas> db = new RepositorioBase<Ventas>();
+
             bool paso = true;
 
             if (string.IsNullOrWhiteSpace(TipoPagoComBox.Text))
@@ -150,7 +153,9 @@ namespace SistemaVentas.UI.Registros
 
         private void AgregarDataGridButton_Click(object sender, RoutedEventArgs e)
         {
-         
+            RepositorioBase<Articulos> db = new RepositorioBase<Articulos>();
+            Articulos articulos = new Articulos();
+
             if (DetalleDataGridVentas.ItemsSource != null ) 
             {
                 this.Detalles = (List<VentaDetalles>)DetalleDataGridVentas.ItemsSource;
@@ -161,8 +166,8 @@ namespace SistemaVentas.UI.Registros
             this.Detalles.Add(new VentaDetalles
             {
                
-                ArticuloId = Convert.ToInt32(ArticuloIdComBox.Text),
-                Cantidad = Convert.ToInt32(CantidadTextBox.Text),
+                ArticuloId = (int)ArticuloIdComBox.Text.ToInt(),
+                Cantidad = (int)CantidadTextBox.Text.ToInt(),
                 Precio = Convert.ToDecimal(PrecioTextBox.Text),
               
 
@@ -174,18 +179,21 @@ namespace SistemaVentas.UI.Registros
             }) ;
          CargarGrid();
            Refrescar();
-           ArticuloIdComBox.Text = string.Empty;
-          CantidadTextBox.Text = string.Empty;
+        //   ArticuloIdComBox.Text = string.Empty;
+        //  CantidadTextBox.Text = string.Empty;
             // CantidadTextBox.Clear();
             //  PrecioTextBox.Focus();
            // MontoTextBox.Focus();
-            PrecioTextBox.Text = string.Empty;
+          //  PrecioTextBox.Text = string.Empty;
            
           /// MontoTextBox.Text = string.Empty;
         }
 
         private void BuscarButton_Click(object sender, RoutedEventArgs e)
         {
+            RepositorioBase<Ventas> db = new RepositorioBase<Ventas>();
+            Ventas venta = new Ventas();
+
             Ventas ventaAnterior = VentasBLL.Buscar(ventas.VentaId);
 
             if (ventaAnterior != null)
@@ -235,6 +243,7 @@ namespace SistemaVentas.UI.Registros
 
         private void GuardarButton_Click(object sender, RoutedEventArgs e)
         {
+            Ventas ventas = new Ventas();
             bool paso = false;
 
             if (!Validar())
@@ -280,6 +289,7 @@ namespace SistemaVentas.UI.Registros
         {
             int id;
             int.TryParse(VentaIdTextBox.Text, out id);
+            RepositorioBase<Ventas> db = new RepositorioBase<Ventas>();
 
             try
             {
@@ -360,6 +370,18 @@ namespace SistemaVentas.UI.Registros
                 Num2 = Convert.ToDecimal(PrecioTextBox.Text);
 
                 MontoTextBox.Text = Convert.ToString(Num1 * Num2);
+            }
+        }
+
+        private void ArticuloIdComBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Articulos a = ArticuloIdComBox.SelectedItem as Articulos;
+            if (a != null)
+            {
+
+                PrecioTextBox.Text = Convert.ToString(a.Precio);
+                ExistenciaTexBox.Text = Convert.ToString(a.Existencia);
+
             }
         }
     }

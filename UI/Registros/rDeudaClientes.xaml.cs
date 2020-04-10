@@ -103,9 +103,9 @@ namespace SistemaVentas.UI.Registros
 
         private bool existeEnLaBaseDeDatos()
         {
-            Categoria categoriaAnterior = CategoriaBLL.Buscar((int)DeudasIdTextBox.Text.ToInt());
+           DeudaClientes deudaAnterior = DeudaClientesBLL.Buscar((int)DeudasIdTextBox.Text.ToInt());
 
-            return categoriaAnterior != null;
+            return deudaAnterior != null;
         }
 
 

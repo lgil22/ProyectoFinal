@@ -146,7 +146,7 @@
 
 
         <Label x:Name="ArticuloLabel" Content="Articulo Id:" HorizontalAlignment="Left"  Grid.Row="7" VerticalAlignment="Top"  Margin="16,26,0,0" FontSize="12"/>
-        <ComboBox x:Name="ArticuloIdComBox" HorizontalAlignment="Left" Margin="83,30,0,0" Grid.Row="7"  VerticalAlignment="Top" Width="58">
+        <ComboBox x:Name="ArticuloIdComBox" HorizontalAlignment="Left" Margin="83,30,0,0" Grid.Row="7"  VerticalAlignment="Top" Width="58" SelectionChanged="ArticuloIdComBox_SelectionChanged">
             <ComboBox.Text>
                 <Binding Path="ArticuloId" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                     <Binding.ValidationRules>

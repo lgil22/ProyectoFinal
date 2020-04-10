@@ -122,7 +122,7 @@ namespace SistemaVentas.Migrations
                             CobroId = 1,
                             Cantidad = 0,
                             ClienteId = 0,
-                            Fecha = new DateTime(2020, 4, 8, 12, 51, 5, 61, DateTimeKind.Local).AddTicks(3543),
+                            Fecha = new DateTime(2020, 4, 9, 23, 18, 28, 688, DateTimeKind.Local).AddTicks(912),
                             Monto = 0f,
                             Precio = 2000f
                         });
@@ -268,7 +268,7 @@ namespace SistemaVentas.Migrations
                         {
                             VentaId = 1,
                             ClienteId = 0,
-                            Fecha = new DateTime(2020, 4, 8, 12, 51, 5, 52, DateTimeKind.Local).AddTicks(9966),
+                            Fecha = new DateTime(2020, 4, 9, 23, 18, 28, 683, DateTimeKind.Local).AddTicks(1991),
                             Monto = 0m,
                             TipoPago = "Credito"
                         });
