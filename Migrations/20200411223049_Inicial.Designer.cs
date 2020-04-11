@@ -9,7 +9,7 @@ using SistemaVentas.DAL;
 namespace SistemaVentas.Migrations
 {
     [DbContext(typeof(Contexto))]
-    [Migration("20200410031829_Inicial")]
+    [Migration("20200411223049_Inicial")]
     partial class Inicial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -124,7 +124,7 @@ namespace SistemaVentas.Migrations
                             CobroId = 1,
                             Cantidad = 0,
                             ClienteId = 0,
-                            Fecha = new DateTime(2020, 4, 9, 23, 18, 28, 688, DateTimeKind.Local).AddTicks(912),
+                            Fecha = new DateTime(2020, 4, 11, 18, 30, 48, 892, DateTimeKind.Local).AddTicks(2651),
                             Monto = 0f,
                             Precio = 2000f
                         });
@@ -170,6 +170,29 @@ namespace SistemaVentas.Migrations
                     b.HasKey("DeudasId");
 
                     b.ToTable("Deudas");
+                });
+
+            modelBuilder.Entity("SistemaVentas.Entidades.EntradaArticulos", b =>
+                {
+                    b.Property<int>("EntradaId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("ArticuloId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("Entrada")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("Fecha")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("UsuarioId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("EntradaId");
+
+                    b.ToTable("Entradas");
                 });
 
             modelBuilder.Entity("SistemaVentas.Entidades.NotasCreditos", b =>
@@ -270,7 +293,7 @@ namespace SistemaVentas.Migrations
                         {
                             VentaId = 1,
                             ClienteId = 0,
-                            Fecha = new DateTime(2020, 4, 9, 23, 18, 28, 683, DateTimeKind.Local).AddTicks(1991),
+                            Fecha = new DateTime(2020, 4, 11, 18, 30, 48, 888, DateTimeKind.Local).AddTicks(9999),
                             Monto = 0m,
                             TipoPago = "Credito"
                         });

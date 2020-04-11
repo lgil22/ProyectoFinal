@@ -66,9 +66,9 @@ namespace SistemaVentas.UI.Registros
         private void LlenaComBoxCategoria()  ///Metodo que nos ayudara a cargar el id Categoria que ya se tiene registrado...
         {
             RepositorioBase<Categoria> db = new RepositorioBase<Categoria>();
-            var listado3 = new List<Categoria>();
-            listado3 = db.GetList(p => true);
-            CategoriaIdComboBox.ItemsSource = listado3;
+            var listado4 = new List<Categoria>();
+            listado4 = db.GetList(p => true);
+            CategoriaIdComboBox.ItemsSource = listado4;
             CategoriaIdComboBox.SelectedValue = "CategoriaId";
             CategoriaIdComboBox.DisplayMemberPath = "NombreCategoria";
         }

@@ -66,9 +66,9 @@
         <StackPanel Grid.Row="2" Grid.Column="1" Margin="0,14,90,33">
             <TextBox  x:Name="ArticuloIdTextBox" Height="24" Background="#FFFDFBFB">
                 <TextBox.Text>
-                    <Binding  Path="ArticuliId" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                    <Binding  Path="ArticulosId" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
-                            <src:IdValidacion x:Name="IdValidacion" ValidatesOnTargetUpdated="True"/>
+                            <src:IdValidacion x:Name="ArticuloIdValidacion" ValidatesOnTargetUpdated="True"/>
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>

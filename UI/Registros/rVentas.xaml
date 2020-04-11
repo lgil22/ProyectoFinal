@@ -94,23 +94,19 @@
             </ComboBox.Text>
         </ComboBox>
 
-
-
         <StackPanel Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2">
             <Label x:Name="FechaLabel" Content="Fecha:" FontSize="14" Height="30" Width="267"/>
         </StackPanel>
-
+        
         <DatePicker x:Name="FechaNacTimePicker" Height="25" Margin="114,5,98,28" Grid.Row="5" Grid.ColumnSpan="3" DisplayDate="2020-03-25" SelectedDateFormat="Short">
-            <DatePicker.Text>
+            <DatePicker.SelectedDate>
                 <Binding Path="Fecha" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                     <Binding.ValidationRules>
-                        <ExceptionValidationRule/>
-                        <src:ValidaciónString x:Name="FechaValidacionString" ValidatesOnTargetUpdated="True"/>
+                        <ExceptionValidationRule></ExceptionValidationRule>
                     </Binding.ValidationRules>
                 </Binding>
-            </DatePicker.Text>
+            </DatePicker.SelectedDate>
         </DatePicker>
-
 
         <StackPanel Grid.Row="6" Grid.Column="0">
             <Label x:Name="TipoPagoLabel" Content="Tipo Pago:" FontSize="14" Height="30" Width="122"/>

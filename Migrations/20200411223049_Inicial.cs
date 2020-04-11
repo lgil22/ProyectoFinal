@@ -89,6 +89,22 @@ namespace SistemaVentas.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Entradas",
+                columns: table => new
+                {
+                    EntradaId = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    ArticuloId = table.Column<int>(nullable: false),
+                    Entrada = table.Column<int>(nullable: false),
+                    UsuarioId = table.Column<int>(nullable: false),
+                    Fecha = table.Column<DateTime>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Entradas", x => x.EntradaId);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "NotasCreditos",
                 columns: table => new
                 {
@@ -183,12 +199,12 @@ namespace SistemaVentas.Migrations
             migrationBuilder.InsertData(
                 table: "Cobros",
                 columns: new[] { "CobroId", "Cantidad", "ClienteId", "Fecha", "Monto", "Precio" },
-                values: new object[] { 1, 0, 0, new DateTime(2020, 4, 9, 23, 18, 28, 688, DateTimeKind.Local).AddTicks(912), 0f, 2000f });
+                values: new object[] { 1, 0, 0, new DateTime(2020, 4, 11, 18, 30, 48, 892, DateTimeKind.Local).AddTicks(2651), 0f, 2000f });
 
             migrationBuilder.InsertData(
                 table: "Ventas",
                 columns: new[] { "VentaId", "ClienteId", "Fecha", "Monto", "TipoPago" },
-                values: new object[] { 1, 0, new DateTime(2020, 4, 9, 23, 18, 28, 683, DateTimeKind.Local).AddTicks(1991), 0m, "Credito" });
+                values: new object[] { 1, 0, new DateTime(2020, 4, 11, 18, 30, 48, 888, DateTimeKind.Local).AddTicks(9999), 0m, "Credito" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_CobrosDetalles_CobrosId",
@@ -212,6 +228,9 @@ namespace SistemaVentas.Migrations
 
             migrationBuilder.DropTable(
                 name: "Deudas");
+
+            migrationBuilder.DropTable(
+                name: "Entradas");
 
             migrationBuilder.DropTable(
                 name: "NotasCreditos");

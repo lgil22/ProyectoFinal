@@ -169,14 +169,13 @@
         </StackPanel>
 
         <DatePicker x:Name="FechaNacTimePicker" Margin="10,5,98,28" Grid.Row="9" Grid.ColumnSpan="2" Grid.Column="1" DisplayDate="2020-03-25" SelectedDateFormat="Short">
-            <DatePicker.Text>
+            <DatePicker.SelectedDate>
                 <Binding Path="FechaNacimiento" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                     <Binding.ValidationRules>
-                        <ExceptionValidationRule/>
-                        <src:ValidaciónString x:Name="ValidacionFechaN" ValidatesOnTargetUpdated="True"/>
+                        <ExceptionValidationRule></ExceptionValidationRule>
                     </Binding.ValidationRules>
                 </Binding>
-            </DatePicker.Text>
+            </DatePicker.SelectedDate>
         </DatePicker>
 
         <StackPanel Grid.Row="10" Grid.Column="0">

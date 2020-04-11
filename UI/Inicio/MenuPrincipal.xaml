@@ -20,6 +20,10 @@
 
 
             <MenuItem x:Name="MenuRegistros" Header="Registros">
+                <MenuItem Header="Entrada Articulos" Click="MenuEntradaArticulos_Click">
+                </MenuItem>
+                <Separator/>
+
                 <MenuItem Header="Articulos" Click="MenuArticulos_Click">
                     <MenuItem.Background>
                         <ImageBrush ImageSource="/SistemaVentas;component/Resources/Articulos.png"  Stretch="Uniform" AlignmentX="Left" AlignmentY="Bottom" />
@@ -151,7 +155,7 @@
                     <ImageBrush ImageSource="/Resources/Cerrar.png" Stretch="Uniform" AlignmentX="Left" AlignmentY="Bottom" />
                 </Button.Background>
             </Button>
-            <TextBox x:Name="UsuarioActivoTextBox" IsReadOnly="True" TextWrapping="Wrap" Foreground="Red"  Width="155" Text="Usuario Activo: Admin" FontWeight="Bold" />
+            <TextBox x:Name="UsuarioActivoTextBox" IsReadOnly="True" TextWrapping="Wrap" Foreground="Red"  Width="155" Text="Usuario Activo: Admin" FontWeight="Bold" IsEnabled="True" />
 
         </Menu>
        
