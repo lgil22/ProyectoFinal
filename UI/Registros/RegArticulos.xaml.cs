@@ -133,7 +133,7 @@ namespace SistemaVentas.UI.Registros
                 //Informar el resultado
                 if (paso)
             {
-
+                Limpiar();
             }
                     
                 else
@@ -152,6 +152,7 @@ namespace SistemaVentas.UI.Registros
             {
                 if (ArticulosBLL.Eliminar(id))
                 {
+                     Limpiar();
                     MessageBox.Show("Eliminado", "Exito", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
                 else
@@ -171,6 +172,7 @@ namespace SistemaVentas.UI.Registros
 
             return (articuloAnterio != null);
         }
+
         private void BuscarButton_Click(object sender, RoutedEventArgs e)
         {
           

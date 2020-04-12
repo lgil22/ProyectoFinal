@@ -109,7 +109,7 @@ namespace SistemaVentas.UI.Registros
 
         private void BuscarButton_Click(object sender, RoutedEventArgs e)
         {
-            NotasCreditos creditos = NotasCreditosBLL.Buscar(credito.NotaId);
+            NotasCreditos creditos = NotasCreditosBLL.Buscar(NotaIdTextBox.Text.ToInt());
 
             if (creditos != null)
             {
@@ -130,7 +130,7 @@ namespace SistemaVentas.UI.Registros
 
             try
             {
-                if (NotasCreditosBLL.Eliminar(credito.NotaId))
+                if (NotasCreditosBLL.Eliminar(id))
                 {
                     MessageBox.Show("Eliminado", "Exito", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
@@ -174,15 +174,14 @@ namespace SistemaVentas.UI.Registros
                 {
                     Limpiar();
                     MessageBox.Show("No Existe en la base de datos", "ERROR");
-                    return;
+                  
                 }
             }
 
             //Informar el resultado
             if (paso)
             {
-                Limpiar();
-                MessageBox.Show("Guardado!!", "Exito", MessageBoxButton.OK, MessageBoxImage.Information);
+               
             }
             else
                 MessageBox.Show("No fue posible guardar!!", "Fallo", MessageBoxButton.OK, MessageBoxImage.Error);

@@ -115,9 +115,10 @@ namespace SistemaVentas.UI.Registros
             bool paso = false;
             if (!Validar())
                 return;
+
             Limpiar();
 
-            if (string.IsNullOrWhiteSpace(CobrosIdTextBox.Text)  || CobrosIdTextBox.Text == "0")  
+            if (cobro.CobroId == 0)  
             {
                 paso = CobrosBLL.Guardar(cobro);
 
@@ -126,16 +127,15 @@ namespace SistemaVentas.UI.Registros
             {
                 if (!existeEnLaBaseDeDatos())
                 {
-                     MessageBox.Show("No se puede modificar una venta que no existe", "Fallo", MessageBoxButton.OK, MessageBoxImage.Error);  
-                  }
-                    paso = CobrosBLL.Modificar(cobro);
-                
+                     paso = CobrosBLL.Modificar(cobro);
+                    MessageBox.Show(" modifico ", "Existo", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+
             }
             if (paso)
                 {
 
                 Limpiar();
-                MessageBox.Show("Guardado!!", "Exito", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             else
                 {
@@ -152,7 +152,7 @@ namespace SistemaVentas.UI.Registros
 
             try
             {
-                if (CobrosBLL.Eliminar(cobro.CobroId))
+                if (CobrosBLL.Eliminar(id))
                 {
                     Limpiar();
                     MessageBox.Show("Eliminado", "Exito", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -174,11 +174,11 @@ namespace SistemaVentas.UI.Registros
 
         private void BuscarButton_Click(object sender, RoutedEventArgs e)
         {
-            Cobros cobroAnterior = CobrosBLL.Buscar(cobro.CobroId);
+            Cobros cobroAnterior = CobrosBLL.Buscar(CobrosIdTextBox.Text.ToInt());
 
-            if (cobro != null)
+            if (cobroAnterior != null)
             {
-                MessageBox.Show("Cobro encontrado");
+               
                 cobro = cobroAnterior;
                 reCargar();
 
