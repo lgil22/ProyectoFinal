@@ -105,7 +105,13 @@
                     </MenuItem>
                     <Separator/>
 
-                    <MenuItem x:Name="Clientes" Header="Clientes" Click="MenuCclientes_Click">
+
+                 <MenuItem x:Name="EntradaArticulos" Header="Entrada Articulos" Click="MenucEntradaArticulos_Click">
+                    </MenuItem>
+                    <Separator/>
+
+
+                <MenuItem x:Name="Clientes" Header="Clientes" Click="MenuCclientes_Click">
                         <MenuItem.Background>
                             <ImageBrush ImageSource="/SistemaVentas;component/Resources/Clientes.png"  Stretch="Uniform" AlignmentX="Left" AlignmentY="Bottom" />
                         </MenuItem.Background>

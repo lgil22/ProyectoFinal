@@ -58,6 +58,8 @@ namespace SistemaVentas.UI.Consultas
                             listado = ArticulosBLL.GetList(o => o.CategoriaId == catid);
                             break;
 
+                        //listado = ArticulosBLL.GetList(p => p.CategoriaId.Contains(CriterioTextBox.Text));
+                  
 
                         case 5: //Existencia
                             int Ext;
@@ -66,7 +68,7 @@ namespace SistemaVentas.UI.Consultas
                             break;
 
 
-                        case 6: //costo
+                        case 6: // Existencia
                             decimal cost;
                             cost = decimal.Parse(CriterioTextBox.Text);
                             listado = ArticulosBLL.GetList(o => o.Existencia == cost);

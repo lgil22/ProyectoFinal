@@ -3,6 +3,8 @@ using SistemaVentas.DAL;
 using SistemaVentas.Entidades;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 
 namespace SistemaVentas.BLL
@@ -12,12 +14,10 @@ namespace SistemaVentas.BLL
         public static bool Guardar(EntradaArticulos entrada)
         {
             bool paso = false;
+            RepositorioBase<Articulos> art = new RepositorioBase<Articulos>();
             Contexto db = new Contexto();
             try
             {
-
-                RepositorioBase<Articulos> art = new RepositorioBase<Articulos>();
-
 
                 if (db.Entradas.Add(entrada) != null)
                 {
@@ -96,5 +96,27 @@ namespace SistemaVentas.BLL
             }
             return paso;
         }
+
+        public static List<EntradaArticulos> GetList(Expression<Func<EntradaArticulos, bool>> entradas)
+        {
+            List<EntradaArticulos> lista = new List<EntradaArticulos>();
+            Contexto db = new Contexto();
+            try
+            {
+                lista = db.Entradas.Where(entradas).ToList();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                db.Dispose();
+            }
+
+            return lista;
+        }
+
     }
 }

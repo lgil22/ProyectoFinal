@@ -41,10 +41,8 @@ namespace SistemaVentas.UI.Consultas
                         id = int.Parse(CriterioTextBox.Text);
                         listado = NotasCreditosBLL.GetList(o => o.NotaId == id);
                         break;
-
-                   
                     
-                    case 2: // Clietne Id
+                    case 2: // Cliente Id
                         int clienteId;
                         clienteId = int.Parse(CriterioTextBox.Text);
                         listado = NotasCreditosBLL.GetList(o => o.ClienteId == clienteId);
@@ -56,12 +54,12 @@ namespace SistemaVentas.UI.Consultas
                         listado = NotasCreditosBLL.GetList(o => o.UsuarioId == usuario);
                         break;
 
-                    case 4: //Cconcepto
+                    case 4: // Concepto
                         listado = NotasCreditosBLL.GetList(p => p.Concepto.Contains(CriterioTextBox.Text));
                         break;
                         
 
-                    case 5: //monto
+                    case 5: // Monto
                         int mon;
                         mon = int.Parse(CriterioTextBox.Text);
                         listado = NotasCreditosBLL.GetList(o => o.Monto == mon);
