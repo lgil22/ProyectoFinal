@@ -9,7 +9,7 @@ using SistemaVentas.DAL;
 namespace SistemaVentas.Migrations
 {
     [DbContext(typeof(Contexto))]
-    [Migration("20200414004458_Inicial")]
+    [Migration("20200414021617_Inicial")]
     partial class Inicial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -124,7 +124,7 @@ namespace SistemaVentas.Migrations
                             CobroId = 1,
                             Cantidad = 0,
                             ClienteId = 0,
-                            Fecha = new DateTime(2020, 4, 13, 20, 44, 57, 644, DateTimeKind.Local).AddTicks(1595),
+                            Fecha = new DateTime(2020, 4, 13, 22, 16, 17, 22, DateTimeKind.Local).AddTicks(1616),
                             Monto = 0f,
                             Precio = 2000f
                         });
@@ -270,7 +270,7 @@ namespace SistemaVentas.Migrations
                         {
                             VentaId = 1,
                             ClienteId = 0,
-                            Fecha = new DateTime(2020, 4, 13, 20, 44, 57, 639, DateTimeKind.Local).AddTicks(71),
+                            Fecha = new DateTime(2020, 4, 13, 22, 16, 17, 18, DateTimeKind.Local).AddTicks(5767),
                             Monto = 0m,
                             TipoPago = "Credito"
                         });

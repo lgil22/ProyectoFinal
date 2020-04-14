@@ -199,7 +199,7 @@ namespace SistemaVentas.UI.Registros
 
         }
 
-   /*     private void ExistenciaTextBox_TextChanged(object sender, TextChangedEventArgs e)
+       private void ExistenciaTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (!string.IsNullOrWhiteSpace(ExistenciaTextBox.Text) && !string.IsNullOrWhiteSpace(CostoIdTextBox.Text))
             {
@@ -211,7 +211,7 @@ namespace SistemaVentas.UI.Registros
 
                 PrecioIdTextBox.Text = Convert.ToString(Num1 * Num2);
             }
-        }*/
+        }
 
         private void CostoIdTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {

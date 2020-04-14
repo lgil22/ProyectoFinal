@@ -118,7 +118,7 @@
 
 
         <StackPanel Grid.Row="6" Grid.Column="1" Margin="0,14,0,33">
-            <TextBox  x:Name="ExistenciaTextBox" IsReadOnly="True"  Height="25" Background="#FFFDFBFB">
+            <TextBox  x:Name="ExistenciaTextBox"  Height="25" TextChanged="ExistenciaTextBox_TextChanged" Background="#FFFDFBFB">
                 <TextBox.Text>
                     <Binding  Path="Existencia" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                          <Binding.ValidationRules>

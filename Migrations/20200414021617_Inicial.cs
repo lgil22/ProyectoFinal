@@ -183,12 +183,12 @@ namespace SistemaVentas.Migrations
             migrationBuilder.InsertData(
                 table: "Cobros",
                 columns: new[] { "CobroId", "Cantidad", "ClienteId", "Fecha", "Monto", "Precio" },
-                values: new object[] { 1, 0, 0, new DateTime(2020, 4, 13, 20, 44, 57, 644, DateTimeKind.Local).AddTicks(1595), 0f, 2000f });
+                values: new object[] { 1, 0, 0, new DateTime(2020, 4, 13, 22, 16, 17, 22, DateTimeKind.Local).AddTicks(1616), 0f, 2000f });
 
             migrationBuilder.InsertData(
                 table: "Ventas",
                 columns: new[] { "VentaId", "ClienteId", "Fecha", "Monto", "TipoPago" },
-                values: new object[] { 1, 0, new DateTime(2020, 4, 13, 20, 44, 57, 639, DateTimeKind.Local).AddTicks(71), 0m, "Credito" });
+                values: new object[] { 1, 0, new DateTime(2020, 4, 13, 22, 16, 17, 18, DateTimeKind.Local).AddTicks(5767), 0m, "Credito" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_CobrosDetalles_CobrosId",
