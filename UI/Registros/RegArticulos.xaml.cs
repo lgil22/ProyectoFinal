@@ -79,6 +79,7 @@ namespace SistemaVentas.UI.Registros
 
         private bool Validar()
         {
+            RepositorioBase<Articulos> db = new RepositorioBase<Articulos>();
             bool paso = true;
 
             if (string.IsNullOrWhiteSpace(ArticuloIdTextBox.Text))
@@ -105,6 +106,8 @@ namespace SistemaVentas.UI.Registros
 
         private void GuardarButton_Click(object sender, RoutedEventArgs e)
         {
+            RepositorioBase<Articulos> db = new RepositorioBase<Articulos>();
+            Articulos articulos = new Articulos();
 
             bool paso = false;
 
@@ -145,6 +148,8 @@ namespace SistemaVentas.UI.Registros
         {
 
             int id;
+            RepositorioBase<Articulos> db = new RepositorioBase<Articulos>();
+            Articulos articulos = new Articulos();
             int.TryParse(ArticuloIdTextBox.Text, out id);
 
             Limpiar();
@@ -168,14 +173,16 @@ namespace SistemaVentas.UI.Registros
 
         private bool existeEnLaBaseDeDatos()
         {
+            RepositorioBase<Articulos> db = new RepositorioBase<Articulos>();
             Articulos articuloAnterio = ArticulosBLL.Buscar((int)ArticuloIdTextBox.Text.ToInt());
-
             return (articuloAnterio != null);
         }
 
         private void BuscarButton_Click(object sender, RoutedEventArgs e)
         {
-          
+            RepositorioBase<Articulos> db = new RepositorioBase<Articulos>();
+            Articulos articulos = new Articulos();
+
             Articulos articuloAnterio = ArticulosBLL.Buscar(ArticuloIdTextBox.Text.ToInt());
      
            
@@ -192,7 +199,7 @@ namespace SistemaVentas.UI.Registros
 
         }
 
-        private void ExistenciaTextBox_TextChanged(object sender, TextChangedEventArgs e)
+   /*     private void ExistenciaTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (!string.IsNullOrWhiteSpace(ExistenciaTextBox.Text) && !string.IsNullOrWhiteSpace(CostoIdTextBox.Text))
             {
@@ -204,7 +211,7 @@ namespace SistemaVentas.UI.Registros
 
                 PrecioIdTextBox.Text = Convert.ToString(Num1 * Num2);
             }
-        }
+        }*/
 
         private void CostoIdTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {

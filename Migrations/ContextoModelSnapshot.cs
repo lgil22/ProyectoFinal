@@ -122,7 +122,7 @@ namespace SistemaVentas.Migrations
                             CobroId = 1,
                             Cantidad = 0,
                             ClienteId = 0,
-                            Fecha = new DateTime(2020, 4, 11, 18, 30, 48, 892, DateTimeKind.Local).AddTicks(2651),
+                            Fecha = new DateTime(2020, 4, 13, 20, 44, 57, 644, DateTimeKind.Local).AddTicks(1595),
                             Monto = 0f,
                             Precio = 2000f
                         });
@@ -168,29 +168,6 @@ namespace SistemaVentas.Migrations
                     b.HasKey("DeudasId");
 
                     b.ToTable("Deudas");
-                });
-
-            modelBuilder.Entity("SistemaVentas.Entidades.EntradaArticulos", b =>
-                {
-                    b.Property<int>("EntradaId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("ArticuloId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("Entrada")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<DateTime>("Fecha")
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("UsuarioId")
-                        .HasColumnType("INTEGER");
-
-                    b.HasKey("EntradaId");
-
-                    b.ToTable("Entradas");
                 });
 
             modelBuilder.Entity("SistemaVentas.Entidades.NotasCreditos", b =>
@@ -291,7 +268,7 @@ namespace SistemaVentas.Migrations
                         {
                             VentaId = 1,
                             ClienteId = 0,
-                            Fecha = new DateTime(2020, 4, 11, 18, 30, 48, 888, DateTimeKind.Local).AddTicks(9999),
+                            Fecha = new DateTime(2020, 4, 13, 20, 44, 57, 639, DateTimeKind.Local).AddTicks(71),
                             Monto = 0m,
                             TipoPago = "Credito"
                         });

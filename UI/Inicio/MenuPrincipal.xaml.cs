@@ -19,12 +19,6 @@ namespace SistemaVentas.UI.Inicio
            // UsuarioActivoTextBox.Text = ("Usuario Activo: Admin" .ToString());
         }
 
-        private void MenuEntradaArticulos_Click(object sender, RoutedEventArgs e)
-        {
-            rEntradaArticulos regEnt = new rEntradaArticulos();
-            regEnt.Show();
-        }
-
         private void MenuCategorias_Click(object sender, RoutedEventArgs e)
         {
             RegCategoria regCat = new RegCategoria();
@@ -85,11 +79,7 @@ namespace SistemaVentas.UI.Inicio
             cDeud.Show();
         }
 
-        private void MenucEntradaArticulos_Click(object sender, RoutedEventArgs e)
-        {
-            cEntradaArticulos EntArt = new cEntradaArticulos();
-            EntArt.Show();
-        }
+  
         private void MenuCclientes_Click(object sender, RoutedEventArgs e)
         {
             cClientes cC = new cClientes();

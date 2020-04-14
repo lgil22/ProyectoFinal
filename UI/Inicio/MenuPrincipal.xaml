@@ -20,10 +20,7 @@
 
 
             <MenuItem x:Name="MenuRegistros" Header="Registros">
-                <MenuItem Header="Entrada Articulos" Click="MenuEntradaArticulos_Click">
-                </MenuItem>
-                <Separator/>
-
+             
                 <MenuItem Header="Articulos" Click="MenuArticulos_Click">
                     <MenuItem.Background>
                         <ImageBrush ImageSource="/SistemaVentas;component/Resources/Articulos.png"  Stretch="Uniform" AlignmentX="Left" AlignmentY="Bottom" />
@@ -104,12 +101,6 @@
                         </MenuItem.Background>
                     </MenuItem>
                     <Separator/>
-
-
-                 <MenuItem x:Name="EntradaArticulos" Header="Entrada Articulos" Click="MenucEntradaArticulos_Click">
-                    </MenuItem>
-                    <Separator/>
-
 
                 <MenuItem x:Name="Clientes" Header="Clientes" Click="MenuCclientes_Click">
                         <MenuItem.Background>
